@@ -12,7 +12,7 @@ const SB_SERVICE =
   process.env.SUPABASE_SECRET ||
   "";
 
-const ANABOLENPRO_SHOP_ID = "18a96da9-9f9f-466f-ac2b-3ab0349b78a6";
+const ANABOLENPRO_SHOP_ID = "96b47e49-34fd-4d6c-99d3-d49d912be046";
 
 export async function POST(req: NextRequest) {
   let body: any;

@@ -5,9 +5,9 @@ import { BookOpen } from "lucide-react";
 export const revalidate = 86400;
 
 export const metadata: Metadata = {
-  title: "Begrippenlijst anabolen & AAS — HPLC, PCT, HPTA, aromatisatie | AnabolenPro",
+  title: "Begrippenlijst anabolen & AAS — HPLC, PCT, HPTA, aromatisatie | Anabolendoktor",
   description:
-    "Uitleg van de begrippen die je tegenkomt op anabolenpro.com en in de kennisbank: AAS, aromatisatie, HPTA, PCT, bloedwerk, Janoshik, ester, half-life en meer. Voor beginners en ervaren gebruikers.",
+    "Uitleg van de begrippen die je tegenkomt op anabolendoktor.com en in de kennisbank: AAS, aromatisatie, HPTA, PCT, bloedwerk, Janoshik, ester, half-life en meer. Voor beginners en ervaren gebruikers.",
   alternates: { canonical: "/begrippenlijst" },
 };
 
@@ -147,7 +147,7 @@ const TERMS: Term[] = [
     id: "janoshik",
     term: "Janoshik Analytical",
     short: "Onafhankelijk peptide/AAS-lab",
-    body: "Tsjechisch analytisch lab dat HPLC- en mass-spec analyses uitvoert op AAS, peptides en SARM's op verzoek van webshops en particulieren. Industrie-referentie voor batch-verificatie. AnabolenPro test iedere UT-batch bij Janoshik en publiceert het rapport per batchcode op /lab.",
+    body: "Tsjechisch analytisch lab dat HPLC- en mass-spec analyses uitvoert op AAS, peptides en SARM's op verzoek van webshops en particulieren. Industrie-referentie voor batch-verificatie. Anabolendoktor test iedere UT-batch bij Janoshik en publiceert het rapport per batchcode op /lab.",
     related: ["hplc", "coa", "batchcode"],
     link: "/lab",
   },
@@ -258,13 +258,13 @@ export default function BegrippenlijstPage() {
     "@context": "https://schema.org",
     "@type": "DefinedTermSet",
     name: "Begrippenlijst anabolen & AAS",
-    url: "https://anabolenpro.com/begrippenlijst",
+    url: "https://anabolendoktor.com/begrippenlijst",
     hasDefinedTerm: TERMS.map((t) => ({
       "@type": "DefinedTerm",
-      "@id": `https://anabolenpro.com/begrippenlijst#${t.id}`,
+      "@id": `https://anabolendoktor.com/begrippenlijst#${t.id}`,
       name: t.term,
       description: t.body,
-      inDefinedTermSet: "https://anabolenpro.com/begrippenlijst",
+      inDefinedTermSet: "https://anabolendoktor.com/begrippenlijst",
     })),
   };
 

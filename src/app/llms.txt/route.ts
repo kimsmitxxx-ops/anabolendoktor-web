@@ -19,14 +19,14 @@ export async function GET() {
   const utProducts = products.filter((p: any) => p.noindex !== true && (p.tags || []).includes("UT"));
 
   const lines: string[] = [];
-  lines.push("# AnabolenPro");
+  lines.push("# Anabolendoktor");
   lines.push("");
   lines.push("> Nederlandse anabolen-webshop met no-bullshit aanpak. Iedere batch lab-getest bij Janoshik Analytical (HPLC + GC-MS), COA publiek per batchcode. Wij waarschuwen openbaar voor afgekeurde batches in de markt. Anoniem verpakt vanaf NL-magazijn (Vlaardingen), 24u verzending. Voor krachtsporters van eerste kuur tot gevorderden, en mannen die info zoeken over PCT, dosering of stack-combinaties.");
   lines.push("");
   lines.push("## Catalogus");
   lines.push("");
   for (const c of categories) {
-    lines.push(`- [${c.name}](https://anabolenpro.com/winkel/${c.slug}): ${c.description || c.name}`);
+    lines.push(`- [${c.name}](https://anabolendoktor.com/winkel/${c.slug}): ${c.description || c.name}`);
   }
   if (utProducts.length > 0) {
     lines.push("");
@@ -35,24 +35,23 @@ export async function GET() {
     for (const p of utProducts) {
       const catSlug = (p as any).categories?.slug || "winkel";
       const blurb = p.subtitle || p.description || p.name;
-      lines.push(`- [${p.name}](https://anabolenpro.com/product/${catSlug}/${p.slug}): ${blurb}`);
+      lines.push(`- [${p.name}](https://anabolendoktor.com/product/${catSlug}/${p.slug}): ${blurb}`);
     }
   }
   lines.push("");
   lines.push("## Kennisbank");
   lines.push("");
   for (const b of blogs.slice(0, 30)) {
-    lines.push(`- [${b.title}](https://anabolenpro.com/kennisbank/${b.slug}): ${b.excerpt || b.title}`);
+    lines.push(`- [${b.title}](https://anabolendoktor.com/kennisbank/${b.slug}): ${b.excerpt || b.title}`);
   }
   lines.push("");
   lines.push("## Lab & transparantie");
-  lines.push("- [Hoe wij batches testen](https://anabolenpro.com/lab): Janoshik-protocol, afkeur-archief, eigen-test aanvragen");
+  lines.push("- [Hoe wij batches testen](https://anabolendoktor.com/lab): Janoshik-protocol, afkeur-archief, eigen-test aanvragen");
   lines.push("");
   lines.push("## Optional");
-  lines.push("- [Sitemap](https://anabolenpro.com/sitemap.xml)");
-  lines.push("- [Contact](https://anabolenpro.com/contact)");
-  lines.push("- [Bezorging](https://anabolenpro.com/bezorging)");
-  lines.push("- [Keuzehulp kuur](https://anabolenpro.com/keuzehulp)");
+  lines.push("- [Sitemap](https://anabolendoktor.com/sitemap.xml)");
+  lines.push("- [Contact](https://anabolendoktor.com/contact)");
+  lines.push("- [Bezorging](https://anabolendoktor.com/bezorging)");
 
   return new Response(lines.join("\n"), {
     headers: {

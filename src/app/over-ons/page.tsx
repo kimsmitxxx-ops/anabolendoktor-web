@@ -14,9 +14,9 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Over AnabolenPro — Team, lab-policy en transparantie",
+  title: "Over Anabolendoktor — Team, lab-policy en transparantie",
   description:
-    "AnabolenPro is een Nederlandse research-shop met Janoshik HPLC lab-test per batch. Lees over ons team van pro-atleten + medisch consultant, onze lab-policy en bedrijfsgegevens.",
+    "Anabolendoktor is een Nederlandse research-shop met Janoshik HPLC lab-test per batch. Lees over ons team van pro-atleten + medisch consultant, onze lab-policy en bedrijfsgegevens.",
   alternates: { canonical: "/over-ons" },
 };
 
@@ -61,9 +61,9 @@ export default async function OverOnsPage() {
   return (
     <>
       <PageHero
-        eyebrow="Over AnabolenPro"
+        eyebrow="Over Anabolendoktor"
         title="Lab-data-gedreven, eerlijk over risico — niet zomaar nóg een shop"
-        intro="AnabolenPro is opgericht omdat de NL-markt vol zit met underdosed labels, vage labjes en leveranciers die plots offline gaan. Wij testen iedere batch onafhankelijk via Janoshik, publiceren afkeuringen openbaar en laten enhanced atleten + een medisch consultant onze content schrijven. Geen marketing-brochures, wel echte cijfers."
+        intro="Anabolendoktor is opgericht omdat de NL-markt vol zit met underdosed labels, vage labjes en leveranciers die plots offline gaan. Wij testen iedere batch onafhankelijk via Janoshik, publiceren afkeuringen openbaar en laten enhanced atleten + een medisch consultant onze content schrijven. Geen marketing-brochures, wel echte cijfers."
       />
 
       <section className="mx-auto max-w-7xl px-4 py-14 grid gap-10 lg:grid-cols-2 items-start">
@@ -189,7 +189,7 @@ export default async function OverOnsPage() {
         <div className="rounded-md border border-border bg-surface p-8 lg:p-10 grid gap-8 lg:grid-cols-2">
           <div>
             <p className="text-xs uppercase tracking-[0.15em] text-accent font-semibold">Bedrijfsgegevens</p>
-            <h2 className="mt-2 font-display text-2xl text-text">AnabolenPro</h2>
+            <h2 className="mt-2 font-display text-2xl text-text">Anabolendoktor</h2>
             <dl className="mt-5 space-y-2 text-sm">
               <div className="flex gap-2">
                 <dt className="w-28 text-text-muted">Sinds</dt>

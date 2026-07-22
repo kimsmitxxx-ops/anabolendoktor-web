@@ -7,7 +7,7 @@ import { ShieldCheck, FlaskConical, Mail, AlertTriangle } from "lucide-react";
 export const revalidate = 86400;
 
 export const metadata: Metadata = {
-  title: "Retour en terugbetaling — AnabolenPro",
+  title: "Retour en terugbetaling — Anabolendoktor",
   description:
     "Retourzendingen zijn in onze branche niet mogelijk. Wat wél: 100% leveringsgarantie bij vertraging of vermissing en lab-vervanging bij batch-afwijking.",
   alternates: { canonical: "/retourneren" },

@@ -3,7 +3,7 @@ import { createClient } from "@supabase/supabase-js";
 
 export const dynamic = "force-dynamic";
 
-const SHOP_ID = "18a96da9-9f9f-466f-ac2b-3ab0349b78a6";
+const SHOP_ID = "96b47e49-34fd-4d6c-99d3-d49d912be046";
 const MAX_BYTES = 5 * 1024 * 1024;
 const ACCEPTED = ["image/jpeg", "image/png", "image/webp"];
 const BUCKET = "payment-screenshots";

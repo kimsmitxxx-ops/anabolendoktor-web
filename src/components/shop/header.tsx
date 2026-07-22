@@ -147,7 +147,7 @@ export function Header(_props: HeaderProps = {}) {
         <Link
           href="/"
           className="inline-flex items-center gap-2 font-display"
-          aria-label="Anabolen Pro home"
+          aria-label="anabolendoktor home"
         >
           <span className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-accent/15 text-accent ring-1 ring-accent/30">
             <Syringe size={15} strokeWidth={2.25} className="-rotate-45" />
@@ -225,27 +225,12 @@ export function Header(_props: HeaderProps = {}) {
             )}
           </div>
 
-          {/* Anabolen — full-width mega menu */}
-          <button
-            onMouseEnter={() => setOpenMega("anabolen")}
-            className={`h-11 inline-flex items-center gap-1 px-4 font-medium text-primary-foreground hover:text-accent border-b-2 transition-colors ${openMega === "anabolen" ? "border-accent text-accent" : "border-transparent"}`}
-          >
-            Anabolen <ChevronDown size={13} />
-          </button>
-
           <Link
-            href="/keuzehulp"
+            href="/consult"
             onMouseEnter={() => setOpenMega(null)}
             className="h-11 inline-flex items-center px-4 font-medium text-primary-foreground hover:text-accent border-b-2 border-transparent hover:border-accent transition-colors"
           >
-            Keuzehulp
-          </Link>
-          <Link
-            href="/lab"
-            onMouseEnter={() => setOpenMega(null)}
-            className="h-11 inline-flex items-center px-4 font-medium text-primary-foreground hover:text-accent border-b-2 border-transparent hover:border-accent transition-colors"
-          >
-            Labtesten
+            Consult
           </Link>
 
           {/* Kennisbank */}

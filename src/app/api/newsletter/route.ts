@@ -3,7 +3,7 @@ import { createServiceClient } from "@/lib/supabase";
 
 export const dynamic = "force-dynamic";
 
-const SHOP_ID = "18a96da9-9f9f-466f-ac2b-3ab0349b78a6";
+const SHOP_ID = "96b47e49-34fd-4d6c-99d3-d49d912be046";
 
 export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => ({}));

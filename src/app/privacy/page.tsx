@@ -3,9 +3,9 @@ import Link from "next/link";
 import { PageHero } from "@/components/shop/page-hero";
 
 export const metadata: Metadata = {
-  title: "Privacyverklaring — Anabolen Pro",
+  title: "Privacyverklaring — anabolendoktor",
   description:
-    "Hoe Anabolen Pro persoonsgegevens verwerkt, opslaat en beschermt onder de AVG. Lees welke data we vastleggen en hoe lang.",
+    "Hoe anabolendoktor persoonsgegevens verwerkt, opslaat en beschermt onder de AVG. Lees welke data we vastleggen en hoe lang.",
 };
 
 export const revalidate = 86400;
@@ -15,7 +15,7 @@ const sections = [
     id: "wie",
     title: "1. Wie zijn wij",
     body: [
-      "Anabolen Pro B.V., gevestigd aan de Westhavenkade 12, 3134 NA Vlaardingen, is verwerkingsverantwoordelijke voor de gegevens die via anabolenpro.com worden verzameld. Ons KvK- en BTW-nummer staan op de factuur die je na je bestelling ontvangt.",
+      "anabolendoktor B.V., gevestigd aan de Westhavenkade 12, 3134 NA Vlaardingen, is verwerkingsverantwoordelijke voor de gegevens die via anabolendoktor.com worden verzameld. Ons KvK- en BTW-nummer staan op de factuur die je na je bestelling ontvangt.",
     ],
   },
   {

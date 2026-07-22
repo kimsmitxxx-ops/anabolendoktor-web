@@ -3,41 +3,43 @@
 @tailwind utilities;
 
 /*
- * anabolenpro.com design tokens (Tailwind v3 alpha-value compatibel).
+ * anabolendoktor.com design tokens (Tailwind v3 alpha-value compatibel).
  * Kleuren als space-separated RGB triplets zodat opacity modifiers werken:
  * bg-primary/95 → rgb(var(--color-primary) / 0.95).
  */
 :root {
-  /* Surfaces */
-  --color-background: 244 242 234;
-  --color-surface: 230 239 231;
-  --color-paper: 241 239 231;
-  --color-paper-soft: 251 250 246;
-  --color-paper-ink: 17 36 30;
-  --color-paper-ink-muted: 75 91 83;
-  --color-paper-border: 228 226 216;
+  /* Anabolendoktor — formeler, medisch-clean: navy blauw + zacht wit */
 
-  /* Primary (deep green panel) */
-  --color-primary: 17 36 30;
-  --color-primary-soft: 26 51 41;
-  --color-primary-muted: 36 74 60;
-  --color-primary-foreground: 242 245 241;
+  /* Surfaces (koel wit, licht papier-tint) */
+  --color-background: 249 250 252;
+  --color-surface: 240 244 248;
+  --color-paper: 245 247 250;
+  --color-paper-soft: 253 253 254;
+  --color-paper-ink: 14 26 46;
+  --color-paper-ink-muted: 74 88 108;
+  --color-paper-border: 218 224 234;
 
-  /* Accent (vivid clinical green) */
-  --color-accent: 43 179 106;
-  --color-accent-soft: 61 220 132;
-  --color-accent-muted: 31 142 81;
-  --color-accent-foreground: 8 18 14;
+  /* Primary (navy blue — professioneel, medisch) */
+  --color-primary: 24 42 74;
+  --color-primary-soft: 34 56 96;
+  --color-primary-muted: 48 78 130;
+  --color-primary-foreground: 240 246 252;
+
+  /* Accent (zacht koraal-goud — subtiel warm ondanks koel palet) */
+  --color-accent: 178 129 74;
+  --color-accent-soft: 220 178 130;
+  --color-accent-muted: 148 106 60;
+  --color-accent-foreground: 26 20 12;
 
   /* Text */
-  --color-text: 17 36 30;
-  --color-text-muted: 75 91 83;
-  --color-text-subtle: 122 137 131;
-  --color-foreground: 17 36 30;
+  --color-text: 14 26 46;
+  --color-text-muted: 74 88 108;
+  --color-text-subtle: 124 138 156;
+  --color-foreground: 14 26 46;
 
-  /* Borders */
-  --color-border: 228 226 216;
-  --color-border-strong: 207 206 194;
+  /* Borders (koel-neutraal) */
+  --color-border: 218 224 234;
+  --color-border-strong: 194 202 218;
 
   /* Semantic */
   --color-success: 31 142 81;

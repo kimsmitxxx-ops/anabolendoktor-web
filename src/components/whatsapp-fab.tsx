@@ -5,7 +5,7 @@ import { MessageCircle, Send, UserRound, Loader2, AlertCircle } from "lucide-rea
 import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet";
 
 const SHOP_DASH_URL = process.env.NEXT_PUBLIC_SHOP_DASH_URL || "https://shop-dash-ruby.vercel.app";
-const SHOP_ID = "18a96da9-9f9f-466f-ac2b-3ab0349b78a6"; // anabolenpro
+const SHOP_ID = "96b47e49-34fd-4d6c-99d3-d49d912be046"; // anabolenpro
 const LS_CHAT_ID = "apo_chat_id";
 const LS_VISITOR = "apo_chat_visitor";
 const POLL_MS = 7000;
@@ -383,7 +383,7 @@ function MessageBubble({ message }: { message: ChatMessage }) {
           <p className={cn(
             "text-[10px] uppercase tracking-wider font-semibold mb-1 opacity-70",
           )}>
-            {isAdmin ? "Medewerker" : "AnabolenPro AI"}
+            {isAdmin ? "Medewerker" : "Anabolendoktor AI"}
           </p>
         )}
         {message.content}

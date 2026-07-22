@@ -45,7 +45,7 @@ export default async function KennisbankDetail({ params }: { params: { slug: str
         jobTitle: authorInfo.role || undefined,
         description: authorInfo.bio_short || undefined,
         image: authorInfo.avatar_url || undefined,
-        url: `https://anabolenpro.com/over-ons#${authorInfo.slug}`,
+        url: `https://anabolendoktor.com/over-ons#${authorInfo.slug}`,
         knowsAbout: authorInfo.expertise || undefined,
       }
     : authorName
@@ -63,11 +63,11 @@ export default async function KennisbankDetail({ params }: { params: { slug: str
     author: authorPersonLd,
     publisher: {
       "@type": "Organization",
-      name: "AnabolenPro",
-      url: "https://anabolenpro.com",
-      logo: { "@type": "ImageObject", url: "https://anabolenpro.com/assets/logo.png" },
+      name: "Anabolendoktor",
+      url: "https://anabolendoktor.com",
+      logo: { "@type": "ImageObject", url: "https://anabolendoktor.com/assets/logo.png" },
     },
-    mainEntityOfPage: { "@type": "WebPage", "@id": `https://anabolenpro.com/kennisbank/${p.slug}` },
+    mainEntityOfPage: { "@type": "WebPage", "@id": `https://anabolendoktor.com/kennisbank/${p.slug}` },
   };
   // ProfilePage als losse JSON-LD voor de auteur (versterkt E-E-A-T signaal)
   const profileJsonLd = authorInfo
@@ -82,7 +82,7 @@ export default async function KennisbankDetail({ params }: { params: { slug: str
           image: authorInfo.avatar_url || undefined,
           knowsAbout: authorInfo.expertise || undefined,
           award: authorInfo.credentials || undefined,
-          url: `https://anabolenpro.com/over-ons#${authorInfo.slug}`,
+          url: `https://anabolendoktor.com/over-ons#${authorInfo.slug}`,
         },
       }
     : null;

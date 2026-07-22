@@ -1,7 +1,7 @@
 /**
  * Shipping-methode logica.
  *
- * AnabolenPro werkt met TWEE verzend-locaties:
+ * Anabolendoktor werkt met TWEE verzend-locaties:
  *   - "ut"   = UT (United Tabs) producten — verzonden vanuit UT-magazijn
  *   - "rest" = Alle overige producten — verzonden vanuit hoofdmagazijn Vlaardingen
  *
