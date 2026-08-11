@@ -7,6 +7,7 @@ import { Header } from "@/components/shop/header";
 import { Footer } from "@/components/shop/footer";
 import { MobileTabBar } from "@/components/shop/mobile-tabbar";
 import { CookieConsent } from "@/components/cookie-consent";
+import { AnalyticsTracker } from "@/components/analytics-tracker";
 
 // CartDrawer is alleen zichtbaar als gebruiker op cart-icoon klikt -> defer hydratie
 const CartDrawer = dynamic(
@@ -65,6 +66,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
+        <AnalyticsTracker />
         <CartProvider>
           <div className="min-h-screen flex flex-col bg-background text-text overflow-x-hidden">
             <Header />
