@@ -39,7 +39,7 @@ export default function LoginPage() {
     <div className="mx-auto mt-20 max-w-md px-6">
       <h1 className="font-display text-3xl">Inloggen</h1>
       <p className="mt-2 text-sm text-text-muted">
-        Geen wachtwoord. Vul uw email in en we sturen een login-link.
+        Geen wachtwoord. Vult uw email in en we sturen een login-link.
       </p>
       <form onSubmit={submit} className="mt-6 space-y-3">
         <div className="relative">

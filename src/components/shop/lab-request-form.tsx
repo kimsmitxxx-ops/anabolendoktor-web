@@ -71,7 +71,7 @@ export function LabRequestForm() {
       </div>
       <Input name="product" label="Product" placeholder="bv. Testosteron Enanthate 250" required />
       <Input name="merk" label="Merk + batchcode (indien bekend)" placeholder="bv. Pharmacom · batch L23-0411" />
-      <Input name="twijfel" label="Waarom wil je laten testen?" placeholder="bv. 'gear werkt niet zoals verwacht'" />
+      <Input name="twijfel" label="Waarom wilt u laten testen?" placeholder="bv. 'gear werkt niet zoals verwacht'" />
       <button
         type="submit"
         disabled={state === "sending"}

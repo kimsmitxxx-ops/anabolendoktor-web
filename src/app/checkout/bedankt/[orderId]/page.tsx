@@ -15,7 +15,7 @@ export const revalidate = 0;
 export const metadata: Metadata = {
   title: "Bestelling geplaatst - betaalinstructies",
   description:
-    "Uw bestelling staat klaar. Op deze pagina vind je de betaalgegevens en kun u een screenshot van uw betaling versturen om verwerking te bespoedigen.",
+    "Uw bestelling staat klaar. Op deze pagina vindt u de betaalgegevens en kunt u een screenshot van uw betaling versturen om verwerking te bespoedigen.",
   robots: { index: false, follow: false },
 };
 

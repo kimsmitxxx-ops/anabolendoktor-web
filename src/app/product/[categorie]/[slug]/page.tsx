@@ -130,7 +130,7 @@ export default async function ProductDetailPage({ params }: { params: { categori
                 <div className="rounded-lg border-2 border-danger/40 bg-danger-soft/30 p-5 text-center">
                   <p className="text-danger font-display text-xl">Uitverkocht</p>
                   <p className="mt-1 text-sm text-text-muted">
-                    Dit product is op dit moment niet leverbaar. Zet uw e-mail hieronder achter - je hoort het direct zodra de nieuwe batch binnen is.
+                    Dit product is op dit moment niet leverbaar. Zet uw e-mail hieronder achter - u hoort het direct zodra de nieuwe batch binnen is.
                   </p>
                 </div>
                 <RestockNotifyForm productId={p.id} productName={p.name} />

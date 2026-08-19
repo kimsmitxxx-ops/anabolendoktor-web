@@ -22,7 +22,7 @@ const cards = [
   {
     icon: FlaskConical,
     title: "Lab-garantie per batch",
-    sub: "Wijkt het gehalte meer dan 5% af van het COA? Wij vervangen het item kosteloos in je volgende bestelling.",
+    sub: "Wijkt het gehalte meer dan 5% af van het COA? Wij vervangen het item kosteloos in uw volgende bestelling.",
   },
   {
     icon: AlertTriangle,
@@ -45,17 +45,17 @@ const faq = [
   {
     question: "Wat als een item niet meer leverbaar blijkt?",
     answer:
-      "Als tijdens de verwerking blijkt dat een item toch niet meer leverbaar is, bieden wij een alternatief van gelijke waarde aan. Wil u liever wachten? Dan versturen we het niet-leverbare item apart na zodra het weer binnen is - zonder extra verzendkosten.",
+      "Als tijdens de verwerking blijkt dat een item toch niet meer leverbaar is, bieden wij een alternatief van gelijke waarde aan. Wilt u liever wachten? Dan versturen we het niet-leverbare item apart na zodra het weer binnen is - zonder extra verzendkosten.",
   },
   {
     question: "Klopt het gehalte niet met het COA - wat nu?",
     answer:
-      "Als een onafhankelijk lab-rapport aantoont dat het werkelijke gehalte meer dan 5% afwijkt van het COA dat wij hebben gepubliceerd, vervangen wij het product kosteloos in je volgende bestelling. Stuur ons het lab-rapport samen met je batchnummer via het contactformulier - u kunt bestanden meesturen als bijlage.",
+      "Als een onafhankelijk lab-rapport aantoont dat het werkelijke gehalte meer dan 5% afwijkt van het COA dat wij hebben gepubliceerd, vervangen wij het product kosteloos in uw volgende bestelling. Stuur ons het lab-rapport samen met je batchnummer via het contactformulier - u kunt bestanden meesturen als bijlage.",
   },
   {
     question: "Kan ik mijn geld terugkrijgen?",
     answer:
-      "Nee, terugbetalingen zijn niet mogelijk. Wat we wél doen: bij niet-aankomst = opnieuw verzenden, bij batch-afwijking = kosteloze vervanging in je volgende bestelling. Neem daarom vóór u betaalt goed de tijd om uw bestelling te controleren.",
+      "Nee, terugbetalingen zijn niet mogelijk. Wat we wél doen: bij niet-aankomst = opnieuw verzenden, bij batch-afwijking = kosteloze vervanging in uw volgende bestelling. Neem daarom vóór u betaalt goed de tijd om uw bestelling te controleren.",
   },
 ];
 

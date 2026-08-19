@@ -7,7 +7,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "Begrippenlijst anabolen & AAS - HPLC, PCT, HPTA, aromatisatie | Anabolendoktor",
   description:
-    "Uitleg van de begrippen die je tegenkomt op anabolendoktor.com en in de kennisbank: AAS, aromatisatie, HPTA, PCT, bloedwerk, Janoshik, ester, half-life en meer. Voor beginners en ervaren gebruikers.",
+    "Uitleg van de begrippen die u tegenkomt op anabolendoktor.com en in de kennisbank: AAS, aromatisatie, HPTA, PCT, bloedwerk, Janoshik, ester, half-life en meer. Voor beginners en ervaren gebruikers.",
   alternates: { canonical: "/begrippenlijst" },
 };
 
@@ -170,7 +170,7 @@ const TERMS: Term[] = [
     id: "batchcode",
     term: "Batchcode",
     short: "Unieke code per productie-batch",
-    body: "Op iedere flacon of strip staat een code die verwijst naar de specifieke productie-batch en het bijbehorende lab-rapport. Zonder batchcode kun u een COA niet verifiëren. Kloppende batchcode + COA = u weet wat u hebt.",
+    body: "Op iedere flacon of strip staat een code die verwijst naar de specifieke productie-batch en het bijbehorende lab-rapport. Zonder batchcode kunt u een COA niet verifiëren. Kloppende batchcode + COA = u weet wat u hebt.",
     related: ["coa", "janoshik"],
     link: "/lab",
   },
@@ -213,7 +213,7 @@ const TERMS: Term[] = [
     id: "kuur",
     term: "Kuur / Cycle",
     short: "Periode waarin AAS gebruikt wordt",
-    body: "Blok van een aantal weken waarin je AAS gebruikt op vast schema. Beginners: 12-16 weken. Advanced: 16-20 weken. Langere cycles = zwaardere HPTA-shutdown en langer PCT-herstel. Tussen cycles minimaal een even lange 'off-time' (time on = time off) om uw systeem te laten recoveren.",
+    body: "Blok van een aantal weken waarin uw AAS gebruikt op vast schema. Beginners: 12-16 weken. Advanced: 16-20 weken. Langere cycles = zwaardere HPTA-shutdown en langer PCT-herstel. Tussen cycles minimaal een even lange 'off-time' (time on = time off) om uw systeem te laten recoveren.",
     related: ["pct", "hpta"],
   },
   {

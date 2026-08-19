@@ -38,8 +38,8 @@ export default function ConsultPage() {
             Een uur, één gesprek, één keer echt kritisch kijken naar wat u doet.
           </h1>
           <p className="mt-5 max-w-2xl text-primary-foreground/80 text-lg leading-relaxed">
-            60 minuten video-call. Vooraf uploadstuur uw bloedwerk. Tijdens de call gaan we door
-            je huidige protocol, doelen en de wetenschappelijke basis daaronder. Na afloop
+            60 minuten video-call. Vooraf uploadstuurt uw bloedwerk. Tijdens de call gaan we door
+            uw huidige protocol, doelen en de wetenschappelijke basis daaronder. Na afloop
             ontvang u een schriftelijke samenvatting en vervolgstappen.
           </p>
           <div className="mt-6 flex items-center gap-6 text-sm text-primary-foreground/70">

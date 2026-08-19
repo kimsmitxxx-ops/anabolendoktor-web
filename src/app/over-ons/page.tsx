@@ -14,39 +14,43 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Over Anabolendoktor - Team, lab-policy en transparantie",
+  title: "Over Anabolendoktor - consultatie zonder verkoopbelang",
   description:
-    "Anabolendoktor is een Nederlandse research-shop met Janoshik HPLC lab-test per batch. Lees over ons team van pro-atleten + medisch consultant, onze lab-policy en bedrijfsgegevens.",
+    "Anabolendoktor biedt consulten, bloedwerk-interpretatie en een kleine selectie legale supplementen. Wij verkopen geen anabolen en hebben daarom geen belang bij het bagatelliseren van risico's.",
   alternates: { canonical: "/over-ons" },
 };
 
 export const revalidate = 600;
 
+// Deze pijlers beschreven het batchtest-model van anabolenpro: Janoshik-analyses,
+// afkeurgrenzen, partijen retour naar de leverancier. Anabolendoktor verkoopt
+// geen middelen en heeft dus geen batches; die claims waren hier feitelijk
+// onjuist en tegelijk letterlijk gedeeld met een zustersite.
 const pillars = [
   {
     icon: FlaskConical,
-    h: "Janoshik HPLC per batch",
-    p: "Iedere binnenkomende batch wordt naar Janoshik Analytical (TS) gestuurd voor HPLC-UV + GC-MS-analyse. COA wordt gepubliceerd per batchcode op de productpagina.",
+    h: "Wij verkopen geen anabolen",
+    p: "Dat is geen kanttekening maar het uitgangspunt. Omdat wij geen middelen leveren, hebben wij geen belang bij het bagatelliseren van risico's en evenmin bij bangmakerij. Wat u hier leest is niet gekleurd door wat wij willen verkopen.",
   },
   {
     icon: Microscope,
-    h: "Afkeur boven 97% - openbaar",
-    p: "Batches onder de 97%-zuiverheidsgrens gaan retour naar de leverancier. Reden van afkeur blijft openbaar in ons archief op /lab - incl. geanonimiseerde batchgegevens.",
+    h: "Meten in plaats van aannemen",
+    p: "Vrijwel elk gesprek begint bij bloedwaarden. Een uitslag laat zien wat er werkelijk gebeurt in plaats van wat iemand vermoedt of op een forum heeft gelezen. Zonder meting is elk advies giswerk.",
   },
   {
     icon: ShieldCheck,
-    h: "Lab-garantie",
-    p: "Wijkt het gemeten gehalte meer dan 5% af van het op het label vermelde gehalte? Geld terug of een batch uit de volgende productie, zonder discussie.",
+    h: "Wij oordelen niet",
+    p: "Een deel van onze bezoekers gebruikt of overweegt dat. Afraden zonder uitleg werkt niet en wegkijken evenmin. Wij bespreken wat er speelt, waar u op moet letten en wanneer u naar een arts moet. Uw gegevens delen wij met niemand.",
   },
   {
     icon: ClipboardList,
-    h: "Eigen-test op aanvraag",
-    p: "Klanten kunnen een product van een ander merk naar ons opsturen - wij regelen de Janoshik-meting (kostprijs, gratis bij vermoeden onveilig product). Aanvraag via /lab.",
+    h: "Wij zijn geen arts",
+    p: "Wij stellen geen diagnose en schrijven niets voor. Er ontstaat geen behandelrelatie. Wat wij wel doen is uw uitslag begrijpelijk maken en aangeven wanneer uw huisarts aan zet is, zodat u met een concrete vraag komt in plaats van een vage.",
   },
   {
     icon: Users,
-    h: "Door en voor enhanced atleten",
-    p: "Het team bestaat uit een IFBB Pro, een IPF powerlifter, een coach en een medisch consultant. Schrijven en advies komt uit ervaring + lab-data, niet uit marketing-brochures.",
+    h: "Evidence-based, ook als dat tegenvalt",
+    p: "Wij verwijzen naar gepubliceerd onderzoek en zeggen het eerlijk wanneer dat onderzoek dun is of tegenstrijdig. Bij supplementen betekent dat vaak: het effect is kleiner dan de verpakking suggereert.",
   },
   {
     icon: MapPin,
@@ -62,37 +66,44 @@ export default async function OverOnsPage() {
     <>
       <PageHero
         eyebrow="Over Anabolendoktor"
-        title="Lab-data-gedreven, eerlijk over risico - niet zomaar nóg een shop"
-        intro="Anabolendoktor is opgericht omdat de NL-markt vol zit met underdosed labels, vage labjes en leveranciers die plots offline gaan. Wij testen iedere batch onafhankelijk via Janoshik, publiceren afkeuringen openbaar en laten enhanced atleten + een medisch consultant onze content schrijven. Geen marketing-brochures, wel echte cijfers."
+        title="Voorlichting en consultatie, zonder dat wij iets aan u willen verkopen"
+        intro="Anabolendoktor is opgezet vanuit een simpele constatering: wie anabolen gebruikt of dat overweegt, krijgt zijn informatie doorgaans van partijen die er belang bij hebben. Verkopers bagatelliseren, voorlichters moraliseren, en de gebruiker blijft achter met een forum. Wij verkopen geen middelen. Wij bieden consulten, laten bloed prikken en leggen uit wat de uitslag betekent. Wat daaruit volgt is soms dat u beter kunt stoppen, en soms dat er minder aan de hand is dan u dacht."
       />
 
       <section className="mx-auto max-w-7xl px-4 py-14 grid gap-10 lg:grid-cols-2 items-start">
         <div className="space-y-5 text-text-muted leading-relaxed">
           <p>
-            We zijn een klein NL team: schrijvers (atleten + medisch consultant), klantenservice
-            via chat en mail, en een logistiek planner. Allemaal mensen die zelf in de scene actief
-            zijn of dat lang geweest zijn.
+            Wij zijn een klein Nederlands team: een medisch consultant die de uitslagen leest,
+            begeleiders met jarenlange ervaring in de krachtsport, en iemand die de administratie
+            en de bezorging draaiende houdt. Kort genoeg om u steeds dezelfde persoon te laten
+            spreken.
           </p>
           <p>
-            Ons doel is helder: ieder product dat onze deur uit gaat, heeft een batchcode op het
-            flesje die je publiek kunt opzoeken op de productpagina - daar staat het PDF-rapport
-            van Janoshik Analytical: werkzame stof, gemeten zuiverheid, oplosmiddel-residu en
-            eventuele isomeren. Onder 97%? Dan komt-ie niet in de shop. Punt.
+            Ons uitgangspunt is dat een uitslagformulier zonder uitleg weinig waard is. Wat wij
+            toevoegen is context: wat betekent deze waarde in uw situatie, past die bij wat u
+            doet, en is dit iets om te volgen of om vandaag nog een arts voor te bellen. Die
+            uitleg krijgt u schriftelijk, zodat u hem kunt teruglezen en desgewenst met uw
+            huisarts kunt bespreken.
           </p>
           <p>
-            We schrijven óók over de slechte batches die we tegenkomen in de markt - eigen
-            metingen of door klanten aangeleverd. Dat zorgt voor wrijving met sommige
-            concurrenten, maar dat is wat de community vooruit helpt.
+            Wij schrijven ook over wat er misgaat: middelen die anders blijken te zijn dan het
+            etiket zegt, supplementen die met claims worden verkocht die het onderzoek niet
+            draagt, en adviezen die op fora circuleren zonder enige onderbouwing. Dat levert
+            weerstand op bij partijen die daar hun omzet vandaan halen. Dat nemen wij voor lief.
           </p>
         </div>
         <div className="rounded-md border border-border bg-surface p-6 lg:p-8">
-          <p className="text-xs uppercase tracking-[0.15em] text-accent font-semibold">In cijfers (2026)</p>
+          {/* Hier stonden de cijfers van anabolenpro: gemiddelde zuiverheid,
+              afgekeurde batches, partner-labs. Die slaan hier nergens op en
+              waren bovendien onwaar. Vervangen door wat feitelijk klopt; we
+              verzinnen geen prestatiecijfers voor een dienst die net begint. */}
+          <p className="text-xs uppercase tracking-[0.15em] text-accent font-semibold">Waar u op kunt rekenen</p>
           <dl className="mt-4 grid grid-cols-2 gap-y-6 gap-x-4">
             {[
-              ["99,1%", "Gemiddelde zuiverheid"],
-              ["186", "Producten online"],
-              ["7", "Afgekeurde batches in archief"],
-              ["4", "Onafhankelijke partner-labs"],
+              ["0", "Anabolen in ons assortiment"],
+              ["1", "Werkdag reactietijd"],
+              ["20+", "Bloedwaarden in het uitgebreide pakket"],
+              ["45", "Minuten per intakeconsult"],
             ].map(([n, l]) => (
               <div key={l}>
                 <div className="font-display text-3xl text-text tabular">{n}</div>

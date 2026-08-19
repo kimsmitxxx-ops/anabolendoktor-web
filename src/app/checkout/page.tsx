@@ -93,7 +93,7 @@ export default function CheckoutPage() {
                   <UserPlus size={14} className="text-accent" /> Maak meteen een account aan
                 </p>
                 <p className="mt-0.5 text-xs text-text-muted">
-                  Volg je bestellingen, herhaal eerdere kuren in 1 klik en zie je COA-archief terug.
+                  Volg uw bestellingen, herhaal eerdere kuren in 1 klik en zie je COA-archief terug.
                 </p>
               </div>
             </label>
@@ -183,7 +183,7 @@ export default function CheckoutPage() {
               Veilig &amp; snel betalen
             </p>
             <p className="text-xs text-text-muted mb-3">
-              Na bevestigen krijg u per mail de betaalinstructies. Bestelling gaat direct na binnenkomst betaling de deur uit.
+              Na bevestigen krijgt u per mail de betaalinstructies. Bestelling gaat direct na binnenkomst betaling de deur uit.
             </p>
             <PaymentRow variant="full" />
           </div>
@@ -241,7 +241,7 @@ export default function CheckoutPage() {
             </button>
             {err && <p className="mt-2 text-center text-xs text-danger">{err}</p>}
             <p className="mt-3 text-center text-[11px] text-text-muted">
-              Direct op de volgende pagina krijg je de bank/crypto-gegevens. Pakket verzonden zodra betaling binnen is.
+              Direct op de volgende pagina krijgt u de bank- en cryptogegevens. Pakket verzonden zodra betaling binnen is.
             </p>
           </div>
         </div>

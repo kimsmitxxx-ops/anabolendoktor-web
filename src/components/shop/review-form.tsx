@@ -17,7 +17,7 @@ export function ReviewForm({ productId }: { productId: string }) {
     e.preventDefault();
     setError(null);
     if (!name.trim() || !body.trim()) {
-      setError("Vul uw naam en review in.");
+      setError("Vult uw naam en review in.");
       return;
     }
     setSubmitting(true);

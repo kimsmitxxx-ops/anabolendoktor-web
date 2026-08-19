@@ -63,7 +63,7 @@ const sections = [
     body: [
       "U hebt het recht op inzage, correctie, verwijdering, beperking, dataportabiliteit en bezwaar tegen verwerking.",
       "Een verzoek dien u in via het contactformulier op de website. Wij reageren binnen 14 dagen.",
-      "Ben je het oneens met onze afhandeling? Dan kun u een klacht indienen bij de Autoriteit Persoonsgegevens.",
+      "Ben je het oneens met onze afhandeling? Dan kunt u een klacht indienen bij de Autoriteit Persoonsgegevens.",
     ],
   },
   {

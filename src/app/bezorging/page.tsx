@@ -46,12 +46,12 @@ const faq = [
   {
     question: "Wat als ik niet thuis ben?",
     answer:
-      "PostNL of DPD biedt het pakket nog één keer aan. Daarna gaat het naar het dichtstbijzijnde afhaalpunt van de betreffende vervoerder. U hebt daar 7 dagen om het op te halen met je legitimatie.",
+      "PostNL of DPD biedt het pakket nog één keer aan. Daarna gaat het naar het dichtstbijzijnde afhaalpunt van de betreffende vervoerder. U hebt daar 7 dagen om het op te halen met uw legitimatie.",
   },
   {
     question: "Bezorgen jullie ook naar PostNL-afhaalpunten?",
     answer:
-      "Nee, wij kunnen helaas niet direct naar PostNL-afhaalpunten versturen omdat we in onze branche geen contract met PostNL kunnen afsluiten. We verzenden alleen naar vaste huisadressen. Mis je het pakket op je huisadres, dan gaat het wel naar je dichtstbijzijnde afhaalpunt.",
+      "Nee, wij kunnen helaas niet direct naar PostNL-afhaalpunten versturen omdat we in onze branche geen contract met PostNL kunnen afsluiten. We verzenden alleen naar vaste huisadressen. Mist u het pakket op uw huisadres, dan gaat het wel naar uw dichtstbijzijnde afhaalpunt.",
   },
   {
     question: "Wordt er een handtekening gevraagd?",
@@ -66,7 +66,7 @@ const faq = [
   {
     question: "Kan ik meerdere merken tegelijk bestellen?",
     answer:
-      "Ja. Wij werken met twee verzendlocaties: één voor Utinon-producten (Locatie 01) en één voor de overige merken (Locatie 02). Bestel je uit beide, dan krijg je twee pakketten en betaal je 2× verzendkosten.",
+      "Ja. Wij werken met twee verzendlocaties: één voor Utinon-producten (Locatie 01) en één voor de overige merken (Locatie 02). Bestelt u uit beide, dan krijgt u twee pakketten en betaal je 2× verzendkosten.",
   },
 ];
 
@@ -75,7 +75,7 @@ const timeline = [
   { t: "Voor 11:00", h: "Betaling binnen", d: "Bankoverboeking (IBAN) of crypto. Zodra we het zien, is uw order in behandeling." },
   { t: "Zelfde werkdag 15:00", h: "Order ingepakt", d: "Picker controleert batchcode en COA-nummer per item, neutrale verpakking." },
   { t: "Zelfde werkdag 17:00", h: "Bij PostNL / DPD", d: "Track & trace per mail, label is dan al actief." },
-  { t: "Volgende werkdag", h: "Bezorgd", d: "NL: tussen 09:00 en 21:30 aan je vaste huisadres. BE: 1-3 werkdagen. Rest EU: 3-5 werkdagen." },
+  { t: "Volgende werkdag", h: "Bezorgd", d: "NL: tussen 09:00 en 21:30 aan uw vaste huisadres. BE: 1-3 werkdagen. Rest EU: 3-5 werkdagen." },
 ];
 
 export default function BezorgingPage() {
