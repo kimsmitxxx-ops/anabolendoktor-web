@@ -81,7 +81,6 @@ export function Footer() {
               <li><Link href="/kennisbank/herstel-na-je-eerste-testosteron-kuur-3-6-maanden-realistisch" className="text-primary-foreground/70 hover:text-accent">Eerste kuur opbouwen</Link></li>
               <li><Link href="/kennisbank/welk-bloedwerk-doe-je-voor-tijdens-en-na-een-aas-kuur" className="text-primary-foreground/70 hover:text-accent">Bloedwerk uitgelegd</Link></li>
               <li><Link href="/kennisbank/top-5-fouten-die-beginners-maken-in-hun-eerste-kuur" className="text-primary-foreground/70 hover:text-accent">5 beginnersfouten</Link></li>
-              <li><Link href="/begrippenlijst" className="text-primary-foreground/70 hover:text-accent">Begrippenlijst</Link></li>
               <li><Link href="/kennisbank" className="text-accent hover:text-accent-soft">Alle artikelen →</Link></li>
             </ul>
           </div>

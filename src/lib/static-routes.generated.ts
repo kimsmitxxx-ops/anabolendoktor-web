@@ -3,7 +3,7 @@
 // nieuwe pagina vanzelf in de sitemap belandt.
 export const STATIC_ROUTES: string[] = [
   "/",
-  "/begrippenlijst",
+  "/advies",
   "/bezorging",
   "/consult",
   "/contact",

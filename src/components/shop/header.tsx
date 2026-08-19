@@ -233,6 +233,17 @@ export function Header(_props: HeaderProps = {}) {
             Consult
           </Link>
 
+          {/* Advies: landingspagina's op de onderwerpen waar bezoekers op
+              zoeken (stoppen, gevaren, bloedwaarden). Staat bewust vooraan,
+              want dit is waar deze site voor bedoeld is. */}
+          <Link
+            href="/advies"
+            onMouseEnter={() => setOpenMega(null)}
+            className="h-11 inline-flex items-center px-4 font-medium text-primary-foreground hover:text-accent border-b-2 border-transparent hover:border-accent transition-colors"
+          >
+            Advies
+          </Link>
+
           {/* Kennisbank */}
           <div className="relative" onMouseEnter={() => setOpenMega("kennisbank")}>
             <button
