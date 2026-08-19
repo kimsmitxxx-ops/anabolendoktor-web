@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 export const revalidate = 600;
 
 export const metadata: Metadata = {
-  title: "Kennisbank — legale alternatieven, bloedwerk, PCT-realiteit · Anabolendoktor",
+  title: "Kennisbank - legale alternatieven, bloedwerk, PCT-realiteit · Anabolendoktor",
   description:
     "Onderbouwde artikelen over bloedwerk-monitoring bij AAS-gebruik, legale supplementen die aantoonbaar werken, PCT-mogelijkheden en gezondheidsrisico's. Met bronvermelding.",
   alternates: { canonical: "/kennisbank" },

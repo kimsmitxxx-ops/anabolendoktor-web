@@ -3,7 +3,7 @@ import Link from "next/link";
 import { PageHero } from "@/components/shop/page-hero";
 
 export const metadata: Metadata = {
-  title: "Privacyverklaring — anabolendoktor",
+  title: "Privacyverklaring - anabolendoktor",
   description:
     "Hoe anabolendoktor persoonsgegevens verwerkt, opslaat en beschermt onder de AVG. Lees welke data we vastleggen en hoe lang.",
 };

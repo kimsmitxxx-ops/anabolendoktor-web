@@ -13,7 +13,7 @@ export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
 export const metadata: Metadata = {
-  title: "Bestelling geplaatst — betaalinstructies",
+  title: "Bestelling geplaatst - betaalinstructies",
   description:
     "Je bestelling staat klaar. Op deze pagina vind je de betaalgegevens en kun je een screenshot van je betaling versturen om verwerking te bespoedigen.",
   robots: { index: false, follow: false },

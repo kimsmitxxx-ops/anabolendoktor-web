@@ -3,7 +3,7 @@ import Link from "next/link";
 import { PageHero } from "@/components/shop/page-hero";
 
 export const metadata: Metadata = {
-  title: "Cookies — wat we wel en niet bewaren · Anabolendoktor",
+  title: "Cookies - wat we wel en niet bewaren · Anabolendoktor",
   description:
     "Anabolendoktor gebruikt alleen functionele en optionele analytische cookies. Geen tracking voor advertenties. Lees welke cookies wij plaatsen en hoe je ze beheert.",
   alternates: { canonical: "/cookies" },

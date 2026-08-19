@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: { categorie: string
   if (!cat) return { title: "Niet gevonden" };
   return {
     title: cat.meta_title || `${cat.name} kopen`,
-    description: cat.meta_description || cat.description || `${cat.name} bij anabolenpro — lab-getest, snel uit Nederland.`,
+    description: cat.meta_description || cat.description || `${cat.name} bij anabolenpro - lab-getest, snel uit Nederland.`,
     alternates: { canonical: `/winkel/${cat.slug}` },
     openGraph: { title: cat.name, description: cat.description || undefined, type: "website" },
   };

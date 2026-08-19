@@ -9,7 +9,7 @@ import { BookOpen, Truck, ShieldCheck, FlaskConical, Sparkles } from "lucide-rea
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Winkel — alle anabolen, PCT en kuurpakketten",
+  title: "Winkel - alle anabolen, PCT en kuurpakketten",
   description: "Volledig overzicht van anabolenpro: Anavar, Dianabol, Testosteron-esters, Trenbolone, Masteron, Boldenone, PCT en kuurpakketten. Lab-getest per batch.",
   alternates: { canonical: "/winkel" },
 };

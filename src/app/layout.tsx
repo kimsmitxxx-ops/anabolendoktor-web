@@ -37,7 +37,7 @@ const WhatsAppFab = dynamic(
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://anabolendoktor.com"),
-  title: { default: "Anabolendoktor — consult, bloedwerk-interpretatie, legale alternatieven", template: "%s · Anabolendoktor" },
+  title: { default: "Anabolendoktor - consult, bloedwerk-interpretatie, legale alternatieven", template: "%s · Anabolendoktor" },
   description: "Formele consultatie voor mensen die anabolen gebruiken of overwegen, én voor natural trainers die evidence-based willen werken. Bloedwerk-interpretatie, legale supplementen, harm-reduction. Wij verkopen géén anabolen.",
   robots: { index: false, follow: true },
   icons: {

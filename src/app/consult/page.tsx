@@ -4,7 +4,7 @@ import { Stethoscope, ClipboardCheck, Clock, ArrowRight } from "lucide-react";
 import { ContactForm } from "@/components/shop/contact-form";
 
 export const metadata: Metadata = {
-  title: "Consult aanvragen — bloedwerk-interpretatie, harm-reduction, trainingsplan",
+  title: "Consult aanvragen - bloedwerk-interpretatie, harm-reduction, trainingsplan",
   description:
     "60-minuten consult via video-call: bespreek bloedwerk-uitslagen, herstelprotocol, doelstellingen. Voor natural trainers, AAS-gebruikers en mensen die overwegen. €120 per sessie.",
   alternates: { canonical: "/consult" },
