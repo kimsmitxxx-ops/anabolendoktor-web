@@ -19,7 +19,7 @@ const PRIVACY = "We sturen je 1-2 mails per maand · uitschrijven kan altijd";
 export function NewsletterForm({
   variant = "default",
   heading = "Onderzoek in je inbox",
-  subhead = "Studies, batch-updates en nieuwe COA's — zonder verkoopgedoe.",
+  subhead = "Studies, batch-updates en nieuwe COA's - zonder verkoopgedoe.",
   className,
   onSubmit,
 }: NewsletterFormProps) {
@@ -52,13 +52,13 @@ export function NewsletterForm({
       }
       setDone(true);
     } catch {
-      setErr("Verbindingsfout — probeer opnieuw");
+      setErr("Verbindingsfout - probeer opnieuw");
     } finally {
       setBusy(false);
     }
   };
 
-  // Honeypot field (invisible) — bots vullen 'website' in, mensen niet
+  // Honeypot field (invisible) - bots vullen 'website' in, mensen niet
   const Honeypot = (
     <input
       type="text"

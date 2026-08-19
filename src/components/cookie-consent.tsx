@@ -43,7 +43,7 @@ export function CookieConsent() {
             </h2>
             <p id="cookie-consent-desc" className="mt-1.5 text-sm text-primary-foreground/80 leading-relaxed">
               Wij gebruiken functionele cookies (winkelmand, sessie) zodat de site werkt. Daarnaast
-              optionele analytische cookies om de site te verbeteren — die staan standaard uit.
+              optionele analytische cookies om de site te verbeteren - die staan standaard uit.
               Geen tracking voor advertenties.{" "}
               <Link href="/cookies" className="underline hover:text-accent-soft">
                 Meer info

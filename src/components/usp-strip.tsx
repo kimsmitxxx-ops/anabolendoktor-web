@@ -44,10 +44,10 @@ export function UspStrip({ items, variant = "compact", tone = "default", classNa
 
   return (
     <>
-      {/* Mobile — auto rotating single line */}
+      {/* Mobile - auto rotating single line */}
       <MobileRotator items={items} itemText={itemText} iconColor={iconColor} className={className} />
 
-      {/* Desktop — evenly distributed */}
+      {/* Desktop - evenly distributed */}
       <ul
         className={cn(
           "hidden md:grid items-center gap-4",

@@ -25,9 +25,9 @@ export function LabRequestForm() {
     const message = [
       `Lab-test aanvraag via /lab`,
       ``,
-      `Product: ${product || "—"}`,
-      `Merk/batchcode: ${merk || "—"}`,
-      `Twijfel over: ${twijfel || "—"}`,
+      `Product: ${product || "-"}`,
+      `Merk/batchcode: ${merk || "-"}`,
+      `Twijfel over: ${twijfel || "-"}`,
     ].join("\n");
 
     try {
@@ -38,7 +38,7 @@ export function LabRequestForm() {
           shopId: SHOP_ID,
           visitorName: name,
           visitorEmail: email,
-          subject: `Lab-test aanvraag — ${product || "onbekend product"}`,
+          subject: `Lab-test aanvraag - ${product || "onbekend product"}`,
           message,
         }),
       });
@@ -54,7 +54,7 @@ export function LabRequestForm() {
     return (
       <div className="rounded-xl border border-success/40 bg-success-soft/30 p-6 text-primary">
         <CheckCircle2 size={22} className="text-success" />
-        <h3 className="mt-2 font-display text-xl">Aanvraag binnen — top!</h3>
+        <h3 className="mt-2 font-display text-xl">Aanvraag binnen - top!</h3>
         <p className="mt-2 text-sm text-primary/75">
           We nemen binnen 1 werkdag contact op met instructies hoe je je flacon naar Vlaardingen
           stuurt en wat er daarna gebeurt. Check je inbox (en spam).

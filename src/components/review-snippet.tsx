@@ -39,7 +39,7 @@ export function ReviewSnippet({
       <div className={cn("flex items-center gap-3 text-sm", className)}>
         <Stars value={rating} size="sm" />
         <span className="font-medium text-text">{name}</span>
-        <span className="text-text-muted truncate">— {body}</span>
+        <span className="text-text-muted truncate">- {body}</span>
       </div>
     );
   }

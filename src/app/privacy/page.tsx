@@ -22,10 +22,10 @@ const sections = [
     id: "welke",
     title: "2. Welke gegevens we verwerken",
     body: [
-      "NAW-gegevens en e-mailadres — voor het uitvoeren van je bestelling en correspondentie.",
-      "Telefoonnummer — alleen als je dit zelf opgeeft, voor track & trace of WhatsApp-support.",
-      "Bestelhistorie — om garantie- en retourclaims correct af te handelen.",
-      "Technische data (IP-adres, browsertype) — uitsluitend voor beveiliging en fraudepreventie.",
+      "NAW-gegevens en e-mailadres - voor het uitvoeren van je bestelling en correspondentie.",
+      "Telefoonnummer - alleen als je dit zelf opgeeft, voor track & trace of WhatsApp-support.",
+      "Bestelhistorie - om garantie- en retourclaims correct af te handelen.",
+      "Technische data (IP-adres, browsertype) - uitsluitend voor beveiliging en fraudepreventie.",
     ],
   },
   {
@@ -42,9 +42,9 @@ const sections = [
     id: "delen",
     title: "4. Met wie we gegevens delen",
     body: [
-      "PostNL en DHL — voor de fysieke bezorging van je pakket.",
-      "Mollie B.V. — betalingsverwerker, ontvangt alleen het transactiebedrag en je e-mailadres.",
-      "Onze accountant — voor de wettelijke administratie, alleen factuurgegevens.",
+      "PostNL en DHL - voor de fysieke bezorging van je pakket.",
+      "Mollie B.V. - betalingsverwerker, ontvangt alleen het transactiebedrag en je e-mailadres.",
+      "Onze accountant - voor de wettelijke administratie, alleen factuurgegevens.",
       "Wij verkopen of verhuren jouw gegevens nooit aan derden.",
     ],
   },
@@ -90,7 +90,7 @@ export default function PrivacyPage() {
       <PageHero
         eyebrow="Privacy"
         title="Wat we met je gegevens doen, in mensentaal"
-        intro="Versie 2.1 — laatst bijgewerkt op 12 juni 2026. Wij verwerken zo min mogelijk gegevens en bewaren ze nooit langer dan nodig."
+        intro="Versie 2.1 - laatst bijgewerkt op 12 juni 2026. Wij verwerken zo min mogelijk gegevens en bewaren ze nooit langer dan nodig."
       />
 
       <section className="mx-auto max-w-7xl px-4 py-14 grid gap-10 lg:grid-cols-[260px_1fr]">

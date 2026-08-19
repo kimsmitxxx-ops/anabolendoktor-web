@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 
-// Service-role insert — bypasst RLS zodat status='pending' geschreven kan worden.
+// Service-role insert - bypasst RLS zodat status='pending' geschreven kan worden.
 // Geen auth check: publieke endpoint, anti-bot via honeypot + basic validation.
 // Admin keurt elke nieuwe review goed via shop-dash voordat hij zichtbaar wordt.
 
@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
   let body: any;
   try { body = await req.json(); } catch { return NextResponse.json({ error: "invalid json" }, { status: 400 }); }
 
-  // Honeypot — bots vullen 'website' in; mensen niet (veld is hidden)
+  // Honeypot - bots vullen 'website' in; mensen niet (veld is hidden)
   if (body?.website && String(body.website).trim().length > 0) {
     return NextResponse.json({ ok: true }); // stilletjes negeren
   }

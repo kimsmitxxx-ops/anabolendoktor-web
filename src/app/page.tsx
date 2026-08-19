@@ -22,12 +22,12 @@ const HOMEPAGE_FAQ = [
   {
     question: "Waarom bestaat anabolendoktor.com?",
     answer:
-      "Er is veel informatie online over anabole steroïden — vaak eenzijdig en gedreven door verkoop. Deze site is opgezet als tegenwicht: een formele bron die de wetenschappelijke onderbouwing van legale alternatieven, bloedwerk-monitoring en gezondheidsrisico's bij AAS-gebruik bespreekt. Wij verkopen géén anabolen. Wél helpen wij mensen die er al mee bezig zijn hun risico's te begrijpen en te beperken.",
+      "Er is veel informatie online over anabole steroïden - vaak eenzijdig en gedreven door verkoop. Deze site is opgezet als tegenwicht: een formele bron die de wetenschappelijke onderbouwing van legale alternatieven, bloedwerk-monitoring en gezondheidsrisico's bij AAS-gebruik bespreekt. Wij verkopen géén anabolen. Wél helpen wij mensen die er al mee bezig zijn hun risico's te begrijpen en te beperken.",
   },
   {
     question: "Zijn er echte alternatieven voor anabolen?",
     answer:
-      "Volledig vervangen: nee — hormonale effecten van exogene AAS zijn met legale supplementen niet te repliceren. Maar het verschil tussen iemand die geoptimaliseerd traint, eet en supplementeert versus iemand die dat niet doet is aanzienlijk. Creatine (5 g/dag) geeft +10-15% kracht binnen 4 weken. Vitamine D-optimalisatie normaliseert testosteron bij tekorten. Slaap, stress en insulinegevoeligheid hebben groter effect dan de meeste beseffen.",
+      "Volledig vervangen: nee - hormonale effecten van exogene AAS zijn met legale supplementen niet te repliceren. Maar het verschil tussen iemand die geoptimaliseerd traint, eet en supplementeert versus iemand die dat niet doet is aanzienlijk. Creatine (5 g/dag) geeft +10-15% kracht binnen 4 weken. Vitamine D-optimalisatie normaliseert testosteron bij tekorten. Slaap, stress en insulinegevoeligheid hebben groter effect dan de meeste beseffen.",
   },
   {
     question: "Bieden jullie consulten aan?",
@@ -42,7 +42,7 @@ const HOMEPAGE_FAQ = [
   {
     question: "Welke supplementen bevelen jullie aan?",
     answer:
-      "Een kleine selectie op basis van meta-analyses en klinische studies: creatine monohydraat (5 g/dag), vitamine D3+K2 (afgestemd op bloedwerk-25(OH)D), magnesium bisglycinaat (300 mg voor slaap), whey isolate (bij eiwit-tekort), omega-3 EPA/DHA (2-3 g/dag), ashwagandha KSM-66 (600 mg/dag). Wij verkopen deze niet uit voorraad — links naar leveranciers met COA.",
+      "Een kleine selectie op basis van meta-analyses en klinische studies: creatine monohydraat (5 g/dag), vitamine D3+K2 (afgestemd op bloedwerk-25(OH)D), magnesium bisglycinaat (300 mg voor slaap), whey isolate (bij eiwit-tekort), omega-3 EPA/DHA (2-3 g/dag), ashwagandha KSM-66 (600 mg/dag). Wij verkopen deze niet uit voorraad - links naar leveranciers met COA.",
   },
   {
     question: "Hoe zit het met privacy bij consulten?",
@@ -52,7 +52,7 @@ const HOMEPAGE_FAQ = [
   {
     question: "Wanneer moet ik écht naar een arts?",
     answer:
-      "Bij symptomen van hoge bloeddruk (hoofdpijn, wazig zien), abnormale hartkloppingen, tekenen van leverklachten (geel oog, donkere urine), extreme stemmingswisselingen of langdurige suppressie (>12 maanden zonder herstel). AAS-gebruik is een medisch onderwerp — behandel het zo.",
+      "Bij symptomen van hoge bloeddruk (hoofdpijn, wazig zien), abnormale hartkloppingen, tekenen van leverklachten (geel oog, donkere urine), extreme stemmingswisselingen of langdurige suppressie (>12 maanden zonder herstel). AAS-gebruik is een medisch onderwerp - behandel het zo.",
   },
 ];
 
@@ -73,7 +73,7 @@ export default async function HomePage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
-      {/* Hero — bewust formeler, geen "koop nu" energie */}
+      {/* Hero - bewust formeler, geen "koop nu" energie */}
       <section className="relative overflow-hidden bg-primary text-primary-foreground">
         <div className="mx-auto max-w-5xl px-4 py-20 md:py-28 text-center">
           <span className="inline-flex items-center gap-2 rounded-sm border border-primary-foreground/25 bg-primary-foreground/5 px-3 py-1 text-xs uppercase tracking-[0.18em] text-accent-soft">
@@ -86,7 +86,7 @@ export default async function HomePage() {
           </h1>
           <p className="mt-6 max-w-2xl mx-auto text-lg text-primary-foreground/80 leading-relaxed">
             Anabolendoktor is een consultatie- en informatie-platform voor mensen die willen
-            trainen en presteren zonder anabole steroïden — én voor mensen die er al mee bezig
+            trainen en presteren zonder anabole steroïden - én voor mensen die er al mee bezig
             zijn en hun risico's willen begrijpen. Wij verkopen geen anabolen. Wel bloedwerk-inzicht,
             begeleiding en een kleine selectie legale supplementen.
           </p>
@@ -120,7 +120,7 @@ export default async function HomePage() {
             <h3 className="mt-4 font-display text-xl text-text">Trainen &amp; herstel eerst</h3>
             <p className="mt-2 text-sm text-text-muted leading-relaxed">
               Progressive overload, 4-6 sessies per week op je individuele MRV, 7-9u slaap,
-              stressmanagement en 1.6-2.2 g eiwit per kilo. Deze pijlers doen 80% van het werk —
+              stressmanagement en 1.6-2.2 g eiwit per kilo. Deze pijlers doen 80% van het werk -
               elke supplement of interventie erbij is aanvulling.
             </p>
           </div>
@@ -129,7 +129,7 @@ export default async function HomePage() {
             <h3 className="mt-4 font-display text-xl text-text">Evidence-based supplementen</h3>
             <p className="mt-2 text-sm text-text-muted leading-relaxed">
               Een korte lijst legale supplementen met sterke meta-analyses: creatine, vitamine D3+K2,
-              magnesium, omega-3, ashwagandha, whey. Geen "boosters" of "T-optimizers" — die zijn
+              magnesium, omega-3, ashwagandha, whey. Geen "boosters" of "T-optimizers" - die zijn
               placebo of erger.
             </p>
           </div>
@@ -174,7 +174,7 @@ export default async function HomePage() {
             <ShieldCheck size={22} className="text-accent" />
             <h3 className="mt-4 font-display text-xl text-text">Geen verkoop-druk</h3>
             <p className="mt-2 text-sm text-text-muted">
-              Wij verkopen geen anabolen. Wat wij aanbieden zijn consulten en verwijzingen — dat
+              Wij verkopen geen anabolen. Wat wij aanbieden zijn consulten en verwijzingen - dat
               scheidt onze advies-belangen van commerciële belangen.
             </p>
           </div>

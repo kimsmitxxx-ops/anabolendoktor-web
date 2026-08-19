@@ -6,7 +6,7 @@ const ITEMS = [
   { icon: ShieldCheck, title: "100% leveringsgarantie" },
   { icon: Truck, title: "Snel verzonden" },
   { icon: FlaskConical, title: "Onafhankelijk lab-getest" },
-  { icon: Headphones, title: "Live chat — advies binnen 1 min" },
+  { icon: Headphones, title: "Live chat - advies binnen 1 min" },
 ];
 
 export function HomeUspBar() {

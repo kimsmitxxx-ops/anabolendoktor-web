@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: { categorie: string
   const p = await getProduct(params.slug) as any;
   if (!p) return { title: "Niet gevonden" };
   const noindex = p.noindex === true;
-  // canonical_url heeft voorrang — UP producten linken naar UT-equivalent zodat
+  // canonical_url heeft voorrang - UP producten linken naar UT-equivalent zodat
   // Google de duplicate-content niet straft. Anders default self-canonical.
   const canonical = p.canonical_url || `/product/${params.categorie}/${params.slug}`;
   return {
@@ -130,7 +130,7 @@ export default async function ProductDetailPage({ params }: { params: { categori
                 <div className="rounded-lg border-2 border-danger/40 bg-danger-soft/30 p-5 text-center">
                   <p className="text-danger font-display text-xl">Uitverkocht</p>
                   <p className="mt-1 text-sm text-text-muted">
-                    Dit product is op dit moment niet leverbaar. Zet je e-mail hieronder achter — je hoort het direct zodra de nieuwe batch binnen is.
+                    Dit product is op dit moment niet leverbaar. Zet je e-mail hieronder achter - je hoort het direct zodra de nieuwe batch binnen is.
                   </p>
                 </div>
                 <RestockNotifyForm productId={p.id} productName={p.name} />
@@ -140,7 +140,7 @@ export default async function ProductDetailPage({ params }: { params: { categori
             )}
           </div>
 
-          {/* USPs prominent — onder add-to-cart */}
+          {/* USPs prominent - onder add-to-cart */}
           <div className="mt-6 grid grid-cols-1 gap-2.5">
             <div className="flex items-start gap-3 rounded-lg border border-border bg-paper-soft p-3">
               <FlaskConical className="h-5 w-5 text-accent shrink-0 mt-0.5" />
@@ -153,14 +153,14 @@ export default async function ProductDetailPage({ params }: { params: { categori
               <ShieldCheck className="h-5 w-5 text-accent shrink-0 mt-0.5" />
               <div className="text-sm">
                 <p className="font-semibold text-text">Discreet verzonden</p>
-                <p className="text-xs text-text-muted">Neutrale verpakking — geen logo of productnaam op het label</p>
+                <p className="text-xs text-text-muted">Neutrale verpakking - geen logo of productnaam op het label</p>
               </div>
             </div>
             <div className="flex items-start gap-3 rounded-lg border border-border bg-paper-soft p-3">
               <Truck className="h-5 w-5 text-accent shrink-0 mt-0.5" />
               <div className="text-sm">
                 <p className="font-semibold text-text">Snel verzonden</p>
-                <p className="text-xs text-text-muted">100% leveringsgarantie — pakket niet aangekomen? Wij verzenden opnieuw, zonder gedoe.</p>
+                <p className="text-xs text-text-muted">100% leveringsgarantie - pakket niet aangekomen? Wij verzenden opnieuw, zonder gedoe.</p>
               </div>
             </div>
           </div>
@@ -171,7 +171,7 @@ export default async function ProductDetailPage({ params }: { params: { categori
             <strong>Verzonden vanuit:</strong> {shippingLabel(shippingMethodForTags(p.tags))}
           </p>
 
-          {/* Betaalopties — zelfde set als checkout zodat klant weet wat hij straks gaat zien */}
+          {/* Betaalopties - zelfde set als checkout zodat klant weet wat hij straks gaat zien */}
           <div className="mt-6 rounded-lg border border-border bg-paper-soft p-3">
             <p className="text-[10px] uppercase tracking-wider text-accent-muted font-semibold mb-2 inline-flex items-center gap-1.5">
               <ShieldCheck size={11} /> Veilig betalen met

@@ -47,7 +47,7 @@ export default async function BedanktPage({ params }: { params: { orderId: strin
       {payment?.iban && (
         <section className="mt-8 rounded-xl border border-primary-muted bg-primary text-primary-foreground p-6">
           <p className="text-xs uppercase tracking-[0.18em] text-accent-soft font-semibold inline-flex items-center gap-1.5">
-            <Building2 size={12} /> Bankoverschrijving — eenvoudigste route
+            <Building2 size={12} /> Bankoverschrijving - eenvoudigste route
           </p>
           <dl className="mt-4 grid gap-3 sm:grid-cols-2 text-sm">
             <div>
@@ -117,14 +117,14 @@ export default async function BedanktPage({ params }: { params: { orderId: strin
         </section>
       )}
 
-      {/* Screenshot upload — speed it up */}
+      {/* Screenshot upload - speed it up */}
       <section className="mt-8 rounded-xl border-2 border-accent/40 bg-accent-soft/20 p-6">
         <div className="flex items-start gap-2.5">
           <AlertTriangle size={18} className="text-accent shrink-0 mt-0.5" />
           <div>
             <h2 className="font-display text-lg text-text">Verzending bespoedigen?</h2>
             <p className="mt-1 text-sm text-text-muted">
-              Stuur een screenshot van je betaling. Zodra wij die zien zetten we je bestelling al in behandeling — vaak
+              Stuur een screenshot van je betaling. Zodra wij die zien zetten we je bestelling al in behandeling - vaak
               uren sneller dan wachten tot de overboeking binnen is.
             </p>
           </div>

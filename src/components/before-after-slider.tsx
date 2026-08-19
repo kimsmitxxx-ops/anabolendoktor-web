@@ -17,7 +17,7 @@ export interface BeforeAfterSliderProps {
   className?: string;
   initial?: number; // 0-100
   autoPlay?: boolean;
-  /** Hint dat dit een hero/LCP-image is — fetchpriority + eager loading */
+  /** Hint dat dit een hero/LCP-image is - fetchpriority + eager loading */
   priority?: boolean;
 }
 
@@ -61,7 +61,7 @@ export function BeforeAfterSlider({
     };
   }, [setFromClientX]);
 
-  // Auto demo — defer tot na idle zodat hero-LCP niet vertraagt
+  // Auto demo - defer tot na idle zodat hero-LCP niet vertraagt
   useEffect(() => {
     if (!autoPlay || hasInteracted) return;
     let raf = 0;
@@ -107,7 +107,7 @@ export function BeforeAfterSlider({
         setFromClientX(e.clientX);
       }}
     >
-      {/* After (full) — LCP-candidate op homepage hero. <picture> serveert AVIF/WebP
+      {/* After (full) - LCP-candidate op homepage hero. <picture> serveert AVIF/WebP
           waar ondersteund (originele JPG als fallback). */}
       <picture>
         <source srcSet={swapExt(afterSrc, "avif")} type="image/avif" />
@@ -125,7 +125,7 @@ export function BeforeAfterSlider({
           className="block w-full h-full object-cover"
         />
       </picture>
-      {/* Before (clipped) — minder kritiek, lazy + AVIF/WebP fallback */}
+      {/* Before (clipped) - minder kritiek, lazy + AVIF/WebP fallback */}
       <div
         className="absolute inset-0 overflow-hidden"
         style={{ width: `${pos}%` }}

@@ -1,4 +1,4 @@
-// Dutch euro formatter — "€89,95"
+// Dutch euro formatter - "€89,95"
 export function formatEUR(value: number): string {
   return new Intl.NumberFormat("nl-NL", {
     style: "currency",

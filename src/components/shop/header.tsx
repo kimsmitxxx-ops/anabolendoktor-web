@@ -28,7 +28,7 @@ const LANGS: { code: Lang; label: string; flag: string }[] = [
 
 const TOPBAR_ITEMS = [
   { Icon: ShieldCheck, text: "100% leveringsgarantie" },
-  { Icon: Truck, text: "Snel verzonden — anoniem & discreet verpakt" },
+  { Icon: Truck, text: "Snel verzonden - anoniem & discreet verpakt" },
   { Icon: Star, text: "4,8 / 5 · 1.206 geverifieerde reviews" },
 ];
 
@@ -163,7 +163,7 @@ export function Header(_props: HeaderProps = {}) {
             <input
               type="search"
               name="q"
-              placeholder={lang === "EN" ? "Search products" : "Zoek producten — bv. testosteron, anavar, hgh"}
+              placeholder={lang === "EN" ? "Search products" : "Zoek producten - bv. testosteron, anavar, hgh"}
               className="w-full h-10 pl-10 pr-3 rounded-md border border-accent/40 bg-success-soft text-sm font-medium text-primary placeholder:text-primary/55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:border-accent shadow-sm"
             />
           </div>
@@ -192,7 +192,7 @@ export function Header(_props: HeaderProps = {}) {
         </nav>
       </div>
 
-      {/* Nav row with mega menus — centered */}
+      {/* Nav row with mega menus - centered */}
       <div className="hidden lg:block border-t border-primary-soft relative" onMouseLeave={() => setOpenMega(null)}>
         <div className="mx-auto max-w-7xl px-4 h-11 flex items-center justify-center gap-1 text-[15px]">
           {/* Winkel */}

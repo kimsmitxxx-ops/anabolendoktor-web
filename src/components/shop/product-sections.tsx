@@ -66,7 +66,7 @@ export function ProductSections({
   const hasSpecs = !!specifications && Object.keys(specifications).length > 0;
   const hasFaqs = !!faqs && faqs.length > 0;
 
-  // Reviews-sectie tijdelijk uitgeschakeld — komt terug zodra er voldoende
+  // Reviews-sectie tijdelijk uitgeschakeld - komt terug zodra er voldoende
   // echte reviews binnen zijn.
   const REVIEWS_ENABLED = false;
 
@@ -81,7 +81,7 @@ export function ProductSections({
 
   return (
     <div className="mt-14 space-y-14 max-w-3xl">
-      {/* Anchor-jump menu — sticky onder header, scrollt naar de secties */}
+      {/* Anchor-jump menu - sticky onder header, scrollt naar de secties */}
       <nav
         aria-label="Spring naar sectie"
         className="sticky top-16 z-20 -mx-4 px-4 py-2 bg-background/95 backdrop-blur border-b border-border flex flex-wrap gap-1"

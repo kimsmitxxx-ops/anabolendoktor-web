@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
     }
   }
 
-  // Service-role client — writes moeten RLS-policies overslaan.
+  // Service-role client - writes moeten RLS-policies overslaan.
   let supabase;
   try {
     supabase = createServiceClient();

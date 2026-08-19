@@ -69,7 +69,7 @@ export function AddToCartButton({ product }: { product: Product }) {
 
       <div className="rounded-md border border-accent/30 bg-accent-soft/15 p-3">
         <p className="text-xs font-semibold text-text inline-flex items-center gap-1.5">
-          <Sparkles size={14} className="text-accent" /> Bulk-korting — klik om aantal te kiezen
+          <Sparkles size={14} className="text-accent" /> Bulk-korting - klik om aantal te kiezen
         </p>
         <div className="mt-2 space-y-2">
           {BULK_TIERS.map((t, i) => {
@@ -121,7 +121,7 @@ export function AddToCartButton({ product }: { product: Product }) {
           <ShieldCheck size={14} className="text-accent" /> Veilig &amp; snel betalen
         </p>
         <p className="mt-1.5 text-[11px] text-text-muted leading-snug">
-          Bankoverschrijving via je eigen bank-app (IBAN). Geen kaart, geen tussenpartij — gewoon je gewone bank.
+          Bankoverschrijving via je eigen bank-app (IBAN). Geen kaart, geen tussenpartij - gewoon je gewone bank.
           Bestelling gaat direct na ontvangst betaling de deur uit.
         </p>
         <div className="mt-2 flex items-center gap-2 text-[11px]">

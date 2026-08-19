@@ -17,7 +17,7 @@ export default function CookiesPage() {
       <PageHero
         eyebrow="Cookies"
         title="Wat we wel en niet bewaren"
-        intro="Korte uitleg over de cookies die wij gebruiken — en welke we expliciet níét gebruiken. Geen marketing-trackers, geen advertentie-pixels."
+        intro="Korte uitleg over de cookies die wij gebruiken - en welke we expliciet níét gebruiken. Geen marketing-trackers, geen advertentie-pixels."
       />
 
       <article className="mx-auto max-w-3xl px-4 py-12 prose prose-sm [&>h2]:font-display [&>h2]:text-2xl [&>h2]:mt-10 [&>h2]:text-primary [&>h3]:font-display [&>h3]:text-lg [&>h3]:mt-6 [&>p]:leading-relaxed [&_a]:text-accent [&_a]:underline">
@@ -32,20 +32,20 @@ export default function CookiesPage() {
         <p>Deze plaatsen we altijd, anders werkt de site niet:</p>
         <ul>
           <li>
-            <strong>anabolenpro.cart.v1</strong> (localStorage) — onthoudt wat in je winkelmand
+            <strong>anabolenpro.cart.v1</strong> (localStorage) - onthoudt wat in je winkelmand
             zit, zelfs als je tussendoor weggaat. Verloopt niet automatisch, je kunt 'm
             handmatig wissen via je browser.
           </li>
           <li>
-            <strong>shop-dash-token</strong> (httpOnly cookie) — alleen actief als je inlogt
+            <strong>shop-dash-token</strong> (httpOnly cookie) - alleen actief als je inlogt
             op een eigen klant-account. 7 dagen geldig.
           </li>
           <li>
-            <strong>anabolenpro.cookies.v1</strong> (localStorage) — onthoudt je cookie-keuze
+            <strong>anabolenpro.cookies.v1</strong> (localStorage) - onthoudt je cookie-keuze
             zodat je de banner niet elke pagina opnieuw ziet.
           </li>
           <li>
-            <strong>apo_chat_id</strong> (localStorage) — als je de live-chat hebt gebruikt,
+            <strong>apo_chat_id</strong> (localStorage) - als je de live-chat hebt gebruikt,
             koppelt deze ID je terug aan het lopende gesprek bij een nieuwe sessie.
           </li>
         </ul>
@@ -56,7 +56,7 @@ export default function CookiesPage() {
         </p>
         <ul>
           <li>
-            <strong>Anonieme pageviews</strong> — welke pagina&apos;s populair zijn, gemiddelde
+            <strong>Anonieme pageviews</strong> - welke pagina&apos;s populair zijn, gemiddelde
             laadtijd, klik-patronen op categorieën. Geen IP-tracking, geen cross-site
             fingerprinting.
           </li>

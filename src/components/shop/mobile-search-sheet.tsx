@@ -41,7 +41,7 @@ export function MobileSearchSheet({ open, onOpenChange }: MobileSearchSheetProps
               type="search"
               value={q}
               onChange={(e) => setQ(e.target.value)}
-              placeholder="Zoek producten — bv. testosteron, anavar"
+              placeholder="Zoek producten - bv. testosteron, anavar"
               className="w-full h-11 pl-10 pr-9 rounded-md border border-accent/40 bg-success-soft text-sm font-medium text-primary placeholder:text-primary/55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             />
             {q && (

@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Geldig e-mailadres vereist" }, { status: 400 });
   }
 
-  // Service-role client — RLS blokkeert anon inserts op leads.
+  // Service-role client - RLS blokkeert anon inserts op leads.
   let sb;
   try {
     sb = createServiceClient();

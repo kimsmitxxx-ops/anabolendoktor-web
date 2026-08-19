@@ -2,10 +2,10 @@
  * Shipping-methode logica.
  *
  * Anabolendoktor werkt met TWEE verzend-locaties:
- *   - "ut"   = UT (United Tabs) producten — verzonden vanuit UT-magazijn
- *   - "rest" = Alle overige producten — verzonden vanuit hoofdmagazijn Vlaardingen
+ *   - "ut"   = UT (United Tabs) producten - verzonden vanuit UT-magazijn
+ *   - "rest" = Alle overige producten - verzonden vanuit hoofdmagazijn Vlaardingen
  *
- * Klanten mogen producten uit beide groepen tegelijk bestellen — dan worden er
+ * Klanten mogen producten uit beide groepen tegelijk bestellen - dan worden er
  * twee aparte zendingen verstuurd en betaal je 2× de verzendkosten.
  */
 

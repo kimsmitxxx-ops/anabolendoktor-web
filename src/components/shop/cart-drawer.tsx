@@ -148,7 +148,7 @@ export function CartDrawer() {
                   ))}
                   {shipping.lines.length > 1 && (
                     <p className="text-[10px] text-text-subtle leading-snug pt-1 border-t border-border">
-                      Producten uit verschillende magazijnen — twee aparte zendingen, daarom 2× verzendkosten.
+                      Producten uit verschillende magazijnen - twee aparte zendingen, daarom 2× verzendkosten.
                     </p>
                   )}
                 </div>

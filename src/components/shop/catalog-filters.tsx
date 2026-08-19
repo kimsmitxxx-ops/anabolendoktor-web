@@ -104,7 +104,7 @@ export function CatalogFilters({ brands, stockOnly, activeBrand, activeStof = ""
         </div>
       )}
 
-      {/* Verzendlocatie-filter — UT = Locatie 01, rest = Locatie 02. EUR 10 per locatie */}
+      {/* Verzendlocatie-filter - UT = Locatie 01, rest = Locatie 02. EUR 10 per locatie */}
       <div className="rounded-lg border border-border bg-surface p-4">
         <h4 className="text-xs uppercase tracking-wider text-accent-muted font-semibold mb-3 inline-flex items-center gap-1.5">
           <Truck size={12} /> Verzendlocatie
@@ -151,7 +151,7 @@ export function CatalogFilters({ brands, stockOnly, activeBrand, activeStof = ""
         </p>
       </div>
 
-      {/* Stof-filter — geen aparte pagina, alleen ?stof=... query-param */}
+      {/* Stof-filter - geen aparte pagina, alleen ?stof=... query-param */}
       <div className="rounded-lg border border-border bg-surface p-4">
         <h4 className="text-xs uppercase tracking-wider text-accent-muted font-semibold mb-3 inline-flex items-center gap-1.5">
           <Beaker size={12} /> Stof

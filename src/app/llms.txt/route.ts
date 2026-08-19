@@ -3,7 +3,7 @@ import { listCategories, listBlogPosts, listProducts, getShop } from "@/lib/quer
 export const revalidate = 3600;
 
 /**
- * /llms.txt — AI-crawler manifest per llmstxt.org spec.
+ * /llms.txt - AI-crawler manifest per llmstxt.org spec.
  * Bevat shop-identiteit + diepte-links naar categorie-, product- en
  * kennisbank-content. Alleen UT-producten (onze SEO-focus brand) komen er
  * in; non-UT staat ook in onze winkel maar krijgt geen AI-promotie.

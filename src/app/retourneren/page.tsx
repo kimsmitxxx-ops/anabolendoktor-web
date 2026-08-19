@@ -40,17 +40,17 @@ const faq = [
   {
     question: "Wat als mijn pakket niet aankomt?",
     answer:
-      "Is je pakket 14 dagen na de verzenddatum nog steeds niet bezorgd? Dan verzenden wij automatisch een nieuwe zending — zonder discussie en zonder extra kosten. Meld het via het contactformulier op de site met je ordernummer.",
+      "Is je pakket 14 dagen na de verzenddatum nog steeds niet bezorgd? Dan verzenden wij automatisch een nieuwe zending - zonder discussie en zonder extra kosten. Meld het via het contactformulier op de site met je ordernummer.",
   },
   {
     question: "Wat als een item niet meer leverbaar blijkt?",
     answer:
-      "Als tijdens de verwerking blijkt dat een item toch niet meer leverbaar is, bieden wij een alternatief van gelijke waarde aan. Wil je liever wachten? Dan versturen we het niet-leverbare item apart na zodra het weer binnen is — zonder extra verzendkosten.",
+      "Als tijdens de verwerking blijkt dat een item toch niet meer leverbaar is, bieden wij een alternatief van gelijke waarde aan. Wil je liever wachten? Dan versturen we het niet-leverbare item apart na zodra het weer binnen is - zonder extra verzendkosten.",
   },
   {
-    question: "Klopt het gehalte niet met het COA — wat nu?",
+    question: "Klopt het gehalte niet met het COA - wat nu?",
     answer:
-      "Als een onafhankelijk lab-rapport aantoont dat het werkelijke gehalte meer dan 5% afwijkt van het COA dat wij hebben gepubliceerd, vervangen wij het product kosteloos in je volgende bestelling. Stuur ons het lab-rapport samen met je batchnummer via het contactformulier — je kunt bestanden meesturen als bijlage.",
+      "Als een onafhankelijk lab-rapport aantoont dat het werkelijke gehalte meer dan 5% afwijkt van het COA dat wij hebben gepubliceerd, vervangen wij het product kosteloos in je volgende bestelling. Stuur ons het lab-rapport samen met je batchnummer via het contactformulier - je kunt bestanden meesturen als bijlage.",
   },
   {
     question: "Kan ik mijn geld terugkrijgen?",
@@ -65,7 +65,7 @@ export default function RetourPage() {
       <PageHero
         eyebrow="Retour & garantie"
         title="Geen retour, wél 100% leveringsgarantie"
-        intro="Wij kunnen geen retour-adres publiek voeren, dus retourzendingen zijn niet mogelijk. Terugbetalingen ook niet — zodra je betaling binnen is, gaat je bestelling in behandeling. Wél garanderen we dat je pakket aankomt: doet-ie dat niet, dan verzenden we opnieuw."
+        intro="Wij kunnen geen retour-adres publiek voeren, dus retourzendingen zijn niet mogelijk. Terugbetalingen ook niet - zodra je betaling binnen is, gaat je bestelling in behandeling. Wél garanderen we dat je pakket aankomt: doet-ie dat niet, dan verzenden we opnieuw."
       />
 
       <section className="mx-auto max-w-7xl px-4 py-14 grid gap-5 md:grid-cols-3">

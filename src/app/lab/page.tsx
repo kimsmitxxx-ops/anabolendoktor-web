@@ -42,7 +42,7 @@ const process = [
 const faqItems = [
   { question: "Wat is een COA precies?", answer: "Een Certificate of Analysis is het officiële PDF-rapport van het onafhankelijke laboratorium. Het bevat de batchcode, de geanalyseerde stof, de gemeten zuiverheid, de gebruikte methode en de testdatum." },
   { question: "Waarom publiceren jullie ook afkeuringen?", answer: "Omdat transparantie alleen telt als je ook laat zien wat fout ging. Afgekeurde batches blijven zichtbaar in ons archief, inclusief reden van afkeur en wat we met de partij gedaan hebben." },
-  { question: "Kan ik mijn flacon zelf laten testen?", answer: "Ja. Op iedere flacon staat een batchcode. Stuur ons het labrapport van bijvoorbeeld Janoshik en je krijgt het verschil met onze meting volledig terug — ook als jouw rapport binnen de tolerantie valt." },
+  { question: "Kan ik mijn flacon zelf laten testen?", answer: "Ja. Op iedere flacon staat een batchcode. Stuur ons het labrapport van bijvoorbeeld Janoshik en je krijgt het verschil met onze meting volledig terug - ook als jouw rapport binnen de tolerantie valt." },
   { question: "Welke tolerantie hanteren jullie?", answer: "We accepteren een batch alleen bij ≥ 97% zuiverheid en een gemeten concentratie binnen ±5% van de gelabelde waarde. Alles daarbuiten wordt geweigerd." },
 ];
 
@@ -136,7 +136,7 @@ export default function LabPage() {
         </div>
       </section>
 
-      {/* NIEUWE sectie — Eigen test aanvragen */}
+      {/* NIEUWE sectie - Eigen test aanvragen */}
       <section className="bg-paper border-t border-border">
         <div className="mx-auto max-w-7xl px-4 py-16">
           <div className="rounded-2xl border border-accent/30 bg-accent-soft/10 p-8 lg:p-10 grid gap-8 lg:grid-cols-[1.4fr_1fr] items-center">
@@ -152,7 +152,7 @@ export default function LabPage() {
               </p>
               <ul className="mt-5 space-y-2 text-sm text-primary/80">
                 <li className="flex items-start gap-2"><Package size={16} className="text-accent shrink-0 mt-0.5" /> Stuur 1 flacon naar ons NL-magazijn (Vlaardingen)</li>
-                <li className="flex items-start gap-2"><FlaskConical size={16} className="text-accent shrink-0 mt-0.5" /> Wij sturen door naar Janoshik (HPLC-UV) — duurt 2-3 weken</li>
+                <li className="flex items-start gap-2"><FlaskConical size={16} className="text-accent shrink-0 mt-0.5" /> Wij sturen door naar Janoshik (HPLC-UV) - duurt 2-3 weken</li>
                 <li className="flex items-start gap-2"><CheckCircle2 size={16} className="text-accent shrink-0 mt-0.5" /> COA per mail, ook publiek als jij dat wil zodat anderen profiteren</li>
               </ul>
               <p className="mt-4 text-xs text-primary/60">

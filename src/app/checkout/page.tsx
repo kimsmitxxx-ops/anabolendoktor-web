@@ -56,7 +56,7 @@ export default function CheckoutPage() {
       // Redirect naar bedankt-pagina met betaalinstructies + screenshot-upload
       window.location.href = `/checkout/bedankt/${j.order_id}`;
     } catch {
-      setErr("Verbindingsfout — probeer opnieuw");
+      setErr("Verbindingsfout - probeer opnieuw");
     } finally {
       setBusy(false);
     }
@@ -79,7 +79,7 @@ export default function CheckoutPage() {
             onChange={(v) => setForm({ ...form, email: v })}
           />
 
-          {/* Maak account aan — checkbox + password */}
+          {/* Maak account aan - checkbox + password */}
           <div className="rounded-lg border border-accent/30 bg-accent-soft/15 p-4">
             <label className="flex items-start gap-2.5 cursor-pointer">
               <input
@@ -155,7 +155,7 @@ export default function CheckoutPage() {
             />
           </div>
 
-          {/* Land dropdown — NL default, BE 2e */}
+          {/* Land dropdown - NL default, BE 2e */}
           <label className="block">
             <span className="mb-1 block text-sm font-medium">Land</span>
             <select
@@ -177,7 +177,7 @@ export default function CheckoutPage() {
             required={false}
           />
 
-          {/* Betaalopties — zelfde rij als op productpagina + Veilig betalen-blok */}
+          {/* Betaalopties - zelfde rij als op productpagina + Veilig betalen-blok */}
           <div className="rounded-lg border border-border bg-surface p-4">
             <p className="text-xs uppercase tracking-wider text-accent-muted font-semibold mb-2">
               Veilig &amp; snel betalen

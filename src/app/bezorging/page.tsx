@@ -23,7 +23,7 @@ const carriers = [
 const usps = [
   { icon: Clock, title: "Snel verzonden", sub: "Betaling voor 11:00 werkdag binnen = dezelfde dag nog verstuurd." },
   { icon: PackageCheck, title: "Neutrale verpakking", sub: "Geen logo, geen productnaam, geen vermelding op label." },
-  { icon: ShieldCheck, title: "100% leveringsgarantie", sub: "Komt je pakket niet aan? Wij verzenden opnieuw — geen discussie, geen extra kosten." },
+  { icon: ShieldCheck, title: "100% leveringsgarantie", sub: "Komt je pakket niet aan? Wij verzenden opnieuw - geen discussie, geen extra kosten." },
   { icon: Globe2, title: "EU-breed bezorgd", sub: "NL en BE dagelijks. DE, FR, AT, ES, IT, PL, SE binnen 3-5 werkdagen." },
 ];
 
@@ -56,12 +56,12 @@ const faq = [
   {
     question: "Wordt er een handtekening gevraagd?",
     answer:
-      "Nee. Standaard vragen we geen handtekening bij ontvangst — je pakket wordt gewoon bezorgd of in de brievenbus / bij de buren gelaten volgens de standaard PostNL/DPD-procedure.",
+      "Nee. Standaard vragen we geen handtekening bij ontvangst - je pakket wordt gewoon bezorgd of in de brievenbus / bij de buren gelaten volgens de standaard PostNL/DPD-procedure.",
   },
   {
     question: "Wat is de maximale leveringstermijn?",
     answer:
-      "Maximaal 14 dagen na verzending. Is je pakket na 14 dagen nog steeds niet aangekomen door vertraging of vermissing? Dan verzenden wij automatisch een nieuwe bestelling — zonder discussie.",
+      "Maximaal 14 dagen na verzending. Is je pakket na 14 dagen nog steeds niet aangekomen door vertraging of vermissing? Dan verzenden wij automatisch een nieuwe bestelling - zonder discussie.",
   },
   {
     question: "Kan ik meerdere merken tegelijk bestellen?",
@@ -84,7 +84,7 @@ export default function BezorgingPage() {
       <PageHero
         eyebrow="Bezorging"
         title="Snel verzonden, discreet verpakt, track & trace"
-        intro="Wij verzenden zelf vanuit Nederland. Betaling vóór 11:00 op een werkdag = dezelfde dag nog verstuurd met PostNL of DPD. Alleen naar vaste huisadressen — geen postbussen, geen afhaalpunten als aflever-optie."
+        intro="Wij verzenden zelf vanuit Nederland. Betaling vóór 11:00 op een werkdag = dezelfde dag nog verstuurd met PostNL of DPD. Alleen naar vaste huisadressen - geen postbussen, geen afhaalpunten als aflever-optie."
       />
 
       <section className="mx-auto max-w-7xl px-4 py-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
@@ -100,7 +100,7 @@ export default function BezorgingPage() {
       <section className="mx-auto max-w-7xl px-4 pb-14">
         <h2 className="font-display text-2xl text-text">Bezorgopties &amp; tarieven</h2>
         <p className="mt-2 text-sm text-text-muted">
-          Verzending is altijd €10 (NL) of €15 (BE/EU). Wij rekenen deze kosten altijd door — geen gratis-verzending drempel.
+          Verzending is altijd €10 (NL) of €15 (BE/EU). Wij rekenen deze kosten altijd door - geen gratis-verzending drempel.
         </p>
         <div className="mt-6 overflow-hidden rounded-md border border-border">
           <table className="w-full text-sm">
@@ -164,7 +164,7 @@ export default function BezorgingPage() {
               <MapPin size={16} className="text-accent" />
               <p className="mt-2 font-medium text-text">Magazijn Nederland</p>
               <p>Verzending vanuit onze eigen NL-locatie.</p>
-              <p className="mt-1 text-xs text-text-subtle">Geen bezoek mogelijk — alleen verzending.</p>
+              <p className="mt-1 text-xs text-text-subtle">Geen bezoek mogelijk - alleen verzending.</p>
             </div>
           </div>
           <FaqAccordion items={faq} />

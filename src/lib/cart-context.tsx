@@ -31,7 +31,7 @@ type Ctx = {
 const CartCtx = createContext<Ctx | null>(null);
 const KEY = "anabolenpro.cart.v2";
 // Winkelwagen-persistentie: minimaal 48 uur (gedeelde regel over ALLE shops
-// binnen deze klant — retakopen, melashop, kamagraexpert, peptidehuis en
+// binnen deze klant - retakopen, melashop, kamagraexpert, peptidehuis en
 // anabolenpro hanteren allen 30 dagen als bovengrens zodat 48u ruim gehaald
 // wordt). Items ouder dan MAX_AGE_MS worden bij hydration genegeerd.
 const MAX_AGE_MS = 30 * 24 * 60 * 60 * 1000; // 30 dagen
@@ -42,7 +42,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
   const [isOpen, setOpenState] = useState(false);
   // Guard tegen race waarin de write-effect draait voordat we localStorage
-  // hebben gelezen — dat zou een net-geladen cart met [] overschrijven.
+  // hebben gelezen - dat zou een net-geladen cart met [] overschrijven.
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
@@ -51,7 +51,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       if (raw) {
         const parsed: Persisted | CartItem[] = JSON.parse(raw);
         if (Array.isArray(parsed)) {
-          // Legacy v1 payload zonder timestamp — bewaar zoals is.
+          // Legacy v1 payload zonder timestamp - bewaar zoals is.
           setItems(parsed);
         } else if (parsed?.items && Array.isArray(parsed.items)) {
           const age = Date.now() - (parsed.savedAt || 0);

@@ -72,7 +72,7 @@ export default function WinkelmandPage() {
                   Verzending
                   {totals.shippingMethodCount > 1 && (
                     <span className="block text-[10px] text-text-subtle">
-                      {totals.shippingMethodCount}× zending — verschillende magazijnen
+                      {totals.shippingMethodCount}× zending - verschillende magazijnen
                     </span>
                   )}
                 </span>

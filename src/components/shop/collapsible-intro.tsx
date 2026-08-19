@@ -6,7 +6,7 @@ import { ChevronDown } from "lucide-react";
  * Klapt intro_html (boven het product-grid) standaard in zodat producten direct
  * boven-de-vouw zichtbaar zijn. Volledige tekst blijft SSR-aanwezig in de DOM
  * (alleen visueel verborgen via max-height + overflow), dus Google + AI-zoek
- * indexeren het hele blok — geen SEO-verlies.
+ * indexeren het hele blok - geen SEO-verlies.
  */
 export function CollapsibleIntro({ html, fadeHeight = 120 }: { html: string; fadeHeight?: number }) {
   const [open, setOpen] = useState(false);

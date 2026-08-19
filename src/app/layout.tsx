@@ -29,7 +29,7 @@ const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
 });
 
-// Defer chat-widget — niet kritiek voor FCP/LCP; pas hydrateren na main content
+// Defer chat-widget - niet kritiek voor FCP/LCP; pas hydrateren na main content
 const WhatsAppFab = dynamic(
   () => import("@/components/whatsapp-fab").then((m) => m.WhatsAppFab),
   { ssr: false },
@@ -55,7 +55,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel="preconnect" href="https://rexqfwibxawqnvrzbdoo.supabase.co" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
-        {/* Preload hero image (LCP) — AVIF eerst voor moderne browsers (55KB vs 91KB jpg).
+        {/* Preload hero image (LCP) - AVIF eerst voor moderne browsers (55KB vs 91KB jpg).
             Browsers die geen AVIF doen, vallen automatisch op de webp/jpg <picture> source. */}
         <link
           rel="preload"

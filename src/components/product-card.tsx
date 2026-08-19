@@ -103,7 +103,7 @@ export function ProductCard({
         )}
         {!inStock && (
           <>
-            {/* Diagonale streep + grote pill — onmiskenbaar uitverkocht */}
+            {/* Diagonale streep + grote pill - onmiskenbaar uitverkocht */}
             <div aria-hidden className="absolute inset-0 bg-background/55 backdrop-blur-[1px]" />
             <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-center pointer-events-none">
               <span className="inline-block rotate-[-8deg] rounded-md bg-danger px-4 py-1.5 text-sm font-display font-semibold uppercase tracking-wider text-white shadow-lift ring-2 ring-white/80">

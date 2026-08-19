@@ -30,8 +30,8 @@ const pillars = [
   },
   {
     icon: Microscope,
-    h: "Afkeur boven 97% — openbaar",
-    p: "Batches onder de 97%-zuiverheidsgrens gaan retour naar de leverancier. Reden van afkeur blijft openbaar in ons archief op /lab — incl. geanonimiseerde batchgegevens.",
+    h: "Afkeur boven 97% - openbaar",
+    p: "Batches onder de 97%-zuiverheidsgrens gaan retour naar de leverancier. Reden van afkeur blijft openbaar in ons archief op /lab - incl. geanonimiseerde batchgegevens.",
   },
   {
     icon: ShieldCheck,
@@ -41,7 +41,7 @@ const pillars = [
   {
     icon: ClipboardList,
     h: "Eigen-test op aanvraag",
-    p: "Klanten kunnen een product van een ander merk naar ons opsturen — wij regelen de Janoshik-meting (kostprijs, gratis bij vermoeden onveilig product). Aanvraag via /lab.",
+    p: "Klanten kunnen een product van een ander merk naar ons opsturen - wij regelen de Janoshik-meting (kostprijs, gratis bij vermoeden onveilig product). Aanvraag via /lab.",
   },
   {
     icon: Users,
@@ -62,7 +62,7 @@ export default async function OverOnsPage() {
     <>
       <PageHero
         eyebrow="Over Anabolendoktor"
-        title="Lab-data-gedreven, eerlijk over risico — niet zomaar nóg een shop"
+        title="Lab-data-gedreven, eerlijk over risico - niet zomaar nóg een shop"
         intro="Anabolendoktor is opgericht omdat de NL-markt vol zit met underdosed labels, vage labjes en leveranciers die plots offline gaan. Wij testen iedere batch onafhankelijk via Janoshik, publiceren afkeuringen openbaar en laten enhanced atleten + een medisch consultant onze content schrijven. Geen marketing-brochures, wel echte cijfers."
       />
 
@@ -75,12 +75,12 @@ export default async function OverOnsPage() {
           </p>
           <p>
             Ons doel is helder: ieder product dat onze deur uit gaat, heeft een batchcode op het
-            flesje die je publiek kunt opzoeken op de productpagina — daar staat het PDF-rapport
+            flesje die je publiek kunt opzoeken op de productpagina - daar staat het PDF-rapport
             van Janoshik Analytical: werkzame stof, gemeten zuiverheid, oplosmiddel-residu en
             eventuele isomeren. Onder 97%? Dan komt-ie niet in de shop. Punt.
           </p>
           <p>
-            We schrijven óók over de slechte batches die we tegenkomen in de markt — eigen
+            We schrijven óók over de slechte batches die we tegenkomen in de markt - eigen
             metingen of door klanten aangeleverd. Dat zorgt voor wrijving met sommige
             concurrenten, maar dat is wat de community vooruit helpt.
           </p>
@@ -103,7 +103,7 @@ export default async function OverOnsPage() {
         </div>
       </section>
 
-      {/* Team-schrijvers — kernpunt voor E-E-A-T compliance */}
+      {/* Team-schrijvers - kernpunt voor E-E-A-T compliance */}
       {authors.length > 0 && (
         <section className="bg-paper border-y border-border">
           <div className="mx-auto max-w-7xl px-4 py-16">
@@ -112,7 +112,7 @@ export default async function OverOnsPage() {
               Wie er achter onze content staat
             </h2>
             <p className="mt-3 max-w-3xl text-primary/70 leading-relaxed">
-              Geen anonieme tekstschrijvers — onze blogs zijn geschreven door enhanced atleten met
+              Geen anonieme tekstschrijvers - onze blogs zijn geschreven door enhanced atleten met
               competitie-ervaring en een medisch consultant. Iedere schrijver heeft eigen
               specialisaties en publiceert vanuit eigen praktijk-data.
             </p>
@@ -184,7 +184,7 @@ export default async function OverOnsPage() {
         </div>
       </section>
 
-      {/* Bedrijfsgegevens — kritiek voor trust + GDPR */}
+      {/* Bedrijfsgegevens - kritiek voor trust + GDPR */}
       <section className="mx-auto max-w-7xl px-4 py-14">
         <div className="rounded-md border border-border bg-surface p-8 lg:p-10 grid gap-8 lg:grid-cols-2">
           <div>
@@ -218,7 +218,7 @@ export default async function OverOnsPage() {
             </dl>
             <p className="mt-4 text-xs text-text-subtle">
               Bezoek aan het magazijn is niet mogelijk. Voor klacht-, retour- of urgente vragen
-              gebruik de chat (rechtsonder) — daar staat een medewerker direct.
+              gebruik de chat (rechtsonder) - daar staat een medewerker direct.
             </p>
           </div>
 
@@ -227,13 +227,13 @@ export default async function OverOnsPage() {
             <h2 className="mt-2 font-display text-2xl text-text">Eerlijk, niet pushy</h2>
             <p className="mt-3 text-sm text-text-muted leading-relaxed">
               Wij verkopen <strong>research-grade materialen</strong> voor educatieve en
-              onderzoeksdoeleinden — niet als medicatie. Anabolen en peptiden zijn in Nederland
+              onderzoeksdoeleinden - niet als medicatie. Anabolen en peptiden zijn in Nederland
               niet toegelaten voor humaan gebruik buiten medisch voorschrift. Wij promoten geen
               recreatief gebruik. Wat wij wél doen: zorgen dat als iemand deze keuze maakt, hij
               precies weet wat er in het flesje zit en welke risico's eraan vastzitten.
             </p>
             <p className="mt-3 text-sm text-text-muted leading-relaxed">
-              Onze content is geschreven door enhanced atleten en een medisch consultant — geen
+              Onze content is geschreven door enhanced atleten en een medisch consultant - geen
               copywriters. Bij twijfel of klachten: raadpleeg een arts en stop het gebruik. Bij
               bloedwerk-vragen: lees onze gids in de <Link href="/kennisbank/welk-bloedwerk-doe-je-voor-tijdens-en-na-een-aas-kuur" className="text-accent hover:underline">kennisbank</Link>.
             </p>

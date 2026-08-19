@@ -21,7 +21,7 @@ const INCLUDES = [
 ];
 
 const NOT_INCLUDES = [
-  "Voorschrijven of leveren van medicatie — daarvoor een arts",
+  "Voorschrijven of leveren van medicatie - daarvoor een arts",
   "Financieel advies over anabolen aanschaf",
   "Diagnose van medische aandoeningen",
 ];
@@ -78,7 +78,7 @@ export default function ConsultPage() {
         <div className="mx-auto max-w-3xl px-4">
           <h2 className="font-display text-3xl text-text text-center">Consult aanvragen</h2>
           <p className="mt-3 text-center text-text-muted">
-            Vul dit korte formulier in — we plannen binnen 1 werkdag een tijdstip in en sturen je
+            Vul dit korte formulier in - we plannen binnen 1 werkdag een tijdstip in en sturen je
             een korte intake-vragenlijst.
           </p>
           <div className="mt-8 rounded-lg border border-border bg-background p-6 md:p-8">
@@ -93,7 +93,7 @@ export default function ConsultPage() {
           Wij zijn geen artsenpraktijk
         </h2>
         <p className="mt-4 text-text-muted max-w-2xl mx-auto leading-relaxed">
-          Anabolendoktor is een consultatie- en informatie-dienst — niet een BIG-geregistreerde
+          Anabolendoktor is een consultatie- en informatie-dienst - niet een BIG-geregistreerde
           artsenpraktijk. Onze consulenten hebben achtergrond in bewegingswetenschap, biochemie
           en endocrinologie, maar diagnoseren of behandelen niet. Voor medische zorg verwijzen
           wij door naar huisartsen of endocrinologen met kennis van deze problematiek.

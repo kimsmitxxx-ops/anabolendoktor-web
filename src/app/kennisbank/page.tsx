@@ -33,7 +33,7 @@ export default async function KennisbankPage({
       </h1>
       <p className="mt-4 max-w-2xl text-text-muted leading-relaxed">
         Onderzoeksgerichte artikelen over bloedwerk-monitoring, legale supplementen, PCT-realiteit,
-        gezondheidsrisico's en juridische context. Elke bewering met bronvermelding — PubMed,
+        gezondheidsrisico's en juridische context. Elke bewering met bronvermelding - PubMed,
         ClinicalTrials of peer-reviewed publicaties.
       </p>
 

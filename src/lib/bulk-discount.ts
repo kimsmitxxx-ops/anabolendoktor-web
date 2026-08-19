@@ -19,7 +19,7 @@ export function lineSubtotalCents(priceCents: number, qty: number): number {
 export interface CartLikeItem {
   price_cents: number;
   qty: number;
-  /** "ut" / "rest" — bepaalt of dit item via UT-shipping of standaard gaat */
+  /** "ut" / "rest" - bepaalt of dit item via UT-shipping of standaard gaat */
   shipping_method?: "ut" | "rest";
 }
 

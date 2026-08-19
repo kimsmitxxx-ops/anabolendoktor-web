@@ -3,7 +3,7 @@ import { createServerClient } from "@supabase/ssr";
 
 // Refresht Supabase sessie-cookie bij elke request → users blijven ingelogd
 // zolang refresh-token geldig is. Defensive: crash NOOIT op missende env of
-// Supabase fout — geeft altijd NextResponse.next() terug zodat de site
+// Supabase fout - geeft altijd NextResponse.next() terug zodat de site
 // overeind blijft als auth-laag offline is.
 export async function middleware(request: NextRequest) {
   const res = NextResponse.next();

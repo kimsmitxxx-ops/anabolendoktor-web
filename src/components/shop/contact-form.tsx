@@ -44,7 +44,7 @@ export function ContactForm() {
       }
       setSent(true);
     } catch (e: any) {
-      setErr(e.message || "Verbindingsfout — probeer opnieuw");
+      setErr(e.message || "Verbindingsfout - probeer opnieuw");
     } finally {
       setBusy(false);
     }

@@ -8,7 +8,7 @@ const SHOP_ID = "96b47e49-34fd-4d6c-99d3-d49d912be046";
 /**
  * POST /api/restock-notify
  *  body: { product_id, email, name?, website? (honeypot) }
- * Honeypot field "website" — als ingevuld is het een bot, stil return 200.
+ * Honeypot field "website" - als ingevuld is het een bot, stil return 200.
  */
 export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => ({}));
@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
   const honeypot = String(body?.website || "").trim();
 
   if (honeypot.length > 0) {
-    // Bot detected — silent OK zonder schrijven
+    // Bot detected - silent OK zonder schrijven
     return NextResponse.json({ ok: true });
   }
 
@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Product niet gevonden" }, { status: 404 });
   }
 
-  // Service-role client — RLS blokkeert anon inserts op restock_notifications.
+  // Service-role client - RLS blokkeert anon inserts op restock_notifications.
   let write;
   try {
     write = createServiceClient();

@@ -112,7 +112,7 @@ export function ReviewForm({ productId }: { productId: string }) {
         />
       </label>
 
-      {/* Honeypot — verborgen voor mensen, bots vullen het in */}
+      {/* Honeypot - verborgen voor mensen, bots vullen het in */}
       <input
         type="text"
         name="website"

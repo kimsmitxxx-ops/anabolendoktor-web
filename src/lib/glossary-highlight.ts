@@ -3,7 +3,7 @@
  *
  * Neemt een HTML-string en wrapt de eerste voorkomen van elke bekende term
  * in een <abbr title="korte definitie"> tag. De browser toont dan zijn
- * native tooltip on hover — geen JS-client-component nodig. globals.css
+ * native tooltip on hover - geen JS-client-component nodig. globals.css
  * styled `abbr[title]` als een dotted-underlined klikbare hint.
  *
  * Wordt gebruikt in blog- en kennis-body's die via dangerouslySetInnerHTML
@@ -13,12 +13,12 @@
 
 type GlossaryEntry = { term: string; short: string; slug: string };
 
-// Volgorde matters — langste eerst zodat "GLP-1" niet als "GLP" gematcht wordt.
+// Volgorde matters - langste eerst zodat "GLP-1" niet als "GLP" gematcht wordt.
 export const GLOSSARY: GlossaryEntry[] = [
-  { slug: "aas", term: "AAS", short: "Anabole-Androgene Steroïden — synthetische testosteron-derivaten" },
+  { slug: "aas", term: "AAS", short: "Anabole-Androgene Steroïden - synthetische testosteron-derivaten" },
   { slug: "aromatisatie", term: "aromatisatie", short: "Omzetting van testosteron naar oestradiol" },
   { slug: "ai", term: "aromatase-remmer", short: "Middel dat oestrogeen-vorming blokkeert (bijv. Anastrozol)" },
-  { slug: "pct", term: "PCT", short: "Post-Cycle Therapy — nakuur om natuurlijke test te herstellen" },
+  { slug: "pct", term: "PCT", short: "Post-Cycle Therapy - nakuur om natuurlijke test te herstellen" },
   { slug: "pct", term: "nakuur", short: "Post-Cycle Therapy om HPTA-as te herstellen" },
   { slug: "hpta", term: "HPTA-as", short: "Hypothalamus-hypofyse-testes-feedback-loop" },
   { slug: "hpta", term: "HPTA", short: "Hypothalamus-hypofyse-testes-feedback-loop" },
@@ -28,33 +28,33 @@ export const GLOSSARY: GlossaryEntry[] = [
   { slug: "half-life", term: "halfwaardetijd", short: "Tijd tot 50% van dosis is afgebroken" },
   { slug: "bloedwerk", term: "bloedwerk", short: "Labwaardes tijdens/rond een cycle" },
   { slug: "e2", term: "oestradiol", short: "Actieve oestrogeen-vorm, streef 20-40 pg/ml tijdens cycle" },
-  { slug: "e2", term: "E2", short: "Oestradiol — actieve oestrogeen-vorm" },
-  { slug: "shbg", term: "SHBG", short: "Sex Hormone Binding Globulin — bindt testosteron in bloed" },
-  { slug: "hematocriet", term: "hematocriet", short: "Percentage rode bloedcellen — max 54%, boven = bloed doneren" },
+  { slug: "e2", term: "E2", short: "Oestradiol - actieve oestrogeen-vorm" },
+  { slug: "shbg", term: "SHBG", short: "Sex Hormone Binding Globulin - bindt testosteron in bloed" },
+  { slug: "hematocriet", term: "hematocriet", short: "Percentage rode bloedcellen - max 54%, boven = bloed doneren" },
   { slug: "gynecomastie", term: "gynecomastie", short: "Borstweefselvorming door verhoogd oestradiol of prolactine" },
-  { slug: "gynecomastie", term: "gyno", short: "Gynecomastie — borstweefselvorming door E2 of prolactine" },
-  { slug: "clomid", term: "Clomid", short: "Clomifeen — SERM voor PCT" },
-  { slug: "clomid", term: "Clomifeen", short: "Clomid — SERM voor PCT" },
-  { slug: "nolvadex", term: "Nolvadex", short: "Tamoxifen — SERM voor PCT en gyno-behandeling" },
-  { slug: "nolvadex", term: "Tamoxifen", short: "Nolvadex — SERM voor PCT en gyno-behandeling" },
+  { slug: "gynecomastie", term: "gyno", short: "Gynecomastie - borstweefselvorming door E2 of prolactine" },
+  { slug: "clomid", term: "Clomid", short: "Clomifeen - SERM voor PCT" },
+  { slug: "clomid", term: "Clomifeen", short: "Clomid - SERM voor PCT" },
+  { slug: "nolvadex", term: "Nolvadex", short: "Tamoxifen - SERM voor PCT en gyno-behandeling" },
+  { slug: "nolvadex", term: "Tamoxifen", short: "Nolvadex - SERM voor PCT en gyno-behandeling" },
   { slug: "serm", term: "SERM", short: "Selectieve oestrogeen-receptor modulator (Clomid, Nolvadex)" },
   { slug: "hcg", term: "hCG", short: "Zwangerschapshormoon dat testes actief houdt tijdens cycle" },
   { slug: "janoshik", term: "Janoshik", short: "Tsjechisch lab voor HPLC-analyse van AAS en peptiden" },
-  { slug: "hplc", term: "HPLC", short: "High-Performance Liquid Chromatography — zuiverheids-analyse" },
-  { slug: "coa", term: "COA", short: "Certificate of Analysis — batch-labrapport" },
+  { slug: "hplc", term: "HPLC", short: "High-Performance Liquid Chromatography - zuiverheids-analyse" },
+  { slug: "coa", term: "COA", short: "Certificate of Analysis - batch-labrapport" },
   { slug: "batchcode", term: "batchcode", short: "Unieke code per productie-batch, verwijst naar lab-rapport" },
   { slug: "kickstart", term: "oral kickstart", short: "Oral compound de eerste 4-6 weken van een cycle" },
-  { slug: "recomp", term: "recomp", short: "Recompositie — tegelijk vet kwijt en spier erbij" },
+  { slug: "recomp", term: "recomp", short: "Recompositie - tegelijk vet kwijt en spier erbij" },
   { slug: "trt", term: "TRT-dose", short: "Testosterone Replacement Therapy-dosering (100-200 mg/wk)" },
   { slug: "stack", term: "stack", short: "Combinatie van meerdere AAS-compounds" },
   { slug: "blend", term: "blend", short: "Mix van meerdere esters in één flacon (bijv. Sustanon)" },
-  { slug: "kuur", term: "kuur", short: "Cycle — periode waarin AAS gebruikt wordt" },
-  { slug: "kuur", term: "cycle", short: "Kuur — periode waarin AAS gebruikt wordt" },
+  { slug: "kuur", term: "kuur", short: "Cycle - periode waarin AAS gebruikt wordt" },
+  { slug: "kuur", term: "cycle", short: "Kuur - periode waarin AAS gebruikt wordt" },
   { slug: "bulk", term: "bulk", short: "Cycle in caloriesurplus gericht op massa & kracht" },
   { slug: "cutting", term: "cutting", short: "Cycle in caloriedeficit gericht op vetverlies met spierbehoud" },
-  { slug: "androgeen", term: "androgeen", short: "Vermannelijkende hormonen — o.a. testosteron" },
-  { slug: "lh", term: "LH", short: "Luteïniserend Hormoon — triggert Leydig-cellen tot test-productie" },
-  { slug: "fsh", term: "FSH", short: "Follikel Stimulerend Hormoon — voor spermatogenese" },
+  { slug: "androgeen", term: "androgeen", short: "Vermannelijkende hormonen - o.a. testosteron" },
+  { slug: "lh", term: "LH", short: "Luteïniserend Hormoon - triggert Leydig-cellen tot test-productie" },
+  { slug: "fsh", term: "FSH", short: "Follikel Stimulerend Hormoon - voor spermatogenese" },
 ];
 
 // Zorg dat langste term eerst gematcht wordt.
@@ -71,7 +71,7 @@ const escapeAttr = (s: string) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;
 export function highlightGlossary(html: string): string {
   if (!html) return html;
 
-  // Splits op tags — alleen tekst-nodes bewerken zodat we geen attrs breken.
+  // Splits op tags - alleen tekst-nodes bewerken zodat we geen attrs breken.
   const parts = html.split(/(<[^>]+>)/g);
 
   const wrapped = new Set<string>();
@@ -84,7 +84,7 @@ export function highlightGlossary(html: string): string {
     if (!part) continue;
 
     if (part.startsWith("<")) {
-      // Tag — update stack
+      // Tag - update stack
       const closing = part.startsWith("</");
       const tagMatch = part.match(/^<\/?([a-zA-Z][a-zA-Z0-9]*)/);
       if (tagMatch) {
@@ -101,7 +101,7 @@ export function highlightGlossary(html: string): string {
       continue;
     }
 
-    // Tekst-node — skip als we in een skip-tag zitten
+    // Tekst-node - skip als we in een skip-tag zitten
     if (openStack.length > 0) continue;
 
     let text = part;

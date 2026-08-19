@@ -38,7 +38,7 @@ export function PriceTag({
     return (
       <span className={cn("tabular text-primary font-semibold", className)}>
         {formatEUR(priceFrom ?? 0)}
-        <span className="mx-1.5 text-text-subtle">—</span>
+        <span className="mx-1.5 text-text-subtle">-</span>
         {formatEUR(priceTo ?? 0)}
       </span>
     );

@@ -25,7 +25,7 @@ const TERMS: Term[] = [
     id: "aas",
     term: "AAS",
     short: "Anabole-Androgene Steroïden",
-    body: "Verzamelnaam voor synthetische derivaten van testosteron met zowel spierbouwende (anabole) als vermannelijkende (androgene) effecten. Testosteron, Trenbolone, Dianabol, Nandrolon — allemaal AAS. De term is neutraler dan 'steroïden' en wordt gebruikt in de medische en onderzoeksliteratuur.",
+    body: "Verzamelnaam voor synthetische derivaten van testosteron met zowel spierbouwende (anabole) als vermannelijkende (androgene) effecten. Testosteron, Trenbolone, Dianabol, Nandrolon - allemaal AAS. De term is neutraler dan 'steroïden' en wordt gebruikt in de medische en onderzoeksliteratuur.",
     related: ["testosteron", "androgeen"],
   },
   {
@@ -40,7 +40,7 @@ const TERMS: Term[] = [
     id: "ai",
     term: "AI (Aromatase-inhibitor)",
     short: "Blokkeert oestrogeen-vorming",
-    body: "Middel dat het aromatase-enzym remt en daarmee de omzetting van testosteron naar oestradiol verlaagt. Voorbeelden: Anastrozol (Arimidex), Exemestane (Aromasin), Letrozol (Femara). Gebruik alleen als bloedwerk verhoogd oestradiol aantoont — te agressief doseren crasht E2 en veroorzaakt gewrichts- en libido-klachten.",
+    body: "Middel dat het aromatase-enzym remt en daarmee de omzetting van testosteron naar oestradiol verlaagt. Voorbeelden: Anastrozol (Arimidex), Exemestane (Aromasin), Letrozol (Femara). Gebruik alleen als bloedwerk verhoogd oestradiol aantoont - te agressief doseren crasht E2 en veroorzaakt gewrichts- en libido-klachten.",
     related: ["aromatisatie", "bloedwerk"],
   },
   {
@@ -55,7 +55,7 @@ const TERMS: Term[] = [
     id: "hpta",
     term: "HPTA-as",
     short: "Hypothalamus-Pituitary-Testicular Axis",
-    body: "De feedback-loop tussen hypothalamus, hypofyse en testes die de natuurlijke testosteronproductie regelt. Tijdens een AAS-cycle wordt deze onderdrukt (suppressie) omdat het lichaam denkt dat er genoeg testosteron circuleert. Na de cycle moet je HPTA-as herstellen — dat is precies wat PCT doet.",
+    body: "De feedback-loop tussen hypothalamus, hypofyse en testes die de natuurlijke testosteronproductie regelt. Tijdens een AAS-cycle wordt deze onderdrukt (suppressie) omdat het lichaam denkt dat er genoeg testosteron circuleert. Na de cycle moet je HPTA-as herstellen - dat is precies wat PCT doet.",
     related: ["pct", "suppressie", "lh", "fsh"],
   },
   {
@@ -83,7 +83,7 @@ const TERMS: Term[] = [
     id: "bloedwerk",
     term: "Bloedwerk",
     short: "Labwaardes tijdens/rond een cycle",
-    body: "Meet je vóór, halverwege (week 6) en na een cycle. Standaard panel: totaal + vrij testosteron, oestradiol (E2), SHBG, LH, FSH, prolactine, hematocriet + hemoglobine, ALT + AST (lever), lipidenpanel (HDL/LDL/triglyceriden), creatinine + eGFR (nier), TSH. Zonder bloedwerk kuren = blind rijden — je ziet niet wat er mis gaat tot het te laat is.",
+    body: "Meet je vóór, halverwege (week 6) en na een cycle. Standaard panel: totaal + vrij testosteron, oestradiol (E2), SHBG, LH, FSH, prolactine, hematocriet + hemoglobine, ALT + AST (lever), lipidenpanel (HDL/LDL/triglyceriden), creatinine + eGFR (nier), TSH. Zonder bloedwerk kuren = blind rijden - je ziet niet wat er mis gaat tot het te laat is.",
     related: ["hematocriet", "shbg", "e2"],
     link: "/lab",
   },
@@ -98,14 +98,14 @@ const TERMS: Term[] = [
     id: "shbg",
     term: "SHBG",
     short: "Sex Hormone Binding Globulin",
-    body: "Eiwit dat testosteron in je bloed bindt en 'inactief' maakt. Alleen vrij (niet-gebonden) testosteron heeft biologisch effect. Sommige AAS (Winstrol, Proviron) verlagen SHBG waardoor méér vrij testosteron beschikbaar komt — een van de redenen dat een klein beetje Winstrol een cycle 'harder' kan laten aanvoelen.",
+    body: "Eiwit dat testosteron in je bloed bindt en 'inactief' maakt. Alleen vrij (niet-gebonden) testosteron heeft biologisch effect. Sommige AAS (Winstrol, Proviron) verlagen SHBG waardoor méér vrij testosteron beschikbaar komt - een van de redenen dat een klein beetje Winstrol een cycle 'harder' kan laten aanvoelen.",
     related: ["testosteron", "bloedwerk"],
   },
   {
     id: "hematocriet",
     term: "Hematocriet (HCT)",
     short: "Percentage rode bloedcellen",
-    body: "AAS verhogen de aanmaak van rode bloedcellen (erythropoëse). Normaal 40-50%. Boven de 54% wordt het bloed te dik — verhoogd risico op trombose, hoofdpijn, hoge bloeddruk. Fix: 500 ml bloed doneren bij Sanquin verlaagt het meestal binnen een dag. Trenbolone en EQ verhogen HCT het meest.",
+    body: "AAS verhogen de aanmaak van rode bloedcellen (erythropoëse). Normaal 40-50%. Boven de 54% wordt het bloed te dik - verhoogd risico op trombose, hoofdpijn, hoge bloeddruk. Fix: 500 ml bloed doneren bij Sanquin verlaagt het meestal binnen een dag. Trenbolone en EQ verhogen HCT het meest.",
     related: ["bloedwerk"],
   },
   {
@@ -192,21 +192,21 @@ const TERMS: Term[] = [
     id: "trt",
     term: "TRT-dose",
     short: "Testosterone Replacement Therapy dosering",
-    body: "100-200 mg testosteron per week — de dosering die medische TRT gebruikt om natuurlijke test-niveaus te herstellen bij hypogonadisme. Wordt in recreatief gebruik ingezet als 'basis-dose' waar krachtigere compounds bovenop gestackt worden. Weinig bijwerkingen bij deze dosis, maar wél suppressief op je HPTA-as.",
+    body: "100-200 mg testosteron per week - de dosering die medische TRT gebruikt om natuurlijke test-niveaus te herstellen bij hypogonadisme. Wordt in recreatief gebruik ingezet als 'basis-dose' waar krachtigere compounds bovenop gestackt worden. Weinig bijwerkingen bij deze dosis, maar wél suppressief op je HPTA-as.",
     related: ["testosteron", "hpta"],
   },
   {
     id: "stack",
     term: "Stack",
     short: "Combinatie van meerdere compounds",
-    body: "Twee of meer AAS die je gelijktijdig gebruikt. Klassieke stacks: Test + Deca (mass), Test + Trenbolone (cutting), Test + Anavar (recomp). Basis is bijna altijd testosteron — pure Deca- of Trenbolone-cycles zonder test crashen je libido gegarandeerd.",
+    body: "Twee of meer AAS die je gelijktijdig gebruikt. Klassieke stacks: Test + Deca (mass), Test + Trenbolone (cutting), Test + Anavar (recomp). Basis is bijna altijd testosteron - pure Deca- of Trenbolone-cycles zonder test crashen je libido gegarandeerd.",
     related: ["testosteron", "deca", "trenbolone"],
   },
   {
     id: "blend",
     term: "Blend",
     short: "Mix van meerdere esters in één flacon",
-    body: "Combinatie van verschillende esters in één flacon. Sustanon 250 is een blend van propionaat, phenylpropionaat, isocaproaat en decanoaat. Voordeel: minder injecties nodig voor stabiele bloedwaardes. Nadeel: iedere ester zit al vast in de dosering — je kunt niet één ester aan- of uitzetten.",
+    body: "Combinatie van verschillende esters in één flacon. Sustanon 250 is een blend van propionaat, phenylpropionaat, isocaproaat en decanoaat. Voordeel: minder injecties nodig voor stabiele bloedwaardes. Nadeel: iedere ester zit al vast in de dosering - je kunt niet één ester aan- of uitzetten.",
     related: ["ester", "testosteron"],
   },
   {
@@ -248,7 +248,7 @@ const TERMS: Term[] = [
     id: "fsh",
     term: "FSH",
     short: "Follikel Stimulerend Hormoon",
-    body: "Hormoon uit de hypofyse dat spermatogenese ondersteunt. Wordt eveneens onderdrukt tijdens een AAS-cycle, hersteld tijdens PCT. Belangrijk als je vruchtbaarheid wilt houden — een langdurige FSH-suppressie kan blijvend gevolg zijn.",
+    body: "Hormoon uit de hypofyse dat spermatogenese ondersteunt. Wordt eveneens onderdrukt tijdens een AAS-cycle, hersteld tijdens PCT. Belangrijk als je vruchtbaarheid wilt houden - een langdurige FSH-suppressie kan blijvend gevolg zijn.",
     related: ["hpta", "lh", "pct"],
   },
 ];
@@ -360,7 +360,7 @@ export default function BegrippenlijstPage() {
           </h3>
           <p className="mt-2 text-sm text-text-muted">
             Stuur ons een berichtje via{" "}
-            <Link href="/contact" className="text-accent underline">/contact</Link> — we vullen de
+            <Link href="/contact" className="text-accent underline">/contact</Link> - we vullen de
             begrippenlijst continu aan op basis van vragen die binnenkomen.
           </p>
         </div>

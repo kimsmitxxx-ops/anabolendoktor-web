@@ -33,7 +33,7 @@ export function RestockNotifyForm({ productId, productName }: { productId: strin
       }
       setDone(true);
     } catch {
-      setErr("Verbindingsfout — probeer het opnieuw");
+      setErr("Verbindingsfout - probeer het opnieuw");
     } finally {
       setBusy(false);
     }
@@ -43,9 +43,9 @@ export function RestockNotifyForm({ productId, productName }: { productId: strin
     return (
       <div className="mt-4 rounded-lg border border-success/40 bg-success-soft/30 p-4">
         <CheckCircle2 size={18} className="text-success" />
-        <p className="mt-2 font-medium text-text">Aangemeld — we mailen je zodra dit product weer beschikbaar is.</p>
+        <p className="mt-2 font-medium text-text">Aangemeld - we mailen je zodra dit product weer beschikbaar is.</p>
         <p className="mt-1 text-xs text-text-muted">
-          Geen spam, geen nieuwsbrief — alleen één mail voor {productName} zodra de batch binnen is.
+          Geen spam, geen nieuwsbrief - alleen één mail voor {productName} zodra de batch binnen is.
         </p>
       </div>
     );
@@ -84,7 +84,7 @@ export function RestockNotifyForm({ productId, productName }: { productId: strin
         onChange={(e) => setName(e.target.value)}
         className="mt-2 h-9 w-full px-3 rounded border border-border bg-background text-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
       />
-      {/* Honeypot — bots vullen dit in, mensen niet (display:none) */}
+      {/* Honeypot - bots vullen dit in, mensen niet (display:none) */}
       <input
         type="text"
         name="website"

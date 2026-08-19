@@ -13,7 +13,7 @@ const sizes: Record<StarsSize, number> = { sm: 14, md: 18, lg: 22 };
 
 function Star({ fillPct, size }: { fillPct: number; size: number }) {
   const id = `g-${Math.random().toString(36).slice(2, 8)}`;
-  // Amber/goud — review-stars zijn cross-cultureel goud, geen brand-green
+  // Amber/goud - review-stars zijn cross-cultureel goud, geen brand-green
   const AMBER = "#F59E0B";
   const AMBER_EMPTY = "#E4E2D8";
   return (

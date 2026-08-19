@@ -51,7 +51,7 @@ const sections: { id: string; title: string; body: string[] }[] = [
     body: [
       "Vanwege de aard van onze producten en de vertrouwelijke branche waarin wij opereren, kunnen wij geen fysiek retour-adres publiek voeren. Retourzendingen zijn daarom niet mogelijk.",
       "Terugbetaling van een geplaatste en betaalde bestelling is niet mogelijk. Zodra de betaling bij ons binnen is, gaat de bestelling in behandeling en kan er niet meer worden geannuleerd of teruggedraaid.",
-      "Komt je pakket door vertraging of vermissing niet aan? Dan sturen wij binnen 14 dagen na de oorspronkelijke verzenddatum kosteloos een nieuwe zending — zonder discussie.",
+      "Komt je pakket door vertraging of vermissing niet aan? Dan sturen wij binnen 14 dagen na de oorspronkelijke verzenddatum kosteloos een nieuwe zending - zonder discussie.",
       "Zijn bepaalde items op het moment van verwerking niet leverbaar? Dan bieden wij alternatieve items van gelijke waarde aan, of verzenden we die items apart na zodra ze weer op voorraad zijn.",
     ],
   },
@@ -115,7 +115,7 @@ export default function VoorwaardenPage() {
       <PageHero
         eyebrow="Juridisch"
         title="Algemene voorwaarden anabolendoktor B.V."
-        intro="Versie 3.2 — laatst bijgewerkt op 12 juni 2026. Deze voorwaarden gelden voor elke bestelling die je via onze webshop plaatst."
+        intro="Versie 3.2 - laatst bijgewerkt op 12 juni 2026. Deze voorwaarden gelden voor elke bestelling die je via onze webshop plaatst."
       />
 
       <section className="mx-auto max-w-7xl px-4 py-14 grid gap-10 lg:grid-cols-[260px_1fr]">

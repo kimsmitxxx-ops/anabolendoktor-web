@@ -121,7 +121,7 @@ function ChatPanel({ open, onOpenChange }: { open: boolean; onOpenChange: (v: bo
       setMessages(j.messages || []);
       setEscalated(j.conversation?.status === "escalated");
     } catch {
-      // silent — keep prior state
+      // silent - keep prior state
     } finally {
       if (!opts.silent) setPolling(false);
     }
@@ -246,7 +246,7 @@ function ChatPanel({ open, onOpenChange }: { open: boolean; onOpenChange: (v: bo
         {step === "intake" ? (
           <form onSubmit={submit} className="flex-1 overflow-y-auto px-5 py-4 space-y-3">
             <p className="text-sm text-text-muted">
-              Vraag over een product, batchcode of bestelling? Stuur een bericht — we reageren
+              Vraag over een product, batchcode of bestelling? Stuur een bericht - we reageren
               tussen 09:00 en 21:00. Standaardvragen krijg je meteen antwoord op, specifieke
               vragen zetten we door naar een medewerker en beantwoorden we via e-mail.
             </p>
@@ -261,7 +261,7 @@ function ChatPanel({ open, onOpenChange }: { open: boolean; onOpenChange: (v: bo
             <label className="block">
               <span className="text-xs font-medium text-text mb-1 block">
                 E-mail <span className="text-danger">*</span>
-                <span className="ml-1 text-text-subtle font-normal">— voor het antwoord van onze medewerker</span>
+                <span className="ml-1 text-text-subtle font-normal">- voor het antwoord van onze medewerker</span>
               </span>
               <input
                 type="email"
@@ -293,7 +293,7 @@ function ChatPanel({ open, onOpenChange }: { open: boolean; onOpenChange: (v: bo
             </button>
             <p className="text-[11px] text-text-subtle">
               We beantwoorden algemene vragen automatisch. Krijgen we jouw vraag niet
-              instant beantwoord, dan sturen we een persoonlijk antwoord naar je e-mail —
+              instant beantwoord, dan sturen we een persoonlijk antwoord naar je e-mail -
               meestal binnen een uur tijdens openingstijden.
             </p>
           </form>

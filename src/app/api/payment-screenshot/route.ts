@@ -53,7 +53,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: `Upload error: ${upErr.message}` }, { status: 500 });
     }
 
-    // Privé bucket — genereer signed URL voor admin (valid 30 dagen)
+    // Privé bucket - genereer signed URL voor admin (valid 30 dagen)
     const { data: signed } = await sb.storage.from(BUCKET).createSignedUrl(storagePath, 60 * 60 * 24 * 30);
     const publicUrl = signed?.signedUrl || "";
 
@@ -71,7 +71,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: `DB error: ${insErr.message}` }, { status: 500 });
     }
 
-    // Update order status (optioneel) — markeer dat klant heeft betaald
+    // Update order status (optioneel) - markeer dat klant heeft betaald
     await sb.from("orders").update({ status: "payment_proof_received" }).eq("id", orderId);
 
     return NextResponse.json({ ok: true });
