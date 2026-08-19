@@ -268,7 +268,7 @@ function ChatPanel({ open, onOpenChange }: { open: boolean; onOpenChange: (v: bo
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="jij@voorbeeld.nl"
+                placeholder="u@voorbeeld.nl"
                 className="w-full h-10 px-3 rounded border border-border bg-surface text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               />
             </label>
@@ -279,7 +279,7 @@ function ChatPanel({ open, onOpenChange }: { open: boolean; onOpenChange: (v: bo
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 rows={5}
-                placeholder="Wat is je vraag?"
+                placeholder="Wat is uw vraag?"
                 className="w-full px-3 py-2.5 rounded border border-border bg-surface text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent resize-none"
               />
             </label>
@@ -292,8 +292,8 @@ function ChatPanel({ open, onOpenChange }: { open: boolean; onOpenChange: (v: bo
               {sending ? (<><Loader2 size={15} className="animate-spin" /> Versturen…</>) : (<><Send size={15} /> Start chat</>)}
             </button>
             <p className="text-[11px] text-text-subtle">
-              We beantwoorden algemene vragen automatisch. Krijgen we jouw vraag niet
-              instant beantwoord, dan sturen we een persoonlijk antwoord naar je e-mail -
+              We beantwoorden algemene vragen automatisch. Krijgen we uw vraag niet
+              instant beantwoord, dan sturen we een persoonlijk antwoord naar uw e-mail -
               meestal binnen een uur tijdens openingstijden.
             </p>
           </form>

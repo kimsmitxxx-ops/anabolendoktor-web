@@ -30,7 +30,7 @@ export function CartDrawer() {
         {items.length === 0 ? (
           <div className="flex-1 flex flex-col items-center justify-center px-6 text-center gap-4">
             <ShoppingBag size={40} className="text-text-subtle" />
-            <p className="text-text-muted">Je winkelmand is leeg.</p>
+            <p className="text-text-muted">Uw winkelmand is leeg.</p>
             <Link href="/winkel" onClick={() => setOpen(false)}>
               <Button variant="secondary" trailingIcon={ArrowRight}>
                 Bekijk de catalogus

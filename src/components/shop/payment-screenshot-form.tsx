@@ -20,7 +20,7 @@ export function PaymentScreenshotForm({ orderId, customerEmail }: { orderId: str
       return;
     }
     if (f.size > MAX_BYTES) {
-      setErr(`Bestand te groot (max 5MB, jouw bestand is ${(f.size / 1024 / 1024).toFixed(1)}MB)`);
+      setErr(`Bestand te groot (max 5MB, uw bestand is ${(f.size / 1024 / 1024).toFixed(1)}MB)`);
       return;
     }
     setFile(f);
@@ -57,7 +57,7 @@ export function PaymentScreenshotForm({ orderId, customerEmail }: { orderId: str
         <div>
           <p className="font-medium text-text">Screenshot ontvangen - dank je</p>
           <p className="mt-1 text-xs text-text-muted">
-            Wij gaan je betaling alvast verifiëren en zetten je bestelling in behandeling.
+            Wij gaan uw betaling alvast verifiëren en zetten uw bestelling in behandeling.
           </p>
         </div>
       </div>

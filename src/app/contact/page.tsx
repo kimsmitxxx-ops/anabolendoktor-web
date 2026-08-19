@@ -26,7 +26,7 @@ export default function ContactPage() {
             <MessageCircle size={20} className="text-accent" />
             <h3 className="mt-3 font-display text-lg text-primary-foreground">Online chat</h3>
             <p className="mt-1 text-sm text-primary-foreground/75">
-              Snelste route. Stuur foto&apos;s, batchnummers of een schermafbeelding van je order.
+              Snelste route. Stuur foto&apos;s, batchnummers of een schermafbeelding van uw order.
             </p>
             <button
               type="button"
@@ -39,7 +39,7 @@ export default function ContactPage() {
             <Mail size={20} className="text-accent" />
             <h3 className="mt-3 font-display text-lg text-primary-foreground">Stuur ons een bericht</h3>
             <p className="mt-2 text-sm text-primary-foreground/75">
-              Gebruik het formulier hieronder. Zet je ordernummer erbij als het over een bestelling gaat, of vermeld je batchcode bij een lab-vraag. Antwoord binnen 1 werkdag.
+              Gebruik het formulier hieronder. Gaat het over een afspraak of bestelling, vermeld dan uw ordernummer. Deel geen medische gegevens die u liever niet per e-mail verstuurt; bloedwaarden bespreken wij tijdens het consult zelf. Antwoord binnen een werkdag.
             </p>
           </div>
           <div className="rounded-md border border-primary-muted bg-primary p-6 text-primary-foreground">

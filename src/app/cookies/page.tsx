@@ -32,9 +32,9 @@ export default function CookiesPage() {
         <p>Deze plaatsen we altijd, anders werkt de site niet:</p>
         <ul>
           <li>
-            <strong>anabolenpro.cart.v1</strong> (localStorage) - onthoudt wat in je winkelmand
-            zit, zelfs als je tussendoor weggaat. Verloopt niet automatisch, je kunt 'm
-            handmatig wissen via je browser.
+            <strong>anabolenpro.cart.v1</strong> (localStorage) - onthoudt wat in uw winkelmand
+            zit, zelfs als je tussendoor weggaat. Verloopt niet automatisch, u kunt 'm
+            handmatig wissen via uw browser.
           </li>
           <li>
             <strong>shop-dash-token</strong> (httpOnly cookie) - alleen actief als je inlogt
@@ -52,7 +52,7 @@ export default function CookiesPage() {
 
         <h2>2. Optionele analytische cookies</h2>
         <p>
-          Alleen actief als je in de banner op <em>"Accepteer alle"</em> klikt:
+          Alleen actief als u in de banner op <em>"Accepteer alle"</em> klikt:
         </p>
         <ul>
           <li>
@@ -80,7 +80,7 @@ export default function CookiesPage() {
 
         <h2>5. Vragen?</h2>
         <p>
-          Stel je vraag via het <Link href="/contact">contactformulier</Link> of bekijk
+          Stel uw vraag via het <Link href="/contact">contactformulier</Link> of bekijk
           ons volledige <Link href="/privacy">privacy-beleid</Link>.
         </p>
       </article>

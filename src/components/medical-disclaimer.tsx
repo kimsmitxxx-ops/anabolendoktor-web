@@ -8,7 +8,7 @@ interface Props {
   variant?: "inline" | "prominent";
   /**
    * Optionele extra zin bovenop de standaard disclaimer. Bv. "Specifiek voor
-   * X - overleg met je arts als je Y gebruikt."
+   * X - overleg met uw arts als je Y gebruikt."
    */
   extra?: string;
 }

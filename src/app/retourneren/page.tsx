@@ -17,7 +17,7 @@ const cards = [
   {
     icon: ShieldCheck,
     title: "100% leveringsgarantie",
-    sub: "Komt je pakket niet aan binnen 14 dagen? Nieuwe verzending zonder discussie of extra kosten.",
+    sub: "Komt uw pakket niet aan binnen 14 dagen? Nieuwe verzending zonder discussie of extra kosten.",
   },
   {
     icon: FlaskConical,
@@ -35,27 +35,27 @@ const faq = [
   {
     question: "Kan ik mijn bestelling retourneren of annuleren?",
     answer:
-      "Nee. Vanwege de branche waarin wij opereren kunnen wij helaas geen fysiek retour-adres publiek voeren, en zodra je betaling bij ons binnen is, gaat de bestelling in behandeling en kan er niet meer geannuleerd of teruggedraaid worden.",
+      "Nee. Vanwege de branche waarin wij opereren kunnen wij helaas geen fysiek retour-adres publiek voeren, en zodra uw betaling bij ons binnen is, gaat de bestelling in behandeling en kan er niet meer geannuleerd of teruggedraaid worden.",
   },
   {
     question: "Wat als mijn pakket niet aankomt?",
     answer:
-      "Is je pakket 14 dagen na de verzenddatum nog steeds niet bezorgd? Dan verzenden wij automatisch een nieuwe zending - zonder discussie en zonder extra kosten. Meld het via het contactformulier op de site met je ordernummer.",
+      "Is uw pakket 14 dagen na de verzenddatum nog steeds niet bezorgd? Dan verzenden wij automatisch een nieuwe zending - zonder discussie en zonder extra kosten. Meld het via het contactformulier op de site met uw ordernummer.",
   },
   {
     question: "Wat als een item niet meer leverbaar blijkt?",
     answer:
-      "Als tijdens de verwerking blijkt dat een item toch niet meer leverbaar is, bieden wij een alternatief van gelijke waarde aan. Wil je liever wachten? Dan versturen we het niet-leverbare item apart na zodra het weer binnen is - zonder extra verzendkosten.",
+      "Als tijdens de verwerking blijkt dat een item toch niet meer leverbaar is, bieden wij een alternatief van gelijke waarde aan. Wil u liever wachten? Dan versturen we het niet-leverbare item apart na zodra het weer binnen is - zonder extra verzendkosten.",
   },
   {
     question: "Klopt het gehalte niet met het COA - wat nu?",
     answer:
-      "Als een onafhankelijk lab-rapport aantoont dat het werkelijke gehalte meer dan 5% afwijkt van het COA dat wij hebben gepubliceerd, vervangen wij het product kosteloos in je volgende bestelling. Stuur ons het lab-rapport samen met je batchnummer via het contactformulier - je kunt bestanden meesturen als bijlage.",
+      "Als een onafhankelijk lab-rapport aantoont dat het werkelijke gehalte meer dan 5% afwijkt van het COA dat wij hebben gepubliceerd, vervangen wij het product kosteloos in je volgende bestelling. Stuur ons het lab-rapport samen met je batchnummer via het contactformulier - u kunt bestanden meesturen als bijlage.",
   },
   {
     question: "Kan ik mijn geld terugkrijgen?",
     answer:
-      "Nee, terugbetalingen zijn niet mogelijk. Wat we wél doen: bij niet-aankomst = opnieuw verzenden, bij batch-afwijking = kosteloze vervanging in je volgende bestelling. Neem daarom vóór je betaalt goed de tijd om je bestelling te controleren.",
+      "Nee, terugbetalingen zijn niet mogelijk. Wat we wél doen: bij niet-aankomst = opnieuw verzenden, bij batch-afwijking = kosteloze vervanging in je volgende bestelling. Neem daarom vóór u betaalt goed de tijd om uw bestelling te controleren.",
   },
 ];
 
@@ -65,7 +65,7 @@ export default function RetourPage() {
       <PageHero
         eyebrow="Retour & garantie"
         title="Geen retour, wél 100% leveringsgarantie"
-        intro="Wij kunnen geen retour-adres publiek voeren, dus retourzendingen zijn niet mogelijk. Terugbetalingen ook niet - zodra je betaling binnen is, gaat je bestelling in behandeling. Wél garanderen we dat je pakket aankomt: doet-ie dat niet, dan verzenden we opnieuw."
+        intro="Wij kunnen geen retour-adres publiek voeren, dus retourzendingen zijn niet mogelijk. Terugbetalingen ook niet - zodra uw betaling binnen is, gaat uw bestelling in behandeling. Wél garanderen we dat uw pakket aankomt: doet-ie dat niet, dan verzenden we opnieuw."
       />
 
       <section className="mx-auto max-w-7xl px-4 py-14 grid gap-5 md:grid-cols-3">
@@ -83,10 +83,10 @@ export default function RetourPage() {
           <div className="flex items-start gap-3">
             <AlertTriangle size={20} className="shrink-0 mt-0.5" />
             <div>
-              <h2 className="font-display text-lg">Let op vóór je betaalt</h2>
+              <h2 className="font-display text-lg">Let op vóór u betaalt</h2>
               <p className="mt-1.5 text-sm">
-                Zodra je betaling bij ons binnen is, gaat je bestelling direct in behandeling. Terugdraaien of
-                annuleren is dan niet meer mogelijk. Controleer je bestelling en je adresgegevens dus goed voordat je
+                Zodra uw betaling bij ons binnen is, gaat uw bestelling direct in behandeling. Terugdraaien of
+                annuleren is dan niet meer mogelijk. Controleer uw bestelling en je adresgegevens dus goed voordat je
                 de overboeking uitvoert.
               </p>
             </div>
@@ -99,7 +99,7 @@ export default function RetourPage() {
           <div>
             <h2 className="font-display text-2xl text-text">Veelgestelde vragen</h2>
             <p className="mt-2 text-sm text-text-muted">
-              Twijfel je over jouw situatie?{" "}
+              Twijfel je over uw situatie?{" "}
               <Link href="/contact" className="text-accent hover:underline">
                 Neem contact op
               </Link>

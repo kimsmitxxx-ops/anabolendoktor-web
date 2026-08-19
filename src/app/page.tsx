@@ -32,7 +32,7 @@ const HOMEPAGE_FAQ = [
   {
     question: "Bieden jullie consulten aan?",
     answer:
-      "Ja. Een 60-minuten consult bespreekt jouw doelen, bloedwerk-uitslagen (waarden meebrengen), trainingsplan en herstel. Voor mensen die AAS gebruiken of overwegen: harm-reduction advies zonder oordeel. Voor natural trainers: een structureel plan voor de komende 6-12 maanden. Prijs: €120 per consult, via video-call.",
+      "Ja. Een 60-minuten consult bespreekt uw doelen, bloedwerk-uitslagen (waarden meebrengen), trainingsplan en herstel. Voor mensen die AAS gebruiken of overwegen: harm-reduction advies zonder oordeel. Voor natural trainers: een structureel plan voor de komende 6-12 maanden. Prijs: €120 per consult, via video-call.",
   },
   {
     question: "Wat is jullie standpunt over PCT-preparaten (Clomid, Nolvadex)?",
@@ -110,7 +110,7 @@ export default async function HomePage() {
             <ClipboardList size={22} className="text-accent" />
             <h3 className="mt-4 font-display text-xl text-text">Bloedwerk als startpunt</h3>
             <p className="mt-2 text-sm text-text-muted leading-relaxed">
-              Voor je iets verandert weten we waar je staat: totaal + vrij testosteron, oestradiol,
+              Voor je iets verandert weten we waar u staat: totaal + vrij testosteron, oestradiol,
               SHBG, LH/FSH, lipidenpanel, HbA1c, vitamine D, ferritine, TSH. Zonder deze waardes
               is elk advies giswerk.
             </p>
@@ -182,7 +182,7 @@ export default async function HomePage() {
             <Leaf size={22} className="text-accent" />
             <h3 className="mt-4 font-display text-xl text-text">Harm-reduction zonder oordeel</h3>
             <p className="mt-2 text-sm text-text-muted">
-              Gebruik je AAS? Dat blijft jouw keuze. Wij helpen je bij bloedwerk-interpretatie,
+              Gebruik je AAS? Dat blijft uw keuze. Wij helpen u bij bloedwerk-interpretatie,
               risico-inschatting en verwijzen door naar artsen met kennis.
             </p>
           </div>
@@ -210,7 +210,7 @@ export default async function HomePage() {
       <section className="bg-primary text-primary-foreground py-14">
         <div className="mx-auto max-w-4xl px-4 text-center">
           <p className="text-xs uppercase tracking-wider text-accent-soft">Nieuwsbrief</p>
-          <h2 className="mt-2 font-display text-3xl">Nieuwe artikelen &amp; onderzoek in je inbox</h2>
+          <h2 className="mt-2 font-display text-3xl">Nieuwe artikelen &amp; onderzoek in uw inbox</h2>
           <p className="mt-3 text-primary-foreground/70 text-sm">
             Diepgaande stukken over trainings-, herstel- en supplement-onderzoek. Geen sales,
             unsubscribe met één klik.

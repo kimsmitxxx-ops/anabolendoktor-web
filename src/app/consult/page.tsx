@@ -35,12 +35,12 @@ export default function ConsultPage() {
             <Stethoscope size={12} /> Consult
           </div>
           <h1 className="mt-4 font-display text-4xl md:text-5xl leading-tight max-w-2xl">
-            Een uur, één gesprek, één keer echt kritisch kijken naar wat je doet.
+            Een uur, één gesprek, één keer echt kritisch kijken naar wat u doet.
           </h1>
           <p className="mt-5 max-w-2xl text-primary-foreground/80 text-lg leading-relaxed">
-            60 minuten video-call. Vooraf uploadstuur je bloedwerk. Tijdens de call gaan we door
+            60 minuten video-call. Vooraf uploadstuur uw bloedwerk. Tijdens de call gaan we door
             je huidige protocol, doelen en de wetenschappelijke basis daaronder. Na afloop
-            ontvang je een schriftelijke samenvatting en vervolgstappen.
+            ontvang u een schriftelijke samenvatting en vervolgstappen.
           </p>
           <div className="mt-6 flex items-center gap-6 text-sm text-primary-foreground/70">
             <span className="inline-flex items-center gap-2"><Clock size={14} /> 60 minuten</span>
@@ -78,8 +78,7 @@ export default function ConsultPage() {
         <div className="mx-auto max-w-3xl px-4">
           <h2 className="font-display text-3xl text-text text-center">Consult aanvragen</h2>
           <p className="mt-3 text-center text-text-muted">
-            Vul dit korte formulier in - we plannen binnen 1 werkdag een tijdstip in en sturen je
-            een korte intake-vragenlijst.
+            Vul dit korte formulier in - we plannen binnen 1 werkdag een tijdstip in en sturen u een korte intake-vragenlijst.
           </p>
           <div className="mt-8 rounded-lg border border-border bg-background p-6 md:p-8">
             <ContactForm />

@@ -241,7 +241,7 @@ export default async function OverOnsPage() {
               href="/contact"
               className="mt-6 inline-flex items-center gap-2 h-11 px-5 rounded bg-accent text-accent-foreground text-sm font-semibold hover:bg-accent-soft transition-colors"
             >
-              <Mail size={15} /> Stel je vraag
+              <Mail size={15} /> Stel uw vraag
             </Link>
           </div>
         </div>

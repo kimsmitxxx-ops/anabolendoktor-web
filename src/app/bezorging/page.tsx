@@ -23,7 +23,7 @@ const carriers = [
 const usps = [
   { icon: Clock, title: "Snel verzonden", sub: "Betaling voor 11:00 werkdag binnen = dezelfde dag nog verstuurd." },
   { icon: PackageCheck, title: "Neutrale verpakking", sub: "Geen logo, geen productnaam, geen vermelding op label." },
-  { icon: ShieldCheck, title: "100% leveringsgarantie", sub: "Komt je pakket niet aan? Wij verzenden opnieuw - geen discussie, geen extra kosten." },
+  { icon: ShieldCheck, title: "100% leveringsgarantie", sub: "Komt uw pakket niet aan? Wij verzenden opnieuw - geen discussie, geen extra kosten." },
   { icon: Globe2, title: "EU-breed bezorgd", sub: "NL en BE dagelijks. DE, FR, AT, ES, IT, PL, SE binnen 3-5 werkdagen." },
 ];
 
@@ -31,22 +31,22 @@ const faq = [
   {
     question: "Hoe snel wordt mijn pakket verstuurd?",
     answer:
-      "Als je betaling vóór 11:00 op een werkdag binnen is, wordt je pakket dezelfde dag nog verstuurd. Betaling na 11:00 of in het weekend? Dan vertrekt je bestelling de eerstvolgende werkdag.",
+      "Als uw betaling vóór 11:00 op een werkdag binnen is, wordt uw pakket dezelfde dag nog verstuurd. Betaling na 11:00 of in het weekend? Dan vertrekt uw bestelling de eerstvolgende werkdag.",
   },
   {
     question: "Hoe ziet de verpakking eruit?",
     answer:
-      "Neutrale bruine of grijze doos zonder logo, productnaam of branding op de buitenkant. Op het verzendlabel staat alleen onze bedrijfsnaam en jouw adres. Niets verraadt de inhoud.",
+      "Neutrale bruine of grijze doos zonder logo, productnaam of branding op de buitenkant. Op het verzendlabel staat alleen onze bedrijfsnaam en uw adres. Niets verraadt de inhoud.",
   },
   {
     question: "Kan ik mijn order volgen?",
     answer:
-      "Ja. Zodra het label is aangemaakt, ontvang je per e-mail een track & trace-code van PostNL of DPD.",
+      "Ja. Zodra het label is aangemaakt, ontvang u per e-mail een track & trace-code van PostNL of DPD.",
   },
   {
     question: "Wat als ik niet thuis ben?",
     answer:
-      "PostNL of DPD biedt het pakket nog één keer aan. Daarna gaat het naar het dichtstbijzijnde afhaalpunt van de betreffende vervoerder. Je hebt daar 7 dagen om het op te halen met je legitimatie.",
+      "PostNL of DPD biedt het pakket nog één keer aan. Daarna gaat het naar het dichtstbijzijnde afhaalpunt van de betreffende vervoerder. U hebt daar 7 dagen om het op te halen met je legitimatie.",
   },
   {
     question: "Bezorgen jullie ook naar PostNL-afhaalpunten?",
@@ -56,12 +56,12 @@ const faq = [
   {
     question: "Wordt er een handtekening gevraagd?",
     answer:
-      "Nee. Standaard vragen we geen handtekening bij ontvangst - je pakket wordt gewoon bezorgd of in de brievenbus / bij de buren gelaten volgens de standaard PostNL/DPD-procedure.",
+      "Nee. Standaard vragen we geen handtekening bij ontvangst - uw pakket wordt gewoon bezorgd of in de brievenbus / bij de buren gelaten volgens de standaard PostNL/DPD-procedure.",
   },
   {
     question: "Wat is de maximale leveringstermijn?",
     answer:
-      "Maximaal 14 dagen na verzending. Is je pakket na 14 dagen nog steeds niet aangekomen door vertraging of vermissing? Dan verzenden wij automatisch een nieuwe bestelling - zonder discussie.",
+      "Maximaal 14 dagen na verzending. Is uw pakket na 14 dagen nog steeds niet aangekomen door vertraging of vermissing? Dan verzenden wij automatisch een nieuwe bestelling - zonder discussie.",
   },
   {
     question: "Kan ik meerdere merken tegelijk bestellen?",
@@ -72,7 +72,7 @@ const faq = [
 
 const timeline = [
   { t: "0:00", h: "Bestelling geplaatst", d: "Directe bevestiging per e-mail met ordernummer + betaalinstructies." },
-  { t: "Voor 11:00", h: "Betaling binnen", d: "Bankoverboeking (IBAN) of crypto. Zodra we het zien, is je order in behandeling." },
+  { t: "Voor 11:00", h: "Betaling binnen", d: "Bankoverboeking (IBAN) of crypto. Zodra we het zien, is uw order in behandeling." },
   { t: "Zelfde werkdag 15:00", h: "Order ingepakt", d: "Picker controleert batchcode en COA-nummer per item, neutrale verpakking." },
   { t: "Zelfde werkdag 17:00", h: "Bij PostNL / DPD", d: "Track & trace per mail, label is dan al actief." },
   { t: "Volgende werkdag", h: "Bezorgd", d: "NL: tussen 09:00 en 21:30 aan je vaste huisadres. BE: 1-3 werkdagen. Rest EU: 3-5 werkdagen." },
@@ -134,7 +134,7 @@ export default function BezorgingPage() {
             <p className="text-xs uppercase tracking-[0.15em] text-accent font-semibold">Tijdlijn</p>
             <h2 className="mt-2 font-display text-2xl text-text">Van bestelling tot deurmat</h2>
             <p className="mt-3 text-sm text-text-muted leading-relaxed">
-              Transparant per stap. Je weet altijd waar je pakket zich bevindt.
+              Transparant per stap. U weet altijd waar uw pakket zich bevindt.
             </p>
           </div>
           <ol className="space-y-5">

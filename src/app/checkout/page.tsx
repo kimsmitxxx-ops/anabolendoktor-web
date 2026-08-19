@@ -183,7 +183,7 @@ export default function CheckoutPage() {
               Veilig &amp; snel betalen
             </p>
             <p className="text-xs text-text-muted mb-3">
-              Na bevestigen krijg je per mail de betaalinstructies. Bestelling gaat direct na binnenkomst betaling de deur uit.
+              Na bevestigen krijg u per mail de betaalinstructies. Bestelling gaat direct na binnenkomst betaling de deur uit.
             </p>
             <PaymentRow variant="full" />
           </div>

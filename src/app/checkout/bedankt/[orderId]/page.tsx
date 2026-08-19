@@ -15,7 +15,7 @@ export const revalidate = 0;
 export const metadata: Metadata = {
   title: "Bestelling geplaatst - betaalinstructies",
   description:
-    "Je bestelling staat klaar. Op deze pagina vind je de betaalgegevens en kun je een screenshot van je betaling versturen om verwerking te bespoedigen.",
+    "Uw bestelling staat klaar. Op deze pagina vind je de betaalgegevens en kun u een screenshot van uw betaling versturen om verwerking te bespoedigen.",
   robots: { index: false, follow: false },
 };
 
@@ -33,7 +33,7 @@ export default async function BedanktPage({ params }: { params: { orderId: strin
     <div className="mx-auto max-w-3xl px-4 py-12">
       <div className="rounded-2xl border border-success/40 bg-success-soft/30 p-6 text-center">
         <CheckCircle2 size={36} className="mx-auto text-success" />
-        <h1 className="mt-3 font-display text-3xl text-primary">Bedankt voor je bestelling!</h1>
+        <h1 className="mt-3 font-display text-3xl text-primary">Bedankt voor uw bestelling!</h1>
         <p className="mt-2 text-text-muted">
           Bestelling <strong className="text-text tabular">{ref}</strong> · totaal{" "}
           <strong className="text-text tabular">{formatEUR(order.total_cents)}</strong>
@@ -93,8 +93,7 @@ export default async function BedanktPage({ params }: { params: { orderId: strin
             <Bitcoin size={12} /> Crypto-betaling (alternatief)
           </p>
           <p className="mt-2 text-xs text-text-muted">
-            Stuur het exacte bedrag (omrekenen naar coin van keuze) naar één van deze addresses. Voor markt-koers gebruik je
-            een live-converter zoals coinbase.com/converter.
+            Stuur het exacte bedrag (omrekenen naar coin van keuze) naar één van deze addresses. Voor markt-koers gebruik u een live-converter zoals coinbase.com/converter.
           </p>
           <ul className="mt-4 space-y-3">
             {payment.crypto_addresses.map((c) => (
@@ -124,7 +123,7 @@ export default async function BedanktPage({ params }: { params: { orderId: strin
           <div>
             <h2 className="font-display text-lg text-text">Verzending bespoedigen?</h2>
             <p className="mt-1 text-sm text-text-muted">
-              Stuur een screenshot van je betaling. Zodra wij die zien zetten we je bestelling al in behandeling - vaak
+              Stuur een screenshot van uw betaling. Zodra wij die zien zetten we uw bestelling al in behandeling - vaak
               uren sneller dan wachten tot de overboeking binnen is.
             </p>
           </div>

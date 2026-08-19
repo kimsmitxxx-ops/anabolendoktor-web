@@ -14,7 +14,7 @@ export default function WinkelmandPage() {
       {cart.items.length === 0 ? (
         <div className="mt-10 rounded-2xl border border-dashed border-paper-border bg-paper-soft p-12 text-center">
           <ShoppingBag className="mx-auto h-12 w-12 text-text-subtle" />
-          <p className="mt-3 text-text-muted">Je mand is leeg</p>
+          <p className="mt-3 text-text-muted">Uw mand is leeg</p>
           <Link href="/winkel" className="mt-5 inline-flex rounded-full bg-accent px-5 py-2 text-sm font-semibold text-accent-foreground hover:bg-accent-soft">
             Naar winkel
           </Link>

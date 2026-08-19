@@ -102,7 +102,7 @@ export function Footer() {
 
       <div className="border-t border-primary-soft">
         <div className="mx-auto max-w-7xl px-4 py-8 grid gap-6 lg:grid-cols-[1.4fr_1fr] items-start">
-          <NewsletterForm variant="footer-mini" heading="Nieuwe COA's in je inbox" />
+          <NewsletterForm variant="footer-mini" heading="Nieuwe COA's in uw inbox" />
           <div className="lg:justify-self-end">
             <p className="text-xs uppercase tracking-[0.15em] text-primary-foreground/60 mb-2">Betaalmethoden</p>
             <PaymentRow />

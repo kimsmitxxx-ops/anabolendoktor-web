@@ -18,7 +18,7 @@ const PRIVACY = "We sturen je 1-2 mails per maand · uitschrijven kan altijd";
 
 export function NewsletterForm({
   variant = "default",
-  heading = "Onderzoek in je inbox",
+  heading = "Onderzoek in uw inbox",
   subhead = "Studies, batch-updates en nieuwe COA's - zonder verkoopgedoe.",
   className,
   onSubmit,
@@ -75,7 +75,7 @@ export function NewsletterForm({
     return (
       <form onSubmit={handle} className={cn("flex flex-col gap-2 w-full max-w-md", className)}>
         {done ? (
-          <p className="text-sm text-accent font-medium">✓ Bedankt, je bent ingeschreven.</p>
+          <p className="text-sm text-accent font-medium">✓ Bedankt, u bent ingeschreven.</p>
         ) : (
           <>
             <div className="flex gap-2">
@@ -103,7 +103,7 @@ export function NewsletterForm({
       <h3 className="font-display text-2xl text-text">{heading}</h3>
       <p className="mt-2 text-sm text-text-muted max-w-md">{subhead}</p>
       {done ? (
-        <p className="mt-4 text-sm text-accent font-medium">✓ Bedankt, je bent ingeschreven. Eerstvolgende mail komt binnen 2 weken.</p>
+        <p className="mt-4 text-sm text-accent font-medium">✓ Bedankt, u bent ingeschreven. Eerstvolgende mail komt binnen 2 weken.</p>
       ) : (
         <>
           <form onSubmit={handle} className="mt-5 flex flex-col sm:flex-row gap-2 max-w-md">

@@ -27,9 +27,9 @@ export default function LoginPage() {
     return (
       <div className="mx-auto mt-20 max-w-md px-6 text-center">
         <CheckCircle2 className="mx-auto h-12 w-12 text-accent" />
-        <h1 className="mt-4 font-display text-2xl">Check je inbox</h1>
+        <h1 className="mt-4 font-display text-2xl">Check uw inbox</h1>
         <p className="mt-2 text-sm text-text-muted">
-          Login-link gestuurd naar <strong>{email}</strong>. Klik 'm aan en je bent binnen.
+          Login-link gestuurd naar <strong>{email}</strong>. Klik 'm aan en u bent binnen.
         </p>
       </div>
     );
@@ -39,14 +39,14 @@ export default function LoginPage() {
     <div className="mx-auto mt-20 max-w-md px-6">
       <h1 className="font-display text-3xl">Inloggen</h1>
       <p className="mt-2 text-sm text-text-muted">
-        Geen wachtwoord. Vul je email in en we sturen een login-link.
+        Geen wachtwoord. Vul uw email in en we sturen een login-link.
       </p>
       <form onSubmit={submit} className="mt-6 space-y-3">
         <div className="relative">
           <Mail className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-text-subtle" />
           <input
             type="email" required value={email} onChange={(e) => setEmail(e.target.value)}
-            placeholder="jij@email.com"
+            placeholder="u@email.com"
             className="w-full rounded-lg border border-paper-border bg-paper-soft px-4 py-3 pl-10 text-sm outline-none focus:border-accent"
           />
         </div>

@@ -28,7 +28,7 @@ export function RestockNotifyForm({ productId, productName }: { productId: strin
       });
       const j = await res.json().catch(() => ({}));
       if (!res.ok) {
-        setErr(j.error || "Kon je niet aanmelden, probeer opnieuw");
+        setErr(j.error || "Kon u niet aanmelden, probeer opnieuw");
         return;
       }
       setDone(true);
@@ -63,7 +63,7 @@ export function RestockNotifyForm({ productId, productName }: { productId: strin
         <input
           type="email"
           required
-          placeholder="jij@voorbeeld.nl"
+          placeholder="u@voorbeeld.nl"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="h-10 px-3 rounded border border-border bg-background text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"

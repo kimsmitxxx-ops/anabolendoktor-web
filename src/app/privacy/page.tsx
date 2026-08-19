@@ -15,14 +15,14 @@ const sections = [
     id: "wie",
     title: "1. Wie zijn wij",
     body: [
-      "anabolendoktor B.V., gevestigd aan de Westhavenkade 12, 3134 NA Vlaardingen, is verwerkingsverantwoordelijke voor de gegevens die via anabolendoktor.com worden verzameld. Ons KvK- en BTW-nummer staan op de factuur die je na je bestelling ontvangt.",
+      "anabolendoktor B.V., gevestigd aan de Westhavenkade 12, 3134 NA Vlaardingen, is verwerkingsverantwoordelijke voor de gegevens die via anabolendoktor.com worden verzameld. Ons KvK- en BTW-nummer staan op de factuur die u na uw bestelling ontvangt.",
     ],
   },
   {
     id: "welke",
     title: "2. Welke gegevens we verwerken",
     body: [
-      "NAW-gegevens en e-mailadres - voor het uitvoeren van je bestelling en correspondentie.",
+      "NAW-gegevens en e-mailadres - voor het uitvoeren van uw bestelling en correspondentie.",
       "Telefoonnummer - alleen als je dit zelf opgeeft, voor track & trace of WhatsApp-support.",
       "Bestelhistorie - om garantie- en retourclaims correct af te handelen.",
       "Technische data (IP-adres, browsertype) - uitsluitend voor beveiliging en fraudepreventie.",
@@ -35,17 +35,17 @@ const sections = [
       "Uitvoering van de koopovereenkomst (artikel 6 lid 1 sub b AVG).",
       "Voldoen aan wettelijke verplichtingen, zoals fiscale bewaartermijnen (sub c).",
       "Gerechtvaardigd belang voor beveiliging en fraudepreventie (sub f).",
-      "Wij verwerken jouw gegevens niet voor marketingdoeleinden zonder expliciete toestemming.",
+      "Wij verwerken uw gegevens niet voor marketingdoeleinden zonder expliciete toestemming.",
     ],
   },
   {
     id: "delen",
     title: "4. Met wie we gegevens delen",
     body: [
-      "PostNL en DHL - voor de fysieke bezorging van je pakket.",
+      "PostNL en DHL - voor de fysieke bezorging van uw pakket.",
       "Mollie B.V. - betalingsverwerker, ontvangt alleen het transactiebedrag en je e-mailadres.",
       "Onze accountant - voor de wettelijke administratie, alleen factuurgegevens.",
-      "Wij verkopen of verhuren jouw gegevens nooit aan derden.",
+      "Wij verkopen of verhuren uw gegevens nooit aan derden.",
     ],
   },
   {
@@ -59,11 +59,11 @@ const sections = [
   },
   {
     id: "rechten",
-    title: "6. Jouw rechten",
+    title: "6. Uw rechten",
     body: [
-      "Je hebt het recht op inzage, correctie, verwijdering, beperking, dataportabiliteit en bezwaar tegen verwerking.",
-      "Een verzoek dien je in via het contactformulier op de website. Wij reageren binnen 14 dagen.",
-      "Ben je het oneens met onze afhandeling? Dan kun je een klacht indienen bij de Autoriteit Persoonsgegevens.",
+      "U hebt het recht op inzage, correctie, verwijdering, beperking, dataportabiliteit en bezwaar tegen verwerking.",
+      "Een verzoek dien u in via het contactformulier op de website. Wij reageren binnen 14 dagen.",
+      "Ben je het oneens met onze afhandeling? Dan kun u een klacht indienen bij de Autoriteit Persoonsgegevens.",
     ],
   },
   {
@@ -89,7 +89,7 @@ export default function PrivacyPage() {
     <>
       <PageHero
         eyebrow="Privacy"
-        title="Wat we met je gegevens doen, in mensentaal"
+        title="Wat we met uw gegevens doen, in mensentaal"
         intro="Versie 2.1 - laatst bijgewerkt op 12 juni 2026. Wij verwerken zo min mogelijk gegevens en bewaren ze nooit langer dan nodig."
       />
 

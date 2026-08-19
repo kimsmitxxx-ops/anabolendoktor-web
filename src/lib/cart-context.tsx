@@ -17,6 +17,8 @@ type Ctx = {
   add: (item: Omit<CartItem, "qty">, qty?: number) => void;
   remove: (id: string) => void;
   setQty: (id: string, qty: number) => void;
+  /** Zet de mand in een keer terug (herstel na afgebroken betaling). */
+  replace: (items: CartItem[]) => void;
   clear: () => void;
   total: number;
   count: number;
@@ -81,13 +83,14 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const remove = (id: string) => setItems((p) => p.filter((x) => x.id !== id));
   const setQty = (id: string, qty: number) =>
     setItems((p) => qty <= 0 ? p.filter((x) => x.id !== id) : p.map((x) => x.id === id ? { ...x, qty } : x));
+  const replace = (next: CartItem[]) => setItems(next);
   const clear = () => setItems([]);
   const total = items.reduce((s, x) => s + x.price_cents * x.qty, 0);
   const count = items.reduce((s, x) => s + x.qty, 0);
 
   return (
     <CartCtx.Provider value={{
-      items, add, remove, setQty, clear, total, count,
+      items, add, remove, setQty, replace, clear, total, count,
       isOpen,
       open: () => setOpenState(true),
       close: () => setOpenState(false),

@@ -57,13 +57,13 @@ export function ContactForm() {
     >
       <h2 className="font-display text-2xl text-primary-foreground">Stuur een bericht</h2>
       <p className="mt-2 text-sm text-primary-foreground/75">
-        Reactie binnen 1 werkdag. Voeg je ordernummer toe als het om een lopende bestelling gaat.
+        Reactie binnen 1 werkdag. Voeg uw ordernummer toe als het om een lopende bestelling gaat.
       </p>
 
       {sent ? (
         <div className="mt-6 rounded-md border border-success/40 bg-success-soft/30 p-5 text-sm text-primary-foreground">
           <CheckCircle2 size={18} className="text-success" />
-          <p className="mt-2 font-medium">Bedankt, je bericht staat in onze inbox.</p>
+          <p className="mt-2 font-medium">Bedankt, uw bericht staat in onze inbox.</p>
           <p className="mt-1 text-primary-foreground/75">
             We reageren binnen 1 werkdag op {form.email || "het opgegeven e-mailadres"}. Voor spoed
             gebruik je de live chat rechtsonder.
@@ -88,7 +88,7 @@ export function ContactForm() {
               required
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
-              placeholder="jij@voorbeeld.nl"
+              placeholder="u@voorbeeld.nl"
               className="w-full h-11 px-3 rounded border border-primary-muted bg-primary-soft text-sm text-primary-foreground placeholder:text-primary-foreground/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             />
           </label>
@@ -128,7 +128,7 @@ export function ContactForm() {
               required
               value={form.message}
               onChange={(e) => setForm({ ...form, message: e.target.value })}
-              placeholder="Beschrijf je vraag zo concreet mogelijk."
+              placeholder="Beschrijf uw vraag zo concreet mogelijk."
               className="w-full px-3 py-2.5 rounded border border-primary-muted bg-primary-soft text-sm text-primary-foreground placeholder:text-primary-foreground/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             />
           </div>

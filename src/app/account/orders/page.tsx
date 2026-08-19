@@ -26,7 +26,7 @@ export default async function OrdersPage() {
         <ArrowLeft className="h-3 w-3" /> Terug naar account
       </Link>
       <h1 className="mt-3 font-display text-3xl">Bestellingen</h1>
-      <p className="mt-2 text-sm text-text-muted">Alle bestellingen die je ooit hebt geplaatst.</p>
+      <p className="mt-2 text-sm text-text-muted">Alle bestellingen die u ooit hebt geplaatst.</p>
 
       {orders && orders.length > 0 ? (
         <div className="mt-8 overflow-hidden rounded-2xl border border-paper-border bg-paper-soft">

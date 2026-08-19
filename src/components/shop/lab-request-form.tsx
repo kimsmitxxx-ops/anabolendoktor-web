@@ -57,7 +57,7 @@ export function LabRequestForm() {
         <h3 className="mt-2 font-display text-xl">Aanvraag binnen - top!</h3>
         <p className="mt-2 text-sm text-primary/75">
           We nemen binnen 1 werkdag contact op met instructies hoe je je flacon naar Vlaardingen
-          stuurt en wat er daarna gebeurt. Check je inbox (en spam).
+          stuurt en wat er daarna gebeurt. Check uw inbox (en spam).
         </p>
       </div>
     );
@@ -67,7 +67,7 @@ export function LabRequestForm() {
     <form onSubmit={handleSubmit} className="space-y-3">
       <div className="grid gap-3 sm:grid-cols-2">
         <Input name="name" label="Naam" placeholder="Voor- en achternaam" required />
-        <Input name="email" label="E-mail" type="email" placeholder="jij@voorbeeld.nl" required />
+        <Input name="email" label="E-mail" type="email" placeholder="u@voorbeeld.nl" required />
       </div>
       <Input name="product" label="Product" placeholder="bv. Testosteron Enanthate 250" required />
       <Input name="merk" label="Merk + batchcode (indien bekend)" placeholder="bv. Pharmacom · batch L23-0411" />

@@ -17,7 +17,7 @@ export function ReviewForm({ productId }: { productId: string }) {
     e.preventDefault();
     setError(null);
     if (!name.trim() || !body.trim()) {
-      setError("Vul je naam en review in.");
+      setError("Vul uw naam en review in.");
       return;
     }
     setSubmitting(true);
@@ -90,7 +90,7 @@ export function ReviewForm({ productId }: { productId: string }) {
       </div>
 
       <label className="block">
-        <span className="text-xs text-text-muted">Je naam</span>
+        <span className="text-xs text-text-muted">Uw naam</span>
         <input
           value={name}
           onChange={(e) => setName(e.target.value)}

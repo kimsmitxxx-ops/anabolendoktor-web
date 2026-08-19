@@ -55,35 +55,35 @@ const TERMS: Term[] = [
     id: "hpta",
     term: "HPTA-as",
     short: "Hypothalamus-Pituitary-Testicular Axis",
-    body: "De feedback-loop tussen hypothalamus, hypofyse en testes die de natuurlijke testosteronproductie regelt. Tijdens een AAS-cycle wordt deze onderdrukt (suppressie) omdat het lichaam denkt dat er genoeg testosteron circuleert. Na de cycle moet je HPTA-as herstellen - dat is precies wat PCT doet.",
+    body: "De feedback-loop tussen hypothalamus, hypofyse en testes die de natuurlijke testosteronproductie regelt. Tijdens een AAS-cycle wordt deze onderdrukt (suppressie) omdat het lichaam denkt dat er genoeg testosteron circuleert. Na de cycle moet uw HPTA-as herstellen - dat is precies wat PCT doet.",
     related: ["pct", "suppressie", "lh", "fsh"],
   },
   {
     id: "suppressie",
     term: "Suppressie",
     short: "Onderdrukking natuurlijke productie",
-    body: "Tijdelijke shutdown van je eigen testosteron-productie tijdens een AAS-cycle. LH en FSH dalen naar nul, testes krimpen enigszins, endogene test wordt niet meer aangemaakt. Bij goede PCT herstelt dit in 3-6 maanden. Zonder PCT kan het maanden tot een jaar duren, of blijvend zijn bij lange/hoge-dosis cycles.",
+    body: "Tijdelijke shutdown van uw eigen testosteron-productie tijdens een AAS-cycle. LH en FSH dalen naar nul, testes krimpen enigszins, endogene test wordt niet meer aangemaakt. Bij goede PCT herstelt dit in 3-6 maanden. Zonder PCT kan het maanden tot een jaar duren, of blijvend zijn bij lange/hoge-dosis cycles.",
     related: ["hpta", "pct"],
   },
   {
     id: "ester",
     term: "Ester",
     short: "Chemische groep die release-tijd bepaalt",
-    body: "Aan een AAS gekoppelde vetzuurketen die bepaalt hoe snel het middel loskomt in het bloed. Korte esters (Propionaat, Acetate) werken snel en zijn snel uit je systeem; lange esters (Enanthate, Cypionate, Decanoate) hebben stabielere bloedwaardes en minder-frequente injecties nodig. Sustanon is een blend van 4 verschillende esters.",
+    body: "Aan een AAS gekoppelde vetzuurketen die bepaalt hoe snel het middel loskomt in het bloed. Korte esters (Propionaat, Acetate) werken snel en zijn snel uit uw systeem; lange esters (Enanthate, Cypionate, Decanoate) hebben stabielere bloedwaardes en minder-frequente injecties nodig. Sustanon is een blend van 4 verschillende esters.",
     related: ["half-life", "testosteron"],
   },
   {
     id: "half-life",
     term: "Half-life (halfwaardetijd)",
     short: "Tijd tot 50% van de dosis is afgebroken",
-    body: "De tijd waarin de concentratie van een middel in je bloed halveert. Test Propionaat: ~2 dagen (om de dag prikken). Test Enanthate: ~7 dagen (2× per week). Trenbolone Enanthate: ~7 dagen. Deca (Nandrolon Decanoate): ~15 dagen. Bepaalt hoe vaak je moet injecteren en hoe lang detectie duurt.",
+    body: "De tijd waarin de concentratie van een middel in uw bloed halveert. Test Propionaat: ~2 dagen (om de dag prikken). Test Enanthate: ~7 dagen (2× per week). Trenbolone Enanthate: ~7 dagen. Deca (Nandrolon Decanoate): ~15 dagen. Bepaalt hoe vaak u moet injecteren en hoe lang detectie duurt.",
     related: ["ester"],
   },
   {
     id: "bloedwerk",
     term: "Bloedwerk",
     short: "Labwaardes tijdens/rond een cycle",
-    body: "Meet je vóór, halverwege (week 6) en na een cycle. Standaard panel: totaal + vrij testosteron, oestradiol (E2), SHBG, LH, FSH, prolactine, hematocriet + hemoglobine, ALT + AST (lever), lipidenpanel (HDL/LDL/triglyceriden), creatinine + eGFR (nier), TSH. Zonder bloedwerk kuren = blind rijden - je ziet niet wat er mis gaat tot het te laat is.",
+    body: "Meet u vóór, halverwege (week 6) en na een cycle. Standaard panel: totaal + vrij testosteron, oestradiol (E2), SHBG, LH, FSH, prolactine, hematocriet + hemoglobine, ALT + AST (lever), lipidenpanel (HDL/LDL/triglyceriden), creatinine + eGFR (nier), TSH. Zonder bloedwerk kuren = blind rijden - u ziet niet wat er mis gaat tot het te laat is.",
     related: ["hematocriet", "shbg", "e2"],
     link: "/lab",
   },
@@ -98,7 +98,7 @@ const TERMS: Term[] = [
     id: "shbg",
     term: "SHBG",
     short: "Sex Hormone Binding Globulin",
-    body: "Eiwit dat testosteron in je bloed bindt en 'inactief' maakt. Alleen vrij (niet-gebonden) testosteron heeft biologisch effect. Sommige AAS (Winstrol, Proviron) verlagen SHBG waardoor méér vrij testosteron beschikbaar komt - een van de redenen dat een klein beetje Winstrol een cycle 'harder' kan laten aanvoelen.",
+    body: "Eiwit dat testosteron in uw bloed bindt en 'inactief' maakt. Alleen vrij (niet-gebonden) testosteron heeft biologisch effect. Sommige AAS (Winstrol, Proviron) verlagen SHBG waardoor méér vrij testosteron beschikbaar komt - een van de redenen dat een klein beetje Winstrol een cycle 'harder' kan laten aanvoelen.",
     related: ["testosteron", "bloedwerk"],
   },
   {
@@ -119,7 +119,7 @@ const TERMS: Term[] = [
     id: "clomid",
     term: "Clomid (Clomifeen)",
     short: "SERM voor nakuur",
-    body: "Selectieve oestrogeen-receptor modulator die de hypothalamus 'blind' maakt voor oestrogeen, wat de LH-productie flink omhoog jaagt en daarmee je testes weer wakker maakt. Standaard PCT-dosering: 50/50/25/25 mg over 4 weken. Bijwerkingen: emotionele labiliteit, visuele klachten bij >100 mg/dag.",
+    body: "Selectieve oestrogeen-receptor modulator die de hypothalamus 'blind' maakt voor oestrogeen, wat de LH-productie flink omhoog jaagt en daarmee uw testes weer wakker maakt. Standaard PCT-dosering: 50/50/25/25 mg over 4 weken. Bijwerkingen: emotionele labiliteit, visuele klachten bij >100 mg/dag.",
     related: ["pct", "nolvadex", "serm"],
   },
   {
@@ -162,7 +162,7 @@ const TERMS: Term[] = [
     id: "coa",
     term: "COA",
     short: "Certificate of Analysis",
-    body: "Document dat de meetwaardes van een onafhankelijk labtest vermeldt: identiteit, HPLC-zuiverheid, batchnummer en analysedatum. Iedere UT-batch heeft een openbaar COA doorzoekbaar per batchcode. Zonder COA weet je niet wat je in de fles hebt.",
+    body: "Document dat de meetwaardes van een onafhankelijk labtest vermeldt: identiteit, HPLC-zuiverheid, batchnummer en analysedatum. Iedere UT-batch heeft een openbaar COA doorzoekbaar per batchcode. Zonder COA weet u niet wat u in de fles hebt.",
     related: ["hplc", "janoshik", "batchcode"],
     link: "/lab",
   },
@@ -170,7 +170,7 @@ const TERMS: Term[] = [
     id: "batchcode",
     term: "Batchcode",
     short: "Unieke code per productie-batch",
-    body: "Op iedere flacon of strip staat een code die verwijst naar de specifieke productie-batch en het bijbehorende lab-rapport. Zonder batchcode kun je een COA niet verifiëren. Kloppende batchcode + COA = je weet wat je hebt.",
+    body: "Op iedere flacon of strip staat een code die verwijst naar de specifieke productie-batch en het bijbehorende lab-rapport. Zonder batchcode kun u een COA niet verifiëren. Kloppende batchcode + COA = u weet wat u hebt.",
     related: ["coa", "janoshik"],
     link: "/lab",
   },
@@ -192,28 +192,28 @@ const TERMS: Term[] = [
     id: "trt",
     term: "TRT-dose",
     short: "Testosterone Replacement Therapy dosering",
-    body: "100-200 mg testosteron per week - de dosering die medische TRT gebruikt om natuurlijke test-niveaus te herstellen bij hypogonadisme. Wordt in recreatief gebruik ingezet als 'basis-dose' waar krachtigere compounds bovenop gestackt worden. Weinig bijwerkingen bij deze dosis, maar wél suppressief op je HPTA-as.",
+    body: "100-200 mg testosteron per week - de dosering die medische TRT gebruikt om natuurlijke test-niveaus te herstellen bij hypogonadisme. Wordt in recreatief gebruik ingezet als 'basis-dose' waar krachtigere compounds bovenop gestackt worden. Weinig bijwerkingen bij deze dosis, maar wél suppressief op uw HPTA-as.",
     related: ["testosteron", "hpta"],
   },
   {
     id: "stack",
     term: "Stack",
     short: "Combinatie van meerdere compounds",
-    body: "Twee of meer AAS die je gelijktijdig gebruikt. Klassieke stacks: Test + Deca (mass), Test + Trenbolone (cutting), Test + Anavar (recomp). Basis is bijna altijd testosteron - pure Deca- of Trenbolone-cycles zonder test crashen je libido gegarandeerd.",
+    body: "Twee of meer AAS die u gelijktijdig gebruikt. Klassieke stacks: Test + Deca (mass), Test + Trenbolone (cutting), Test + Anavar (recomp). Basis is bijna altijd testosteron - pure Deca- of Trenbolone-cycles zonder test crashen uw libido gegarandeerd.",
     related: ["testosteron", "deca", "trenbolone"],
   },
   {
     id: "blend",
     term: "Blend",
     short: "Mix van meerdere esters in één flacon",
-    body: "Combinatie van verschillende esters in één flacon. Sustanon 250 is een blend van propionaat, phenylpropionaat, isocaproaat en decanoaat. Voordeel: minder injecties nodig voor stabiele bloedwaardes. Nadeel: iedere ester zit al vast in de dosering - je kunt niet één ester aan- of uitzetten.",
+    body: "Combinatie van verschillende esters in één flacon. Sustanon 250 is een blend van propionaat, phenylpropionaat, isocaproaat en decanoaat. Voordeel: minder injecties nodig voor stabiele bloedwaardes. Nadeel: iedere ester zit al vast in de dosering - u kunt niet één ester aan- of uitzetten.",
     related: ["ester", "testosteron"],
   },
   {
     id: "kuur",
     term: "Kuur / Cycle",
     short: "Periode waarin AAS gebruikt wordt",
-    body: "Blok van een aantal weken waarin je AAS gebruikt op vast schema. Beginners: 12-16 weken. Advanced: 16-20 weken. Langere cycles = zwaardere HPTA-shutdown en langer PCT-herstel. Tussen cycles minimaal een even lange 'off-time' (time on = time off) om je systeem te laten recoveren.",
+    body: "Blok van een aantal weken waarin je AAS gebruikt op vast schema. Beginners: 12-16 weken. Advanced: 16-20 weken. Langere cycles = zwaardere HPTA-shutdown en langer PCT-herstel. Tussen cycles minimaal een even lange 'off-time' (time on = time off) om uw systeem te laten recoveren.",
     related: ["pct", "hpta"],
   },
   {
@@ -241,14 +241,14 @@ const TERMS: Term[] = [
     id: "lh",
     term: "LH",
     short: "Luteïniserend Hormoon",
-    body: "Hormoon uit de hypofyse dat de Leydig-cellen in de testes aanzet tot testosteron-productie. Tijdens een AAS-cycle wordt LH onderdrukt naar nagenoeg nul; PCT met Clomid/Nolvadex jaagt LH weer omhoog om herstel te starten. Meet LH als onderdeel van je bloedwerk vóór en na een cycle.",
+    body: "Hormoon uit de hypofyse dat de Leydig-cellen in de testes aanzet tot testosteron-productie. Tijdens een AAS-cycle wordt LH onderdrukt naar nagenoeg nul; PCT met Clomid/Nolvadex jaagt LH weer omhoog om herstel te starten. Meet LH als onderdeel van uw bloedwerk vóór en na een cycle.",
     related: ["hpta", "pct", "bloedwerk"],
   },
   {
     id: "fsh",
     term: "FSH",
     short: "Follikel Stimulerend Hormoon",
-    body: "Hormoon uit de hypofyse dat spermatogenese ondersteunt. Wordt eveneens onderdrukt tijdens een AAS-cycle, hersteld tijdens PCT. Belangrijk als je vruchtbaarheid wilt houden - een langdurige FSH-suppressie kan blijvend gevolg zijn.",
+    body: "Hormoon uit de hypofyse dat spermatogenese ondersteunt. Wordt eveneens onderdrukt tijdens een AAS-cycle, hersteld tijdens PCT. Belangrijk als uw vruchtbaarheid wilt houden - een langdurige FSH-suppressie kan blijvend gevolg zijn.",
     related: ["hpta", "lh", "pct"],
   },
 ];
@@ -283,7 +283,7 @@ export default function BegrippenlijstPage() {
           Begrippenlijst
         </h1>
         <p className="mt-4 max-w-2xl text-text-muted leading-relaxed">
-          Uitleg van de begrippen die je op deze site en in de kennisbank tegenkomt. Hover over
+          Uitleg van de begrippen die u op deze site en in de kennisbank tegenkomt. Hover over
           een term (dotted underline) om de korte definitie te zien, of klik op de volledige
           uitleg hieronder. Geschreven voor beginners en voor gebruikers die hun kennis willen
           checken.
