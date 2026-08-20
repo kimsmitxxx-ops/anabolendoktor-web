@@ -193,6 +193,62 @@ export const ADVIES: Advies[] = [
     cta: { tekst: "Consult aanvragen", href: "/consult" },
   },
   {
+    slug: "herstel-na-een-kuur",
+    titel: "Herstel na een kuur, ook bij kinderwens",
+    metaTitle: "Herstel na een kuur: behandelroute, hCG, SERM's en kinderwens",
+    metaDescription:
+      "Hoe herstel na een anabolenkuur verloopt, welke middelen een arts inzet zoals hCG en clomifeen, wat er gemonitord wordt en wat realistisch is bij een kinderwens.",
+    intro:
+      "Dit is de meest gestelde vraag die wij krijgen: ik ben gestopt, mijn waarden komen niet terug, en er is een kinderwens. Hieronder staat hoe het herstel werkt, welke behandelingen bestaan en hoe de route via een arts eruitziet. Wij schrijven niets voor en geven geen doseerschema's; bij kinderwens is dat ook echt niet de plek waar u wilt improviseren.",
+    blokken: [
+      {
+        h: "Waarom het herstel soms uitblijft",
+        p: [
+          "Zolang u androgenen van buitenaf toediende, viel het signaal vanuit de hypofyse stil: LH en FSH gingen omlaag en de testes kregen geen opdracht meer. Na het staken moet die aansturing weer op gang komen en moeten de testes daarop reageren. Bij de meeste mensen gebeurt dat, maar de as kan traag zijn en soms blijft het langdurig achter.",
+          "Voor de zaadcelproductie ligt het lastiger dan voor de testosteronproductie. Zaadcellen ontstaan onder invloed van FSH en van een hoge testosteronconcentratie in de testis zelf. Die lokale concentratie krijgt u niet terug met testosteron uit een flesje; dat onderdrukt de as juist verder. Dat is precies waarom een testosteronkuur en een kinderwens niet samengaan.",
+        ],
+      },
+      {
+        h: "Welke middelen een arts kan inzetten",
+        p: [
+          "hCG bootst LH na en zet de cellen van Leydig direct aan tot productie in de testis zelf. Het wordt daarom gebruikt om de lokale testosteronconcentratie te herstellen, wat voor de zaadcelproductie doorslaggevend is. In Nederland is het receptplichtig.",
+          "SERM's zoals clomifeen en tamoxifen werken op een ander punt: zij blokkeren de terugkoppeling van oestrogeen op de hypofyse, waardoor die weer meer LH en FSH afgeeft. Zij zetten dus de eigen as aan in plaats van hem te vervangen.",
+          "Bij uitblijvend herstel van de zaadcelproductie wordt soms FSH toegevoegd. Welke combinatie zinvol is en in welke volgorde, hangt af van uw waarden en van hoe lang en hoe zwaar u heeft gebruikt. Daar valt geen algemeen schema voor te geven, en een schema van internet houdt geen rekening met uw uitgangspositie.",
+        ],
+      },
+      {
+        h: "Wat er gemonitord wordt",
+        p: [
+          "Een behandeling zonder metingen is gokken. Wat doorgaans gevolgd wordt: LH en FSH om te zien of de aansturing terugkomt, totaal en vrij testosteron voor de productie, oestradiol omdat dat bij hCG en SERM's kan oplopen, en SHBG voor de interpretatie van het vrije deel.",
+          "Bij kinderwens is de semenanalyse de enige maat die er werkelijk toe doet. Bloedwaarden kunnen er goed uitzien terwijl de zaadkwaliteit nog achterblijft; het omgekeerde komt ook voor. Reken op herhaalde metingen, want de aanmaakcyclus van zaadcellen duurt ongeveer drie maanden en elke verandering is pas daarna zichtbaar.",
+        ],
+      },
+      {
+        h: "Wat realistisch is qua termijn",
+        p: [
+          "Voor de testosteronproductie zijn termijnen van enkele maanden tot ruim een jaar beschreven. Voor de zaadcelproductie ligt dat doorgaans langer, en de eerste zichtbare verbetering laat vaak drie tot zes maanden op zich wachten omdat de aanmaakcyclus nu eenmaal die tijd kost.",
+          "Duur en dosering van het gebruik hangen samen met hoe traag het gaat. Dat is vervelend nieuws voor wie jarenlang heeft gebruikt, maar het is beter te weten dan te hopen: het bepaalt of u nu al moet beginnen met de route via een arts of dat afwachten verantwoord is.",
+        ],
+      },
+      {
+        h: "De route via een arts, en hoe u die ingaat",
+        p: [
+          "Begin bij uw huisarts en wees eerlijk over wat u heeft gebruikt en hoe lang. Dat voelt ongemakkelijk, maar zonder die informatie wordt u onderzocht op de verkeerde dingen en duurt alles langer. Bij kinderwens is doorverwijzing naar een uroloog of androloog de logische stap; die kan hCG en de overige middelen voorschrijven en de behandeling monitoren.",
+          "Wat wij hierin doen is uw waarden lezen en uitleggen, en met u op papier zetten wat er speelt. Met een overzicht van uw metingen over tijd komt u met een concrete vraag binnen in plaats van een vaag verhaal, en dat scheelt in de praktijk maanden.",
+        ],
+      },
+    ],
+    lijstTitel: "Wat u meeneemt naar dat gesprek",
+    lijst: [
+      "Welke middelen u heeft gebruikt, in welke periode en in welke orde van grootte",
+      "Wanneer u bent gestopt en of u sindsdien iets heeft gebruikt, ook supplementen",
+      "Alle bloeduitslagen die u heeft, op volgorde van datum",
+      "Of er een concrete kinderwens is en op welke termijn",
+      "Klachten die u ervaart: stemming, libido, energie, slaap",
+    ],
+    cta: { tekst: "Consult herstel na cycle", href: "/winkel/consult" },
+  },
+  {
     slug: "eerste-kuur-overwegen",
     titel: "Een eerste kuur overwegen",
     metaTitle: "Eerste kuur overwegen: wat u vooraf zou moeten weten",
