@@ -18,6 +18,9 @@ const SB_ANON =
  */
 export const supabase = createClient(SB_URL, SB_ANON, {
   auth: { persistSession: false, autoRefreshToken: false },
+  // Zie anabolenpro: Next cachet fetches in de Vercel Data Cache en die overleeft
+  // een deploy, dus force-dynamic alleen levert alsnog oude data uit Supabase.
+  global: { fetch: (url, init) => fetch(url, { ...init, cache: "no-store" }) },
 });
 
 /**
