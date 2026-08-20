@@ -22,6 +22,7 @@ const ALLOWED_EVENTS = new Set([
   "restock_notify",
   "contact_submit",
   "chat_opened",
+  "keuzehulp_voltooid",
   "newsletter_signup",
 ]);
 

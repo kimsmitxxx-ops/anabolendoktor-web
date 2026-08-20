@@ -4,6 +4,9 @@ import { useCart } from "@/lib/cart-context";
 import { formatEUR } from "@/lib/queries";
 import { calcTotals, unitDiscountPct } from "@/lib/bulk-discount";
 import { PaymentRow } from "@/components/payment-row";
+import { backupCart } from "@/lib/cart-backup";
+import { RestoreCartBanner } from "@/components/restore-cart-banner";
+import { track } from "@/lib/analytics";
 import { Sparkles, UserPlus, Lock } from "lucide-react";
 import { useState } from "react";
 
@@ -52,9 +55,21 @@ export default function CheckoutPage() {
         setErr(j.error || "Bestelling kon niet worden aangemaakt");
         return;
       }
+      track("order_placed", {
+        order_reference: j.order_id,
+        value_cents: j.total_cents,
+        items: cart.items.length,
+      });
+
+      // Eerst een kopie van de mand wegschrijven, dan pas legen. Wie de
+      // betaling afbreekt en terugkomt, vindt zijn mand anders leeg terug.
+      backupCart(cart.items);
       cart.clear();
-      // Redirect naar bedankt-pagina met betaalinstructies + screenshot-upload
-      window.location.href = `/checkout/bedankt/${j.order_id}`;
+
+      // Betaallink als die er is, anders de bedankt-pagina met overboeking,
+      // crypto en de mogelijkheid een betaalbewijs te uploaden.
+      if (j.paytail_url) track("payment_redirect", { order_reference: j.order_id });
+      window.location.href = j.paytail_url || `/checkout/bedankt/${j.order_id}`;
     } catch {
       setErr("Verbindingsfout - probeer opnieuw");
     } finally {
@@ -69,6 +84,7 @@ export default function CheckoutPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-10">
       <h1 className="font-display text-3xl">Afrekenen</h1>
+      <RestoreCartBanner />
       <form onSubmit={submit} className="mt-6 grid gap-8 lg:grid-cols-3">
         <div className="space-y-4 lg:col-span-2">
           <Field
@@ -93,7 +109,8 @@ export default function CheckoutPage() {
                   <UserPlus size={14} className="text-accent" /> Maak meteen een account aan
                 </p>
                 <p className="mt-0.5 text-xs text-text-muted">
-                  Volg uw bestellingen, herhaal eerdere kuren in 1 klik en zie je COA-archief terug.
+                  Bekijk uw bestellingen en eerdere uitslagen terug, en bestel een herhaalmeting
+                  met één klik.
                 </p>
               </div>
             </label>

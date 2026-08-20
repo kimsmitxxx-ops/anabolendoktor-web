@@ -17,7 +17,7 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Contact"
         title="Snelle antwoorden van ons team"
-        intro="Of het nu om een batch-COA, een retourvraag of een protocoladvies gaat: ons team reageert elke dag tussen 09:00 en 21:00."
+        intro="Vragen over een consult, een bloedonderzoek of een bestelling: wij reageren binnen een werkdag. Voor medische spoed belt u uw huisarts of de huisartsenpost."
       />
 
       <section className="mx-auto max-w-7xl px-4 py-14 grid gap-10 lg:grid-cols-[1fr_1.2fr]">

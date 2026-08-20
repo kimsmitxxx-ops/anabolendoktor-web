@@ -5,9 +5,9 @@ import { MessageCircle, Send, UserRound, Loader2, AlertCircle } from "lucide-rea
 import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet";
 
 const SHOP_DASH_URL = process.env.NEXT_PUBLIC_SHOP_DASH_URL || "https://shop-dash-ruby.vercel.app";
-const SHOP_ID = "96b47e49-34fd-4d6c-99d3-d49d912be046"; // anabolenpro
-const LS_CHAT_ID = "apo_chat_id";
-const LS_VISITOR = "apo_chat_visitor";
+const SHOP_ID = "96b47e49-34fd-4d6c-99d3-d49d912be046"; // anabolendoktor
+const LS_CHAT_ID = "adk_chat_id";
+const LS_VISITOR = "adk_chat_visitor";
 const POLL_MS = 7000;
 
 type Role = "visitor" | "ai" | "admin";

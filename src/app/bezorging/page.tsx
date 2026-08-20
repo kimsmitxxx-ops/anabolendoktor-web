@@ -66,14 +66,14 @@ const faq = [
   {
     question: "Kan ik meerdere merken tegelijk bestellen?",
     answer:
-      "Ja. Wij werken met twee verzendlocaties: één voor Utinon-producten (Locatie 01) en één voor de overige merken (Locatie 02). Bestelt u uit beide, dan krijgt u twee pakketten en betaal je 2× verzendkosten.",
+      "Nee. Alles wat wij fysiek verzenden, gaat vanaf één locatie in Nederland. Bestelt u meerdere producten tegelijk, dan zit alles in één pakket en betaalt u één keer verzendkosten. Consulten en bloedonderzoek worden niet verzonden; die ontvangt u per e-mail.",
   },
 ];
 
 const timeline = [
   { t: "0:00", h: "Bestelling geplaatst", d: "Directe bevestiging per e-mail met ordernummer + betaalinstructies." },
   { t: "Voor 11:00", h: "Betaling binnen", d: "Bankoverboeking (IBAN) of crypto. Zodra we het zien, is uw order in behandeling." },
-  { t: "Zelfde werkdag 15:00", h: "Order ingepakt", d: "Picker controleert batchcode en COA-nummer per item, neutrale verpakking." },
+  { t: "Zelfde werkdag 15:00", h: "Order ingepakt", d: "Uw bestelling wordt gecontroleerd op inhoud en houdbaarheid, en neutraal verpakt." },
   { t: "Zelfde werkdag 17:00", h: "Bij PostNL / DPD", d: "Track & trace per mail, label is dan al actief." },
   { t: "Volgende werkdag", h: "Bezorgd", d: "NL: tussen 09:00 en 21:30 aan uw vaste huisadres. BE: 1-3 werkdagen. Rest EU: 3-5 werkdagen." },
 ];

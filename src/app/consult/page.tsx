@@ -38,9 +38,9 @@ export default function ConsultPage() {
             Een uur, één gesprek, één keer echt kritisch kijken naar wat u doet.
           </h1>
           <p className="mt-5 max-w-2xl text-primary-foreground/80 text-lg leading-relaxed">
-            60 minuten video-call. Vooraf uploadstuurt uw bloedwerk. Tijdens de call gaan we door
-            uw huidige protocol, doelen en de wetenschappelijke basis daaronder. Na afloop
-            ontvang u een schriftelijke samenvatting en vervolgstappen.
+            60 minuten video-call. Vooraf stuurt u uw bloedwerk op. Tijdens de call nemen wij uw
+            huidige situatie, uw doelen en de wetenschappelijke basis daaronder door. Na afloop
+            ontvangt u een schriftelijke samenvatting met vervolgstappen.
           </p>
           <div className="mt-6 flex items-center gap-6 text-sm text-primary-foreground/70">
             <span className="inline-flex items-center gap-2"><Clock size={14} /> 60 minuten</span>
@@ -71,6 +71,51 @@ export default function ConsultPage() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      {/* Wat er na het consult gebeurt. Stond er niet, terwijl dat voor veel
+          bezoekers juist de vraag is waarmee ze binnenkomen. */}
+      <section className="border-y border-border bg-surface">
+        <div className="mx-auto max-w-5xl px-4 py-16">
+          <p className="text-xs uppercase tracking-[0.18em] text-accent font-semibold">Na het consult</p>
+          <h2 className="mt-3 font-display text-2xl md:text-3xl text-text">
+            Het gesprek eindigt met een besluit, niet met een verkoop
+          </h2>
+          <div className="mt-8 grid gap-8 md:grid-cols-3">
+            <div>
+              <h3 className="font-medium text-text">Vaak: eerst iets anders</h3>
+              <p className="mt-2 text-sm leading-relaxed text-text-muted">
+                Bij een groot deel van de gesprekken is de uitkomst dat er niets hoeft te
+                veranderen behalve trainingsopbouw, eiwitinname of slaap, of dat er eerst gemeten
+                moet worden. Dat is een volwaardige uitkomst en wij brengen er niets extra&apos;s
+                voor in rekening.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-medium text-text">Soms: een herhaalmeting</h3>
+              <p className="mt-2 text-sm leading-relaxed text-text-muted">
+                Waarden die de goede of de verkeerde kant op bewegen zeggen meer dan één uitslag.
+                U krijgt in dat geval de meetmomenten mee en kunt de nieuwe uitslag bij uw
+                opvolgvraag voorleggen.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-medium text-text">Als het aan de orde is: een doorverwijzing</h3>
+              <p className="mt-2 text-sm leading-relaxed text-text-muted">
+                Blijkt uit het gesprek dat begeleiding onder medisch toezicht op zijn plaats is,
+                dan bespreken wij welke route daarvoor bestaat en verwijzen wij u door naar een
+                arts. Wij schrijven zelf niets voor en leveren zelf niets. Dat besluit valt in het
+                gesprek, samen met u, en nooit ervoor.
+              </p>
+            </div>
+          </div>
+          <p className="mt-8 max-w-3xl text-sm leading-relaxed text-text-subtle">
+            Weet u nog niet welke vraag u zou moeten stellen, doe dan eerst de{" "}
+            <Link href="/keuzehulp" className="text-accent hover:underline">keuzehulp</Link>. Die
+            geeft u op basis van uw doel, ervaring en gezondheid een concept-advies dat u
+            vervolgens in dit gesprek voorlegt.
+          </p>
         </div>
       </section>
 

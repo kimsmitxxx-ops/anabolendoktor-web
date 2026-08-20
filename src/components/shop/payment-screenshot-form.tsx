@@ -55,7 +55,7 @@ export function PaymentScreenshotForm({ orderId, customerEmail }: { orderId: str
       <div className="rounded-lg border border-success/40 bg-success-soft/30 p-4 flex items-start gap-2.5">
         <CheckCircle2 size={18} className="text-success shrink-0 mt-0.5" />
         <div>
-          <p className="font-medium text-text">Screenshot ontvangen - dank je</p>
+          <p className="font-medium text-text">Screenshot ontvangen, dank u wel</p>
           <p className="mt-1 text-xs text-text-muted">
             Wij gaan uw betaling alvast verifiëren en zetten uw bestelling in behandeling.
           </p>

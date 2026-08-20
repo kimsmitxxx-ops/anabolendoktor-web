@@ -12,7 +12,7 @@ export default function NotFound() {
       <p className="font-display text-7xl text-accent tabular">404</p>
       <h1 className="mt-4 font-display text-3xl">Pagina niet gevonden</h1>
       <p className="mt-3 text-text-muted">
-        De pagina die je zocht is verplaatst, verwijderd of bestaat niet meer. Gebruik de
+        De pagina die u zocht is verplaatst, verwijderd of bestaat niet meer. Gebruik de
         navigatie hierboven of ga via een van de onderstaande links verder.
       </p>
       <div className="mt-8 flex flex-wrap justify-center gap-3">

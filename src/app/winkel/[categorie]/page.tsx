@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: { categorie: string
   if (!cat) return { title: "Niet gevonden" };
   return {
     title: cat.meta_title || `${cat.name} kopen`,
-    description: cat.meta_description || cat.description || `${cat.name} bij anabolenpro - lab-getest, snel uit Nederland.`,
+    description: cat.meta_description || cat.description || `${cat.name} bij anabolendoktor, met per item een eerlijke inschatting van het effect.`,
     alternates: { canonical: `/winkel/${cat.slug}` },
     openGraph: { title: cat.name, description: cat.description || undefined, type: "website" },
   };
@@ -56,7 +56,9 @@ export default async function CategoryPage({
     }
     return true;
   });
-  const products = sortProducts(filtered as any);
+  // Zonder de as any blijft het Product-type behouden; met as any viel T terug
+  // op de generieke constraint en verdwenen sku, prijs en beschikbaarheid.
+  const products = sortProducts(filtered);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -133,9 +135,9 @@ export default async function CategoryPage({
             <h4 className="text-xs uppercase tracking-wider text-accent-muted font-semibold inline-flex items-center gap-1.5">
               <ShieldCheck size={12} /> Onze garanties
             </h4>
-            <p className="inline-flex items-start gap-2"><Truck size={14} className="text-accent mt-0.5" /> Snel verzonden · 100% leveringsgarantie</p>
-            <p className="inline-flex items-start gap-2"><FlaskConical size={14} className="text-accent mt-0.5" /> Iedere batch lab-getest (COA in product)</p>
-            <p className="inline-flex items-start gap-2"><ShieldCheck size={14} className="text-accent mt-0.5" /> 100% anoniem &amp; discreet verpakt</p>
+            <p className="inline-flex items-start gap-2"><Truck size={14} className="text-accent mt-0.5" /> Verzonden na ontvangst van uw betaling</p>
+            <p className="inline-flex items-start gap-2"><FlaskConical size={14} className="text-accent mt-0.5" /> Alleen middelen met onderbouwing in onderzoek</p>
+            <p className="inline-flex items-start gap-2"><ShieldCheck size={14} className="text-accent mt-0.5" /> Neutraal verpakt, zonder vermelding op het label</p>
           </div>
         </aside>
 

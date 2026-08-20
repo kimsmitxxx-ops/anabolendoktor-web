@@ -42,7 +42,7 @@ const HOMEPAGE_FAQ = [
   {
     question: "Welke supplementen bevelen jullie aan?",
     answer:
-      "Een kleine selectie op basis van meta-analyses en klinische studies: creatine monohydraat (5 g/dag), vitamine D3+K2 (afgestemd op bloedwerk-25(OH)D), magnesium bisglycinaat (300 mg voor slaap), whey isolate (bij eiwit-tekort), omega-3 EPA/DHA (2-3 g/dag), ashwagandha KSM-66 (600 mg/dag). Wij verkopen deze niet uit voorraad - links naar leveranciers met COA.",
+      "Een korte lijst op basis van meta-analyses en klinische studies: creatine monohydraat, vitamine D3 met K2, magnesium bisglycinaat, wei-eiwit isolaat, omega 3 met EPA en DHA, en ashwagandha KSM-66. Die zijn in onze winkel te bestellen, met per product een eerlijke inschatting van hoe groot het effect werkelijk is. Alles daarbuiten, van testosteronboosters tot cycle support, laten wij bewust weg.",
   },
   {
     question: "Hoe zit het met privacy bij consulten?",
@@ -110,7 +110,7 @@ export default async function HomePage() {
             <ClipboardList size={22} className="text-accent" />
             <h3 className="mt-4 font-display text-xl text-text">Bloedwerk als startpunt</h3>
             <p className="mt-2 text-sm text-text-muted leading-relaxed">
-              Voor je iets verandert weten we waar u staat: totaal + vrij testosteron, oestradiol,
+              Voordat u iets verandert, weten wij waar u staat: totaal + vrij testosteron, oestradiol,
               SHBG, LH/FSH, lipidenpanel, HbA1c, vitamine D, ferritine, TSH. Zonder deze waardes
               is elk advies giswerk.
             </p>
@@ -119,7 +119,7 @@ export default async function HomePage() {
             <Heart size={22} className="text-accent" />
             <h3 className="mt-4 font-display text-xl text-text">Trainen &amp; herstel eerst</h3>
             <p className="mt-2 text-sm text-text-muted leading-relaxed">
-              Progressive overload, 4-6 sessies per week op je individuele MRV, 7-9u slaap,
+              Progressieve belasting, vier tot zes sessies per week binnen uw eigen herstelcapaciteit, zeven tot negen uur slaap,
               stressmanagement en 1.6-2.2 g eiwit per kilo. Deze pijlers doen 80% van het werk -
               elke supplement of interventie erbij is aanvulling.
             </p>
@@ -182,7 +182,7 @@ export default async function HomePage() {
             <Leaf size={22} className="text-accent" />
             <h3 className="mt-4 font-display text-xl text-text">Harm-reduction zonder oordeel</h3>
             <p className="mt-2 text-sm text-text-muted">
-              Gebruik je AAS? Dat blijft uw keuze. Wij helpen u bij bloedwerk-interpretatie,
+              Gebruikt u anabolen? Dat blijft uw keuze. Wij helpen u bij bloedwerk-interpretatie,
               risico-inschatting en verwijzen door naar artsen met kennis.
             </p>
           </div>
@@ -200,7 +200,7 @@ export default async function HomePage() {
       {/* FAQ */}
       <section className="mx-auto max-w-4xl px-4 py-16">
         <p className="text-xs uppercase tracking-[0.15em] text-accent font-semibold">Veelgestelde vragen</p>
-        <h2 className="mt-2 font-display text-3xl md:text-4xl">Wat je waarschijnlijk wilt weten</h2>
+        <h2 className="mt-2 font-display text-3xl md:text-4xl">Wat u waarschijnlijk wilt weten</h2>
         <div className="mt-8">
           <FaqAccordion items={HOMEPAGE_FAQ.map((f) => ({ question: f.question, answer: f.answer }))} />
         </div>
@@ -216,7 +216,7 @@ export default async function HomePage() {
             unsubscribe met één klik.
           </p>
           <div className="mt-6 flex justify-center">
-            <NewsletterForm variant="hero-mini" />
+            <NewsletterForm variant="footer-mini" heading="Nieuwe artikelen in uw inbox" subhead="Een tot twee mails per maand over onderzoek, herstel en bloedwaarden." />
           </div>
         </div>
       </section>

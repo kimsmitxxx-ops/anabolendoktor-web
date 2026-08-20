@@ -13,6 +13,7 @@ export const revalidate = 0;
 const PRIORITY: Record<string, number> = {
   "/": 1.0,
   "/consult": 0.95,
+  "/keuzehulp": 0.9,
   "/advies": 0.9,
   "/winkel": 0.9,
   "/kennisbank": 0.8,

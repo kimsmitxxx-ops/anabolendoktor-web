@@ -23,7 +23,7 @@ const sections = [
     title: "2. Welke gegevens we verwerken",
     body: [
       "NAW-gegevens en e-mailadres - voor het uitvoeren van uw bestelling en correspondentie.",
-      "Telefoonnummer - alleen als je dit zelf opgeeft, voor track & trace of WhatsApp-support.",
+      "Telefoonnummer, alleen als u dit zelf opgeeft, voor track en trace of om een afspraak af te stemmen.",
       "Bestelhistorie - om garantie- en retourclaims correct af te handelen.",
       "Technische data (IP-adres, browsertype) - uitsluitend voor beveiliging en fraudepreventie.",
     ],
@@ -43,7 +43,7 @@ const sections = [
     title: "4. Met wie we gegevens delen",
     body: [
       "PostNL en DHL - voor de fysieke bezorging van uw pakket.",
-      "Mollie B.V. - betalingsverwerker, ontvangt alleen het transactiebedrag en je e-mailadres.",
+      "Onze betaaldienstverlener, die alleen het transactiebedrag en uw e-mailadres ontvangt.",
       "Onze accountant - voor de wettelijke administratie, alleen factuurgegevens.",
       "Wij verkopen of verhuren uw gegevens nooit aan derden.",
     ],
@@ -63,7 +63,7 @@ const sections = [
     body: [
       "U hebt het recht op inzage, correctie, verwijdering, beperking, dataportabiliteit en bezwaar tegen verwerking.",
       "Een verzoek dien u in via het contactformulier op de website. Wij reageren binnen 14 dagen.",
-      "Ben je het oneens met onze afhandeling? Dan kunt u een klacht indienen bij de Autoriteit Persoonsgegevens.",
+      "Bent u het oneens met onze afhandeling, dan kunt u een klacht indienen bij de Autoriteit Persoonsgegevens.",
     ],
   },
   {

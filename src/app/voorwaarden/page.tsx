@@ -17,7 +17,8 @@ const sections: { id: string; title: string; body: string[] }[] = [
     body: [
       "anabolendoktor: anabolendoktor B.V., gevestigd te Westhavenkade 12, 3134 NA Vlaardingen. Ons KvK- en BTW-nummer staan op de factuur die u na bestelling ontvangt.",
       "Klant: de natuurlijke of rechtspersoon die een overeenkomst aangaat met anabolendoktor.",
-      "Producten: alle door anabolendoktor aangeboden artikelen, uitsluitend bestemd voor onderzoeksdoeleinden in een laboratoriumomgeving en niet voor menselijke consumptie.",
+      "Producten: de door anabolendoktor aangeboden supplementen en bloedonderzoeken.",
+      "Diensten: de door anabolendoktor aangeboden consulten. Anabolendoktor is geen artsenpraktijk, stelt geen diagnoses en schrijft geen medicatie voor.",
     ],
   },
   {
@@ -33,7 +34,7 @@ const sections: { id: string; title: string; body: string[] }[] = [
     title: "3. Het aanbod",
     body: [
       "Alle aanbiedingen op de website zijn vrijblijvend en zolang de voorraad strekt.",
-      "Het aanbod bevat een volledige en nauwkeurige omschrijving, inclusief batchnummer, gehalte volgens COA en oorsprong.",
+      "Het aanbod bevat een volledige en nauwkeurige omschrijving van het product of de dienst, inclusief samenstelling, dosering en wat er wel en niet bij inbegrepen is.",
       "Kennelijke vergissingen of fouten in het aanbod binden anabolendoktor niet.",
     ],
   },
@@ -49,8 +50,11 @@ const sections: { id: string; title: string; body: string[] }[] = [
     id: "retour-en-terugbetaling",
     title: "5. Retour en terugbetaling",
     body: [
-      "Vanwege de aard van onze producten en de vertrouwelijke branche waarin wij opereren, kunnen wij geen fysiek retour-adres publiek voeren. Retourzendingen zijn daarom niet mogelijk.",
-      "Terugbetaling van een geplaatste en betaalde bestelling is niet mogelijk. Zodra de betaling bij ons binnen is, gaat de bestelling in behandeling en kan er niet meer worden geannuleerd of teruggedraaid.",
+      "De klant heeft een herroepingsrecht van 14 dagen, gerekend vanaf de dag van ontvangst van het product. Binnen die termijn kan de overeenkomst zonder opgaaf van reden worden ontbonden; daarna heeft de klant nog 14 dagen om het product terug te sturen. De kosten van het terugzenden komen voor rekening van de klant.",
+      "Het herroepingsrecht vervalt voor verzegelde producten waarvan de verzegeling is verbroken, wanneer die om redenen van gezondheidsbescherming of hygiëne niet geschikt zijn om te worden teruggezonden. Dat geldt voor alle door anabolendoktor geleverde supplementen.",
+      "Voor consulten geldt dat het herroepingsrecht vervalt zodra de dienst met uitdrukkelijke instemming van de klant binnen de bedenktijd volledig is uitgevoerd. Tot 24 uur voor het afgesproken tijdstip kan een consult kosteloos worden geannuleerd of verplaatst; daarna wordt de gereserveerde tijd in rekening gebracht.",
+      "Voor bloedonderzoek geldt dat annulering kosteloos is zolang het aanvraagformulier nog niet bij een prikpost is ingeleverd. Na afname zijn de kosten bij het laboratorium gemaakt en is terugbetaling niet meer mogelijk.",
+      "Terugbetaling vindt plaats binnen 14 dagen na ontvangst van de herroeping, via hetzelfde betaalmiddel als waarmee is betaald.",
       "Komt uw pakket door vertraging of vermissing niet aan? Dan sturen wij binnen 14 dagen na de oorspronkelijke verzenddatum kosteloos een nieuwe zending - zonder discussie.",
       "Zijn bepaalde items op het moment van verwerking niet leverbaar? Dan bieden wij alternatieve items van gelijke waarde aan, of verzenden we die items apart na zodra ze weer op voorraad zijn.",
     ],
@@ -76,19 +80,21 @@ const sections: { id: string; title: string; body: string[] }[] = [
   },
   {
     id: "garantie",
-    title: "8. Lab-garantie en conformiteit",
+    title: "8. Conformiteit",
     body: [
-      "anabolendoktor staat ervoor in dat elk product voldoet aan de specificaties zoals weergegeven op het Certificate of Analysis (COA) van de bijbehorende batch.",
-      "Wijkt het werkelijke gehalte, vastgesteld door een onafhankelijk laboratorium, meer dan 5% af van het opgegeven COA, dan vervangt anabolendoktor het product kosteloos in de volgende zending.",
+      "anabolendoktor staat ervoor in dat de geleverde producten voldoen aan de omschrijving op de productpagina en aan de eisen die daaraan in Nederland worden gesteld.",
+      "Beantwoordt een product niet aan de overeenkomst, dan heeft de klant recht op kosteloos herstel, vervanging of terugbetaling volgens de wettelijke regeling.",
+      "Op consulten rust een inspanningsverplichting en geen resultaatsverplichting. Er wordt geen uitkomst of gezondheidsresultaat gegarandeerd.",
     ],
   },
   {
     id: "aansprakelijkheid",
-    title: "9. Aansprakelijkheid en doeleinde",
+    title: "9. Aansprakelijkheid en de aard van onze dienstverlening",
     body: [
-      "Producten van anabolendoktor zijn uitsluitend bestemd voor onderzoeksdoeleinden in een laboratoriumomgeving en niet voor menselijke of dierlijke consumptie.",
-      "De klant is volledig zelf verantwoordelijk voor het gebruik en de toepassing van de geleverde producten.",
-      "anabolendoktor aanvaardt geen aansprakelijkheid voor schade, direct of indirect, voortvloeiend uit een ander gebruik dan het hierboven omschreven doel.",
+      "Anabolendoktor is een consultatie- en informatiedienst en geen BIG-geregistreerde artsenpraktijk. Er worden geen diagnoses gesteld, geen behandelingen ingesteld en geen geneesmiddelen voorgeschreven of geleverd.",
+      "De informatie op deze website en in een consult is bedoeld ter ondersteuning van de eigen afweging van de klant en vervangt geen medisch advies van een arts. Bij klachten die directe aandacht vragen dient de klant contact op te nemen met de huisarts of de huisartsenpost.",
+      "De aangeboden supplementen zijn voedingssupplementen en geen geneesmiddelen. Zij zijn niet bedoeld om ziekten te voorkomen, te behandelen of te genezen.",
+      "Anabolendoktor aanvaardt geen aansprakelijkheid voor schade die voortvloeit uit keuzes die de klant maakt op basis van de verstrekte informatie, behoudens opzet of grove nalatigheid.",
     ],
   },
   {
@@ -115,7 +121,7 @@ export default function VoorwaardenPage() {
       <PageHero
         eyebrow="Juridisch"
         title="Algemene voorwaarden anabolendoktor B.V."
-        intro="Versie 3.2 - laatst bijgewerkt op 12 juni 2026. Deze voorwaarden gelden voor elke bestelling die je via onze webshop plaatst."
+        intro="Versie 3.2 - laatst bijgewerkt op 12 juni 2026. Deze voorwaarden gelden voor elke bestelling en elk consult dat u via deze website plaatst."
       />
 
       <section className="mx-auto max-w-7xl px-4 py-14 grid gap-10 lg:grid-cols-[260px_1fr]">

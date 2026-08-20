@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: { categorie: string
   const canonical = p.canonical_url || `/product/${params.categorie}/${params.slug}`;
   return {
     title: p.meta_title || `${p.name} kopen voor ${formatEUR(p.price_cents)}`,
-    description: p.meta_description || p.subtitle || p.description || `${p.name} bij anabolenpro - lab-getest, snelle verzending.`,
+    description: p.meta_description || p.subtitle || p.description || `${p.name} bij anabolendoktor, met onderbouwing en zonder overdreven claims.`,
     alternates: { canonical },
     robots: noindex ? { index: false, follow: false } : undefined,
     openGraph: {

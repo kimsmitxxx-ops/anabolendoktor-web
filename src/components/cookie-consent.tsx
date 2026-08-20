@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Cookie, X } from "lucide-react";
 
-const STORAGE_KEY = "anabolenpro.cookies.v1";
+const STORAGE_KEY = "anabolendoktor.cookies.v1";
 
 export function CookieConsent() {
   const [visible, setVisible] = useState(false);

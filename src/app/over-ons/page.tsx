@@ -237,16 +237,15 @@ export default async function OverOnsPage() {
             <p className="text-xs uppercase tracking-[0.15em] text-accent font-semibold">Onze positie</p>
             <h2 className="mt-2 font-display text-2xl text-text">Eerlijk, niet pushy</h2>
             <p className="mt-3 text-sm text-text-muted leading-relaxed">
-              Wij verkopen <strong>research-grade materialen</strong> voor educatieve en
-              onderzoeksdoeleinden - niet als medicatie. Anabolen en peptiden zijn in Nederland
-              niet toegelaten voor humaan gebruik buiten medisch voorschrift. Wij promoten geen
-              recreatief gebruik. Wat wij wél doen: zorgen dat als iemand deze keuze maakt, hij
-              precies weet wat er in het flesje zit en welke risico's eraan vastzitten.
+              Wij verkopen geen anabolen. Anabole steroïden zijn in Nederland receptplichtige
+              geneesmiddelen en horen bij een arts thuis. Wat wij wel doen is uitleggen wat
+              gebruik met een lichaam doet, welke waarden dat zichtbaar maken en wanneer iets bij
+              een arts hoort. Wij moedigen gebruik niet aan en veroordelen niemand die het doet.
             </p>
             <p className="mt-3 text-sm text-text-muted leading-relaxed">
-              Onze content is geschreven door enhanced atleten en een medisch consultant - geen
-              copywriters. Bij twijfel of klachten: raadpleeg een arts en stop het gebruik. Bij
-              bloedwerk-vragen: lees onze gids in de <Link href="/kennisbank/welk-bloedwerk-doe-je-voor-tijdens-en-na-een-aas-kuur" className="text-accent hover:underline">kennisbank</Link>.
+              Onze teksten worden geschreven door consulenten met een achtergrond in
+              bewegingswetenschap en endocrinologie, met bronvermelding erbij. Bij twijfel of
+              klachten raadpleegt u een arts. Weet u niet waar te beginnen, doe dan de <Link href="/keuzehulp" className="text-accent hover:underline">keuzehulp</Link>.
             </p>
             <Link
               href="/contact"

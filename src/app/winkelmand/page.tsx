@@ -4,6 +4,7 @@ import { useCart } from "@/lib/cart-context";
 import { formatEUR } from "@/lib/queries";
 import { calcTotals, unitDiscountPct } from "@/lib/bulk-discount";
 import { Trash2, Minus, Plus, ShoppingBag, Sparkles } from "lucide-react";
+import { RestoreCartBanner } from "@/components/restore-cart-banner";
 
 export default function WinkelmandPage() {
   const cart = useCart();
@@ -11,6 +12,9 @@ export default function WinkelmandPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-10">
       <h1 className="font-display text-3xl">Winkelmand</h1>
+      {/* De banner bestond wel maar werd nergens getoond, waardoor een
+          afgebroken betaling gewoon een lege mand opleverde. */}
+      <RestoreCartBanner />
       {cart.items.length === 0 ? (
         <div className="mt-10 rounded-2xl border border-dashed border-paper-border bg-paper-soft p-12 text-center">
           <ShoppingBag className="mx-auto h-12 w-12 text-text-subtle" />

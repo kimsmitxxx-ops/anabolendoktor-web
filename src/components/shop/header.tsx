@@ -233,6 +233,16 @@ export function Header(_props: HeaderProps = {}) {
             Consult
           </Link>
 
+          {/* Keuzehulp: het instappunt voor wie niet weet welke vraag hij moet
+              stellen. Staat naast Consult omdat het daar op uitkomt. */}
+          <Link
+            href="/keuzehulp"
+            onMouseEnter={() => setOpenMega(null)}
+            className="h-11 inline-flex items-center px-4 font-medium text-primary-foreground hover:text-accent border-b-2 border-transparent hover:border-accent transition-colors"
+          >
+            Keuzehulp
+          </Link>
+
           {/* Advies: landingspagina's op de onderwerpen waar bezoekers op
               zoeken (stoppen, gevaren, bloedwaarden). Staat bewust vooraan,
               want dit is waar deze site voor bedoeld is. */}

@@ -31,7 +31,7 @@ type Ctx = {
 };
 
 const CartCtx = createContext<Ctx | null>(null);
-const KEY = "anabolenpro.cart.v2";
+const KEY = "anabolendoktor.cart.v2";
 // Winkelwagen-persistentie: minimaal 48 uur (gedeelde regel over ALLE shops
 // binnen deze klant - retakopen, melashop, kamagraexpert, peptidehuis en
 // anabolenpro hanteren allen 30 dagen als bovengrens zodat 48u ruim gehaald

@@ -2,60 +2,70 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { PageHero } from "@/components/shop/page-hero";
 import { FaqAccordion } from "@/components/faq-accordion";
-import { ShieldCheck, FlaskConical, Mail, AlertTriangle } from "lucide-react";
+import { ShieldCheck, PackageOpen, CalendarClock, Mail, Info } from "lucide-react";
 
 export const revalidate = 86400;
 
 export const metadata: Metadata = {
-  title: "Retour en terugbetaling - Anabolendoktor",
+  title: "Retour, annuleren en terugbetaling - Anabolendoktor",
   description:
-    "Retourzendingen zijn in onze branche niet mogelijk. Wat wél: 100% leveringsgarantie bij vertraging of vermissing en lab-vervanging bij batch-afwijking.",
+    "14 dagen bedenktijd op ongeopende supplementen, kosteloos annuleren van een consult tot 24 uur vooraf, en opnieuw verzenden als een pakket niet aankomt.",
   alternates: { canonical: "/retourneren" },
 };
 
 const cards = [
   {
+    icon: PackageOpen,
+    title: "14 dagen bedenktijd",
+    sub: "Ongeopende, verzegelde supplementen kunt u binnen 14 dagen na ontvangst terugsturen. U krijgt het aankoopbedrag terug.",
+  },
+  {
+    icon: CalendarClock,
+    title: "Consult kosteloos verzetten",
+    sub: "Tot 24 uur voor de afspraak kunt u kosteloos annuleren of verplaatsen. Daarna brengen wij de gereserveerde tijd in rekening.",
+  },
+  {
     icon: ShieldCheck,
-    title: "100% leveringsgarantie",
-    sub: "Komt uw pakket niet aan binnen 14 dagen? Nieuwe verzending zonder discussie of extra kosten.",
-  },
-  {
-    icon: FlaskConical,
-    title: "Lab-garantie per batch",
-    sub: "Wijkt het gehalte meer dan 5% af van het COA? Wij vervangen het item kosteloos in uw volgende bestelling.",
-  },
-  {
-    icon: AlertTriangle,
-    title: "Niet leverbaar item?",
-    sub: "Wij bieden een alternatief van gelijke waarde of verzenden het item apart na zodra het weer op voorraad is.",
+    title: "Niet aangekomen is opnieuw verzonden",
+    sub: "Is uw pakket 14 dagen na verzending nog niet bezorgd, dan versturen wij kosteloos opnieuw.",
   },
 ];
 
 const faq = [
   {
-    question: "Kan ik mijn bestelling retourneren of annuleren?",
+    question: "Heb ik bedenktijd op wat ik bestel?",
     answer:
-      "Nee. Vanwege de branche waarin wij opereren kunnen wij helaas geen fysiek retour-adres publiek voeren, en zodra uw betaling bij ons binnen is, gaat de bestelling in behandeling en kan er niet meer geannuleerd of teruggedraaid worden.",
+      "Ja. Op producten die u online bestelt heeft u wettelijk 14 dagen bedenktijd, gerekend vanaf de dag dat u ze ontvangt. Binnen die termijn kunt u zonder opgaaf van reden laten weten dat u afziet van de koop, waarna u nog eens 14 dagen heeft om terug te sturen. Het aankoopbedrag krijgt u terug, inclusief de standaard verzendkosten die u bij de bestelling heeft betaald. De kosten van het terugsturen zijn voor u.",
+  },
+  {
+    question: "Geldt dat ook voor geopende supplementen?",
+    answer:
+      "Nee. Supplementen zijn verzegeld om redenen van gezondheidsbescherming en hygiëne. Is die verzegeling verbroken, dan vervalt het herroepingsrecht en kunnen wij het product niet terugnemen. Ongeopend en met de verzegeling intact kunt u wel gewoon retourneren.",
+  },
+  {
+    question: "Kan ik een consult annuleren?",
+    answer:
+      "Tot 24 uur voor het afgesproken tijdstip kunt u kosteloos annuleren of verplaatsen. Meldt u zich later af of verschijnt u niet, dan brengen wij de gereserveerde tijd in rekening, omdat die dan niet meer aan iemand anders kan worden gegeven. Heeft het consult op uw verzoek al plaatsgevonden, dan is de dienst geleverd en vervalt het herroepingsrecht; dat is de wettelijke uitzondering voor diensten die met uw uitdrukkelijke instemming binnen de bedenktijd zijn uitgevoerd.",
+  },
+  {
+    question: "En een bloedonderzoek dat ik nog niet heb gebruikt?",
+    answer:
+      "Zolang u het aanvraagformulier nog niet bij een prikpost heeft ingeleverd, kunt u het onderzoek annuleren en krijgt u het bedrag terug. Is er eenmaal bloed afgenomen, dan is het onderzoek in gang gezet en zijn de kosten bij het laboratorium gemaakt. Terugbetaling is dan niet meer mogelijk.",
   },
   {
     question: "Wat als mijn pakket niet aankomt?",
     answer:
-      "Is uw pakket 14 dagen na de verzenddatum nog steeds niet bezorgd? Dan verzenden wij automatisch een nieuwe zending - zonder discussie en zonder extra kosten. Meld het via het contactformulier op de site met uw ordernummer.",
+      "Is uw pakket 14 dagen na de verzenddatum nog niet bezorgd, dan versturen wij kosteloos opnieuw. Meld het via het contactformulier met uw ordernummer erbij. Wij gaan dan eerst na wat de vervoerder over de zending meldt, en versturen daarna een nieuwe.",
   },
   {
-    question: "Wat als een item niet meer leverbaar blijkt?",
+    question: "Hoe stuur ik iets terug?",
     answer:
-      "Als tijdens de verwerking blijkt dat een item toch niet meer leverbaar is, bieden wij een alternatief van gelijke waarde aan. Wilt u liever wachten? Dan versturen we het niet-leverbare item apart na zodra het weer binnen is - zonder extra verzendkosten.",
+      "Meld uw retour eerst via het contactformulier, met uw ordernummer en wat u wilt terugsturen. U ontvangt dan het retouradres en een korte instructie. Stuur niets terug zonder die melding: zonder ordernummer kunnen wij een pakket niet aan een bestelling koppelen en duurt de afhandeling onnodig lang.",
   },
   {
-    question: "Klopt het gehalte niet met het COA - wat nu?",
+    question: "Hoe snel krijg ik mijn geld terug?",
     answer:
-      "Als een onafhankelijk lab-rapport aantoont dat het werkelijke gehalte meer dan 5% afwijkt van het COA dat wij hebben gepubliceerd, vervangen wij het product kosteloos in uw volgende bestelling. Stuur ons het lab-rapport samen met je batchnummer via het contactformulier - u kunt bestanden meesturen als bijlage.",
-  },
-  {
-    question: "Kan ik mijn geld terugkrijgen?",
-    answer:
-      "Nee, terugbetalingen zijn niet mogelijk. Wat we wél doen: bij niet-aankomst = opnieuw verzenden, bij batch-afwijking = kosteloze vervanging in uw volgende bestelling. Neem daarom vóór u betaalt goed de tijd om uw bestelling te controleren.",
+      "Binnen 14 dagen nadat wij uw retour of annulering hebben ontvangen, en via dezelfde weg als u heeft betaald. Bij een retourzending mogen wij daarmee wachten tot wij het product terug hebben of u kunt aantonen dat u het heeft verzonden.",
   },
 ];
 
@@ -63,9 +73,9 @@ export default function RetourPage() {
   return (
     <>
       <PageHero
-        eyebrow="Retour & garantie"
-        title="Geen retour, wél 100% leveringsgarantie"
-        intro="Wij kunnen geen retour-adres publiek voeren, dus retourzendingen zijn niet mogelijk. Terugbetalingen ook niet - zodra uw betaling binnen is, gaat uw bestelling in behandeling. Wél garanderen we dat uw pakket aankomt: doet-ie dat niet, dan verzenden we opnieuw."
+        eyebrow="Retour & annuleren"
+        title="14 dagen bedenktijd, en een consult verzet u kosteloos"
+        intro="Op producten die u bij ons bestelt heeft u de wettelijke bedenktijd van 14 dagen, zolang de verzegeling intact is. Een consult kunt u tot 24 uur van tevoren kosteloos annuleren of verplaatsen. Hieronder staat per soort bestelling wat er geldt."
       />
 
       <section className="mx-auto max-w-7xl px-4 py-14 grid gap-5 md:grid-cols-3">
@@ -79,15 +89,17 @@ export default function RetourPage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-4 pb-14">
-        <div className="rounded-xl border border-amber-300 bg-amber-50/60 p-6 text-amber-900">
+        <div className="rounded-xl border border-border bg-surface p-6 text-text">
           <div className="flex items-start gap-3">
-            <AlertTriangle size={20} className="shrink-0 mt-0.5" />
+            <Info size={20} className="shrink-0 mt-0.5 text-accent" />
             <div>
-              <h2 className="font-display text-lg">Let op vóór u betaalt</h2>
-              <p className="mt-1.5 text-sm">
-                Zodra uw betaling bij ons binnen is, gaat uw bestelling direct in behandeling. Terugdraaien of
-                annuleren is dan niet meer mogelijk. Controleer uw bestelling en je adresgegevens dus goed voordat je
-                de overboeking uitvoert.
+              <h2 className="font-display text-lg">Waarom dit per soort bestelling verschilt</h2>
+              <p className="mt-1.5 text-sm leading-relaxed text-text-muted">
+                Een verzegeld product kunt u ongeopend terugsturen. Een consult en een
+                bloedonderzoek zijn diensten: zodra die op uw verzoek zijn uitgevoerd, is er niets
+                meer terug te draaien. Dat is geen huisregel maar de wettelijke uitzondering op het
+                herroepingsrecht, en wij noemen het hier zodat u het weet voordat u bestelt in
+                plaats van erna.
               </p>
             </div>
           </div>
@@ -99,7 +111,7 @@ export default function RetourPage() {
           <div>
             <h2 className="font-display text-2xl text-text">Veelgestelde vragen</h2>
             <p className="mt-2 text-sm text-text-muted">
-              Twijfel je over uw situatie?{" "}
+              Twijfelt u over uw situatie?{" "}
               <Link href="/contact" className="text-accent hover:underline">
                 Neem contact op
               </Link>

@@ -14,12 +14,12 @@ export interface NewsletterFormProps {
   onSubmit?: (email: string) => void;
 }
 
-const PRIVACY = "We sturen je 1-2 mails per maand · uitschrijven kan altijd";
+const PRIVACY = "Wij sturen 1 tot 2 mails per maand, uitschrijven kan altijd";
 
 export function NewsletterForm({
   variant = "default",
   heading = "Onderzoek in uw inbox",
-  subhead = "Studies, batch-updates en nieuwe COA's - zonder verkoopgedoe.",
+  subhead = "Studies en achtergronden over training, herstel en bloedwaarden. Geen verkoop.",
   className,
   onSubmit,
 }: NewsletterFormProps) {
@@ -84,7 +84,7 @@ export function NewsletterForm({
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="je@email.nl"
+                placeholder="u@voorbeeld.nl"
                 className="flex-1 h-11 px-3 rounded border border-border bg-surface text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               />
               {Honeypot}
@@ -112,7 +112,7 @@ export function NewsletterForm({
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="je@email.nl"
+              placeholder="u@voorbeeld.nl"
               className="flex-1 h-11 px-3 rounded border border-border bg-background text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             />
             {Honeypot}

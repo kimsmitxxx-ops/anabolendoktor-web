@@ -28,40 +28,50 @@ export default function CookiesPage() {
           delen met derde partijen.
         </p>
 
-        <h2>1. Noodzakelijke cookies</h2>
-        <p>Deze plaatsen we altijd, anders werkt de site niet:</p>
+        <h2>1. Noodzakelijke opslag</h2>
+        <p>Deze plaatsen wij altijd, anders werkt de site niet:</p>
         <ul>
           <li>
-            <strong>anabolenpro.cart.v1</strong> (localStorage) - onthoudt wat in uw winkelmand
-            zit, zelfs als je tussendoor weggaat. Verloopt niet automatisch, u kunt 'm
-            handmatig wissen via uw browser.
+            <strong>anabolendoktor.cart.v2</strong> (localStorage) - onthoudt wat er in uw
+            winkelmand zit, ook als u tussendoor weggaat. Verloopt niet automatisch; u kunt de
+            sleutel handmatig wissen via uw browser.
           </li>
           <li>
-            <strong>shop-dash-token</strong> (httpOnly cookie) - alleen actief als je inlogt
-            op een eigen klant-account. 7 dagen geldig.
+            <strong>anabolendoktor.cart.backup</strong> (localStorage) - een kopie van uw mand op
+            het moment dat u naar de betaalpagina gaat, zodat u die kunt herstellen als de
+            betaling wordt afgebroken. Wordt gewist zodra u de mand herstelt of de bestelling
+            afrondt.
           </li>
           <li>
-            <strong>anabolenpro.cookies.v1</strong> (localStorage) - onthoudt je cookie-keuze
-            zodat je de banner niet elke pagina opnieuw ziet.
+            <strong>anabolendoktor.cookies.v1</strong> (localStorage) - onthoudt uw keuze in de
+            cookiebanner, zodat die niet op elke pagina terugkomt.
           </li>
           <li>
-            <strong>apo_chat_id</strong> (localStorage) - als je de live-chat hebt gebruikt,
-            koppelt deze ID je terug aan het lopende gesprek bij een nieuwe sessie.
+            <strong>shop-dash-token</strong> (httpOnly cookie) - alleen actief als u inlogt op een
+            eigen account. Zeven dagen geldig.
+          </li>
+          <li>
+            <strong>adk_chat_id</strong> (localStorage) - alleen als u de chat heeft gebruikt.
+            Koppelt u bij een volgend bezoek terug aan hetzelfde gesprek.
           </li>
         </ul>
 
-        <h2>2. Optionele analytische cookies</h2>
+        <h2>2. Optionele meting</h2>
         <p>
-          Alleen actief als u in de banner op <em>"Accepteer alle"</em> klikt:
+          Alleen actief als u in de banner op <em>Accepteer alle</em> klikt:
         </p>
         <ul>
           <li>
-            <strong>Anonieme pageviews</strong> - welke pagina&apos;s populair zijn, gemiddelde
-            laadtijd, klik-patronen op categorieën. Geen IP-tracking, geen cross-site
-            fingerprinting.
+            <strong>an.vid en an.sid</strong> (localStorage) - een willekeurig bezoekers- en
+            sessienummer waarmee wij bezoekersaantallen tellen. Geen naam, geen e-mailadres, geen
+            IP-adres, en niet te herleiden tot een persoon.
           </li>
         </ul>
-        <p>Provider: zelf gehoste statistieken via Vercel Analytics (privacy-friendly, geen PII).</p>
+        <p>
+          Deze meting draait op onze eigen server; er gaan geen gegevens naar een extern
+          statistiekenplatform. Weigert u, dan wordt er niets weggeschreven en werkt de site
+          verder gewoon.
+        </p>
 
         <h2>3. Wat wij níét doen</h2>
         <ul>
@@ -73,8 +83,8 @@ export default function CookiesPage() {
 
         <h2>4. Cookie-voorkeur wijzigen</h2>
         <p>
-          Wis de sleutel <code>anabolenpro.cookies.v1</code> uit je browser-localStorage
-          om de banner opnieuw te zien. In Chrome: rechter-muisknop op de site → <em>Inspect</em>{" "}
+          Wis de sleutel <code>anabolendoktor.cookies.v1</code> uit de localStorage van uw
+          browser om de banner opnieuw te zien. In Chrome: rechter-muisknop op de site → <em>Inspect</em>{" "}
           → Tab <em>Application</em> → Local Storage → klik op het item en delete.
         </p>
 

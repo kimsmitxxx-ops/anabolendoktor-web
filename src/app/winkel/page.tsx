@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Winkel - alle anabolen, PCT en kuurpakketten",
-  description: "Volledig overzicht van anabolenpro: Anavar, Dianabol, Testosteron-esters, Trenbolone, Masteron, Boldenone, PCT en kuurpakketten. Lab-getest per batch.",
+  description: "Het volledige aanbod van anabolendoktor: consulten, bloedonderzoek via reguliere prikposten en een korte lijst supplementen met onderbouwing.",
   alternates: { canonical: "/winkel" },
 };
 
@@ -46,7 +46,9 @@ export default async function WinkelIndexPage({
     }
     return true;
   });
-  const products = sortProducts(filtered as any);
+  // Zonder de as any blijft het Product-type behouden; met as any viel T terug
+  // op de generieke constraint en verdwenen sku, prijs en beschikbaarheid.
+  const products = sortProducts(filtered);
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10">
@@ -55,7 +57,7 @@ export default async function WinkelIndexPage({
       </div>
       <h1 className="font-display text-3xl md:text-4xl">Volledige catalogus</h1>
       <p className="mt-3 max-w-2xl text-text-muted">
-        Alles van anabolenpro op één plek. Klik op een categorie voor diepgaande info of scroll voor het hele aanbod.
+        Consulten, bloedonderzoek en supplementen op één plek. Klik op een categorie voor de uitleg, of scroll voor het volledige aanbod.
       </p>
 
       <div className="mt-6 rounded-lg border border-accent/30 bg-accent-soft/15 p-4 flex items-start gap-3">
@@ -95,9 +97,9 @@ export default async function WinkelIndexPage({
             <h4 className="text-xs uppercase tracking-wider text-accent-muted font-semibold inline-flex items-center gap-1.5">
               <ShieldCheck size={12} /> Onze garanties
             </h4>
-            <p className="inline-flex items-start gap-2"><Truck size={14} className="text-accent mt-0.5" /> Snel verzonden · 100% leveringsgarantie</p>
-            <p className="inline-flex items-start gap-2"><FlaskConical size={14} className="text-accent mt-0.5" /> Iedere batch lab-getest (COA in product)</p>
-            <p className="inline-flex items-start gap-2"><ShieldCheck size={14} className="text-accent mt-0.5" /> 100% anoniem &amp; discreet verpakt</p>
+            <p className="inline-flex items-start gap-2"><Truck size={14} className="text-accent mt-0.5" /> Verzonden na ontvangst van uw betaling</p>
+            <p className="inline-flex items-start gap-2"><FlaskConical size={14} className="text-accent mt-0.5" /> Alleen middelen met onderbouwing in onderzoek</p>
+            <p className="inline-flex items-start gap-2"><ShieldCheck size={14} className="text-accent mt-0.5" /> Neutraal verpakt, zonder vermelding op het label</p>
           </div>
         </aside>
 

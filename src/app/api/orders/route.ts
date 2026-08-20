@@ -4,7 +4,7 @@ import { unitDiscountPct } from "@/lib/bulk-discount";
 
 export const dynamic = "force-dynamic";
 
-const SHOP_ID = "96b47e49-34fd-4d6c-99d3-d49d912be046"; // anabolenpro
+const SHOP_ID = "96b47e49-34fd-4d6c-99d3-d49d912be046"; // anabolendoktor
 const SHIPPING_FEE_CENTS = 1000; // EUR 10 per zending
 
 export async function POST(req: NextRequest) {
@@ -76,7 +76,9 @@ export async function POST(req: NextRequest) {
     shipping_street: fullStreet, shipping_postal: postal, shipping_city: city, shipping_country: country,
     subtotal_cents: subtotal, shipping_cents: shipping, total_cents: total,
     status: "pending_payment",
-    reference: `AP-${Date.now().toString(36).toUpperCase()}`,
+    // AD, niet AP: het ordernummer stond nog op het voorvoegsel van anabolenpro,
+    // en dat is precies het soort spoor dat de twee sites aan elkaar knoopt.
+    reference: `AD-${Date.now().toString(36).toUpperCase()}`,
   }).select().single();
 
   if (error || !order) {
@@ -97,5 +99,37 @@ export async function POST(req: NextRequest) {
     price_cents: it.applied_price_cents,
   })));
 
-  return NextResponse.json({ ok: true, order_id: order.id, total_cents: total, subtotal_cents: subtotal, shipping_cents: shipping });
+  // Betaallink, hetzelfde systeem als de andere shops: de basis-URL staat per
+  // shop in de database, zodat een ander profiel geen codewijziging vraagt.
+  // Staat paytail_enabled uit of ontbreekt de URL, dan valt de checkout terug
+  // op de bedankt-pagina met overboeking en crypto.
+  let paytailUrl: string | null = null;
+  try {
+    const { data: sp } = await supabase
+      .from("shops")
+      .select("paytail_enabled, paytail_base_url, domain")
+      .eq("id", SHOP_ID)
+      .single();
+    if (sp?.paytail_enabled && sp?.paytail_base_url) {
+      const params = new URLSearchParams({
+        order_id: order.reference,
+        amount: (total / 100).toFixed(2),
+        name,
+        email,
+        postcode: postal || "",
+        country: country || "NL",
+        return: `https://${sp.domain || "anabolendoktor.com"}/checkout/bedankt/${order.id}`,
+      });
+      paytailUrl = `${sp.paytail_base_url.replace(/\/$/, "")}?${params.toString()}`;
+    }
+  } catch {}
+
+  return NextResponse.json({
+    ok: true,
+    order_id: order.id,
+    paytail_url: paytailUrl,
+    total_cents: total,
+    subtotal_cents: subtotal,
+    shipping_cents: shipping,
+  });
 }

@@ -1,5 +1,6 @@
 import "server-only";
 import { createServerClient } from "@supabase/ssr";
+import type { CookieOptions } from "@supabase/ssr";
 import { cookies } from "next/headers";
 
 const SB_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://rexqfwibxawqnvrzbdoo.supabase.co";
@@ -11,9 +12,9 @@ export function createServerSupabase() {
   const cookieStore = cookies();
   return createServerClient(SB_URL, SB_ANON, {
     cookies: {
-      get(name) { return cookieStore.get(name)?.value; },
-      set(name, value, options) { try { cookieStore.set({ name, value, ...options }); } catch {} },
-      remove(name, options) { try { cookieStore.set({ name, value: "", ...options, maxAge: 0 }); } catch {} },
+      get(name: string) { return cookieStore.get(name)?.value; },
+      set(name: string, value: string, options: CookieOptions) { try { cookieStore.set({ name, value, ...options }); } catch {} },
+      remove(name: string, options: CookieOptions) { try { cookieStore.set({ name, value: "", ...options, maxAge: 0 }); } catch {} },
     },
   });
 }

@@ -6,7 +6,22 @@ import Link from "next/link";
 const SHOP_DASH_URL = process.env.NEXT_PUBLIC_SHOP_DASH_URL || "https://shop-dash-ruby.vercel.app";
 const SHOP_ID = "96b47e49-34fd-4d6c-99d3-d49d912be046";
 
-export function ContactForm() {
+/**
+ * De keuzehulp gebruikt dit formulier met een ingevuld onderwerp en de
+ * antwoorden al in het bericht, zodat de consulent het gesprek voorbereid
+ * ingaat en de bezoeker niet alles nog een keer hoeft te typen.
+ */
+export function ContactForm({
+  defaultSubject = "Vraag over een bestelling",
+  defaultMessage = "",
+  heading = "Stuur een bericht",
+  intro = "Reactie binnen 1 werkdag. Voeg uw ordernummer toe als het om een lopende bestelling gaat.",
+}: {
+  defaultSubject?: string;
+  defaultMessage?: string;
+  heading?: string;
+  intro?: string;
+} = {}) {
   const [busy, setBusy] = useState(false);
   const [sent, setSent] = useState(false);
   const [err, setErr] = useState<string | null>(null);
@@ -14,8 +29,8 @@ export function ContactForm() {
     name: "",
     email: "",
     order_number: "",
-    subject: "Vraag over een bestelling",
-    message: "",
+    subject: defaultSubject,
+    message: defaultMessage,
   });
 
   async function submit(e: React.FormEvent) {
@@ -55,18 +70,16 @@ export function ContactForm() {
       onSubmit={submit}
       className="rounded-md border border-primary-muted bg-primary p-6 text-primary-foreground lg:p-8"
     >
-      <h2 className="font-display text-2xl text-primary-foreground">Stuur een bericht</h2>
-      <p className="mt-2 text-sm text-primary-foreground/75">
-        Reactie binnen 1 werkdag. Voeg uw ordernummer toe als het om een lopende bestelling gaat.
-      </p>
+      <h2 className="font-display text-2xl text-primary-foreground">{heading}</h2>
+      <p className="mt-2 text-sm text-primary-foreground/75">{intro}</p>
 
       {sent ? (
         <div className="mt-6 rounded-md border border-success/40 bg-success-soft/30 p-5 text-sm text-primary-foreground">
           <CheckCircle2 size={18} className="text-success" />
           <p className="mt-2 font-medium">Bedankt, uw bericht staat in onze inbox.</p>
           <p className="mt-1 text-primary-foreground/75">
-            We reageren binnen 1 werkdag op {form.email || "het opgegeven e-mailadres"}. Voor spoed
-            gebruik je de live chat rechtsonder.
+            Wij reageren binnen 1 werkdag op {form.email || "het opgegeven e-mailadres"}. Heeft u
+            haast, gebruik dan de live chat rechtsonder.
           </p>
         </div>
       ) : (
@@ -113,9 +126,9 @@ export function ContactForm() {
               className="w-full h-11 px-3 rounded border border-primary-muted bg-primary-soft text-sm text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               <option>Vraag over een bestelling</option>
-              <option>Lab- of COA-vraag</option>
-              <option>Retour aanmelden</option>
-              <option>Productadvies</option>
+              <option>Consult aanvragen of verzetten</option>
+              <option>Vraag over bloedonderzoek</option>
+              <option>Retour of annulering</option>
               <option>Anders</option>
             </select>
           </div>
@@ -139,7 +152,7 @@ export function ContactForm() {
           )}
           <div className="flex items-center justify-between gap-4 pt-2">
             <p className="text-xs text-primary-foreground/55">
-              Door te versturen ga je akkoord met onze{" "}
+              Door te versturen gaat u akkoord met onze{" "}
               <Link href="/privacy" className="text-accent hover:underline">
                 privacyverklaring
               </Link>

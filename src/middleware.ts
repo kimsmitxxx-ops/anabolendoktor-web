@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
+import type { CookieOptions } from "@supabase/ssr";
 
 // Refresht Supabase sessie-cookie bij elke request → users blijven ingelogd
 // zolang refresh-token geldig is. Defensive: crash NOOIT op missende env of
@@ -13,9 +14,9 @@ export async function middleware(request: NextRequest) {
   try {
     const sb = createServerClient(url, anon, {
       cookies: {
-        get(name) { return request.cookies.get(name)?.value; },
-        set(name, value, options) { res.cookies.set({ name, value, ...options }); },
-        remove(name, options) { res.cookies.set({ name, value: "", ...options, maxAge: 0 }); },
+        get(name: string) { return request.cookies.get(name)?.value; },
+        set(name: string, value: string, options: CookieOptions) { res.cookies.set({ name, value, ...options }); },
+        remove(name: string, options: CookieOptions) { res.cookies.set({ name, value: "", ...options, maxAge: 0 }); },
       },
     });
     await sb.auth.getUser();
