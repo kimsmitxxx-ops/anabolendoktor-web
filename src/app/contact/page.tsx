@@ -46,8 +46,8 @@ export default function ContactPage() {
             <Clock size={20} className="text-accent" />
             <h3 className="mt-3 font-display text-lg text-primary-foreground">Openingstijden support</h3>
             <ul className="mt-2 space-y-1 text-sm text-primary-foreground/75">
-              <li>Ma t/m vr · 09:00 – 21:00</li>
-              <li>Za &amp; zo · 10:00 – 18:00</li>
+              <li>Ma t/m vr · 09:00 - 21:00</li>
+              <li>Za &amp; zo · 10:00 - 18:00</li>
             </ul>
           </div>
           <div className="rounded-md border border-primary-muted bg-primary p-6 text-primary-foreground">
