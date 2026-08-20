@@ -53,7 +53,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="nl" data-shop="anabolendoktor" className={`${manrope.variable} ${spaceGrotesk.variable}`}>
       <head>
-        <link rel="preconnect" href="https://rexqfwibxawqnvrzbdoo.supabase.co" />
+        {/* Geen preconnect naar de Supabase-host: afbeeldingen lopen via de
+            /img-rewrite over ons eigen domein, dus de browser praat er nooit
+            rechtstreeks mee. De hint leverde niets op en zette wel de naam van
+            het gedeelde project in de broncode van elke pagina. */}
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
         {/* Preload hero image (LCP) - AVIF eerst voor moderne browsers (55KB vs 91KB jpg).
             Browsers die geen AVIF doen, vallen automatisch op de webp/jpg <picture> source. */}

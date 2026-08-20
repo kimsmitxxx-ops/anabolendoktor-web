@@ -14,8 +14,8 @@ module.exports = {
   },
   async rewrites() {
     return [
-      // Clean /media/<path> URLs → Supabase Storage (shop_slug=anabolenpro)
-      { source: "/media/:path*", destination: `${SUPABASE_URL}/storage/v1/object/public/product-media/anabolenpro/:path*` },
+      // /media/<pad> wees naar de map van anabolenpro in de product-media bucket.
+      { source: "/media/:path*", destination: `${SUPABASE_URL}/storage/v1/object/public/product-media/anabolendoktor/:path*` },
       // Clean /img/<path> URLs → Supabase Storage blog-images bucket (categorie/stof/blog heros)
       { source: "/img/:path*", destination: `${SUPABASE_URL}/storage/v1/object/public/blog-images/:path*` },
     ];
