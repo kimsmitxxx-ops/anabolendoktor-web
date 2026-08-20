@@ -36,12 +36,12 @@ const faq = [
   {
     question: "Hoe ziet de verpakking eruit?",
     answer:
-      "Neutrale bruine of grijze doos zonder logo, productnaam of branding op de buitenkant. Op het verzendlabel staat alleen onze bedrijfsnaam en uw adres. Niets verraadt de inhoud.",
+      "Een neutrale bruine of grijze doos zonder logo, productnaam of branding op de buitenkant. Op het verzendlabel staat alleen onze bedrijfsnaam en uw adres. Er staat niets op waaruit iemand kan afleiden wat erin zit, ook niet op de pakbon. Wij sturen supplementen; een bloedonderzoek of consult wordt niet verzonden en komt per e-mail bij u binnen.",
   },
   {
     question: "Kan ik mijn order volgen?",
     answer:
-      "Ja. Zodra het label is aangemaakt, ontvang u per e-mail een track & trace-code van PostNL of DPD.",
+      "Ja. Zodra het verzendlabel is aangemaakt, ontvangt u per e-mail een track en trace-code van PostNL of DPD. Let op dat het label soms al actief is voordat het pakket fysiek is opgehaald; de status springt dan pas later op onderweg. Ziet u na twee werkdagen nog geen beweging, meld het dan via het contactformulier met uw ordernummer erbij.",
   },
   {
     question: "Wat als ik niet thuis ben?",
@@ -56,7 +56,7 @@ const faq = [
   {
     question: "Wordt er een handtekening gevraagd?",
     answer:
-      "Nee. Standaard vragen we geen handtekening bij ontvangst - uw pakket wordt gewoon bezorgd of in de brievenbus / bij de buren gelaten volgens de standaard PostNL/DPD-procedure.",
+      "Nee, standaard vragen wij geen handtekening bij ontvangst. Uw pakket wordt bezorgd op uw adres, of volgens de gebruikelijke procedure van de vervoerder bij de buren gelaten als u niet thuis bent. Wilt u dat liever niet, geef dat dan aan bij uw bestelling; wij kunnen de zending dan met handtekening laten aanbieden, al duurt bezorging daardoor soms een dag langer.",
   },
   {
     question: "Wat is de maximale leveringstermijn?",

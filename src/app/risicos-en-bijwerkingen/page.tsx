@@ -13,6 +13,38 @@ import { AlertTriangle, HeartPulse, Droplets, Brain, ShieldAlert } from "lucide-
  */
 export const dynamic = "force-dynamic";
 
+// Vragen die bezoekers hier daadwerkelijk mee binnenkomen, met antwoorden die
+// verder gaan dan een zin. Ook als FAQPage in de structured data, zodat
+// zoekmachines en taalmodellen ze los kunnen aanhalen.
+const VRAGEN = [
+  {
+    q: "Welke bijwerking komt het vaakst voor?",
+    a: "Een ongunstige verschuiving in het cholesterolprofiel, met name een sterke daling van het HDL. Dat gebeurt bij vrijwel iedereen die anabolen gebruikt, ook bij lage doseringen en korte kuren, en het geeft geen enkele klacht. U merkt er niets van; het is alleen zichtbaar in bloed. Daarna volgen een oplopend hematocriet, acne, een hogere bloeddruk en stemmings- en slaapproblemen.",
+  },
+  {
+    q: "Is orale toediening schadelijker dan injecteren?",
+    a: "Voor de lever wel. De meeste orale middelen zijn zo bewerkt dat ze de eerste passage door de lever overleven, en juist die bewerking maakt ze leverbelastend. Injecteerbare middelen omzeilen die route grotendeels. Dat maakt injecteren niet veilig: de effecten op cholesterol, bloeddruk, hematocriet en de eigen hormoonaanmaak treden bij beide op, en bij injecteren komen risico's op infectie en zenuwbeschadiging erbij.",
+  },
+  {
+    q: "Verdwijnen de bijwerkingen na het stoppen?",
+    a: "Een deel wel. Cholesterol, hematocriet en bloeddruk keren bij de meeste mensen binnen enkele maanden terug richting hun uitgangswaarde. De onderdrukking van de eigen aanmaak duurt langer, van maanden tot meer dan een jaar, en herstelt niet bij iedereen volledig. Verdikking van de hartspier en littekenvorming in het hart zijn deels blijvend, en gynecomastie die eenmaal is ontstaan verdwijnt niet vanzelf.",
+  },
+  {
+    q: "Ik voel me prima. Kan ik dan controle overslaan?",
+    a: "Nee, en dat is precies het punt van deze pagina. De belangrijkste veranderingen, in cholesterol, hematocriet en bloeddruk, geven pas klachten als er al schade is. Zich goed voelen zegt niets over wat er in bloed zichtbaar is. Meten is de enige manier om het te weten, en een afwijking vroeg zien is de enige manier om er nog iets aan te kunnen doen.",
+  },
+  {
+    q: "Maakt het uit hoe oud ik ben?",
+    a: "Ja, aanzienlijk. Onder de eenentwintig is de eigen hormoonhuishouding nog in ontwikkeling en is de kans op blijvende onderdrukking het grootst. Boven de veertig weegt het cardiovasculaire risico zwaarder, zeker als er hart- en vaatziekten in de familie voorkomen of als de bloeddruk al aan de hoge kant is. Leeftijd verandert niet welke risico's er zijn, wel hoe zwaar ze wegen.",
+  },
+  {
+    q: "Wat als ik nu al klachten heb?",
+    a: "Dan is de vraag eerst hoe acuut ze zijn. Pijn op de borst, kortademigheid bij lichte inspanning, ernstige hoofdpijn, geel worden van huid of oogwit en aanhoudende sombere gedachten horen bij een huisarts of de huisartsenpost, vandaag. Bij klachten die minder acuut zijn, zoals vermoeidheid, slecht slapen of een dalend libido, is bloedonderzoek de logische eerste stap; dan weet u waarover u het heeft.",
+  },
+];
+
+
+
 export const metadata: Metadata = {
   title: "Risico's en bijwerkingen van anabolen",
   description:
@@ -113,6 +145,31 @@ export default function RisicoPage() {
           Consult aanvragen
         </Link>
       </div>
+
+      <h2 className="mt-14 font-display text-2xl">Veelgestelde vragen</h2>
+      <dl className="mt-6 max-w-3xl space-y-7">
+        {VRAGEN.map((v) => (
+          <div key={v.q}>
+            <dt className="font-medium text-text">{v.q}</dt>
+            <dd className="mt-2 text-sm leading-relaxed text-text-muted">{v.a}</dd>
+          </div>
+        ))}
+      </dl>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: VRAGEN.map((v) => ({
+              "@type": "Question",
+              name: v.q,
+              acceptedAnswer: { "@type": "Answer", text: v.a },
+            })),
+          }),
+        }}
+      />
 
       <p className="mt-12 rounded-xl border border-paper-border bg-paper-soft p-5 text-sm text-text-muted">
         Deze pagina is voorlichting en geen medisch advies. Er ontstaat geen
