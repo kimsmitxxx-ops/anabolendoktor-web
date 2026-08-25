@@ -90,7 +90,7 @@ export default function WinkelmandPage() {
                 Naar checkout
               </Link>
               <p className="mt-3 text-center text-[11px] text-text-subtle">
-                €10 verzending per magazijn (UT-producten apart van standaard-magazijn Vlaardingen).
+                €10 verzendkosten per bestelling. Consulten en bloedonderzoek worden niet verzonden.
               </p>
             </div>
           </div>

@@ -15,7 +15,7 @@ const sections: { id: string; title: string; body: string[] }[] = [
     id: "definities",
     title: "1. Definities",
     body: [
-      "anabolendoktor: anabolendoktor B.V., gevestigd te Westhavenkade 12, 3134 NA Vlaardingen. Ons KvK- en BTW-nummer staan op de factuur die u na bestelling ontvangt.",
+      "anabolendoktor: anabolendoktor B.V. Ons vestigingsadres, KvK- en BTW-nummer staan op de factuur die u na bestelling ontvangt.",
       "Klant: de natuurlijke of rechtspersoon die een overeenkomst aangaat met anabolendoktor.",
       "Producten: de door anabolendoktor aangeboden supplementen en bloedonderzoeken.",
       "Diensten: de door anabolendoktor aangeboden consulten. Anabolendoktor is geen artsenpraktijk, stelt geen diagnoses en schrijft geen medicatie voor.",
@@ -26,14 +26,14 @@ const sections: { id: string; title: string; body: string[] }[] = [
     title: "2. Toepasselijkheid",
     body: [
       "Deze voorwaarden zijn van toepassing op elk aanbod van anabolendoktor en op elke tot stand gekomen overeenkomst tussen anabolendoktor en klant.",
-      "Voordat een overeenkomst wordt gesloten, wordt de tekst van deze voorwaarden langs elektronische weg ter beschikking gesteld.",
+      "De tekst van deze voorwaarden is voorafgaand aan het sluiten van een overeenkomst op deze pagina te lezen en op te slaan.",
     ],
   },
   {
     id: "aanbod",
     title: "3. Het aanbod",
     body: [
-      "Alle aanbiedingen op de website zijn vrijblijvend en zolang de voorraad strekt.",
+      "Het aanbod op deze website is vrijblijvend. Supplementen worden geleverd zolang de voorraad strekt; consulten zolang er agenda-ruimte is.",
       "Het aanbod bevat een volledige en nauwkeurige omschrijving van het product of de dienst, inclusief samenstelling, dosering en wat er wel en niet bij inbegrepen is.",
       "Kennelijke vergissingen of fouten in het aanbod binden anabolendoktor niet.",
     ],
@@ -55,16 +55,16 @@ const sections: { id: string; title: string; body: string[] }[] = [
       "Voor consulten geldt dat het herroepingsrecht vervalt zodra de dienst met uitdrukkelijke instemming van de klant binnen de bedenktijd volledig is uitgevoerd. Tot 24 uur voor het afgesproken tijdstip kan een consult kosteloos worden geannuleerd of verplaatst; daarna wordt de gereserveerde tijd in rekening gebracht.",
       "Voor bloedonderzoek geldt dat annulering kosteloos is zolang het aanvraagformulier nog niet bij een prikpost is ingeleverd. Na afname zijn de kosten bij het laboratorium gemaakt en is terugbetaling niet meer mogelijk.",
       "Terugbetaling vindt plaats binnen 14 dagen na ontvangst van de herroeping, via hetzelfde betaalmiddel als waarmee is betaald.",
-      "Komt uw pakket door vertraging of vermissing niet aan? Dan sturen wij binnen 14 dagen na de oorspronkelijke verzenddatum kosteloos een nieuwe zending - zonder discussie.",
-      "Zijn bepaalde items op het moment van verwerking niet leverbaar? Dan bieden wij alternatieve items van gelijke waarde aan, of verzenden we die items apart na zodra ze weer op voorraad zijn.",
+      "Is een pakket 14 dagen na de verzenddatum nog niet bezorgd, dan verstuurt anabolendoktor kosteloos een vervangende zending.",
+      "Blijkt een product tijdens de verwerking niet leverbaar, dan wordt in overleg met de klant een alternatief geleverd of het betreffende bedrag terugbetaald.",
     ],
   },
   {
     id: "prijzen",
     title: "6. Prijzen en betaling",
     body: [
-      "De op de website vermelde prijzen zijn in euro's en inclusief 21% BTW.",
-      "Betaling vindt plaats via bankoverboeking. De rekeninggegevens staan op de betaalpagina die de klant na het plaatsen van de bestelling ontvangt; die kunnen per bestelling verschillen. Zodra de betaling binnen is, gaat de bestelling in behandeling.",
+      "Alle prijzen op deze website zijn in euro's en inclusief BTW; voor supplementen geldt het hoge tarief, voor diensten het tarief dat daarvoor wettelijk van toepassing is.",
+      "Betaling verloopt per bankoverboeking. Na het plaatsen van een bestelling ontvangt de klant een betaalpagina met de rekeninggegevens voor die specifieke bestelling; deze gegevens kunnen per bestelling verschillen. De verwerking start zodra de betaling is ontvangen.",
       "anabolendoktor behoudt zich het recht voor prijzen te wijzigen; eenmaal geplaatste orders blijven ongewijzigd.",
     ],
   },
@@ -72,10 +72,10 @@ const sections: { id: string; title: string; body: string[] }[] = [
     id: "levering",
     title: "7. Levering",
     body: [
-      "anabolendoktor neemt de grootst mogelijke zorgvuldigheid in acht bij ontvangst en uitvoering van bestellingen.",
-      "Het adres dat door de klant is opgegeven, geldt als plaats van levering. Wij verzenden uitsluitend naar vaste huisadressen (geen PostNL-afhaalpunten als aflever-optie).",
-      "Genoemde levertijden zijn indicatief. De maximale leveringstermijn bedraagt 14 dagen, gerekend vanaf de dag na verzending. Is het pakket dan nog niet aangekomen, dan verzenden wij automatisch opnieuw.",
-      "Het risico van beschadiging en vermissing gaat over op de klant op het moment van bezorging aan het opgegeven huisadres.",
+      "anabolendoktor voert bestellingen en consulten met zorg uit en plant consulten in overleg met de klant.",
+      "Levering van supplementen vindt plaats op het adres dat de klant bij de bestelling opgeeft. Consulten en uitslagen van bloedonderzoek worden per e-mail geleverd.",
+      "Genoemde levertijden zijn een indicatie en geen fatale termijn. Is een pakket 14 dagen na verzending niet bezorgd, dan verstuurt anabolendoktor kosteloos opnieuw.",
+      "Het risico voor verzonden producten gaat op de klant over op het moment van bezorging.",
     ],
   },
   {
@@ -121,7 +121,7 @@ export default function VoorwaardenPage() {
       <PageHero
         eyebrow="Juridisch"
         title="Algemene voorwaarden anabolendoktor B.V."
-        intro="Versie 3.2 - laatst bijgewerkt op 12 juni 2026. Deze voorwaarden gelden voor elke bestelling en elk consult dat u via deze website plaatst."
+        intro="Versie 4.0, laatst bijgewerkt op 25 augustus 2026. Deze voorwaarden gelden voor elke bestelling en elk consult dat u via deze website plaatst."
       />
 
       <section className="mx-auto max-w-7xl px-4 py-14 grid gap-10 lg:grid-cols-[260px_1fr]">

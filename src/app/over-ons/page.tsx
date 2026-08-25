@@ -54,8 +54,8 @@ const pillars = [
   },
   {
     icon: MapPin,
-    h: "NL-magazijn in Vlaardingen",
-    p: "Alles verzonden vanaf Westhavenkade 12, 3134 NA Vlaardingen. Anoniem verpakt, betaling voor 11:00 op een werkdag = dezelfde dag verstuurd via PostNL of DPD.",
+    h: "Verzending vanuit Nederland",
+    p: "Supplementen worden neutraal verpakt en vanuit Nederland verzonden zodra uw betaling binnen is. Consulten en bloedonderzoek worden niet verzonden; die ontvangt u per e-mail.",
   },
 ];
 
@@ -206,10 +206,7 @@ export default async function OverOnsPage() {
                 <dt className="w-28 text-text-muted">Sinds</dt>
                 <dd className="text-text">2019</dd>
               </div>
-              <div className="flex gap-2">
-                <dt className="w-28 text-text-muted">Magazijn</dt>
-                <dd className="text-text">Westhavenkade 12, 3134 NA Vlaardingen</dd>
-              </div>
+
               <div className="flex gap-2">
                 <dt className="w-28 text-text-muted">KvK / BTW</dt>
                 <dd className="text-text">Staat op de factuur na bestelling.</dd>

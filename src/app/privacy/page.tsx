@@ -15,71 +15,73 @@ const sections = [
     id: "wie",
     title: "1. Wie zijn wij",
     body: [
-      "anabolendoktor B.V., gevestigd aan de Westhavenkade 12, 3134 NA Vlaardingen, is verwerkingsverantwoordelijke voor de gegevens die via anabolendoktor.com worden verzameld. Ons KvK- en BTW-nummer staan op de factuur die u na uw bestelling ontvangt.",
+      "anabolendoktor B.V. is verwerkingsverantwoordelijke voor de gegevens die via anabolendoktor.com worden verzameld. Ons vestigingsadres, KvK- en BTW-nummer staan op de factuur die u na uw bestelling ontvangt.",
     ],
   },
   {
     id: "welke",
     title: "2. Welke gegevens we verwerken",
     body: [
-      "NAW-gegevens en e-mailadres - voor het uitvoeren van uw bestelling en correspondentie.",
-      "Telefoonnummer, alleen als u dit zelf opgeeft, voor track en trace of om een afspraak af te stemmen.",
-      "Bestelhistorie - om garantie- en retourclaims correct af te handelen.",
-      "Technische data (IP-adres, browsertype) - uitsluitend voor beveiliging en fraudepreventie.",
+      "Naam, adres en e-mailadres: nodig om uw bestelling uit te voeren en met u te kunnen corresponderen.",
+      "Telefoonnummer, alleen als u dat zelf opgeeft, bijvoorbeeld om een consulttijdstip af te stemmen.",
+      "Wat u invult in een intake-vragenlijst en wat u tijdens een consult vertelt. Dit zijn gegevens over uw gezondheid; wij verwerken ze uitsluitend met uw toestemming, alleen voor het consult zelf, en ze worden nooit gedeeld met uw huisarts, verzekeraar of werkgever.",
+      "Uitslagen van bloedonderzoek dat u via ons bestelt. Ook deze vallen onder gezondheidsgegevens en worden alleen gebruikt om ze aan u te leveren en, als u dat afneemt, met u te bespreken.",
+      "Beperkte technische gegevens voor de beveiliging van de website.",
     ],
   },
   {
     id: "doel",
     title: "3. Met welk doel",
     body: [
-      "Uitvoering van de koopovereenkomst (artikel 6 lid 1 sub b AVG).",
-      "Voldoen aan wettelijke verplichtingen, zoals fiscale bewaartermijnen (sub c).",
-      "Gerechtvaardigd belang voor beveiliging en fraudepreventie (sub f).",
-      "Wij verwerken uw gegevens niet voor marketingdoeleinden zonder expliciete toestemming.",
+      "Het uitvoeren van de overeenkomst die u met ons sluit: een bestelling, een consult of een bloedonderzoek (artikel 6 lid 1 sub b AVG).",
+      "Voor gezondheidsgegevens: uw uitdrukkelijke toestemming (artikel 9 lid 2 sub a AVG). Die kunt u op elk moment intrekken; dan verwijderen wij de intake en de gespreksaantekeningen.",
+      "Het voldoen aan wettelijke plichten, zoals de fiscale bewaartermijn voor facturen.",
+      "Zonder aparte toestemming gebruiken wij uw gegevens niet voor marketing.",
     ],
   },
   {
     id: "delen",
     title: "4. Met wie we gegevens delen",
     body: [
-      "PostNL en DHL - voor de fysieke bezorging van uw pakket.",
-      "Onze betaaldienstverlener, die alleen het transactiebedrag en uw e-mailadres ontvangt.",
-      "Onze accountant - voor de wettelijke administratie, alleen factuurgegevens.",
-      "Wij verkopen of verhuren uw gegevens nooit aan derden.",
+      "De vervoerder, alleen bij een supplementenbestelling, en alleen uw naam en adres.",
+      "Het laboratorium, alleen bij een bloedonderzoek, en alleen wat nodig is om de afname en de uitslag aan u te koppelen.",
+      "Onze betaaldienstverlener, die het transactiebedrag en een referentie ontvangt.",
+      "Wat u in een intake of consult deelt, verlaat ons niet. Niet naar uw huisarts, niet naar een verzekeraar, niet naar een werkgever, tenzij u ons daar zelf schriftelijk om vraagt.",
     ],
   },
   {
     id: "bewaartermijn",
     title: "5. Bewaartermijnen",
     body: [
-      "Factuur- en bestelgegevens: 7 jaar (fiscale bewaarplicht).",
-      "Klantaccounts: zolang het account actief is, plus 12 maanden na laatste login.",
-      "Supportcorrespondentie: maximaal 24 maanden na laatste contact.",
+      "Factuurgegevens: zeven jaar, omdat de wet dat voorschrijft.",
+      "Intake-vragenlijsten en consultverslagen: twaalf maanden na het laatste consult, zodat een vervolgvraag context heeft. Daarna verwijderen wij ze. Eerder weg? Eén verzoek via het contactformulier volstaat.",
+      "Uitslagen van bloedonderzoek: totdat u om verwijdering vraagt, omdat het vergelijken met een eerdere meting juist de waarde ervan is.",
+      "Berichten via het contactformulier: maximaal achttien maanden na het laatste contact.",
     ],
   },
   {
     id: "rechten",
     title: "6. Uw rechten",
     body: [
-      "U hebt het recht op inzage, correctie, verwijdering, beperking, dataportabiliteit en bezwaar tegen verwerking.",
-      "Een verzoek dien u in via het contactformulier op de website. Wij reageren binnen 14 dagen.",
-      "Bent u het oneens met onze afhandeling, dan kunt u een klacht indienen bij de Autoriteit Persoonsgegevens.",
+      "U kunt uw gegevens inzien, laten corrigeren of laten verwijderen, de verwerking laten beperken, uw gegevens meenemen en bezwaar maken tegen verwerking.",
+      "Een verzoek doet u via het contactformulier; binnen veertien dagen heeft u antwoord. Voor gezondheidsgegevens geldt: intrekken van uw toestemming betekent verwijderen.",
+      "Vindt u dat wij een verzoek niet goed afhandelen, dan kunt u terecht bij de Autoriteit Persoonsgegevens.",
     ],
   },
   {
     id: "beveiliging",
     title: "7. Beveiliging",
     body: [
-      "Alle verbindingen met onze website lopen via TLS 1.3. Wachtwoorden worden gehasht met bcrypt (kostfactor 12).",
-      "Onze servers staan binnen de EU bij een ISO 27001-gecertificeerde provider.",
+      "Verbindingen met deze website zijn versleuteld en onze gegevens staan bij een Europese verwerker binnen de EU.",
+      "Toegang tot intakegegevens en uitslagen is beperkt tot de consulent die uw dossier behandelt.",
     ],
   },
   {
     id: "cookies",
     title: "8. Cookies",
     body: [
-      "Wij plaatsen alleen functionele en analytische cookies. Analytische cookies zijn anoniem en worden niet gedeeld met derden.",
-      "Tracking- of advertentiecookies plaatsen wij niet.",
+      "Deze site meet bezoekersaantallen met een eigen, anonieme teller die pas gaat lopen nadat u daarmee instemt in de cookiebanner. Er gaan geen gegevens naar een advertentieplatform.",
+      "Op de cookiepagina staat precies welke sleutels er in uw browser worden gezet en waarvoor.",
     ],
   },
 ];
@@ -90,7 +92,7 @@ export default function PrivacyPage() {
       <PageHero
         eyebrow="Privacy"
         title="Wat we met uw gegevens doen, in mensentaal"
-        intro="Versie 2.1 - laatst bijgewerkt op 12 juni 2026. Wij verwerken zo min mogelijk gegevens en bewaren ze nooit langer dan nodig."
+        intro="Versie 3.0, laatst bijgewerkt op 25 augustus 2026. Een consultatiedienst verwerkt gevoeliger gegevens dan een gewone webshop; daarom staat hieronder per soort gegeven wat wij ermee doen, hoe lang wij het bewaren en wat er nooit mee gebeurt."
       />
 
       <section className="mx-auto max-w-7xl px-4 py-14 grid gap-10 lg:grid-cols-[260px_1fr]">

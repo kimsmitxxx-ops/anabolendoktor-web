@@ -145,22 +145,22 @@ export default async function ProductDetailPage({ params }: { params: { categori
             <div className="flex items-start gap-3 rounded-lg border border-border bg-paper-soft p-3">
               <FlaskConical className="h-5 w-5 text-accent shrink-0 mt-0.5" />
               <div className="text-sm">
-                <p className="font-semibold text-text">100% lab-getest</p>
-                <p className="text-xs text-text-muted">Iedere batch getest door een onafhankelijk lab</p>
+                <p className="font-semibold text-text">Onderbouwing eerst</p>
+                <p className="text-xs text-text-muted">Per product staat beschreven wat het onderzoek wel en niet laat zien</p>
               </div>
             </div>
             <div className="flex items-start gap-3 rounded-lg border border-border bg-paper-soft p-3">
               <ShieldCheck className="h-5 w-5 text-accent shrink-0 mt-0.5" />
               <div className="text-sm">
-                <p className="font-semibold text-text">Discreet verzonden</p>
-                <p className="text-xs text-text-muted">Neutrale verpakking - geen logo of productnaam op het label</p>
+                <p className="font-semibold text-text">Neutraal verpakt</p>
+                <p className="text-xs text-text-muted">Zonder logo of inhoudsvermelding op de verpakking of het label</p>
               </div>
             </div>
             <div className="flex items-start gap-3 rounded-lg border border-border bg-paper-soft p-3">
               <Truck className="h-5 w-5 text-accent shrink-0 mt-0.5" />
               <div className="text-sm">
-                <p className="font-semibold text-text">Snel verzonden</p>
-                <p className="text-xs text-text-muted">100% leveringsgarantie - pakket niet aangekomen? Wij verzenden opnieuw, zonder gedoe.</p>
+                <p className="font-semibold text-text">Verzonden na betaling</p>
+                <p className="text-xs text-text-muted">Niet aangekomen binnen 14 dagen? Dan versturen wij kosteloos opnieuw.</p>
               </div>
             </div>
           </div>

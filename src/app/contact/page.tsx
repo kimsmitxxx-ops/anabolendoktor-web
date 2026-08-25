@@ -52,10 +52,10 @@ export default function ContactPage() {
           </div>
           <div className="rounded-md border border-primary-muted bg-primary p-6 text-primary-foreground">
             <MapPin size={20} className="text-accent" />
-            <h3 className="mt-3 font-display text-lg text-primary-foreground">Magazijn (geen bezoek)</h3>
+            <h3 className="mt-3 font-display text-lg text-primary-foreground">Geen bezoekadres</h3>
             <p className="mt-1 text-sm text-primary-foreground/75">
-              Westhavenkade 12, 3134 NA Vlaardingen <br />
-              KvK + BTW-nummer op de factuur.
+              Consulten vinden plaats via video-call en verzending gebeurt vanuit Nederland.
+              KvK- en BTW-nummer staan op de factuur.
             </p>
           </div>
         </div>

@@ -121,8 +121,9 @@ export function AddToCartButton({ product }: { product: Product }) {
           <ShieldCheck size={14} className="text-accent" /> Veilig &amp; snel betalen
         </p>
         <p className="mt-1.5 text-[11px] text-text-muted leading-snug">
-          Bankoverschrijving via uw eigen bank-app (IBAN). Geen kaart en geen tussenpartij.
-          Bestelling gaat direct na ontvangst betaling de deur uit.
+          U betaalt per bankoverschrijving via uw eigen bank-app. De rekeninggegevens staan op
+          de betaalpagina na het bestellen. Zodra de betaling binnen is, wordt uw bestelling
+          verwerkt.
         </p>
         <div className="mt-2 flex items-center gap-2 text-[11px]">
           <span className="inline-flex items-center gap-1 rounded border border-border bg-background px-2 py-0.5 text-text">

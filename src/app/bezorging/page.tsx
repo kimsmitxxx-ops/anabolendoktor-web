@@ -1,94 +1,86 @@
-import Link from "next/link";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PageHero } from "@/components/shop/page-hero";
 import { FaqAccordion } from "@/components/faq-accordion";
-import { Truck, PackageCheck, Clock, Globe2, ShieldCheck, MapPin } from "lucide-react";
+import { Mail, PackageCheck, Clock, ShieldCheck } from "lucide-react";
 
 export const revalidate = 86400;
 
+/**
+ * Deze pagina was overgenomen van anabolenpro, tot en met de twee magazijnen
+ * en het Utinon-merk dat hier niet bestaat. Volledig herschreven voor wat deze
+ * site werkelijk levert: consulten en bloedonderzoek per e-mail, en een kleine
+ * supplementenlijn per post.
+ */
 export const metadata: Metadata = {
-  title: "Bezorging - Anabolendoktor",
+  title: "Levering - per e-mail voor diensten, per post voor supplementen",
   description:
-    "Snel verzonden vanuit Nederland via PostNL en DPD. Betaling vóór 11:00 = dezelfde dag verstuurd. Discreet, met track & trace, alleen naar huisadressen.",
+    "Consulten en bloedonderzoek ontvangt u per e-mail; er wordt niets verzonden. Supplementen gaan neutraal verpakt op de post zodra uw betaling binnen is, en zijn normaal binnen 1 tot 3 werkdagen bij u.",
   alternates: { canonical: "/bezorging" },
 };
 
-const carriers = [
-  { name: "PostNL Standaard NL", cost: "€10,00", note: "Betaling vóór 11:00 werkdag binnen = dezelfde dag verstuurd." },
-  { name: "PostNL België", cost: "€15,00", note: "1-3 werkdagen na verzending." },
-  { name: "DPD Nederland", cost: "€10,00", note: "Alternatief PostNL. Betaling vóór 11:00 = dezelfde dag verstuurd." },
-  { name: "DPD EU", cost: "€15,00", note: "Binnen 3-5 werkdagen naar DE, FR, AT, ES, IT, PL, SE." },
-];
-
-const usps = [
-  { icon: Clock, title: "Snel verzonden", sub: "Betaling voor 11:00 werkdag binnen = dezelfde dag nog verstuurd." },
-  { icon: PackageCheck, title: "Neutrale verpakking", sub: "Geen logo, geen productnaam, geen vermelding op label." },
-  { icon: ShieldCheck, title: "100% leveringsgarantie", sub: "Komt uw pakket niet aan? Wij verzenden opnieuw - geen discussie, geen extra kosten." },
-  { icon: Globe2, title: "EU-breed bezorgd", sub: "NL en BE dagelijks. DE, FR, AT, ES, IT, PL, SE binnen 3-5 werkdagen." },
+const soorten = [
+  {
+    icon: Mail,
+    title: "Consulten",
+    sub: "Niets wordt verzonden. Na uw aanvraag ontvangt u per e-mail een voorstel voor een tijdstip en de intake-vragenlijst. Het gesprek zelf is een video-call.",
+  },
+  {
+    icon: Clock,
+    title: "Bloedonderzoek",
+    sub: "U ontvangt per e-mail een aanvraagformulier met barcode voor de prikpost. De uitslag volgt binnen enkele werkdagen na afname, ook per e-mail.",
+  },
+  {
+    icon: PackageCheck,
+    title: "Supplementen",
+    sub: "Gaan op de post zodra uw betaling binnen is, in een neutrale doos zonder logo of inhoudsvermelding. Normaal binnen 1 tot 3 werkdagen bezorgd.",
+  },
 ];
 
 const faq = [
   {
-    question: "Hoe snel wordt mijn pakket verstuurd?",
+    question: "Wanneer wordt mijn bestelling verstuurd?",
     answer:
-      "Als uw betaling vóór 11:00 op een werkdag binnen is, wordt uw pakket dezelfde dag nog verstuurd. Betaling na 11:00 of in het weekend? Dan vertrekt uw bestelling de eerstvolgende werkdag.",
+      "Zodra uw betaling binnen is. Wij noemen bewust geen vaste verzenddag of tijdstip: de doorlooptijd hangt af van het moment waarop uw overboeking bij ons zichtbaar wordt, en dat verschilt per bank. Na verzending is een pakket in Nederland normaal binnen 1 tot 3 werkdagen bij u, in België binnen 3 tot 5.",
   },
   {
-    question: "Hoe ziet de verpakking eruit?",
+    question: "Wat staat er op de verpakking?",
     answer:
-      "Een neutrale bruine of grijze doos zonder logo, productnaam of branding op de buitenkant. Op het verzendlabel staat alleen onze bedrijfsnaam en uw adres. Er staat niets op waaruit iemand kan afleiden wat erin zit, ook niet op de pakbon. Wij sturen supplementen; een bloedonderzoek of consult wordt niet verzonden en komt per e-mail bij u binnen.",
+      "Een neutrale doos zonder logo, zonder productnaam en zonder verwijzing naar deze website. Op het verzendlabel staan alleen een bedrijfsnaam en uw adres. Ook de pakbon binnenin noemt geen productcategorie. Wij begrijpen dat bezoekers van deze site op privacy gesteld zijn, ook als de inhoud een pot creatine is.",
   },
   {
-    question: "Kan ik mijn order volgen?",
+    question: "Krijg ik track en trace?",
     answer:
-      "Ja. Zodra het verzendlabel is aangemaakt, ontvangt u per e-mail een track en trace-code van PostNL of DPD. Let op dat het label soms al actief is voordat het pakket fysiek is opgehaald; de status springt dan pas later op onderweg. Ziet u na twee werkdagen nog geen beweging, meld het dan via het contactformulier met uw ordernummer erbij.",
+      "Ja, zodra het verzendlabel is aangemaakt ontvangt u de code per e-mail. Houd er rekening mee dat een label soms al actief is voordat het pakket fysiek is opgehaald; de status springt dan pas later op onderweg. Geen beweging na twee werkdagen? Meld het via het contactformulier met uw ordernummer.",
   },
   {
-    question: "Wat als ik niet thuis ben?",
+    question: "Wat als mijn pakket niet aankomt?",
     answer:
-      "PostNL of DPD biedt het pakket nog één keer aan. Daarna gaat het naar het dichtstbijzijnde afhaalpunt van de betreffende vervoerder. U hebt daar 7 dagen om het op te halen met uw legitimatie.",
+      "Is uw pakket 14 dagen na de verzenddatum nog niet bezorgd, dan versturen wij kosteloos opnieuw. Wij vragen eerst bij de vervoerder na wat er met de zending is gebeurd en houden u daarvan op de hoogte.",
   },
   {
-    question: "Bezorgen jullie ook naar PostNL-afhaalpunten?",
+    question: "Verzenden jullie buiten Nederland en België?",
     answer:
-      "Nee, wij kunnen helaas niet direct naar PostNL-afhaalpunten versturen omdat we in onze branche geen contract met PostNL kunnen afsluiten. We verzenden alleen naar vaste huisadressen. Mist u het pakket op uw huisadres, dan gaat het wel naar uw dichtstbijzijnde afhaalpunt.",
+      "Supplementen versturen wij binnen de EU. Buiten Nederland en België duurt bezorging normaal 3 tot 5 werkdagen en gelden de verzendkosten voor EU-zendingen. Consulten en bloedonderzoek zijn niet aan een land gebonden; alleen de prikpost voor bloedafname moet in Nederland liggen.",
   },
   {
-    question: "Wordt er een handtekening gevraagd?",
+    question: "Kan ik mijn bestelling laten bezorgen op een afhaalpunt?",
     answer:
-      "Nee, standaard vragen wij geen handtekening bij ontvangst. Uw pakket wordt bezorgd op uw adres, of volgens de gebruikelijke procedure van de vervoerder bij de buren gelaten als u niet thuis bent. Wilt u dat liever niet, geef dat dan aan bij uw bestelling; wij kunnen de zending dan met handtekening laten aanbieden, al duurt bezorging daardoor soms een dag langer.",
+      "Wij versturen naar het adres dat u bij de bestelling opgeeft. Mist u de bezorging, dan geldt de normale procedure van de vervoerder: het pakket wordt nog eens aangeboden of naar een afhaalpunt in de buurt gebracht, waar u het met de kaart of code kunt ophalen.",
   },
-  {
-    question: "Wat is de maximale leveringstermijn?",
-    answer:
-      "Maximaal 14 dagen na verzending. Is uw pakket na 14 dagen nog steeds niet aangekomen door vertraging of vermissing? Dan verzenden wij automatisch een nieuwe bestelling - zonder discussie.",
-  },
-  {
-    question: "Kan ik meerdere merken tegelijk bestellen?",
-    answer:
-      "Nee. Alles wat wij fysiek verzenden, gaat vanaf één locatie in Nederland. Bestelt u meerdere producten tegelijk, dan zit alles in één pakket en betaalt u één keer verzendkosten. Consulten en bloedonderzoek worden niet verzonden; die ontvangt u per e-mail.",
-  },
-];
-
-const timeline = [
-  { t: "0:00", h: "Bestelling geplaatst", d: "Directe bevestiging per e-mail met ordernummer + betaalinstructies." },
-  { t: "Voor 11:00", h: "Betaling binnen", d: "Bankoverboeking via de betaalpagina. Zodra wij de betaling zien, gaat uw order in behandeling." },
-  { t: "Zelfde werkdag 15:00", h: "Order ingepakt", d: "Uw bestelling wordt gecontroleerd op inhoud en houdbaarheid, en neutraal verpakt." },
-  { t: "Zelfde werkdag 17:00", h: "Bij PostNL / DPD", d: "Track & trace per mail, label is dan al actief." },
-  { t: "Volgende werkdag", h: "Bezorgd", d: "NL: tussen 09:00 en 21:30 aan uw vaste huisadres. BE: 1-3 werkdagen. Rest EU: 3-5 werkdagen." },
 ];
 
 export default function BezorgingPage() {
   return (
     <>
       <PageHero
-        eyebrow="Bezorging"
-        title="Snel verzonden, discreet verpakt, track & trace"
-        intro="Wij verzenden zelf vanuit Nederland. Betaling vóór 11:00 op een werkdag = dezelfde dag nog verstuurd met PostNL of DPD. Alleen naar vaste huisadressen - geen postbussen, geen afhaalpunten als aflever-optie."
+        eyebrow="Levering"
+        title="Diensten per e-mail, supplementen per post"
+        intro="Het grootste deel van ons aanbod wordt niet verzonden: een consult is een video-call en een bloedonderzoek loopt via een prikpost bij u in de buurt. Alleen supplementen gaan op de post, neutraal verpakt, zodra uw betaling binnen is."
       />
 
-      <section className="mx-auto max-w-7xl px-4 py-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-        {usps.map((u) => (
+      <section className="mx-auto max-w-7xl px-4 py-14 grid gap-5 md:grid-cols-3">
+        {soorten.map((u) => (
           <div key={u.title} className="rounded-md border border-border bg-surface p-5">
             <u.icon size={20} className="text-accent" />
             <h3 className="mt-3 font-display text-lg text-text">{u.title}</h3>
@@ -98,74 +90,30 @@ export default function BezorgingPage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-4 pb-14">
-        <h2 className="font-display text-2xl text-text">Bezorgopties &amp; tarieven</h2>
-        <p className="mt-2 text-sm text-text-muted">
-          Verzending is altijd €10 (NL) of €15 (BE/EU). Wij rekenen deze kosten altijd door - geen gratis-verzending drempel.
-        </p>
-        <div className="mt-6 overflow-hidden rounded-md border border-border">
-          <table className="w-full text-sm">
-            <thead className="bg-surface">
-              <tr className="text-left text-text-muted">
-                <th className="px-5 py-3 font-medium">Methode</th>
-                <th className="px-5 py-3 font-medium w-28">Tarief</th>
-                <th className="px-5 py-3 font-medium">Levertijd</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-border">
-              {carriers.map((c) => (
-                <tr key={c.name} className="bg-background">
-                  <td className="px-5 py-4 font-medium text-text">{c.name}</td>
-                  <td className="px-5 py-4 tabular text-text">{c.cost}</td>
-                  <td className="px-5 py-4 text-text-muted">{c.note}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="rounded-md border border-border bg-surface p-6">
+          <p className="text-xs uppercase tracking-[0.15em] text-accent font-semibold inline-flex items-center gap-1.5">
+            <ShieldCheck size={12} /> Verzendkosten
+          </p>
+          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-text-muted">
+            Voor supplementen rekenen wij €10 verzendkosten per bestelling binnen Nederland en €15
+            voor België en de rest van de EU, ongeacht het aantal producten. Consulten en
+            bloedonderzoek kennen geen verzendkosten. Wij hanteren bewust geen
+            gratis-verzenddrempel: die verleidt tot bijbestellen wat u niet nodig heeft, en dat
+            past niet bij een site die u probeert af te raden geld uit te geven aan dingen zonder
+            effect.
+          </p>
         </div>
-        <p className="mt-4 text-xs text-text-subtle">
-          Bestel je uit beide verzendlocaties (Utinon + overige merken), dan betaal je 2× verzendkosten omdat het uit
-          verschillende magazijnen komt.
-        </p>
       </section>
 
       <section className="bg-surface border-y border-border">
         <div className="mx-auto max-w-7xl px-4 py-14 grid gap-10 lg:grid-cols-[1fr_1.4fr]">
           <div>
-            <p className="text-xs uppercase tracking-[0.15em] text-accent font-semibold">Tijdlijn</p>
-            <h2 className="mt-2 font-display text-2xl text-text">Van bestelling tot deurmat</h2>
+            <h2 className="font-display text-2xl text-text">Veelgestelde vragen</h2>
             <p className="mt-3 text-sm text-text-muted leading-relaxed">
-              Transparant per stap. U weet altijd waar uw pakket zich bevindt.
+              Staat uw vraag er niet bij? Stel hem via het{" "}
+              <Link href="/contact" className="text-accent hover:underline">contactformulier</Link>,
+              wij antwoorden binnen een werkdag.
             </p>
-          </div>
-          <ol className="space-y-5">
-            {timeline.map((s) => (
-              <li key={s.h} className="grid grid-cols-[110px_1fr] gap-4 items-start">
-                <span className="text-xs uppercase tracking-[0.12em] text-text-subtle tabular pt-1">{s.t}</span>
-                <div>
-                  <p className="font-medium text-text">{s.h}</p>
-                  <p className="text-sm text-text-muted">{s.d}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-4 py-14">
-        <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr]">
-          <div>
-            <Truck size={22} className="text-accent" />
-            <h2 className="mt-3 font-display text-2xl text-text">Veelgestelde vragen</h2>
-            <p className="mt-2 text-sm text-text-muted">
-              Antwoord niet gevonden? Stuur een bericht via{" "}
-              <Link href="/contact" className="text-accent hover:underline">contact</Link>.
-            </p>
-            <div className="mt-6 rounded-md border border-border bg-surface p-5 text-sm text-text-muted">
-              <MapPin size={16} className="text-accent" />
-              <p className="mt-2 font-medium text-text">Magazijn Nederland</p>
-              <p>Verzending vanuit onze eigen NL-locatie.</p>
-              <p className="mt-1 text-xs text-text-subtle">Geen bezoek mogelijk - alleen verzending.</p>
-            </div>
           </div>
           <FaqAccordion items={faq} />
         </div>

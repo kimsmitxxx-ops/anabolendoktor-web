@@ -37,7 +37,7 @@ export function Footer() {
               </Link>
             </li>
             <li className="inline-flex items-center gap-2">
-              <MapPin size={14} className="text-accent" /> Westhavenkade 12, 3134 NA Vlaardingen
+              <MapPin size={14} className="text-accent" /> Verzending vanuit Nederland
             </li>
           </ul>
         </div>

@@ -40,15 +40,15 @@ export function MedicalDisclaimer({ variant = "inline", extra }: Props) {
         )}
         <div className="space-y-1.5 leading-relaxed">
           <p>
-            <strong>Disclaimer.</strong> De informatie op deze pagina is bedoeld voor educatieve
-            doeleinden en harm-reduction - niet als medisch advies. Anabolen, peptiden en SERM/AI
-            kunnen ernstige bijwerkingen geven (hart, lever, hormonale as) en zijn in Nederland
-            niet toegelaten voor humaan gebruik buiten medisch voorschrift.
+            <strong>Let op.</strong> Wat u hier leest is voorlichting, geen medisch advies, en er
+            ontstaat geen behandelrelatie door het lezen ervan. Anabolendoktor is geen
+            artsenpraktijk: wij stellen geen diagnoses, schrijven niets voor en verkopen geen
+            anabolen of andere receptplichtige middelen.
           </p>
           <p>
-            Gebruik je deze stoffen, doe het dan onder bloedwerk-monitoring (voor, tijdens en na)
-            en raadpleeg een arts bij twijfel of klachten. Onze producten worden verkocht als
-            <em> research-grade materialen</em> - niet als medicatie.
+            Heeft u klachten, gebruikt u medicatie of twijfelt u over uw situatie, dan is uw
+            huisarts het juiste adres. Wat wij kunnen doen is uw bloedwaarden laten meten en de
+            uitslagen met u doornemen, zodat dat gesprek ergens over gaat.
           </p>
           {extra && <p className="mt-2 font-medium">{extra}</p>}
         </div>
