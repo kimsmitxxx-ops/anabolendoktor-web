@@ -1,4 +1,4 @@
-import { supabase, type Product, type Category, type BlogPost } from "./supabase";
+import { supabase, createServiceClient, type Product, type Category, type BlogPost } from "./supabase";
 
 // Hardcoded shop_id voor anabolendoktor, als terugval voor een scoped JWT.
 // RLS-policies in shop-dash migration 021 staan anon SELECT toe op deze shop.
@@ -221,7 +221,13 @@ export async function getShopPaymentInstructions(): Promise<PaymentInstructions 
  */
 export async function getOrderForConfirmation(orderId: string) {
   try {
-    const { data } = await supabase
+    // Bestellingen zijn met opzet niet leesbaar voor de anon-key: RLS laat ze
+    // niet door, want dan kon iedereen met een order-id klantgegevens opvragen
+    // via de REST-API. Deze functie draait alleen server-side op de
+    // bedankt-pagina, dus hier hoort de service-client. Met de anon-client
+    // kwam er altijd null terug en gaf de bedankt-pagina een 404.
+    const client = (() => { try { return createServiceClient(); } catch { return supabase; } })();
+    const { data } = await client
       .from("orders")
       .select(
         "id, reference, customer_email, customer_name, total_cents, subtotal_cents, shipping_cents, shipping_postal, shipping_country, created_at",
