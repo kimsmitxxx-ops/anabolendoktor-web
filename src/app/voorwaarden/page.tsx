@@ -64,7 +64,7 @@ const sections: { id: string; title: string; body: string[] }[] = [
     title: "6. Prijzen en betaling",
     body: [
       "De op de website vermelde prijzen zijn in euro's en inclusief 21% BTW.",
-      "Betaling vindt plaats via bank-overboeking (IBAN) of crypto (BTC/ETH/USDT). Zodra de betaling bij ons binnen is, gaat de bestelling in behandeling.",
+      "Betaling vindt plaats via bankoverboeking. De rekeninggegevens staan op de betaalpagina die de klant na het plaatsen van de bestelling ontvangt; die kunnen per bestelling verschillen. Zodra de betaling binnen is, gaat de bestelling in behandeling.",
       "anabolendoktor behoudt zich het recht voor prijzen te wijzigen; eenmaal geplaatste orders blijven ongewijzigd.",
     ],
   },

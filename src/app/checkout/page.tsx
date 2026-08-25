@@ -67,7 +67,7 @@ export default function CheckoutPage() {
       cart.clear();
 
       // Betaallink als die er is, anders de bedankt-pagina met overboeking,
-      // crypto en de mogelijkheid een betaalbewijs te uploaden.
+      // en de mogelijkheid een betaalbewijs te uploaden.
       if (j.paytail_url) track("payment_redirect", { order_reference: j.order_id });
       window.location.href = j.paytail_url || `/checkout/bedankt/${j.order_id}`;
     } catch {
@@ -258,7 +258,7 @@ export default function CheckoutPage() {
             </button>
             {err && <p className="mt-2 text-center text-xs text-danger">{err}</p>}
             <p className="mt-3 text-center text-[11px] text-text-muted">
-              Direct op de volgende pagina krijgt u de bank- en cryptogegevens. Pakket verzonden zodra betaling binnen is.
+              Op de volgende pagina staan de bankgegevens voor deze bestelling. Uw pakket gaat weg zodra de betaling binnen is.
             </p>
           </div>
         </div>

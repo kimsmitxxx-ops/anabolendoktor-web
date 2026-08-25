@@ -102,7 +102,7 @@ export async function POST(req: NextRequest) {
   // Betaallink, hetzelfde systeem als de andere shops: de basis-URL staat per
   // shop in de database, zodat een ander profiel geen codewijziging vraagt.
   // Staat paytail_enabled uit of ontbreekt de URL, dan valt de checkout terug
-  // op de bedankt-pagina met overboeking en crypto.
+  // op de bedankt-pagina met de betaalgegevens per overboeking.
   let paytailUrl: string | null = null;
   try {
     const { data: sp } = await supabase

@@ -195,7 +195,6 @@ export type PaymentInstructions = {
   iban?: string;
   bic?: string;
   account_holder?: string;
-  crypto_addresses?: Array<{ label: string; ticker: string; address: string }>;
   instructions_html?: string;
 };
 
@@ -212,15 +211,43 @@ export async function getShopPaymentInstructions(): Promise<PaymentInstructions 
   }
 }
 
+/**
+ * De bestelling voor de bedankt-pagina.
+ *
+ * Stond hier "email" in de select, en die kolom bestaat niet: het is
+ * customer_email. PostgREST gaf daardoor een fout, de pagina zag null en
+ * riep notFound() aan. Iedere klant die na het bestellen op de bedankt-pagina
+ * uitkwam, kreeg dus een 404 in plaats van zijn betaalgegevens.
+ */
 export async function getOrderForConfirmation(orderId: string) {
   try {
     const { data } = await supabase
       .from("orders")
-      .select("id, email, customer_name, total_cents, subtotal_cents, shipping_cents, created_at")
+      .select(
+        "id, reference, customer_email, customer_name, total_cents, subtotal_cents, shipping_cents, shipping_postal, shipping_country, created_at",
+      )
       .eq("id", orderId)
       .eq("shop_id", SHOP_ID)
       .maybeSingle();
-    return data;
+    if (!data) return null;
+    return { ...data, email: data.customer_email as string };
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * De betaallink van deze shop. De rekeninggegevens staan op die pagina en niet
+ * hier, omdat de rekening per bestelling kan verschillen.
+ */
+export async function getPaymentLinkConfig() {
+  try {
+    const { data } = await supabase
+      .from("shops")
+      .select("paytail_enabled, paytail_base_url, domain")
+      .eq("id", SHOP_ID)
+      .maybeSingle();
+    return data as { paytail_enabled: boolean; paytail_base_url: string | null; domain: string | null } | null;
   } catch {
     return null;
   }

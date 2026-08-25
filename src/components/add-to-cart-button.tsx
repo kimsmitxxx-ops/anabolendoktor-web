@@ -1,5 +1,5 @@
 "use client";
-import { Plus, Minus, ShoppingCart, Sparkles, ShieldCheck, Smartphone, Bitcoin } from "lucide-react";
+import { Plus, Minus, ShoppingCart, Sparkles, ShieldCheck, Smartphone } from "lucide-react";
 import { useState } from "react";
 import { useCart } from "@/lib/cart-context";
 import { formatEUR } from "@/lib/queries";
@@ -130,9 +130,6 @@ export function AddToCartButton({ product }: { product: Product }) {
           </span>
           <span className="inline-flex items-center gap-1 rounded border border-border bg-background px-2 py-0.5 text-text">
             IBAN
-          </span>
-          <span className="inline-flex items-center gap-1 rounded border border-border bg-background px-2 py-0.5 text-text">
-            <Bitcoin size={11} className="text-accent" /> Crypto
           </span>
         </div>
       </div>

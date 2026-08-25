@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { Bitcoin, Building2, Smartphone } from "lucide-react";
+import { Building2, Smartphone } from "lucide-react";
 
 export type PaymentRowVariant = "full" | "compact";
 
@@ -25,33 +25,14 @@ function BankApp() {
     </span>
   );
 }
-function Crypto() {
-  return (
-    <span className={wrapper}>
-      <Bitcoin size={12} className="text-accent" /> Crypto
-    </span>
-  );
-}
-function CryptoCoin({ label, color }: { label: string; color: string }) {
-  return (
-    <span className={cn(wrapper, "tabular")} style={{ color }}>
-      {label}
-    </span>
-  );
-}
 
+/**
+ * Crypto stond hier als betaalmethode, inclusief BTC-, ETH- en USDT-badges,
+ * terwijl geen van de shops crypto daadwerkelijk accepteert. Een betaalmethode
+ * tonen die niet werkt kost vertrouwen op precies het verkeerde moment.
+ */
 export function PaymentRow({ variant = "full", className }: PaymentRowProps) {
-  const items =
-    variant === "compact"
-      ? [<Bank key="b" />, <BankApp key="a" />, <Crypto key="c" />]
-      : [
-          <Bank key="b" />,
-          <BankApp key="a" />,
-          <Crypto key="c" />,
-          <CryptoCoin key="btc" label="BTC" color="#F7931A" />,
-          <CryptoCoin key="eth" label="ETH" color="#627EEA" />,
-          <CryptoCoin key="usdt" label="USDT" color="#26A17B" />,
-        ];
+  const items = variant === "compact" ? [<Bank key="b" />] : [<Bank key="b" />, <BankApp key="a" />];
   return (
     <div className={cn("flex flex-wrap items-center gap-2", className)} aria-label="Betaalmethoden">
       {items}

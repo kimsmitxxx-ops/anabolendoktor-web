@@ -3,10 +3,11 @@ import { notFound } from "next/navigation";
 import {
   getOrderForConfirmation,
   getShopPaymentInstructions,
+  getPaymentLinkConfig,
   formatEUR,
 } from "@/lib/queries";
 import { PaymentScreenshotForm } from "@/components/shop/payment-screenshot-form";
-import { CheckCircle2, Copy, Building2, Bitcoin, AlertTriangle } from "lucide-react";
+import { CheckCircle2, Building2, AlertTriangle, ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
@@ -20,14 +21,34 @@ export const metadata: Metadata = {
 };
 
 export default async function BedanktPage({ params }: { params: { orderId: string } }) {
-  const [order, payment] = await Promise.all([
+  const [order, payment, betaallink] = await Promise.all([
     getOrderForConfirmation(params.orderId),
     getShopPaymentInstructions(),
+    getPaymentLinkConfig(),
   ]);
 
   if (!order) notFound();
 
-  const ref = `ORDER-${order.id.slice(0, 8).toUpperCase()}`;
+  // Het ordernummer dat de klant hier ziet, moet hetzelfde zijn als het nummer
+  // dat met de betaling meegaat. Hier stond een uit de UUID afgeleid
+  // ORDER-nummer, terwijl de betaalpagina de reference uit de database krijgt.
+  const ref = order.reference || `ORDER-${order.id.slice(0, 8).toUpperCase()}`;
+
+  // De betaalpagina opnieuw opbouwen, zodat de klant die de betaling afbrak of
+  // deze pagina later terugzoekt, alsnog bij zijn betaalgegevens komt.
+  let betaalUrl: string | null = null;
+  if (betaallink?.paytail_enabled && betaallink.paytail_base_url) {
+    const params_ = new URLSearchParams({
+      order_id: ref,
+      amount: (order.total_cents / 100).toFixed(2),
+      name: order.customer_name || "",
+      email: order.email || "",
+      postcode: order.shipping_postal || "",
+      country: order.shipping_country || "NL",
+      return: `https://${betaallink.domain}/checkout/bedankt/${order.id}`,
+    });
+    betaalUrl = `${betaallink.paytail_base_url.replace(/[/]$/, "")}?${params_.toString()}`;
+  }
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-12">
@@ -43,68 +64,46 @@ export default async function BedanktPage({ params }: { params: { orderId: strin
         </p>
       </div>
 
-      {/* Bank / IBAN betaalblok */}
-      {payment?.iban && (
-        <section className="mt-8 rounded-xl border border-primary-muted bg-primary text-primary-foreground p-6">
-          <p className="text-xs uppercase tracking-[0.18em] text-accent-soft font-semibold inline-flex items-center gap-1.5">
-            <Building2 size={12} /> Bankoverschrijving - eenvoudigste route
-          </p>
-          <dl className="mt-4 grid gap-3 sm:grid-cols-2 text-sm">
-            <div>
-              <dt className="text-primary-foreground/60 text-xs">Bedrag</dt>
-              <dd className="font-display text-2xl tabular">{formatEUR(order.total_cents)}</dd>
-            </div>
-            <div>
-              <dt className="text-primary-foreground/60 text-xs">Onder vermelding van</dt>
-              <dd className="font-mono text-base bg-primary-soft rounded px-2 py-1 inline-block mt-0.5">{ref}</dd>
-            </div>
-            <div className="sm:col-span-2">
-              <dt className="text-primary-foreground/60 text-xs">IBAN</dt>
-              <dd className="font-mono text-base bg-primary-soft rounded px-2 py-1 inline-block mt-0.5">
-                {payment.iban}
-              </dd>
-            </div>
-            {payment.account_holder && (
-              <div>
-                <dt className="text-primary-foreground/60 text-xs">Ten name van</dt>
-                <dd>{payment.account_holder}</dd>
-              </div>
-            )}
-            {payment.bank_name && (
-              <div>
-                <dt className="text-primary-foreground/60 text-xs">Bank</dt>
-                <dd>{payment.bank_name}</dd>
-              </div>
-            )}
-            {payment.bic && (
-              <div>
-                <dt className="text-primary-foreground/60 text-xs">BIC</dt>
-                <dd className="font-mono text-sm">{payment.bic}</dd>
-              </div>
-            )}
-          </dl>
-        </section>
-      )}
+      {/* Betaalgegevens staan op de betaalpagina en niet hier: de rekening kan
+          per bestelling verschillen, dus een vast IBAN op deze pagina zou de
+          klant naar de verkeerde rekening sturen. Crypto stond hier ook, terwijl
+          dat op geen enkele shop werkelijk geaccepteerd wordt. */}
+      <section className="mt-8 rounded-xl border border-primary-muted bg-primary text-primary-foreground p-6">
+        <p className="text-xs uppercase tracking-[0.18em] text-accent-soft font-semibold inline-flex items-center gap-1.5">
+          <Building2 size={12} /> Betaling per bankoverschrijving
+        </p>
+        <dl className="mt-4 grid gap-3 sm:grid-cols-2 text-sm">
+          <div>
+            <dt className="text-primary-foreground/60 text-xs">Bedrag</dt>
+            <dd className="font-display text-2xl tabular">{formatEUR(order.total_cents)}</dd>
+          </div>
+          <div>
+            <dt className="text-primary-foreground/60 text-xs">Onder vermelding van</dt>
+            <dd className="font-mono text-base bg-primary-soft rounded px-2 py-1 inline-block mt-0.5">{ref}</dd>
+          </div>
+        </dl>
 
-      {/* Crypto-blok */}
-      {payment?.crypto_addresses && payment.crypto_addresses.length > 0 && (
-        <section className="mt-6 rounded-xl border border-border bg-surface p-6">
-          <p className="text-xs uppercase tracking-[0.18em] text-accent font-semibold inline-flex items-center gap-1.5">
-            <Bitcoin size={12} /> Crypto-betaling (alternatief)
+        {betaalUrl ? (
+          <>
+            <p className="mt-4 text-sm leading-relaxed text-primary-foreground/80">
+              De rekeninggegevens voor deze bestelling staan op de betaalpagina. Die rekening kan
+              per bestelling verschillen, dus gebruik altijd de gegevens die u daar ziet en niet
+              die van een eerdere bestelling.
+            </p>
+            <a
+              href={betaalUrl}
+              className="mt-5 inline-flex items-center gap-2 rounded bg-accent px-5 h-11 text-sm font-semibold text-accent-foreground hover:bg-accent-soft"
+            >
+              Betaalgegevens openen <ArrowRight size={14} />
+            </a>
+          </>
+        ) : (
+          <p className="mt-4 text-sm leading-relaxed text-primary-foreground/80">
+            U ontvangt de rekeninggegevens voor deze bestelling per e-mail op {order.email}. Is er
+            binnen een uur niets binnen, neem dan contact op met uw ordernummer erbij.
           </p>
-          <p className="mt-2 text-xs text-text-muted">
-            Stuur het exacte bedrag (omrekenen naar coin van keuze) naar één van deze addresses. Voor markt-koers gebruik u een live-converter zoals coinbase.com/converter.
-          </p>
-          <ul className="mt-4 space-y-3">
-            {payment.crypto_addresses.map((c) => (
-              <li key={c.address} className="rounded-lg border border-paper-border bg-paper-soft p-3">
-                <p className="text-xs font-semibold text-text">{c.label} <span className="text-text-muted">({c.ticker})</span></p>
-                <p className="mt-1 font-mono text-xs break-all text-text-muted">{c.address}</p>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
+        )}
+      </section>
 
       {/* Algemene instructies HTML uit DB */}
       {payment?.instructions_html && (
