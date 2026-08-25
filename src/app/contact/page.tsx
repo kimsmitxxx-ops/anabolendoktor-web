@@ -7,7 +7,7 @@ export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: "Contact - Anabolendoktor",
-  description: "Bereik Anabolendoktor via online chat, e-mail of contactformulier. Antwoord binnen 1 werkdag tussen 09:00 en 21:00, ook in het weekend.",
+  description: "Stel uw vraag via het contactformulier of de chat. Wij antwoorden op werkdagen binnen een werkdag; medische spoed hoort bij uw huisarts.",
   alternates: { canonical: "/contact" },
 };
 
@@ -44,11 +44,12 @@ export default function ContactPage() {
           </div>
           <div className="rounded-md border border-primary-muted bg-primary p-6 text-primary-foreground">
             <Clock size={20} className="text-accent" />
-            <h3 className="mt-3 font-display text-lg text-primary-foreground">Openingstijden support</h3>
-            <ul className="mt-2 space-y-1 text-sm text-primary-foreground/75">
-              <li>Ma t/m vr · 09:00 - 21:00</li>
-              <li>Za &amp; zo · 10:00 - 18:00</li>
-            </ul>
+            <h3 className="mt-3 font-display text-lg text-primary-foreground">Bereikbaarheid</h3>
+            <p className="mt-2 text-sm text-primary-foreground/75">
+              Op werkdagen beantwoorden wij berichten binnen een werkdag. In het weekend
+              lezen wij mee, maar plannen wij geen consulten in. Bij medische spoed belt u
+              uw huisarts of de huisartsenpost, niet ons.
+            </p>
           </div>
           <div className="rounded-md border border-primary-muted bg-primary p-6 text-primary-foreground">
             <MapPin size={20} className="text-accent" />

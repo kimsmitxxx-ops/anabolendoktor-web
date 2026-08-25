@@ -17,15 +17,15 @@ export default function CookiesPage() {
       <PageHero
         eyebrow="Cookies"
         title="Wat we wel en niet bewaren"
-        intro="Korte uitleg over de cookies die wij gebruiken - en welke we expliciet níét gebruiken. Geen marketing-trackers, geen advertentie-pixels."
+        intro="Per sleutel staat hieronder wat er in uw browser wordt bewaard, waarvoor, en hoe u het weer kwijtraakt. Advertentienetwerken komen er niet in voor."
       />
 
       <article className="mx-auto max-w-3xl px-4 py-12 prose prose-sm [&>h2]:font-display [&>h2]:text-2xl [&>h2]:mt-10 [&>h2]:text-primary [&>h3]:font-display [&>h3]:text-lg [&>h3]:mt-6 [&>p]:leading-relaxed [&_a]:text-accent [&_a]:underline">
         <p>
-          Wij plaatsen cookies om de webshop te laten werken. Sommige zijn noodzakelijk
-          (winkelmand, sessie), andere zijn optioneel (anonieme bezoekersstatistieken). We
-          plaatsen <strong>nooit</strong> tracking-cookies voor advertenties of profielen-
-          delen met derde partijen.
+          Deze site bewaart een klein aantal dingen in uw browser: wat nodig is om een
+          bestelling af te ronden, en, alleen met uw instemming, een anonieme
+          bezoekersteller. Er wordt niets aangelegd waarmee u elders op internet te volgen
+          bent, en er gaat niets naar advertentienetwerken.
         </p>
 
         <h2>1. Noodzakelijke opslag</h2>
@@ -73,19 +73,20 @@ export default function CookiesPage() {
           verder gewoon.
         </p>
 
-        <h2>3. Wat wij níét doen</h2>
+        <h2>3. Wat er bewust ontbreekt</h2>
         <ul>
-          <li>Geen Google Ads / Facebook Pixel / TikTok tracking</li>
-          <li>Geen retargeting-cookies</li>
-          <li>Geen verkoop van bezoekgegevens aan derden</li>
-          <li>Geen profiel-opbouw over meerdere websites</li>
+          <li>Pixels van advertentieplatforms staan niet op deze site</li>
+          <li>Er bestaat geen cookie waarmee u na uw bezoek elders herkend wordt</li>
+          <li>Bezoekgegevens worden aan niemand verkocht of doorgegeven</li>
+          <li>Juist bezoekers van een site over dit onderwerp willen niet dat hun bezoek ergens anders opduikt; dat is hier het uitgangspunt van de hele meting</li>
         </ul>
 
         <h2>4. Cookie-voorkeur wijzigen</h2>
         <p>
           Wis de sleutel <code>anabolendoktor.cookies.v1</code> uit de localStorage van uw
-          browser om de banner opnieuw te zien. In Chrome: rechter-muisknop op de site → <em>Inspect</em>{" "}
-          → Tab <em>Application</em> → Local Storage → klik op het item en delete.
+          browser om de banner opnieuw te zien. Dat kan via de ontwikkelaarstools van uw
+          browser, of eenvoudiger: wis de sitegegevens van anabolendoktor.com via de
+          privacy-instellingen van uw browser.
         </p>
 
         <h2>5. Vragen?</h2>
