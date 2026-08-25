@@ -63,8 +63,8 @@ export default async function WinkelIndexPage({
       <div className="mt-6 rounded-lg border border-accent/30 bg-accent-soft/15 p-4 flex items-start gap-3">
         <Sparkles size={18} className="text-accent shrink-0 mt-0.5" />
         <div className="text-sm">
-          <p className="font-semibold text-text">Bulk-korting op alle categorieën</p>
-          <p className="text-text-muted">Vanaf 5 items <strong>10% korting</strong> · Vanaf 10 items <strong>15% korting</strong> - automatisch verrekend in de mand.</p>
+          <p className="font-semibold text-text">Staffelkorting bij meerdere stuks</p>
+          <p className="text-text-muted">Bij vijf of meer stuks gaat er 10% af, bij tien of meer 15%. De korting wordt in de winkelmand verrekend; u hoeft er niets voor te doen.</p>
         </div>
       </div>
 

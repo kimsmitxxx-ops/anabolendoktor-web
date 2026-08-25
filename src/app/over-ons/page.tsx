@@ -220,13 +220,14 @@ export default async function OverOnsPage() {
                 </dd>
               </div>
               <div className="flex gap-2">
-                <dt className="w-28 text-text-muted">Support-uren</dt>
-                <dd className="text-text">ma-vr 09:00-21:00 · za-zo 10:00-18:00</dd>
+                <dt className="w-28 text-text-muted">Reactietijd</dt>
+                <dd className="text-text">binnen een werkdag, consulten op afspraak</dd>
               </div>
             </dl>
             <p className="mt-4 text-xs text-text-subtle">
-              Bezoek aan het magazijn is niet mogelijk. Voor klacht-, retour- of urgente vragen
-              gebruik de chat (rechtsonder) - daar staat een medewerker direct.
+              Er is geen bezoekadres: consulten verlopen via video-call. Loopt iets niet zoals
+              het hoort, stuur dan een bericht met uw ordernummer; dat wordt binnen een werkdag
+              opgepakt.
             </p>
           </div>
 

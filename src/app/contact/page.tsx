@@ -26,13 +26,13 @@ export default function ContactPage() {
             <MessageCircle size={20} className="text-accent" />
             <h3 className="mt-3 font-display text-lg text-primary-foreground">Online chat</h3>
             <p className="mt-1 text-sm text-primary-foreground/75">
-              Snelste route. Stuur foto&apos;s, batchnummers of een schermafbeelding van uw order.
+              De snelste route voor korte vragen over een bestelling of afspraak.
             </p>
             <button
               type="button"
               className="mt-3 inline-flex items-center text-sm font-medium text-accent hover:underline"
             >
-              Start live chat
+              Chat openen
             </button>
           </div>
           <div className="rounded-md border border-primary-muted bg-primary p-6 text-primary-foreground">

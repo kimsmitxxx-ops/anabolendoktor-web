@@ -15,7 +15,7 @@ export function ContactForm({
   defaultSubject = "Vraag over een bestelling",
   defaultMessage = "",
   heading = "Stuur een bericht",
-  intro = "Reactie binnen 1 werkdag. Voeg uw ordernummer toe als het om een lopende bestelling gaat.",
+  intro = "U hoort binnen een werkdag van ons. Gaat het om een lopende bestelling, zet dan uw ordernummer erbij.",
 }: {
   defaultSubject?: string;
   defaultMessage?: string;

@@ -119,11 +119,11 @@ export default function RetourPage() {
             </p>
             <div className="mt-6 rounded-md border border-border bg-surface p-5">
               <Mail size={16} className="text-accent" />
-              <p className="mt-2 font-medium text-text">Klantenservice</p>
+              <p className="mt-2 font-medium text-text">Retour of annulering melden</p>
               <Link href="/contact" className="text-sm text-accent hover:underline">
-                Stuur een bericht via het contactformulier
+                Via het contactformulier, met uw ordernummer erbij
               </Link>
-              <p className="mt-2 text-xs text-text-subtle">Antwoord binnen 1 werkdag.</p>
+              <p className="mt-2 text-xs text-text-subtle">U hoort binnen een werkdag van ons.</p>
             </div>
           </div>
           <FaqAccordion items={faq} />
