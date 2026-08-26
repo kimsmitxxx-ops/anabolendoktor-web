@@ -166,10 +166,8 @@ export default async function ProductDetailPage({ params }: { params: { categori
           </div>
 
           {p.package_type && <p className="mt-4 text-xs text-text-muted"><strong>Verpakking:</strong> {p.package_type}</p>}
-          <p className="mt-2 flex items-center gap-1.5 text-xs text-text-muted">
-            <MapPin size={12} className="text-accent" />
-            <strong>Verzonden vanuit:</strong> {shippingLabel(shippingMethodForTags(p.tags))}
-          </p>
+          {/* Geen verzendlocatie-regel: Locatie 01/02 is het magazijnmodel van
+              anabolenpro. Hier volstaat: verzonden vanuit Nederland. */}
 
           {/* Betaalopties - zelfde set als checkout zodat klant weet wat hij straks gaat zien */}
           <div className="mt-6 rounded-lg border border-border bg-paper-soft p-3">
