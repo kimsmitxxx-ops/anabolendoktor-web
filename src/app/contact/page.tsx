@@ -6,7 +6,7 @@ import { ContactForm } from "@/components/shop/contact-form";
 export const revalidate = 86400;
 
 export const metadata: Metadata = {
-  title: "Contact - Anabolendoktor",
+  title: "Contact",
   description: "Stel uw vraag via het contactformulier of de chat. Wij antwoorden op werkdagen binnen een werkdag; medische spoed hoort bij uw huisarts.",
   alternates: { canonical: "/contact" },
 };

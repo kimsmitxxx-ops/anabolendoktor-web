@@ -9,7 +9,7 @@ import { BookOpen, Truck, ShieldCheck, FlaskConical, Sparkles } from "lucide-rea
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Winkel - alle anabolen, PCT en kuurpakketten",
+  title: "Winkel - consulten, bloedonderzoek en supplementen",
   description: "Het volledige aanbod van anabolendoktor: consulten, bloedonderzoek via reguliere prikposten en een korte lijst supplementen met onderbouwing.",
   alternates: { canonical: "/winkel" },
 };

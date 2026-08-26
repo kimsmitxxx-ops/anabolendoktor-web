@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Over Anabolendoktor - consultatie zonder verkoopbelang",
+  title: "Over ons - consultatie zonder verkoopbelang",
   description:
     "Anabolendoktor biedt consulten, bloedwerk-interpretatie en een kleine selectie legale supplementen. Wij verkopen geen anabolen en hebben daarom geen belang bij het bagatelliseren van risico's.",
   alternates: { canonical: "/over-ons" },

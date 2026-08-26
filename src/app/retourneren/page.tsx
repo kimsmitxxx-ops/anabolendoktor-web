@@ -7,7 +7,7 @@ import { ShieldCheck, PackageOpen, CalendarClock, Mail, Info } from "lucide-reac
 export const revalidate = 86400;
 
 export const metadata: Metadata = {
-  title: "Retour, annuleren en terugbetaling - Anabolendoktor",
+  title: "Retour, annuleren en terugbetaling",
   description:
     "14 dagen bedenktijd op ongeopende supplementen, kosteloos annuleren van een consult tot 24 uur vooraf, en opnieuw verzenden als een pakket niet aankomt.",
   alternates: { canonical: "/retourneren" },
