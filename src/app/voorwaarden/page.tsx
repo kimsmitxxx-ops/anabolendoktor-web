@@ -3,7 +3,7 @@ import Link from "next/link";
 import { PageHero } from "@/components/shop/page-hero";
 
 export const metadata: Metadata = {
-  title: "Algemene voorwaarden - anabolendoktor",
+  title: "Algemene voorwaarden",
   description:
     "De algemene voorwaarden van anabolendoktor B.V.: bestelproces, betaling, levering, garantie, aansprakelijkheid en herroepingsrecht.",
 };
