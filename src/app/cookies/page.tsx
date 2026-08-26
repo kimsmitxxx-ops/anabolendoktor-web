@@ -33,44 +33,41 @@ export default function CookiesPage() {
         <ul>
           <li>
             <strong>anabolendoktor.cart.v2</strong> (localStorage) - onthoudt wat er in uw
-            winkelmand zit, ook als u tussendoor weggaat. Verloopt niet automatisch; u kunt de
-            sleutel handmatig wissen via uw browser.
+            winkelmand zit, ook als u tussendoor weggaat. U kunt de sleutel handmatig wissen
+            via uw browser.
           </li>
           <li>
-            <strong>anabolendoktor.cart.backup</strong> (localStorage) - een kopie van uw mand op
-            het moment dat u naar de betaalpagina gaat, zodat u die kunt herstellen als de
-            betaling wordt afgebroken. Wordt gewist zodra u de mand herstelt of de bestelling
-            afrondt.
+            <strong>anabolendoktor.cart.backup</strong> (localStorage) - een kopie van uw mand
+            op het moment dat u naar de betaalpagina gaat, zodat u die kunt herstellen als de
+            betaling wordt afgebroken.
           </li>
           <li>
-            <strong>anabolendoktor.cookies.v1</strong> (localStorage) - onthoudt uw keuze in de
-            cookiebanner, zodat die niet op elke pagina terugkomt.
-          </li>
-          <li>
-            <strong>shop-dash-token</strong> (httpOnly cookie) - alleen actief als u inlogt op een
-            eigen account. Zeven dagen geldig.
+            <strong>shop-dash-token</strong> (httpOnly cookie) - alleen actief als u inlogt op
+            een eigen account. Zeven dagen geldig.
           </li>
           <li>
             <strong>adk_chat_id</strong> (localStorage) - alleen als u de chat heeft gebruikt.
-            Koppelt u bij een volgend bezoek terug aan hetzelfde gesprek.
           </li>
         </ul>
 
-        <h2>2. Optionele meting</h2>
-        <p>
-          Alleen actief als u in de banner op <em>Accepteer alle</em> klikt:
-        </p>
+        <h2>2. Meting</h2>
         <ul>
           <li>
-            <strong>an.vid en an.sid</strong> (localStorage) - een willekeurig bezoekers- en
-            sessienummer waarmee wij bezoekersaantallen tellen. Geen naam, geen e-mailadres, geen
-            IP-adres, en niet te herleiden tot een persoon.
+            <strong>an.vid en an.sid</strong> (localStorage) - onze eigen bezoekersteller:
+            een willekeurig nummer, zonder naam, e-mailadres of IP-adres, niet te herleiden
+            tot een persoon. Draait op onze eigen server.
+          </li>
+          <li>
+            <strong>_ga en _ga_*</strong> (cookies) - Google Analytics 4, waarmee wij
+            bezoekersaantallen en paginagebruik meten. Advertentiesignalen staan uit
+            (ad_storage denied) en het IP-adres wordt geanonimiseerd. Google gebruikt deze
+            meting niet voor advertentieprofielen op deze site.
           </li>
         </ul>
         <p>
-          Deze meting draait op onze eigen server; er gaan geen gegevens naar een extern
-          statistiekenplatform. Weigert u, dan wordt er niets weggeschreven en werkt de site
-          verder gewoon.
+          Wilt u de Google-meting niet, dan blokkeert een adblocker of de
+          tracking-bescherming van uw browser het domein googletagmanager.com; de site werkt
+          daarmee volledig. Onze eigen teller bevat geen persoonsgegevens.
         </p>
 
         <h2>3. Wat er bewust ontbreekt</h2>
@@ -81,12 +78,11 @@ export default function CookiesPage() {
           <li>Juist bezoekers van een site over dit onderwerp willen niet dat hun bezoek ergens anders opduikt; dat is hier het uitgangspunt van de hele meting</li>
         </ul>
 
-        <h2>4. Cookie-voorkeur wijzigen</h2>
+        <h2>4. Opslag wissen</h2>
         <p>
-          Wis de sleutel <code>anabolendoktor.cookies.v1</code> uit de localStorage van uw
-          browser om de banner opnieuw te zien. Dat kan via de ontwikkelaarstools van uw
-          browser, of eenvoudiger: wis de sitegegevens van anabolendoktor.com via de
-          privacy-instellingen van uw browser.
+          Alle genoemde sleutels en cookies wist u via de privacy-instellingen van uw
+          browser (sitegegevens van anabolendoktor.com verwijderen). Daarna is de winkelmand
+          leeg en start de meting met een nieuw willekeurig nummer.
         </p>
 
         <h2>5. Vragen?</h2>

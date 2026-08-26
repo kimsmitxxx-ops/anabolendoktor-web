@@ -80,7 +80,7 @@ const sections = [
     id: "cookies",
     title: "8. Cookies",
     body: [
-      "Deze site meet bezoekersaantallen met een eigen, anonieme teller die pas gaat lopen nadat u daarmee instemt in de cookiebanner. Er gaan geen gegevens naar een advertentieplatform.",
+      "Deze site meet bezoekersaantallen op twee manieren: met een eigen, anonieme teller zonder persoonsgegevens, en met Google Analytics 4, waarbij advertentiesignalen uitstaan en het IP-adres wordt geanonimiseerd. Er worden geen advertentieprofielen opgebouwd.",
       "Op de cookiepagina staat precies welke sleutels er in uw browser worden gezet en waarvoor.",
     ],
   },
