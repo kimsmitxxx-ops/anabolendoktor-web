@@ -1,353 +1,156 @@
 "use client";
+
+import { useState } from "react";
 import Link from "next/link";
-import { useState, useRef, useEffect } from "react";
-import {
-  Search,
-  ShoppingBag,
-  User,
-  Menu,
-  Truck,
-  ShieldCheck,
-  ChevronDown,
-  Syringe,
-  Star,
-  Store,
-  Compass,
-  BookOpen,
-} from "lucide-react";
-import { categoriesByGroup, mainCategories } from "./data";
-import { useCart } from "./cart-store";
-import { MobileMenuDrawer } from "./mobile-menu-drawer";
-
-type Lang = "NL" | "EN";
-
-const LANGS: { code: Lang; label: string; flag: string }[] = [
-  { code: "NL", label: "Nederlands", flag: "🇳🇱" },
-  { code: "EN", label: "English", flag: "🇬🇧" },
-];
-
-const TOPBAR_ITEMS = [
-  { Icon: ShieldCheck, text: "100% leveringsgarantie" },
-  { Icon: Truck, text: "Snel verzonden - anoniem & discreet verpakt" },
-  { Icon: Star, text: "4,8 / 5 · 1.206 geverifieerde reviews" },
-];
+import { usePathname } from "next/navigation";
+import { Menu, X, ShoppingBag, Stethoscope, ChevronDown } from "lucide-react";
+import { useCart } from "@/lib/cart-context";
 
 export interface HeaderProps {
-  variant?: "default" | "minimal";
+  /** Alleen voor compatibiliteit met oudere aanroepen; er is een variant. */
+  variant?: "default" | "compact";
 }
 
+/**
+ * De header in de stijl van het oorspronkelijke doktor-ontwerp: licht creme
+ * met backdrop-blur, een rustige linkrij en een gouden consult-knop.
+ *
+ * De vorige header was die van anabolenpro, tot en met het logo "Anabolen Pro",
+ * de zoekbalk met "testosteron, anavar, hgh" als voorbeeld en een balk met
+ * "1.206 geverifieerde reviews" die voor deze site nergens op sloeg. Dat was
+ * bovendien onvindbaar voor de tekst-sweeps, omdat het logo als twee losse
+ * spans in de HTML stond. Een consultatiedienst heeft geen mega-menu en geen
+ * productzoekbalk in de kop nodig; wie iets zoekt heeft de winkel met drie
+ * pakketten in twee klikken gevonden.
+ */
+const NAV = [
+  { href: "/winkel", label: "Winkel", sub: [
+    { href: "/winkel/pakketten", label: "Pakketten" },
+    { href: "/winkel/consult", label: "Consulten" },
+    { href: "/winkel/bloedwerk", label: "Bloedonderzoek" },
+  ] },
+  { href: "/keuzehulp", label: "Keuzehulp" },
+  { href: "/advies", label: "Advies" },
+  { href: "/kennisbank", label: "Kennisbank" },
+  { href: "/contact", label: "Contact" },
+] as const;
+
 export function Header(_props: HeaderProps = {}) {
-  const [openMega, setOpenMega] = useState<string | null>(null);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [lang, setLang] = useState<Lang>("NL");
-  const [langOpen, setLangOpen] = useState(false);
-  const [topIdx, setTopIdx] = useState(0);
-  const langRef = useRef<HTMLDivElement>(null);
-  const { count, openCart } = useCart();
-
-  const anabolen = categoriesByGroup("anabolen");
-  const pct = categoriesByGroup("pct");
-
-  useEffect(() => {
-    function onClick(e: MouseEvent) {
-      if (langRef.current && !langRef.current.contains(e.target as Node)) {
-        setLangOpen(false);
-      }
-    }
-    document.addEventListener("mousedown", onClick);
-    return () => document.removeEventListener("mousedown", onClick);
-  }, []);
-
-  useEffect(() => {
-    const id = setInterval(() => setTopIdx((i) => (i + 1) % TOPBAR_ITEMS.length), 2000);
-    return () => clearInterval(id);
-  }, []);
-
-  const currentLang = LANGS.find((l) => l.code === lang)!;
-
-  const LangDropdown = (
-    <div ref={langRef} className="relative">
-      <button
-        onClick={() => setLangOpen((v) => !v)}
-        className="inline-flex items-center gap-1.5 rounded-sm border border-primary-foreground/15 px-2 py-0.5 text-xs font-semibold text-primary-foreground hover:bg-primary-soft"
-        aria-haspopup="listbox"
-        aria-expanded={langOpen}
-      >
-        <span className="text-sm leading-none">{currentLang.flag}</span>
-        <span>{currentLang.code}</span>
-        <ChevronDown size={11} />
-      </button>
-      {langOpen && (
-        <ul
-          role="listbox"
-          className="absolute right-0 top-full mt-1 w-44 rounded-md border border-border bg-surface shadow-lift py-1 z-50"
-        >
-          {LANGS.map((l) => (
-            <li key={l.code}>
-              <button
-                onClick={() => {
-                  setLang(l.code);
-                  setLangOpen(false);
-                }}
-                className={`w-full flex items-center gap-2.5 px-3 py-2 text-sm text-text hover:bg-muted ${
-                  lang === l.code ? "bg-muted" : ""
-                }`}
-              >
-                <span className="text-base leading-none">{l.flag}</span>
-                <span className="font-medium">{l.code}</span>
-                <span className="text-text-muted">{l.label}</span>
-              </button>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
-
-  const current = TOPBAR_ITEMS[topIdx];
+  const pathname = usePathname();
+  const { count } = useCart();
+  const [mobielOpen, setMobielOpen] = useState(false);
+  const [winkelOpen, setWinkelOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 bg-primary/95 backdrop-blur border-b border-primary-soft text-primary-foreground">
-      {/* Top utility bar */}
-      <div className="bg-primary text-primary-foreground/90 text-xs">
-        <div className="mx-auto max-w-7xl px-4 h-9 flex items-center relative">
-          {/* Desktop: all three items evenly spaced, centered */}
-          <div className="hidden md:grid w-full grid-cols-3 items-center justify-items-center gap-4">
-            {TOPBAR_ITEMS.map(({ Icon, text }) => (
-              <span key={text} className="inline-flex items-center gap-2">
-                <Icon size={13} className="text-accent-soft" />
-                <span>{text}</span>
-              </span>
-            ))}
-          </div>
-          {/* Mobile: one rotating item, slider with 2s delay */}
-          <div className="md:hidden w-full text-center overflow-hidden">
-            <span
-              key={topIdx}
-              className="inline-flex items-center gap-2 animate-in fade-in slide-in-from-bottom-1 duration-500"
-            >
-              <current.Icon size={13} className="text-accent-soft" />
-              <span>{current.text}</span>
-            </span>
-          </div>
-          <div className="hidden md:block absolute right-4">{LangDropdown}</div>
-        </div>
-      </div>
-
-      {/* Main row */}
-      <div className="mx-auto max-w-7xl px-4 h-14 flex items-center gap-5">
-        <button
-          type="button"
-          onClick={() => setMobileOpen(true)}
-          className="lg:hidden -ml-1 p-1.5 text-primary-foreground hover:text-accent"
-          aria-label="Menu openen"
-        >
-          <Menu size={22} />
-        </button>
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 font-display"
-          aria-label="anabolendoktor home"
-        >
-          <span className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-accent/15 text-accent ring-1 ring-accent/30">
-            <Syringe size={15} strokeWidth={2.25} className="-rotate-45" />
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/85 backdrop-blur-md">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
+        <Link href="/" className="flex items-center gap-2.5 text-text">
+          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-accent-soft">
+            <Stethoscope size={18} strokeWidth={2.25} />
           </span>
-          <span className="leading-none text-base uppercase font-semibold tracking-wider">
-            <span className="text-primary-foreground">ANABOLEN</span>{" "}
-            <span className="text-accent">PRO</span>
-          </span>
+          <span className="font-display text-lg tracking-tight">Anabolen Doktor</span>
         </Link>
-        <form action="/winkel" method="get" className="hidden md:flex flex-1 max-w-2xl mx-auto">
-          <div className="relative w-full">
-            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-accent-muted" />
-            <input
-              type="search"
-              name="q"
-              placeholder={lang === "EN" ? "Search products" : "Zoek producten - bv. testosteron, anavar, hgh"}
-              className="w-full h-10 pl-10 pr-3 rounded-md border border-accent/40 bg-success-soft text-sm font-medium text-primary placeholder:text-primary/55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:border-accent shadow-sm"
-            />
-          </div>
-        </form>
-        <nav className="ml-auto flex items-center gap-0.5">
-          <Link
-            href="/account"
-            className="hidden md:inline-flex h-9 w-9 items-center justify-center rounded text-primary-foreground hover:bg-primary-soft"
-            aria-label="Account"
-          >
-            <User size={19} />
-          </Link>
-          <button
-            type="button"
-            onClick={openCart}
-            className="relative inline-flex h-9 w-9 items-center justify-center rounded text-primary-foreground hover:bg-primary-soft"
-            aria-label="Winkelwagen"
-          >
-            <ShoppingBag size={19} />
-            {count > 0 && (
-              <span className="absolute -top-0.5 -right-0.5 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-accent px-1 text-[10px] font-semibold text-accent-foreground tabular">
-                {count}
-              </span>
-            )}
-          </button>
-        </nav>
-      </div>
 
-      {/* Nav row with mega menus - centered */}
-      <div className="hidden lg:block border-t border-primary-soft relative" onMouseLeave={() => setOpenMega(null)}>
-        <div className="mx-auto max-w-7xl px-4 h-11 flex items-center justify-center gap-1 text-[15px]">
-          {/* Winkel */}
-          <div className="relative" onMouseEnter={() => setOpenMega("winkel")}>
-            <button
-              className={`h-11 inline-flex items-center gap-1.5 px-4 font-semibold uppercase tracking-wider text-[13px] border-b-2 transition-colors ${
-                openMega === "winkel"
-                  ? "border-accent bg-primary-soft text-accent"
-                  : "border-accent/70 bg-primary-soft/40 text-accent hover:bg-primary-soft hover:text-accent"
-              }`}
-            >
-              <Store size={15} strokeWidth={2.25} /> Winkel <ChevronDown size={13} />
-            </button>
-            {openMega === "winkel" && (
-              <div className="absolute top-full left-0 mt-px bg-primary border border-primary-soft shadow-lift text-primary-foreground rounded-b-lg p-4 w-[280px] z-50">
-                <p className="text-xs uppercase tracking-wider text-accent-soft font-semibold mb-3 inline-flex items-center gap-1.5 px-2">
-                  <Store size={12} /> Categorieën
-                </p>
-                <div className="space-y-1 text-sm">
-                  <Link href="/winkel" onClick={() => setOpenMega(null)} className="block rounded px-2 py-1.5 text-primary-foreground/80 hover:bg-primary-soft hover:text-accent">
-                    Alle producten
-                  </Link>
-                  {mainCategories.map((c) => (
-                    <Link key={c.slug} href={c.to} onClick={() => setOpenMega(null)} className="block rounded px-2 py-1.5 text-primary-foreground/80 hover:bg-primary-soft hover:text-accent">
-                      {c.name}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-
-          <Link
-            href="/consult"
-            onMouseEnter={() => setOpenMega(null)}
-            className="h-11 inline-flex items-center px-4 font-medium text-primary-foreground hover:text-accent border-b-2 border-transparent hover:border-accent transition-colors"
-          >
-            Consult
-          </Link>
-
-          {/* Keuzehulp: het instappunt voor wie niet weet welke vraag hij moet
-              stellen. Staat naast Consult omdat het daar op uitkomt. */}
-          <Link
-            href="/keuzehulp"
-            onMouseEnter={() => setOpenMega(null)}
-            className="h-11 inline-flex items-center px-4 font-medium text-primary-foreground hover:text-accent border-b-2 border-transparent hover:border-accent transition-colors"
-          >
-            Keuzehulp
-          </Link>
-
-          {/* Advies: landingspagina's op de onderwerpen waar bezoekers op
-              zoeken (stoppen, gevaren, bloedwaarden). Staat bewust vooraan,
-              want dit is waar deze site voor bedoeld is. */}
-          <Link
-            href="/advies"
-            onMouseEnter={() => setOpenMega(null)}
-            className="h-11 inline-flex items-center px-4 font-medium text-primary-foreground hover:text-accent border-b-2 border-transparent hover:border-accent transition-colors"
-          >
-            Advies
-          </Link>
-
-          {/* Kennisbank */}
-          <div className="relative" onMouseEnter={() => setOpenMega("kennisbank")}>
-            <button
-              className={`h-11 inline-flex items-center gap-1 px-4 font-medium text-primary-foreground hover:text-accent border-b-2 transition-colors ${openMega === "kennisbank" ? "border-accent text-accent" : "border-transparent"}`}
-            >
-              Kennisbank <ChevronDown size={13} />
-            </button>
-            {openMega === "kennisbank" && (
-              <div className="absolute top-full left-0 mt-px bg-primary border border-primary-soft shadow-lift text-primary-foreground rounded-b-lg p-4 w-[260px] z-50">
-                <p className="text-xs uppercase tracking-wider text-accent-soft font-semibold mb-3 inline-flex items-center gap-1.5 px-2">
-                  <BookOpen size={12} /> Kennisbank
-                </p>
-                <div className="space-y-1 text-sm">
-                  <Link href="/kennisbank" onClick={() => setOpenMega(null)} className="block rounded px-2 py-1.5 text-primary-foreground/80 hover:bg-primary-soft hover:text-accent">
-                    Alle artikelen
-                  </Link>
-                  <Link href="/kennisbank?cat=kennis" onClick={() => setOpenMega(null)} className="block rounded px-2 py-1.5 text-primary-foreground/80 hover:bg-primary-soft hover:text-accent">
-                    Kennis
-                  </Link>
-                  <Link href="/kennisbank?cat=onderzoek" onClick={() => setOpenMega(null)} className="block rounded px-2 py-1.5 text-primary-foreground/80 hover:bg-primary-soft hover:text-accent">
-                    Onderzoek
-                  </Link>
-                  <Link href="/kennisbank?cat=nieuws" onClick={() => setOpenMega(null)} className="block rounded px-2 py-1.5 text-primary-foreground/80 hover:bg-primary-soft hover:text-accent">
-                    Nieuws
-                  </Link>
-                </div>
-              </div>
-            )}
-          </div>
-
-          <Link
-            href="/contact"
-            onMouseEnter={() => setOpenMega(null)}
-            className="h-11 inline-flex items-center px-4 font-medium text-primary-foreground hover:text-accent border-b-2 border-transparent hover:border-accent transition-colors"
-          >
-            Contact
-          </Link>
-        </div>
-
-        {/* Anabolen full-width mega menu (apart, want spans full row) */}
-        {openMega === "anabolen" && (
-          <div
-            onMouseEnter={() => setOpenMega("anabolen")}
-            className="absolute top-full left-0 right-0 bg-primary border-t border-primary-soft shadow-lift text-primary-foreground z-50"
-          >
-            <div className="mx-auto max-w-7xl px-4 py-8 grid grid-cols-[1fr_2fr_1.6fr] gap-10">
-                <div>
-                  <p className="text-xs uppercase tracking-[0.15em] text-accent font-semibold mb-2">
-                    Anabole stoffen + PCT
-                  </p>
-                  <h3 className="font-display text-xl leading-tight">
-                    Per stof uitgesplitst
-                  </h3>
-                  <p className="mt-2 text-sm text-primary-foreground/75 leading-relaxed">
-                    Elke stof heeft een eigen onderzoekspagina met werking, doseringen en bijwerkingen.
-                  </p>
-                </div>
-                <div className="grid grid-cols-2 gap-x-6 gap-y-1">
-                  {anabolen.map((c) => (
-                    <Link
-                      key={c.slug}
-                      href={`/${c.slug}`}
-                      onClick={() => setOpenMega(null)}
-                      className="block px-3 py-2 rounded text-sm text-primary-foreground/85 hover:bg-primary-soft hover:text-accent transition-colors"
-                    >
-                      <span className="font-medium">{c.name}</span>
-                      {c.aka && c.aka.length > 0 && (
-                        <span className="block text-xs text-primary-foreground/55">{c.aka.slice(0, 2).join(" · ")}</span>
-                      )}
-                    </Link>
-                  ))}
-                </div>
-                <div>
-                  <p className="text-xs uppercase tracking-[0.15em] text-accent-soft font-semibold mb-2 inline-flex items-center gap-1.5">
-                    <Compass size={12} /> Post-cycle therapy
-                  </p>
-                  <div className="grid grid-cols-1 gap-y-0.5">
-                    {pct.map((c) => (
+        <nav className="hidden md:flex items-center gap-1">
+          {NAV.map((item) =>
+            "sub" in item && item.sub ? (
+              <div
+                key={item.href}
+                className="relative"
+                onMouseEnter={() => setWinkelOpen(true)}
+                onMouseLeave={() => setWinkelOpen(false)}
+              >
+                <Link
+                  href={item.href}
+                  className={`inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                    pathname?.startsWith(item.href) ? "text-accent" : "text-text-muted hover:text-text hover:bg-primary/5"
+                  }`}
+                >
+                  {item.label} <ChevronDown size={13} />
+                </Link>
+                {winkelOpen && (
+                  <div className="absolute left-0 top-full w-52 rounded-xl border border-border bg-background p-2 shadow-lg">
+                    {item.sub.map((s) => (
                       <Link
-                        key={c.slug}
-                        href={`/${c.slug}`}
-                        onClick={() => setOpenMega(null)}
-                        className="block px-3 py-2 rounded text-sm text-primary-foreground/85 hover:bg-primary-soft hover:text-accent transition-colors"
+                        key={s.href}
+                        href={s.href}
+                        onClick={() => setWinkelOpen(false)}
+                        className="block rounded-lg px-3 py-2 text-sm text-text-muted hover:bg-primary/5 hover:text-text"
                       >
-                        <span className="font-medium">{c.name}</span>
+                        {s.label}
                       </Link>
                     ))}
                   </div>
-                </div>
+                )}
               </div>
-            </div>
+            ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                  pathname === item.href ? "text-accent" : "text-text-muted hover:text-text hover:bg-primary/5"
+                }`}
+              >
+                {item.label}
+              </Link>
+            ),
           )}
+        </nav>
+
+        <div className="flex items-center gap-2">
+          <Link
+            href="/consult"
+            className="hidden sm:inline-flex items-center rounded-full bg-accent px-4 py-2 text-sm font-semibold text-accent-foreground transition-transform hover:-translate-y-px"
+          >
+            Consult €50
+          </Link>
+          <Link
+            href="/winkelmand"
+            className="relative rounded-lg p-2 text-text-muted transition-colors hover:bg-primary/5 hover:text-text"
+            aria-label="Winkelmand"
+          >
+            <ShoppingBag size={20} />
+            {count > 0 && (
+              <span className="absolute -right-0.5 -top-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-accent text-[10px] font-bold text-accent-foreground">
+                {count}
+              </span>
+            )}
+          </Link>
+          <button
+            onClick={() => setMobielOpen(!mobielOpen)}
+            className="rounded-lg p-2 text-text-muted transition-colors hover:bg-primary/5 hover:text-text md:hidden"
+            aria-label="Menu"
+          >
+            {mobielOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </div>
-      <MobileMenuDrawer open={mobileOpen} onOpenChange={setMobileOpen} />
+
+      {mobielOpen && (
+        <nav className="border-t border-border bg-background/95 px-4 pb-4 pt-2 backdrop-blur-md md:hidden">
+          {NAV.flatMap((item): { href: string; label: string }[] =>
+            "sub" in item && item.sub ? [{ href: item.href, label: item.label }, ...item.sub] : [item],
+          ).map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              onClick={() => setMobielOpen(false)}
+              className={`block rounded-lg px-3 py-2.5 text-sm font-medium ${
+                pathname === l.href ? "text-accent" : "text-text-muted hover:bg-primary/5 hover:text-text"
+              }`}
+            >
+              {l.label}
+            </Link>
+          ))}
+          <Link
+            href="/consult"
+            onClick={() => setMobielOpen(false)}
+            className="mt-2 inline-flex items-center rounded-full bg-accent px-4 py-2 text-sm font-semibold text-accent-foreground"
+          >
+            Consult €50
+          </Link>
+        </nav>
+      )}
     </header>
   );
 }
