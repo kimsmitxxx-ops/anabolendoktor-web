@@ -10,9 +10,10 @@
 :root {
   /* Anabolendoktor — formeler, medisch-clean: navy blauw + zacht wit */
 
-  /* Surfaces (koel wit, licht papier-tint) */
-  --color-background: 249 250 252;
-  --color-surface: 240 244 248;
+  /* Surfaces: de creme-klinische tint van het oorspronkelijke ontwerp,
+     warmer dan het koele wit van de anabolenpro-basis */
+  --color-background: 250 249 246;
+  --color-surface: 244 242 237;
   --color-paper: 245 247 250;
   --color-paper-soft: 253 253 254;
   --color-paper-ink: 14 26 46;
@@ -61,9 +62,17 @@ html, body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Fraunces serif voor alle koppen: het gezicht van het oorspronkelijke
+   doktor-ontwerp, en het duidelijkste visuele verschil met anabolenpro
+   (dat op Space Grotesk draait). */
 .font-display {
-  font-family: var(--font-space-grotesk), "Space Grotesk", var(--font-manrope), "Manrope", sans-serif;
+  font-family: var(--font-fraunces), "Fraunces", "Times New Roman", serif;
+  font-weight: 400;
   letter-spacing: -0.02em;
+  font-optical-sizing: auto;
+}
+.display-italic {
+  font-style: italic;
 }
 
 .tabular {
@@ -89,4 +98,21 @@ abbr[title] {
 }
 abbr[title]:hover {
   text-decoration-color: rgb(var(--color-accent));
+}
+
+/* Thema-laag doktor: vormtaal van het oorspronkelijke ontwerp. Knoppen zijn
+   pillen en kaarten dragen een zachte schaduw; bewust als laag bovenop de
+   utility-klassen, zodat de componenten zelf ongemoeid blijven. */
+a.bg-accent, button.bg-accent,
+a.bg-primary, button.bg-primary,
+a.btn-gold, a.btn-primary {
+  border-radius: 999px;
+}
+::selection {
+  background: rgb(var(--color-accent));
+  color: rgb(var(--color-accent-foreground));
+}
+.bg-surface.rounded-md, .bg-surface.rounded-lg,
+.bg-card.rounded-md, .bg-card.rounded-lg {
+  box-shadow: 0 1px 2px rgba(20, 20, 30, 0.04), 0 8px 24px -8px rgba(20, 20, 30, 0.08);
 }

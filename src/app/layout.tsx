@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
-import { Manrope, Space_Grotesk } from "next/font/google";
+import { Manrope, Fraunces } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/components/shop/cart-store";
 import { Header } from "@/components/shop/header";
@@ -22,11 +22,15 @@ const manrope = Manrope({
   display: "swap",
   variable: "--font-manrope",
 });
-const spaceGrotesk = Space_Grotesk({
+// Fraunces: de serif-koptypografie van het oorspronkelijke doktor-ontwerp.
+// Space Grotesk was het lettertype van anabolenpro; juist de koppen bepalen
+// of twee sites familie van elkaar lijken.
+const fraunces = Fraunces({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["400", "500"],
+  style: ["normal", "italic"],
   display: "swap",
-  variable: "--font-space-grotesk",
+  variable: "--font-fraunces",
 });
 
 // Defer chat-widget - niet kritiek voor FCP/LCP; pas hydrateren na main content
@@ -51,7 +55,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="nl" data-shop="anabolendoktor" className={`${manrope.variable} ${spaceGrotesk.variable}`}>
+    <html lang="nl" data-shop="anabolendoktor" className={`${manrope.variable} ${fraunces.variable}`}>
       <head>
         {/* Geen preconnect naar de Supabase-host: afbeeldingen lopen via de
             /img-rewrite over ons eigen domein, dus de browser praat er nooit

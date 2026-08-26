@@ -98,7 +98,9 @@ export async function POST(req: NextRequest) {
     shipping_street: fullStreet, shipping_postal: postal, shipping_city: city, shipping_country: country,
     subtotal_cents: subtotal, shipping_cents: shipping, total_cents: total,
     notes: discountLabel ? `Kortingscode ${discountLabel}: -EUR ${(discountCents / 100).toFixed(2)}` : null,
-    status: "pending_payment",
+    // awaiting_payment: de enige wachtstatus die de check-constraint van de
+    // orders-tabel toestaat; pending_payment werd geweigerd en brak de checkout.
+    status: "awaiting_payment",
     // AD, niet AP: het ordernummer stond nog op het voorvoegsel van anabolenpro,
     // en dat is precies het soort spoor dat de twee sites aan elkaar knoopt.
     reference: `AD-${Date.now().toString(36).toUpperCase()}`,
