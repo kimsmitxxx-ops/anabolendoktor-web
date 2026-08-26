@@ -99,11 +99,56 @@ function device(): "mobile" | "tablet" | "desktop" {
 export type TrackProps = Record<string, string | number | boolean | null | undefined>;
 
 /**
+ * GA4-brug: stuurt hetzelfde event ook naar gtag, vertaald naar het GA4
+ * e-commerce vocabulaire zodat het als standaard-event (met omzet) in GA4
+ * verschijnt. pageview slaan we over -- de GA4-component meldt page_views al
+ * zelf bij elke routewissel. Bedragen rekenen we om van centen naar euro's.
+ */
+function forwardToGa4(eventName: string, props: TrackProps) {
+  const gtag = window.gtag;
+  if (!gtag || eventName === "pageview") return;
+  const value =
+    typeof props.value_cents === "number" ? props.value_cents / 100 : undefined;
+  if (eventName === "add_to_cart") {
+    gtag("event", "add_to_cart", {
+      currency: "EUR",
+      value,
+      items: [
+        {
+          item_id: String(props.sku || props.product_slug || ""),
+          item_name: String(props.product_slug || props.sku || ""),
+          quantity: Number(props.qty) || 1,
+        },
+      ],
+    });
+  } else if (eventName === "begin_checkout") {
+    gtag("event", "begin_checkout", { currency: "EUR", value });
+  } else if (eventName === "order_placed") {
+    // order_placed is ons conversiepunt met bedrag en referentie -> GA4 purchase.
+    gtag("event", "purchase", {
+      transaction_id: String(props.order_reference || ""),
+      currency: "EUR",
+      value,
+    });
+  } else {
+    // Rest (payment_redirect, order_confirmed, cart_restored, ...) 1-op-1 door
+    // als custom event, met value in euro's erbij waar we die kennen.
+    gtag("event", eventName, {
+      ...props,
+      ...(value !== undefined ? { value, currency: "EUR" } : {}),
+    });
+  }
+}
+
+/**
  * Verstuurt een event. Faalt altijd stil: tracking mag nooit een bestelling of
  * een navigatie in de weg zitten.
  */
 export function track(eventName: string, props: TrackProps = {}) {
   if (typeof window === "undefined") return;
+  try {
+    forwardToGa4(eventName, props);
+  } catch {}
   try {
     const body = JSON.stringify({
       event_name: eventName,

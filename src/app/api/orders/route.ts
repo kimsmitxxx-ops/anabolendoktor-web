@@ -124,6 +124,29 @@ export async function POST(req: NextRequest) {
     price_cents: it.applied_price_cents,
   })));
 
+  // Bevestigingsmail, server-side via shop-dash. Ontbrak hier volledig terwijl
+  // SMTP en het order_confirmed-sjabloon klaarstonden: dezelfde omissie die bij
+  // anabolenpro pas opviel toen een klant erover klaagde. Niet-fataal met
+  // timeout, zodat trage SMTP de checkout nooit laat hangen.
+  try {
+    const dash = process.env.SHOP_DASH_URL || "https://shop-dash-ruby.vercel.app";
+    const formatEUR = (c: number) =>
+      new Intl.NumberFormat("nl-NL", { style: "currency", currency: "EUR" }).format(c / 100);
+    await fetch(`${dash}/api/orders/${order.id}/email`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      signal: AbortSignal.timeout(8000),
+      body: JSON.stringify({
+        shopId: SHOP_ID,
+        templateSlug: "order_confirmed",
+        toEmail: email,
+        vars: { customer_name: name, reference: order.reference, total: formatEUR(total) },
+      }),
+    });
+  } catch (e) {
+    console.error("order_confirmed mail (non-fataal):", e);
+  }
+
   // Betaallink, hetzelfde systeem als de andere shops: de basis-URL staat per
   // shop in de database, zodat een ander profiel geen codewijziging vraagt.
   // Staat paytail_enabled uit of ontbreekt de URL, dan valt de checkout terug

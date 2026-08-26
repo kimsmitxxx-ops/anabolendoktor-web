@@ -8,7 +8,7 @@ import { backupCart } from "@/lib/cart-backup";
 import { RestoreCartBanner } from "@/components/restore-cart-banner";
 import { track } from "@/lib/analytics";
 import { Sparkles, UserPlus, Lock } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const EU_COUNTRIES = [
   { code: "NL", name: "Nederland" },
@@ -41,6 +41,14 @@ export default function CheckoutPage() {
   });
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
+
+  // Eén keer per bezoek aan de checkout, ongeacht latere re-renders.
+  useEffect(() => {
+    if (cart.items.length) {
+      track("begin_checkout", { items: cart.items.length, value_cents: totals.total });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();

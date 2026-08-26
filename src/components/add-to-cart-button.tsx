@@ -3,6 +3,7 @@ import { Plus, Minus, ShoppingCart, Sparkles, ShieldCheck, Smartphone } from "lu
 import { useState } from "react";
 import { useCart } from "@/lib/cart-context";
 import { formatEUR } from "@/lib/queries";
+import { track } from "@/lib/analytics";
 import type { Product } from "@/lib/supabase";
 
 const BULK_TIERS = [
@@ -33,6 +34,12 @@ export function AddToCartButton({ product }: { product: Product }) {
       },
       qty,
     );
+    track("add_to_cart", {
+      product_slug: product.slug,
+      sku: product.sku,
+      qty,
+      value_cents: product.price_cents * qty,
+    });
   }
 
   return (
