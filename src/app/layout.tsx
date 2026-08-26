@@ -50,8 +50,11 @@ export const metadata: Metadata = {
   // elke pagina uit de index houden terwijl robots.txt ze juist toelaat.
   robots: { index: true, follow: true },
   icons: {
-    icon: [{ url: "/icon.png", type: "image/png" }],
-    apple: [{ url: "/apple-icon.png", type: "image/png" }],
+    // Versienaam in het pad: Cloudflare heeft /icon.png van de oude deployment
+    // met een jaar immutable-cache vastgezet en negeert query-strings, dus een
+    // nieuw bestand op hetzelfde pad bereikt de bezoeker nooit.
+    icon: [{ url: "/icon-doktor.png", type: "image/png" }],
+    apple: [{ url: "/apple-icon-doktor.png", type: "image/png" }],
   },
   openGraph: {
     images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
