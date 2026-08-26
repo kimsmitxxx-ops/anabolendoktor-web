@@ -286,11 +286,11 @@ export function bepaalAdvies(a: Antwoorden): Uitkomst {
         hrefLabel: eerderGebruikt ? METEN_UITGEBREID.hrefLabel : CONSULT.natural.titel,
       },
       {
-        titel: "Houd de supplementen bij wat er werkelijk toe doet",
+        titel: "Kies een pakket bij uw doel, geen losse potten",
         tekst:
-          "Creatine als u krachttraint, een eiwitpoeder als u uw inname anders niet haalt, en gericht aanvullen wat u aantoonbaar tekortkomt. De rest kunt u overslaan.",
-        href: "/winkel/supplementen",
-        hrefLabel: "Legale supplementen",
+          "De pakketten bevatten de supplementen die voor uw doel werkelijk iets doen, plus een schema op uw intake en een consult. Losse supplementen zonder plan is de omgekeerde volgorde.",
+        href: "/winkel/pakketten",
+        hrefLabel: "Bekijk de pakketten",
       },
     ],
     consult: eerderGebruikt ? CONSULT.bloed : CONSULT.natural,

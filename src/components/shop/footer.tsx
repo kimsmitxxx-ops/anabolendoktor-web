@@ -59,7 +59,7 @@ export function Footer() {
               <li><Link href="/consult" className="text-primary-foreground/70 hover:text-accent">Hoe een consult verloopt</Link></li>
               <li><Link href="/winkel/consult" className="text-primary-foreground/70 hover:text-accent">Consulten</Link></li>
               <li><Link href="/winkel/bloedwerk" className="text-primary-foreground/70 hover:text-accent">Bloedonderzoek</Link></li>
-              <li><Link href="/winkel/supplementen" className="text-primary-foreground/70 hover:text-accent">Legale supplementen</Link></li>
+              <li><Link href="/winkel/pakketten" className="text-primary-foreground/70 hover:text-accent">Pakketten</Link></li>
               <li><Link href="/lab" className="text-accent hover:text-accent-soft">Hoe wij met laboratoria werken</Link></li>
             </ul>
           </div>

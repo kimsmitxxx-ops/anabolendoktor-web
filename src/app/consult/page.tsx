@@ -6,7 +6,7 @@ import { ContactForm } from "@/components/shop/contact-form";
 export const metadata: Metadata = {
   title: "Consult aanvragen - bloedwerk-interpretatie, harm-reduction, trainingsplan",
   description:
-    "60-minuten consult via video-call: bespreek bloedwerk-uitslagen, herstelprotocol, doelstellingen. Voor natural trainers, AAS-gebruikers en mensen die overwegen. €120 per sessie.",
+    "Consult via video-call: bloedwaarden, herstel, natural opbouw of de vraag of beginnen verstandig is. €50 per consult, en daarna 10% korting op de pakketten.",
   alternates: { canonical: "/consult" },
 };
 
@@ -43,9 +43,14 @@ export default function ConsultPage() {
             ontvangt u een schriftelijke samenvatting met vervolgstappen.
           </p>
           <div className="mt-6 flex items-center gap-6 text-sm text-primary-foreground/70">
-            <span className="inline-flex items-center gap-2"><Clock size={14} /> 60 minuten</span>
-            <span className="inline-flex items-center gap-2"><ClipboardCheck size={14} /> €120 per sessie</span>
+            <span className="inline-flex items-center gap-2"><Clock size={14} /> 45 tot 60 minuten</span>
+            <span className="inline-flex items-center gap-2"><ClipboardCheck size={14} /> €50 per consult</span>
           </div>
+          <p className="mt-4 max-w-2xl text-sm text-primary-foreground/70">
+            Na een betaald consult ontvangt u van de consulent een persoonlijke kortingscode
+            voor 10% op de pakketten. Wie eerst wil praten voordat hij iets koopt, betaalt
+            het advies zo niet dubbel.
+          </p>
         </div>
       </section>
 

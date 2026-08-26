@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
     email, name,
     street, house_number,
     postal, city, country = "NL",
-    phone, items,
+    phone, items, discount_code,
   } = body;
 
   if (!email || !name || !street || !postal || !city || !Array.isArray(items) || items.length === 0) {
@@ -59,11 +59,33 @@ export async function POST(req: NextRequest) {
     return { ...it, applied_price_cents: unitAdj, discount_pct: pct };
   });
 
-  // Shipping = EUR 10 per uniek shipping_method (ut/rest). Mix -> 2x EUR 10.
+  // Kortingscode: staat per shop in shops.settings.discount_codes en wordt
+  // ALLEEN hier gevalideerd. De klant krijgt de code CONSULT10 van de
+  // consulent na een betaald consult; wat de browser meestuurt is dus een
+  // claim, geen waarheid.
+  let discountCents = 0;
+  let discountLabel: string | null = null;
+  if (typeof discount_code === "string" && discount_code.trim()) {
+    const { data: sh } = await supabase.from("shops").select("settings").eq("id", SHOP_ID).single();
+    const codes: any[] = sh?.settings?.discount_codes || [];
+    const c = codes.find(
+      (x) => x && x.active !== false && String(x.code).trim().toLowerCase() === discount_code.trim().toLowerCase(),
+    );
+    if (!c) {
+      return NextResponse.json({ error: "Ongeldige of verlopen kortingscode" }, { status: 400 });
+    }
+    discountCents = c.type === "percent"
+      ? Math.round((subtotal * c.value) / 100)
+      : Math.min(c.value, subtotal);
+    discountLabel = `${String(c.code).toUpperCase()} (${c.type === "percent" ? `-${c.value}%` : `-EUR ${(c.value / 100).toFixed(2)}`})`;
+  }
+
+  // Shipping = EUR 10 per zending; consulten en bloedonderzoek worden niet
+  // verzonden, maar zolang er iets fysieks in de mand zit geldt het tarief.
   const methods = new Set<string>();
   for (const it of items) methods.add(it.shipping_method || "rest");
   const shipping = methods.size * SHIPPING_FEE_CENTS;
-  const total = subtotal + shipping;
+  const total = subtotal - discountCents + shipping;
 
   const fullStreet = house_number ? `${street} ${house_number}` : street;
 
@@ -75,6 +97,7 @@ export async function POST(req: NextRequest) {
     customer_phone: phone || null,
     shipping_street: fullStreet, shipping_postal: postal, shipping_city: city, shipping_country: country,
     subtotal_cents: subtotal, shipping_cents: shipping, total_cents: total,
+    notes: discountLabel ? `Kortingscode ${discountLabel}: -EUR ${(discountCents / 100).toFixed(2)}` : null,
     status: "pending_payment",
     // AD, niet AP: het ordernummer stond nog op het voorvoegsel van anabolenpro,
     // en dat is precies het soort spoor dat de twee sites aan elkaar knoopt.
@@ -130,6 +153,7 @@ export async function POST(req: NextRequest) {
     paytail_url: paytailUrl,
     total_cents: total,
     subtotal_cents: subtotal,
+    discount_cents: discountCents,
     shipping_cents: shipping,
   });
 }

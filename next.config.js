@@ -25,6 +25,9 @@ module.exports = {
       // Blogs die van shop-dash 'buildInternalLinks' onderzoek/-slug krijgen: op deze
       // site heten ze /kennisbank/*. Redirect zodat oude bodies niet 404 geven.
       { source: "/onderzoek/:slug", destination: "/kennisbank/:slug", permanent: true },
+      // De losse supplementen zijn uit de verkoop; alles wijst naar de pakketten.
+      { source: "/winkel/supplementen", destination: "/winkel/pakketten", permanent: true },
+      { source: "/product/supplementen/:slug", destination: "/winkel/pakketten", permanent: true },
     ];
   },
   async headers() {

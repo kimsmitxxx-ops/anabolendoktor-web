@@ -35,6 +35,7 @@ export default function CheckoutPage() {
     city: "",
     country: "NL",
     phone: "",
+    discount_code: "",
     create_account: false,
     password: "",
   });
@@ -193,6 +194,21 @@ export default function CheckoutPage() {
             onChange={(v) => setForm({ ...form, phone: v })}
             required={false}
           />
+
+          {/* Kortingscode: klanten krijgen CONSULT10 van de consulent na een
+              betaald consult. Validatie gebeurt server-side in /api/orders. */}
+          <Field
+            k="discount_code"
+            label="Kortingscode (optioneel)"
+            value={form.discount_code}
+            onChange={(v) => setForm({ ...form, discount_code: v })}
+            required={false}
+          />
+          {form.discount_code.trim() !== "" && (
+            <p className="-mt-2 text-xs text-text-muted">
+              De code wordt gecontroleerd en verrekend bij het plaatsen van de bestelling.
+            </p>
+          )}
 
           {/* Betaalopties - zelfde rij als op productpagina + Veilig betalen-blok */}
           <div className="rounded-lg border border-border bg-surface p-4">

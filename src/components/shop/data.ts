@@ -24,7 +24,7 @@ export interface MainCategory {
 
 export const mainCategories: MainCategory[] = [
   { slug: "consult", name: "Consult", tagline: "1-op-1 begeleiding - bloedwaarden, trainingsplan, herstel na cycle.", image: catConsult, to: "/consult" },
-  { slug: "supplementen", name: "Legale supplementen", tagline: "Creatine, vitamine D3+K2, magnesium, ashwagandha - evidence-based.", image: catNatural, to: "/winkel/supplementen" },
+  { slug: "pakketten", name: "Pakketten", tagline: "Supplementen, schema op maat en een consult inbegrepen.", image: catNatural, to: "/winkel/pakketten" },
   { slug: "kennisbank", name: "Kennisbank", tagline: "Onderbouwde artikelen over legale opties en gezondheidsrisico's.", image: catBloodwork, to: "/kennisbank" },
 ];
 
