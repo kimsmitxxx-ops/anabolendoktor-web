@@ -60,13 +60,7 @@ export default async function WinkelIndexPage({
         Consulten, bloedonderzoek en supplementen op één plek. Klik op een categorie voor de uitleg, of scroll voor het volledige aanbod.
       </p>
 
-      <div className="mt-6 rounded-lg border border-accent/30 bg-accent-soft/15 p-4 flex items-start gap-3">
-        <Sparkles size={18} className="text-accent shrink-0 mt-0.5" />
-        <div className="text-sm">
-          <p className="font-semibold text-text">Staffelkorting bij meerdere stuks</p>
-          <p className="text-text-muted">Bij vijf of meer stuks gaat er 10% af, bij tien of meer 15%. De korting wordt in de winkelmand verrekend; u hoeft er niets voor te doen.</p>
-        </div>
-      </div>
+      {/* Geen staffelbanner: korting loopt via CONSULT10, niet via aantallen. */}
 
       <div className="mt-8 grid gap-8 lg:grid-cols-[260px_1fr]">
         <aside className="space-y-4 lg:sticky lg:top-32 lg:self-start">

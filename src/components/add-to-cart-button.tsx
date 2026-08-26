@@ -6,11 +6,6 @@ import { formatEUR } from "@/lib/queries";
 import { track } from "@/lib/analytics";
 import type { Product } from "@/lib/supabase";
 
-const BULK_TIERS = [
-  { qty: 1, discountPct: 0 },
-  { qty: 5, discountPct: 10 },
-  { qty: 10, discountPct: 15 },
-];
 
 export function AddToCartButton({ product }: { product: Product }) {
   const cart = useCart();
@@ -74,53 +69,8 @@ export function AddToCartButton({ product }: { product: Product }) {
         </button>
       </div>
 
-      <div className="rounded-md border border-accent/30 bg-accent-soft/15 p-3">
-        <p className="text-xs font-semibold text-text inline-flex items-center gap-1.5">
-          <Sparkles size={14} className="text-accent" /> Bulk-korting - klik om aantal te kiezen
-        </p>
-        <div className="mt-2 space-y-2">
-          {BULK_TIERS.map((t, i) => {
-            const unit = Math.round(product.price_cents * (1 - t.discountPct / 100));
-            const lineSubtotal = unit * t.qty;
-            const baseSubtotal = product.price_cents * t.qty;
-            const savings = baseSubtotal - lineSubtotal;
-            const next = BULK_TIERS[i + 1];
-            const active = qty >= t.qty && (!next || qty < next.qty);
-            return (
-              <button
-                type="button"
-                key={t.qty}
-                onClick={() => setQty(t.qty)}
-                aria-pressed={active}
-                className={`w-full text-left rounded-md border bg-background px-3 py-2.5 transition-all hover:border-accent hover:shadow-card ${
-                  active ? "border-accent ring-2 ring-accent/30 shadow-card" : "border-border"
-                }`}
-              >
-                <div className="flex items-center gap-3">
-                  <div className="flex items-baseline gap-1.5 w-20">
-                    <span className="font-display text-lg text-text tabular">{t.qty}</span>
-                    <span className="text-[11px] uppercase tracking-wider text-text-subtle">{t.qty === 1 ? "stuk" : "stuks"}</span>
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-sm text-text tabular font-medium">{formatEUR(unit)} / st</p>
-                    <p className="text-[11px] text-text-muted tabular">totaal {formatEUR(lineSubtotal)}</p>
-                  </div>
-                  {t.discountPct > 0 ? (
-                    <div className="text-right">
-                      <span className="inline-flex rounded-full bg-accent/15 px-2 py-0.5 text-[11px] font-semibold text-accent tabular">
-                        −{t.discountPct}%
-                      </span>
-                      <p className="mt-0.5 text-[11px] font-semibold text-accent tabular">Bespaar {formatEUR(savings)}</p>
-                    </div>
-                  ) : (
-                    <span className="text-[11px] text-text-subtle">basis-prijs</span>
-                  )}
-                </div>
-              </button>
-            );
-          })}
-        </div>
-      </div>
+      {/* Geen staffelblok: elk pakket bevat een consult, dus vijf of tien
+          stuks bestellen is geen scenario. Korting loopt via CONSULT10. */}
 
       {/* Veilig betalen blok */}
       <div className="rounded-md border border-border bg-surface p-3">

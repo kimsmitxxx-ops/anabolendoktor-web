@@ -94,13 +94,7 @@ export default async function CategoryPage({
 
       {cat.intro_html && <CollapsibleIntro html={cat.intro_html} />}
 
-      <div className="mt-6 rounded-lg border border-accent/30 bg-accent-soft/15 p-4 flex items-start gap-3">
-        <Sparkles size={18} className="text-accent shrink-0 mt-0.5" />
-        <div className="text-sm">
-          <p className="font-semibold text-text">Bulk-korting actief op {cat.name.toLowerCase()}</p>
-          <p className="text-text-muted">Vanaf 5 items <strong>10% korting</strong> · Vanaf 10 items <strong>15% korting</strong> - automatisch verrekend in de mand.</p>
-        </div>
-      </div>
+      {/* Geen staffelbanner: korting loopt via CONSULT10, niet via aantallen. */}
 
       <div className="mt-8 grid gap-8 lg:grid-cols-[260px_1fr]">
         <aside className="space-y-4 lg:sticky lg:top-32 lg:self-start">

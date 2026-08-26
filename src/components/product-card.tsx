@@ -96,11 +96,8 @@ export function ProductCard({
             {category}
           </span>
         )}
-        {tag && (
-          <div className="absolute top-3 right-3">
-            <Tag variant="filled">{tag}</Tag>
-          </div>
-        )}
+        {/* Geen merkbadge: de enige tag hier is de interne code AD, en die
+            zegt een bezoeker niets. */}
         {!inStock && (
           <>
             {/* Diagonale streep + grote pill - onmiskenbaar uitverkocht */}

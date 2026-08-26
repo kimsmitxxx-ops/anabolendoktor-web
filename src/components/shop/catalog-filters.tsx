@@ -68,77 +68,10 @@ export function CatalogFilters({ brands, stockOnly, activeBrand, activeStof = ""
         </label>
       </div>
 
-      {brands.length > 0 && (
-        <div className="rounded-lg border border-border bg-surface p-4">
-          <h4 className="text-xs uppercase tracking-wider text-accent-muted font-semibold mb-3 inline-flex items-center gap-1.5">
-            <TagIcon size={12} /> Merk
-          </h4>
-          <div className="flex flex-wrap gap-1.5">
-            <button
-              type="button"
-              onClick={() => setParam("merk", null)}
-              className={`rounded-full px-3 py-1 text-xs font-medium border ${
-                !activeBrand
-                  ? "bg-accent text-accent-foreground border-accent"
-                  : "bg-background text-text border-border hover:border-accent hover:text-accent"
-              }`}
-            >
-              Alle
-            </button>
-            {brands.map((b) => (
-              <button
-                key={b}
-                type="button"
-                onClick={() => setParam("merk", b === activeBrand ? null : b)}
-                className={`rounded-full px-3 py-1 text-xs font-medium border ${
-                  activeBrand === b
-                    ? "bg-accent text-accent-foreground border-accent"
-                    : "bg-background text-text border-border hover:border-accent hover:text-accent"
-                }`}
-                title={b}
-              >
-                {brandLabel(b)}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* Geen verzendlocatie-filter: dat onderscheid hoort bij het
-          twee-magazijnenmodel van anabolenpro. Hier is een verzendlocatie. */}
-      {/* Stof-filter - geen aparte pagina, alleen ?stof=... query-param */}
-      <div className="rounded-lg border border-border bg-surface p-4">
-        <h4 className="text-xs uppercase tracking-wider text-accent-muted font-semibold mb-3 inline-flex items-center gap-1.5">
-          <Beaker size={12} /> Stof
-        </h4>
-        <div className="flex flex-wrap gap-1.5">
-          <button
-            type="button"
-            onClick={() => setParam("stof", null)}
-            className={`rounded-full px-3 py-1 text-xs font-medium border ${
-              !activeStof
-                ? "bg-accent text-accent-foreground border-accent"
-                : "bg-background text-text border-border hover:border-accent hover:text-accent"
-            }`}
-          >
-            Alle
-          </button>
-          {STOF_FILTERS.map((s) => (
-            <button
-              key={s.slug}
-              type="button"
-              onClick={() => setParam("stof", s.slug === activeStof ? null : s.slug)}
-              className={`rounded-full px-3 py-1 text-xs font-medium border ${
-                activeStof === s.slug
-                  ? "bg-accent text-accent-foreground border-accent"
-                  : "bg-background text-text border-border hover:border-accent hover:text-accent"
-              }`}
-            >
-              {s.label}
-            </button>
-          ))}
-        </div>
-      </div>
+      {/* Geen merk-, stof- of verzendlocatiefilter: die horen bij de
+          anabolenpro-catalogus. Het stoffilter bood hier zelfs knoppen als
+          Testosteron en Anavar aan, op een site die geen anabolen verkoopt.
+          Drie categorieen en een voorraadvinkje zijn genoeg. */}
     </div>
   );
 }

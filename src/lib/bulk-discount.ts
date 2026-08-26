@@ -1,10 +1,8 @@
-// Bulk-korting matrix. Per item-qty.
-// 5+ items = 10%, 10+ items = 15%. Server (orders API) en client
-// (winkelmand/checkout) gebruiken dezelfde logica.
-export const BULK_TIERS = [
-  { qty: 10, pct: 15 },
-  { qty: 5, pct: 10 },
-];
+// Geen staffelkorting op deze site: elk pakket bevat een consult, dus vijf
+// of tien stuks bestellen is geen bestaand scenario. De matrix is leeg in
+// plaats van verwijderd zodat winkelmand, checkout en de orders-API dezelfde
+// (nul-)berekening blijven delen. Korting loopt via de code CONSULT10.
+export const BULK_TIERS: { qty: number; pct: number }[] = [];
 
 export function unitDiscountPct(qty: number): number {
   for (const t of BULK_TIERS) if (qty >= t.qty) return t.pct;
