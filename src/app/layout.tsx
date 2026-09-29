@@ -43,7 +43,9 @@ const WhatsAppFab = dynamic(
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://anabolendoktor.com"),
-  title: { default: "Anabolendoktor - consult, bloedwerk-interpretatie, legale alternatieven", template: "%s · Anabolendoktor" },
+  // 71 tekens werd afgekapt in de zoekresultaten. Consult en bloedwerk zijn
+  // waar de site op gevonden wordt, dus die blijven vooraan staan.
+  title: { default: "Anabolendoktor - consult en bloedwerk-interpretatie", template: "%s · Anabolendoktor" },
   description: "Formele consultatie voor mensen die anabolen gebruiken of overwegen, én voor natural trainers die evidence-based willen werken. Bloedwerk-interpretatie, legale supplementen, harm-reduction. Wij verkopen géén anabolen.",
   // Live sinds 26 augustus 2026; robots.txt leest de noindex-vlag uit de
   // database, maar deze meta-tag stond hardcoded op noindex en zou anders

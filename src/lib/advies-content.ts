@@ -32,7 +32,7 @@ export const ADVIES: Advies[] = [
   {
     slug: "stoppen-met-anabolen",
     titel: "Stoppen met anabolen",
-    metaTitle: "Stoppen met anabolen: wat er gebeurt en hoe u het aanpakt",
+    metaTitle: "Stoppen met anabolen: herstel en klachten",
     metaDescription:
       "Wat er in uw lichaam gebeurt als u stopt met anabolen, hoe lang herstel duurt, welke klachten normaal zijn en wanneer u een arts moet raadplegen.",
     intro:
@@ -78,7 +78,7 @@ export const ADVIES: Advies[] = [
   {
     slug: "gevaren-van-anabolen",
     titel: "De gevaren van anabolen",
-    metaTitle: "Gevaren van anabolen: wat de literatuur laat zien",
+    metaTitle: "Gevaren van anabolen volgens onderzoek",
     metaDescription:
       "Welke risico's anabole steroiden met zich meebrengen voor hart, lever, hormoonhuishouding en psyche, en welke daarvan in bloedonderzoek zichtbaar worden.",
     intro:
@@ -125,7 +125,7 @@ export const ADVIES: Advies[] = [
   {
     slug: "bloedwaarden-na-een-kuur",
     titel: "Bloedwaarden na een kuur",
-    metaTitle: "Bloedwaarden na een kuur: wat u laat prikken en wanneer",
+    metaTitle: "Bloedwaarden na een kuur: wat en wanneer",
     metaDescription:
       "Welke bloedwaarden zinvol zijn na een kuur met anabolen, op welke momenten u laat prikken en hoe u de uitslag leest.",
     intro:
@@ -164,7 +164,7 @@ export const ADVIES: Advies[] = [
   {
     slug: "anabolen-en-vruchtbaarheid",
     titel: "Anabolen en vruchtbaarheid",
-    metaTitle: "Anabolen en vruchtbaarheid: gevolgen en herstel",
+    metaTitle: "Anabolen en vruchtbaarheid: herstel",
     metaDescription:
       "Hoe anabolen de zaadproductie beinvloeden, wat er na het staken herstelt en welk onderzoek zinvol is bij een kinderwens.",
     intro:
@@ -195,7 +195,7 @@ export const ADVIES: Advies[] = [
   {
     slug: "herstel-na-een-kuur",
     titel: "Herstel na een kuur, ook bij kinderwens",
-    metaTitle: "Herstel na een kuur: behandelroute, hCG, SERM's en kinderwens",
+    metaTitle: "Herstel na een anabolenkuur: de route",
     metaDescription:
       "Hoe herstel na een anabolenkuur verloopt, welke middelen een arts inzet zoals hCG en clomifeen, wat er gemonitord wordt en wat realistisch is bij een kinderwens.",
     intro:
@@ -251,7 +251,7 @@ export const ADVIES: Advies[] = [
   {
     slug: "eerste-kuur-overwegen",
     titel: "Een eerste kuur overwegen",
-    metaTitle: "Eerste kuur overwegen: wat u vooraf zou moeten weten",
+    metaTitle: "Eerste kuur overwegen: wat u moet weten",
     metaDescription:
       "Objectieve informatie voor wie een eerste kuur overweegt: wat het oplevert, wat het kost aan gezondheid en welke vragen u vooraf zou moeten beantwoorden.",
     intro:
