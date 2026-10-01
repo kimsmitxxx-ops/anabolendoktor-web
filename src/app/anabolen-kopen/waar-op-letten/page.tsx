@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ShieldAlert } from "lucide-react";
+import { FaqAccordion } from "@/components/faq-accordion";
 
 /**
  * Tweede pagina van het cluster rond "anabolen kopen". Mikt op de concrete
@@ -206,14 +207,7 @@ export default function WaarOpLettenPage() {
       </div>
 
       <h2 className="mt-14 font-display text-2xl">Veelgestelde vragen</h2>
-      <dl className="mt-6 max-w-3xl space-y-7">
-        {VRAGEN.map((v) => (
-          <div key={v.q}>
-            <dt className="font-medium text-text">{v.q}</dt>
-            <dd className="mt-2 text-sm leading-relaxed text-text-muted">{v.a}</dd>
-          </div>
-        ))}
-      </dl>
+      <FaqAccordion items={VRAGEN.map((v) => ({ question: v.q, answer: v.a }))} className="mt-6 max-w-3xl" />
 
       <script
         type="application/ld+json"

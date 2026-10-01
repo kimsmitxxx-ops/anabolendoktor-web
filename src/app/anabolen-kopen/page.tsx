@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AlertTriangle, Scale, FlaskConical, CalendarClock, Receipt, Stethoscope } from "lucide-react";
+import { FaqAccordion } from "@/components/faq-accordion";
 
 /**
  * Hoofdpagina voor de zoekvraag "anabolen kopen".
@@ -409,14 +410,10 @@ export default function AnabolenKopenPage() {
       </div>
 
       <h2 className="mt-14 font-display text-2xl">Veelgestelde vragen</h2>
-      <dl className="mt-6 max-w-3xl space-y-7">
-        {VRAGEN.map((v) => (
-          <div key={v.q}>
-            <dt className="font-medium text-text">{v.q}</dt>
-            <dd className="mt-2 text-sm leading-relaxed text-text-muted">{v.a}</dd>
-          </div>
-        ))}
-      </dl>
+      {/* Uitklapbaar, zodat de lijst te overzien blijft. De antwoorden staan
+          ook in de HTML als een vraag dichtgeklapt is, dus zoekmachines en
+          taalmodellen lezen ze gewoon mee. */}
+      <FaqAccordion items={VRAGEN.map((v) => ({ question: v.q, answer: v.a }))} className="mt-6 max-w-3xl" />
 
       <h2 className="mt-14 font-display text-2xl">Verder lezen</h2>
       <ul className="mt-4 space-y-2 text-text-muted">

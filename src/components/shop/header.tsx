@@ -31,15 +31,41 @@ const NAV = [
   ] },
   { href: "/keuzehulp", label: "Keuzehulp" },
   { href: "/advies", label: "Advies" },
-  { href: "/kennisbank", label: "Kennisbank" },
+  // Voorlichting hangt onder Kennisbank, niet onder Advies: Advies gaat over
+  // trajecten die wij leveren, Kennisbank over lezen zonder verkoopbelang.
+  { href: "/kennisbank", label: "Kennisbank", sub: [
+    { href: "/kennisbank", label: "Alle artikelen" },
+    { href: "/anabolen-kopen", label: "Anabolen kopen" },
+    { href: "/anabolen-kopen/waar-op-letten", label: "Waar u op moet letten" },
+    { href: "/risicos-en-bijwerkingen", label: "Risico's en bijwerkingen" },
+  ] },
   { href: "/contact", label: "Contact" },
 ] as const;
+
+/**
+ * Het menu-item kleurt ook op als de bezoeker op een onderliggende pagina
+ * staat. Dat gaat niet met startsWith op het item zelf: /anabolen-kopen hangt
+ * onder Kennisbank maar begint er niet mee.
+ */
+function isActief(
+  pathname: string | null,
+  item: { href: string; sub?: ReadonlyArray<{ href: string }> },
+): boolean {
+  if (!pathname) return false;
+  if (pathname === item.href) return true;
+  if (item.href !== "/" && pathname.startsWith(`${item.href}/`)) return true;
+  return (item.sub || []).some(
+    (s) => pathname === s.href || pathname.startsWith(`${s.href}/`),
+  );
+}
 
 export function Header(_props: HeaderProps = {}) {
   const pathname = usePathname();
   const { count } = useCart();
   const [mobielOpen, setMobielOpen] = useState(false);
-  const [winkelOpen, setWinkelOpen] = useState(false);
+  // Welk uitklapmenu openstaat, op href. Was een enkele boolean toen alleen
+  // Winkel een submenu had; met twee uitklappers klapten ze dan samen open.
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/85 backdrop-blur-md">
@@ -57,24 +83,24 @@ export function Header(_props: HeaderProps = {}) {
               <div
                 key={item.href}
                 className="relative"
-                onMouseEnter={() => setWinkelOpen(true)}
-                onMouseLeave={() => setWinkelOpen(false)}
+                onMouseEnter={() => setOpenMenu(item.href)}
+                onMouseLeave={() => setOpenMenu((h) => (h === item.href ? null : h))}
               >
                 <Link
                   href={item.href}
                   className={`inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-                    pathname?.startsWith(item.href) ? "text-accent" : "text-text-muted hover:text-text hover:bg-primary/5"
+                    isActief(pathname, item) ? "text-accent" : "text-text-muted hover:text-text hover:bg-primary/5"
                   }`}
                 >
                   {item.label} <ChevronDown size={13} />
                 </Link>
-                {winkelOpen && (
-                  <div className="absolute left-0 top-full w-52 rounded-xl border border-border bg-background p-2 shadow-lg">
+                {openMenu === item.href && (
+                  <div className="absolute left-0 top-full w-60 rounded-xl border border-border bg-background p-2 shadow-lg">
                     {item.sub.map((s) => (
                       <Link
                         key={s.href}
                         href={s.href}
-                        onClick={() => setWinkelOpen(false)}
+                        onClick={() => setOpenMenu(null)}
                         className="block rounded-lg px-3 py-2 text-sm text-text-muted hover:bg-primary/5 hover:text-text"
                       >
                         {s.label}
@@ -88,7 +114,7 @@ export function Header(_props: HeaderProps = {}) {
                 key={item.href}
                 href={item.href}
                 className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-                  pathname === item.href ? "text-accent" : "text-text-muted hover:text-text hover:bg-primary/5"
+                  isActief(pathname, item) ? "text-accent" : "text-text-muted hover:text-text hover:bg-primary/5"
                 }`}
               >
                 {item.label}
@@ -128,14 +154,25 @@ export function Header(_props: HeaderProps = {}) {
 
       {mobielOpen && (
         <nav className="border-t border-border bg-background/95 px-4 pb-4 pt-2 backdrop-blur-md md:hidden">
-          {NAV.flatMap((item): { href: string; label: string }[] =>
-            "sub" in item && item.sub ? [{ href: item.href, label: item.label }, ...item.sub] : [item],
+          {NAV.flatMap((item): { href: string; label: string; onder?: boolean }[] =>
+            "sub" in item && item.sub
+              ? [
+                  { href: item.href, label: item.label },
+                  // Submenu-items krijgen inspringing, anders lezen ze als
+                  // hoofdpunten en wordt de lijst op mobiel onnavigeerbaar.
+                  ...item.sub
+                    .filter((s) => s.href !== item.href)
+                    .map((s) => ({ href: s.href, label: s.label, onder: true })),
+                ]
+              : [item],
           ).map((l) => (
             <Link
               key={l.href}
               href={l.href}
               onClick={() => setMobielOpen(false)}
-              className={`block rounded-lg px-3 py-2.5 text-sm font-medium ${
+              className={`block rounded-lg py-2.5 text-sm font-medium ${
+                l.onder ? "pl-7 pr-3 text-[13px]" : "px-3"
+              } ${
                 pathname === l.href ? "text-accent" : "text-text-muted hover:bg-primary/5 hover:text-text"
               }`}
             >
