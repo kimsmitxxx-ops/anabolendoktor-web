@@ -11,7 +11,11 @@ import { AlertTriangle, HeartPulse, Droplets, Brain, ShieldAlert } from "lucide-
  * verkoopt geen anabolen en neemt hier dus een andere positie in dan de
  * verkopende shops: dit is voorlichting, geen bijsluiter bij een product.
  */
-export const dynamic = "force-dynamic";
+// Gecached met een venster van een uur. Dat uur is alleen het vangnet: bij
+// elke wijziging in shop-dash komt er een purge binnen op /api/revalidate en
+// is deze pagina meteen weer vers. Winkelwagen, checkout en account staan
+// bewust nog steeds op force-dynamic.
+export const revalidate = 3600;
 
 // Vragen die bezoekers hier daadwerkelijk mee binnenkomen, met antwoorden die
 // verder gaan dan een zin. Ook als FAQPage in de structured data, zodat

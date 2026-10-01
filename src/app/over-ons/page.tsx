@@ -138,6 +138,7 @@ export default async function OverOnsPage() {
                     {a.avatar_url ? (
                       // eslint-disable-next-line @next/next/no-img-element
                       <img
+                        loading="lazy" decoding="async"
                         src={a.avatar_url}
                         alt={`Profielfoto ${a.name}`}
                         className="h-16 w-16 rounded-full object-cover ring-2 ring-paper-border shrink-0"

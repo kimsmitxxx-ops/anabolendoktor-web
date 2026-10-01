@@ -11,7 +11,11 @@ import { FlaskConical, FileText, Clock, ShieldCheck, ClipboardList, Microscope }
  *
  * Volledig eigen tekst, geen zin gedeeld met de andere shops.
  */
-export const dynamic = "force-dynamic";
+// Gecached met een venster van een uur. Dat uur is alleen het vangnet: bij
+// elke wijziging in shop-dash komt er een purge binnen op /api/revalidate en
+// is deze pagina meteen weer vers. Winkelwagen, checkout en account staan
+// bewust nog steeds op force-dynamic.
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Hoe het bloedonderzoek werkt",

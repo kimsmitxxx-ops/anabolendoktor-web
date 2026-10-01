@@ -41,6 +41,7 @@ export function ProductGallery({ gallery, productName }: { gallery: MediaItem[];
       <div className="flex-1 max-w-[75%]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
+          loading="eager" fetchPriority="high" decoding="async"
           src={current.url}
           alt={current.alt || productName}
           className="aspect-square w-full rounded-2xl border border-paper-border object-cover"

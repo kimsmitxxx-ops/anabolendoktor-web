@@ -16,7 +16,10 @@ import {
 } from "lucide-react";
 
 export const revalidate = 300;
-export const dynamic = "force-dynamic";
+// Gecached met een venster van een uur. Dat uur is alleen het vangnet: bij
+// elke wijziging in shop-dash komt er een purge binnen op /api/revalidate en
+// is deze pagina meteen weer vers. Winkelwagen, checkout en account staan
+// bewust nog steeds op force-dynamic.
 
 const HOMEPAGE_FAQ = [
   {

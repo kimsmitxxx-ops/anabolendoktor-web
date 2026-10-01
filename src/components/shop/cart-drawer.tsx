@@ -60,6 +60,7 @@ export function CartDrawer() {
                       aria-label={`Open ${it.name}`}
                     >
                       <img
+                        loading="lazy" decoding="async"
                         src={it.image}
                         alt={it.name}
                         className="h-16 w-16 rounded object-cover shrink-0 hover:opacity-80 transition"

@@ -3,7 +3,11 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { ADVIES } from "@/lib/advies-content";
 
-export const dynamic = "force-dynamic";
+// Gecached met een venster van een uur. Dat uur is alleen het vangnet: bij
+// elke wijziging in shop-dash komt er een purge binnen op /api/revalidate en
+// is deze pagina meteen weer vers. Winkelwagen, checkout en account staan
+// bewust nog steeds op force-dynamic.
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Advies over anabolen, stoppen en bloedwaarden",

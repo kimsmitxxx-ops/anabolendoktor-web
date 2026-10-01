@@ -105,6 +105,7 @@ export default async function KennisbankDetail({ params }: { params: { slug: str
         {authorInfo?.avatar_url ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
+            loading="lazy" decoding="async"
             src={authorInfo.avatar_url}
             alt={`Profielfoto ${authorInfo.name}`}
             className="h-10 w-10 rounded-full object-cover ring-2 ring-paper-border"
@@ -167,6 +168,7 @@ export default async function KennisbankDetail({ params }: { params: { slug: str
             {authorInfo.avatar_url ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img
+                loading="lazy" decoding="async" 
                 src={authorInfo.avatar_url}
                 alt={`Profielfoto ${authorInfo.name}`}
                 className="h-16 w-16 rounded-full object-cover ring-2 ring-paper-border shrink-0"
