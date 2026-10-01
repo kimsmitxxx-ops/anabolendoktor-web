@@ -68,6 +68,8 @@ export function Footer() {
             <ul className="space-y-2 text-sm">
               <li><Link href="/kennisbank" className="text-primary-foreground/70 hover:text-accent">Alle artikelen</Link></li>
               <li><Link href="/risicos-en-bijwerkingen" className="text-primary-foreground/70 hover:text-accent">Risico&apos;s en bijwerkingen</Link></li>
+              <li><Link href="/anabolen-kopen" className="text-primary-foreground/70 hover:text-accent">Anabolen kopen</Link></li>
+              <li><Link href="/anabolen-kopen/waar-op-letten" className="text-primary-foreground/70 hover:text-accent">Waar u op moet letten</Link></li>
               <li><Link href="/over-ons" className="text-primary-foreground/70 hover:text-accent">Wie wij zijn</Link></li>
             </ul>
           </div>

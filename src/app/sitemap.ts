@@ -13,6 +13,8 @@ export const revalidate = 0;
 const PRIORITY: Record<string, number> = {
   "/": 1.0,
   "/consult": 0.95,
+  "/anabolen-kopen": 0.95,
+  "/anabolen-kopen/waar-op-letten": 0.9,
   "/keuzehulp": 0.9,
   "/advies": 0.9,
   "/winkel": 0.9,
@@ -33,6 +35,7 @@ const FREQ: Record<string, "daily" | "weekly" | "monthly"> = {
   "/winkel": "daily",
   "/kennisbank": "weekly",
   "/advies": "weekly",
+  "/anabolen-kopen": "weekly",
 };
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
