@@ -71,7 +71,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const blogRoutes = blogs.map((b) => ({
     url: `${BASE}/kennisbank/${b.slug}`,
-    lastModified: new Date(b.published_at),
+    // updated_at, niet published_at: de publicatiedatums zijn bewust
+    // teruggezet om natuurlijk te ogen, en dan meldt de sitemap een nieuwe
+    // URL als maanden oud. Dat drukt de crawl-prioriteit.
+    lastModified: new Date(b.updated_at || b.published_at),
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }));

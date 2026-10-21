@@ -114,7 +114,7 @@ export async function getCategory(slug: string): Promise<Category | null> {
 export async function listBlogPosts(limit = 50): Promise<BlogPost[]> {
   try {
     const { data } = await supabase.from("blog_posts")
-      .select("id, slug, title, excerpt, image_url, category, published_at, author, meta_title, meta_description, body")
+      .select("id, slug, title, excerpt, image_url, category, published_at, updated_at, author, meta_title, meta_description, body")
       .eq("shop_id", SHOP_ID)
       .eq("is_published", true)
       .order("published_at", { ascending: false })

@@ -90,4 +90,6 @@ export type BlogPost = {
   author_id: string | null;
   meta_title: string | null;
   meta_description: string | null;
+  /** Voor de sitemap: eerlijker dan published_at, dat bewust teruggezet is. */
+  updated_at?: string | null;
 };
