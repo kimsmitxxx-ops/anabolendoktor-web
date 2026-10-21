@@ -104,23 +104,44 @@ export function highlightGlossary(html: string): string {
     // Tekst-node - skip als we in een skip-tag zitten
     if (openStack.length > 0) continue;
 
-    let text = part;
+    // Eerst alle treffers zoeken in de ONGEWIJZIGDE tekst, daarna pas opbouwen.
+    //
+    // Hiervoor werd de tekst na elke vervanging meteen aangepast, waarna de
+    // volgende term uit de lijst over de zojuist ingevoegde markup liep. Een
+    // term als "AAS" matchte dan binnen aria-label="Kuur - periode waarin AAS
+    // gebruikt wordt", het attribuut brak open en de rest kwam als platte
+    // tekst op de pagina te staan. Zo stond er op /boldenone letterlijk
+    // 'Beginner EQ- AAS gebruikt wordt" data-def="Kuur - periode waarin AAS
+    // gebruikt wordt">cycle'. Zeventien keer verspreid over vijf pagina's.
+    const text = part;
+    const treffers: { start: number; end: number; matched: string; entry: (typeof SORTED)[number] }[] = [];
+
     for (const entry of SORTED) {
       if (wrapped.has(entry.slug)) continue;
       const rx = new RegExp(`(^|[^a-zA-Z0-9À-ÿ])(${escapeRegex(entry.term)})(?=[^a-zA-Z0-9À-ÿ]|$)`, "i");
       const m = rx.exec(text);
       if (!m) continue;
-      const before = m[1];
-      const matched = m[2];
-      const start = m.index + before.length;
-      const end = start + matched.length;
-      text =
-        text.slice(0, start) +
-        `<abbr title="${escapeAttr(entry.short)}">${matched}</abbr>` +
-        text.slice(end);
+      const start = m.index + m[1].length;
+      const end = start + m[2].length;
+      // Overlappende termen ("test" binnen "testosteron") maar een keer pakken.
+      if (treffers.some((t) => start < t.end && end > t.start)) continue;
+      treffers.push({ start, end, matched: m[2], entry });
       wrapped.add(entry.slug);
     }
-    parts[i] = text;
+
+    if (treffers.length === 0) continue;
+
+    treffers.sort((a, b) => a.start - b.start);
+    let uit = "";
+    let cursor = 0;
+    for (const t of treffers) {
+      const def = escapeAttr(t.entry.short);
+      uit +=
+        text.slice(cursor, t.start) +
+        `<abbr class="gloss" tabindex="0" aria-label="${def}" data-def="${def}">${t.matched}</abbr>`;
+      cursor = t.end;
+    }
+    parts[i] = uit + text.slice(cursor);
   }
 
   return parts.join("");
