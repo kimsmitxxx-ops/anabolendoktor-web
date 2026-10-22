@@ -64,23 +64,36 @@ export default async function CategoryPage({
   // op de generieke constraint en verdwenen sku, prijs en beschikbaarheid.
   const products = sortProducts(filtered);
 
+  // Let op de url per product: zonder een link naar de eigen detailpagina komt
+  // deze lijst niet in aanmerking voor de carousel die Google sinds september
+  // 2026 in de EER toont. Absolute URL's, want een relatieve wordt in
+  // structured data niet betrouwbaar opgelost.
+  const BASIS = "https://anabolendoktor.com";
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: cat.name,
-    url: `/winkel/${cat.slug}`,
+    url: `${BASIS}/winkel/${cat.slug}`,
     description: cat.description,
     mainEntity: {
       "@type": "ItemList",
       itemListElement: products.slice(0, 30).map((p, i) => ({
         "@type": "ListItem",
         position: i + 1,
+        url: `${BASIS}/product/${p.categories?.slug || cat.slug}/${p.slug}`,
         item: {
           "@type": "Product",
           name: p.name,
           sku: p.sku,
+          url: `${BASIS}/product/${p.categories?.slug || cat.slug}/${p.slug}`,
           image: p.image_url || undefined,
-          offers: { "@type": "Offer", price: (p.price_cents / 100).toFixed(2), priceCurrency: "EUR", availability: p.availability === "OutOfStock" ? "https://schema.org/OutOfStock" : "https://schema.org/InStock" },
+          offers: {
+            "@type": "Offer",
+            price: (p.price_cents / 100).toFixed(2),
+            priceCurrency: "EUR",
+            availability: p.availability === "OutOfStock" ? "https://schema.org/OutOfStock" : "https://schema.org/InStock",
+            url: `${BASIS}/product/${p.categories?.slug || cat.slug}/${p.slug}`,
+          },
         },
       })),
     },
@@ -179,23 +192,11 @@ export default async function CategoryPage({
         </section>
       )}
 
-      {/* FAQ-blok + FAQPage JSON-LD voor Google rich results */}
+      {/* Veelgestelde vragen. Zonder FAQPage-schema: Google heeft dat rich
+          result afgevoerd, dus die JSON-LD was dode code. */}
       {cat.faqs && Array.isArray(cat.faqs) && cat.faqs.length > 0 && (
         <>
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "FAQPage",
-                mainEntity: cat.faqs.map((f) => ({
-                  "@type": "Question",
-                  name: f.q,
-                  acceptedAnswer: { "@type": "Answer", text: f.a },
-                })),
-              }),
-            }}
-          />
+          
           <section className="mt-12 max-w-3xl">
             <h2 className="font-display text-2xl text-primary">Veelgestelde vragen</h2>
             <p className="mt-2 text-sm text-text-muted">Over {cat.name.toLowerCase()}.</p>

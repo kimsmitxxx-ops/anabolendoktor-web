@@ -62,19 +62,8 @@ const HOMEPAGE_FAQ = [
 export default async function HomePage() {
   const dbArticles = await listBlogPosts(6);
 
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: HOMEPAGE_FAQ.map((f) => ({
-      "@type": "Question",
-      name: f.question,
-      acceptedAnswer: { "@type": "Answer", text: f.answer },
-    })),
-  };
-
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
       {/* Hero - bewust formeler, geen "koop nu" energie */}
       <section className="relative overflow-hidden bg-primary text-primary-foreground">

@@ -84,20 +84,9 @@ export default async function ProductDetailPage({ params }: { params: { categori
     };
   }
 
-  const faqJsonLd = p.faqs && Array.isArray(p.faqs) && p.faqs.length > 0 ? {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: p.faqs.map((f: any) => ({
-      "@type": "Question",
-      name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
-    })),
-  } : null;
-
   return (
     <div className="mx-auto max-w-7xl px-4 py-10">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }} />
-      {faqJsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />}
 
       <Link href={`/winkel/${params.categorie}`} className="inline-flex items-center gap-1 text-xs text-text-muted hover:text-text">
         <ArrowLeft className="h-3 w-3" /> Terug naar {p.categories?.name || "winkel"}

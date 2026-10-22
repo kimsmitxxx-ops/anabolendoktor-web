@@ -231,14 +231,6 @@ export default function WaarOpLettenPage() {
                 },
               },
               {
-                "@type": "FAQPage",
-                mainEntity: VRAGEN.map((v) => ({
-                  "@type": "Question",
-                  name: v.q,
-                  acceptedAnswer: { "@type": "Answer", text: v.a },
-                })),
-              },
-              {
                 "@type": "BreadcrumbList",
                 itemListElement: [
                   { "@type": "ListItem", position: 1, name: "Home", item: "https://anabolendoktor.com/" },

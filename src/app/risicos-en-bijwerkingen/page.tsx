@@ -18,8 +18,8 @@ import { AlertTriangle, HeartPulse, Droplets, Brain, ShieldAlert } from "lucide-
 export const revalidate = 3600;
 
 // Vragen die bezoekers hier daadwerkelijk mee binnenkomen, met antwoorden die
-// verder gaan dan een zin. Ook als FAQPage in de structured data, zodat
-// zoekmachines en taalmodellen ze los kunnen aanhalen.
+// verder gaan dan een zin. Zonder FAQPage-schema: Google heeft dat rich
+// result afgevoerd, dus die JSON-LD leverde niets meer op.
 const VRAGEN = [
   {
     q: "Welke bijwerking komt het vaakst voor?",
@@ -46,8 +46,6 @@ const VRAGEN = [
     a: "Dan is de vraag eerst hoe acuut ze zijn. Pijn op de borst, kortademigheid bij lichte inspanning, ernstige hoofdpijn, geel worden van huid of oogwit en aanhoudende sombere gedachten horen bij een huisarts of de huisartsenpost, vandaag. Bij klachten die minder acuut zijn, zoals vermoeidheid, slecht slapen of een dalend libido, is bloedonderzoek de logische eerste stap; dan weet u waarover u het heeft.",
   },
 ];
-
-
 
 export const metadata: Metadata = {
   title: "Risico's en bijwerkingen van anabolen",
@@ -160,20 +158,7 @@ export default function RisicoPage() {
         ))}
       </dl>
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: VRAGEN.map((v) => ({
-              "@type": "Question",
-              name: v.q,
-              acceptedAnswer: { "@type": "Answer", text: v.a },
-            })),
-          }),
-        }}
-      />
+      
 
       <p className="mt-12 rounded-xl border border-paper-border bg-paper-soft p-5 text-sm text-text-muted">
         Deze pagina is voorlichting en geen medisch advies. Er ontstaat geen

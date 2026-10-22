@@ -456,15 +456,7 @@ export default function AnabolenKopenPage() {
                 author: { "@type": "Organization", name: "Anabolendoktor" },
                 publisher: { "@type": "Organization", name: "Anabolendoktor" },
                 mainEntityOfPage: { "@type": "WebPage", "@id": "https://anabolendoktor.com/anabolen-kopen" },
-              },
-              {
-                "@type": "FAQPage",
-                mainEntity: VRAGEN.map((v) => ({
-                  "@type": "Question",
-                  name: v.q,
-                  acceptedAnswer: { "@type": "Answer", text: v.a },
-                })),
-              },
+              }
             ],
           }),
         }}
