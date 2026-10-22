@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { PriceTag } from "./price-tag";
 import { Stars } from "./stars";
@@ -90,7 +91,15 @@ export function ProductCard({
       )}
     >
       <div className="relative aspect-square bg-muted overflow-hidden shrink-0">
-        <img loading="lazy" decoding="async" src={image} alt={name} className="w-full h-full object-cover transition-transform group-hover:scale-[1.02]" />
+        {/* sizes volgt het raster, anders haalt next/image het grootste
+            formaat op en laadt een kaartje van 334px een bestand van 1000px. */}
+        <Image
+          src={image}
+          alt={name}
+          fill
+          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+          className="object-cover transition-transform group-hover:scale-[1.02]"
+        />
         {category && (
           <span className="absolute top-3 left-3 inline-flex items-center rounded-sm bg-primary/90 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-primary-foreground backdrop-blur-sm">
             {category}

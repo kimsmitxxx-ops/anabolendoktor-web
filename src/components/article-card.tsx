@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Tag } from "./tag";
 
@@ -27,7 +28,7 @@ function Meta({ author, publishedAt, updatedAt }: Pick<ArticleCardProps, "author
   return (
     <div className="flex items-center gap-2 text-xs text-text-muted">
       {author.avatar && (
-        <img loading="lazy" decoding="async" src={author.avatar} alt="" className="h-6 w-6 rounded-full object-cover" />
+        <Image src={author.avatar} alt="" width={24} height={24} className="h-6 w-6 rounded-full object-cover" />
       )}
       <span className="font-medium text-text">{author.name}</span>
       {author.credentials && <span className="text-text-subtle">· {author.credentials}</span>}
@@ -60,7 +61,7 @@ export function ArticleCard({
           className,
         )}
       >
-        <img loading="lazy" decoding="async" src={image} alt={title} className="h-20 w-28 rounded object-cover shrink-0" />
+        <Image src={image} alt={title} width={112} height={80} className="h-20 w-28 rounded object-cover shrink-0" />
         <div className="flex-1 min-w-0">
           <Tag>{kindTag}</Tag>
           <h3 className="mt-1.5 font-display text-base text-text leading-snug line-clamp-2">{title}</h3>
@@ -80,7 +81,7 @@ export function ArticleCard({
           className,
         )}
       >
-        <img loading="lazy" decoding="async" src={image} alt={title} className="absolute inset-0 h-full w-full object-cover" />
+        <Image src={image} alt={title} fill sizes="(max-width: 1024px) 100vw, 66vw" className="object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-text/85 via-text/40 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-6 text-surface">
           <span className="inline-block rounded-sm border border-surface/60 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-widest">
@@ -100,8 +101,14 @@ export function ArticleCard({
         className,
       )}
     >
-      <div className="aspect-[16/9] bg-primary-soft">
-        <img loading="lazy" decoding="async" src={image} alt={title} className="h-full w-full object-cover opacity-95" />
+      <div className="relative aspect-[16/9] bg-primary-soft">
+        <Image
+          src={image}
+          alt={title}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover opacity-95"
+        />
       </div>
       <div className="p-5 space-y-3">
         <Tag>{kindTag}</Tag>
@@ -109,7 +116,7 @@ export function ArticleCard({
         {excerpt && <p className="text-sm text-primary-foreground/70 line-clamp-3">{excerpt}</p>}
         <div className="flex items-center gap-2 text-xs text-primary-foreground/60">
           {author.avatar && (
-            <img loading="lazy" decoding="async" src={author.avatar} alt="" className="h-6 w-6 rounded-full object-cover" />
+            <Image src={author.avatar} alt="" width={24} height={24} className="h-6 w-6 rounded-full object-cover" />
           )}
           <span className="font-medium text-primary-foreground/90">{author.name}</span>
           {author.credentials && <span>· {author.credentials}</span>}

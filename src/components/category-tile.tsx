@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import type { LucideIcon } from "lucide-react";
 
@@ -32,7 +33,15 @@ export function CategoryTile({
           className,
         )}
       >
-        {image && <img loading="lazy" decoding="async" src={image} alt={name} className="absolute inset-0 w-full h-full object-cover" />}
+        {image && (
+          <Image
+            src={image}
+            alt={name}
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover"
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/30 to-transparent" />
         <div className="absolute bottom-0 left-0 p-5">
           <h3 className="font-display text-2xl text-text">{name}</h3>
