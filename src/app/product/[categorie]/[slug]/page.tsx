@@ -25,7 +25,12 @@ export async function generateMetadata({ params }: { params: { categorie: string
     title: p.meta_title || `${p.name} kopen voor ${formatEUR(p.price_cents)}`,
     description: p.meta_description || p.subtitle || p.description || `${p.name} bij anabolendoktor, met onderbouwing en zonder overdreven claims.`,
     alternates: { canonical },
-    robots: noindex ? { index: false, follow: false } : undefined,
+    robots: noindex
+      ? { index: false, follow: false }
+      // Expliciet index/follow: een `undefined` hier overschrijft de
+      // `robots`-metadata uit de root-layout, waardoor productpagina's
+      // helemaal zonder robots-meta de deur uit gingen.
+      : { index: true, follow: true },
     openGraph: {
       title: p.name,
       description: p.subtitle || undefined,
