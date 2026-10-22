@@ -185,11 +185,11 @@ export async function listProductReviews(productId: string, limit = 20): Promise
 
 /**
  * Kolommen van `shops` die de anon key mag lezen. Expliciet in plaats van
- * `select("*")`, want sinds shop-dash migratie 053 heeft anon alleen nog
+ * `select("*")`, want sinds shop-dash migratie 054 heeft anon alleen nog
  * kolom-grants: `settings` (met smtp-wachtwoord en kortingscodes) en
  * `paytail_api_key` zijn afgeschermd, en `select("*")` zou dus afketsen op
  * "permission denied for column". Voeg je een publieke kolom toe aan shops,
- * dan moet die hier én in de GRANT van 053 erbij.
+ * dan moet die hier én in de GRANT van 054 erbij.
  */
 const SHOP_PUBLIC_COLUMNS =
   "id, slug, name, domain, email, iban, bank_name, kvk, btw, created_at, updated_at, logo_url, description, phone, address_street, address_postal, address_city, address_country, bic, shipping_free_above_cents, shipping_nl_cents, shipping_be_cents, shipping_de_cents, shipping_eu_cents, payment_instructions, order_prefix, reminder_days, is_active, theme_color, meta_title, meta_description, paytail_enabled, paytail_base_url, paytail_return_path, paytail_btn_label, paytail_btn_color, paytail_btn_text_color, iban_enabled, maintenance_mode, maintenance_message, noindex, product_url_pattern, default_meta_title_template, default_meta_description_template, llms_txt" as const;
