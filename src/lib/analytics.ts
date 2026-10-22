@@ -1,3 +1,4 @@
+import { effectiveConsent } from "./consent";
 /**
  * Eigen bezoekers- en conversie-tracking. Geen GA4, geen externe scripts.
  *
@@ -145,6 +146,10 @@ function forwardToGa4(eventName: string, props: TrackProps) {
  * een navigatie in de weg zitten.
  */
 export function track(eventName: string, props: TrackProps = {}) {
+  // Een "Nee" in de cookiemelding zet ook onze eigen meting stil. Die is
+  // weliswaar cookieloos en zonder persoonsgegevens, maar wie nee zegt
+  // bedoelt niet "behalve dan jullie eigen tellertje".
+  if (effectiveConsent() === "denied") return;
   if (typeof window === "undefined") return;
   try {
     forwardToGa4(eventName, props);

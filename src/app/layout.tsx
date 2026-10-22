@@ -8,6 +8,7 @@ import { Footer } from "@/components/shop/footer";
 import { MobileTabBar } from "@/components/shop/mobile-tabbar";
 import { AnalyticsTracker } from "@/components/analytics-tracker";
 import { GA4 } from "@/components/ga4";
+import { ConsentNotice } from "@/components/consent-notice";
 
 const GA4_ID = process.env.NEXT_PUBLIC_GA4_ID || "G-54K5B0PBQ5"; // anabolendoktor
 
@@ -84,6 +85,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <AnalyticsTracker />
+        <ConsentNotice />
         <CartProvider>
           <div className="min-h-screen flex flex-col bg-background text-text overflow-x-hidden">
             <Header />
