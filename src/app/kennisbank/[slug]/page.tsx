@@ -5,6 +5,7 @@ import { ArrowLeft, BadgeCheck } from "lucide-react";
 import type { Metadata } from "next";
 import { MedicalDisclaimer } from "@/components/medical-disclaimer";
 import { highlightGlossary } from "@/lib/glossary-highlight";
+import { KortAntwoord } from "@/components/kort-antwoord";
 
 export const revalidate = 600;
 
@@ -145,7 +146,7 @@ export default async function KennisbankDetail({ params }: { params: { slug: str
         <img loading="lazy" decoding="async" src={p.image_url} alt={p.image_alt || p.title} className="mt-8 aspect-[16/9] w-full rounded-2xl object-cover" />
       )}
 
-      {p.excerpt && <p className="mt-8 text-lg text-text-muted leading-relaxed">{p.excerpt}</p>}
+      {p.excerpt && <KortAntwoord>{p.excerpt}</KortAntwoord>}
 
       <div
         className="prose prose-lg mt-10 max-w-none leading-relaxed
