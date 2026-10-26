@@ -106,7 +106,11 @@ export default async function CategoryPage({
         <Link href="/" className="hover:underline">Home</Link> / <Link href="/winkel" className="hover:underline">Winkel</Link> / <span>{cat.name}</span>
       </div>
 
-      <h1 className="font-display text-3xl md:text-4xl">{cat.name}</h1>
+      {/* H1 uit meta_title en niet uit name: name is het korte label dat ook
+          op productkaarten en in "Terug naar ..." staat, en moet dus kort
+          blijven. De H1 mag de zoekterm voluit dragen. "Pakketten" is geen
+          zoekopdracht, "herstelpakket na een kuur" wel. */}
+      <h1 className="font-display text-3xl md:text-4xl">{cat.meta_title || cat.name}</h1>
       {cat.description && <p className="mt-3 max-w-3xl text-text-muted leading-relaxed">{cat.description}</p>}
 
       {cat.intro_html && <CollapsibleIntro html={cat.intro_html} />}

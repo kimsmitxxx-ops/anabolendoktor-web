@@ -30,8 +30,17 @@ function brandRank(tags: string[] | null | undefined): number {
   return 2;
 }
 
-export function sortProducts<T extends { name: string; tags: string[] | null; sort_order?: number | null }>(products: T[]): T[] {
+export function sortProducts<
+  T extends { name: string; tags: string[] | null; sort_order?: number | null; availability?: string | null },
+>(products: T[]): T[] {
   return [...products].sort((a, b) => {
+    // Uitverkocht altijd onderaan, ongeacht merk of populariteit. Stond er niet
+    // in, waardoor de categoriepaginas begonnen met producten die je niet kunt
+    // bestellen. Binnen elke groep blijft de bestaande volgorde intact.
+    const oa = a.availability === "OutOfStock" ? 1 : 0;
+    const ob = b.availability === "OutOfStock" ? 1 : 0;
+    if (oa !== ob) return oa - ob;
+
     const ba = brandRank(a.tags);
     const bb = brandRank(b.tags);
     if (ba !== bb) return ba - bb;
