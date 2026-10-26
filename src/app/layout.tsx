@@ -7,6 +7,7 @@ import { Header } from "@/components/shop/header";
 import { Footer } from "@/components/shop/footer";
 import { MobileTabBar } from "@/components/shop/mobile-tabbar";
 import { AnalyticsTracker } from "@/components/analytics-tracker";
+import { CartAbandonTracker } from "@/components/cart-abandon-tracker";
 import { GA4 } from "@/components/ga4";
 import { ConsentNotice } from "@/components/consent-notice";
 
@@ -87,6 +88,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <AnalyticsTracker />
         <ConsentNotice />
         <CartProvider>
+          <CartAbandonTracker />
           <div className="min-h-screen flex flex-col bg-background text-text overflow-x-hidden">
             <Header />
             <main className="flex-1 pb-16 md:pb-0 min-w-0">{children}</main>
