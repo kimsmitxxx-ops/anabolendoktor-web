@@ -50,13 +50,36 @@ export async function POST(req: NextRequest) {
     customerId = typeof data === "string" ? data : null;
   } catch {}
 
+  // Prijs uit de database, niet uit het verzoek.
+  //
+  // De cart stuurt price_cents mee en dat werd hier klakkeloos overgenomen.
+  // Wie het verzoek zelf opstelt kon dus zijn eigen prijs bepalen, en bij
+  // betaling per overboeking komt dat bedrag ook zo op de factuur. De
+  // typecontrole hierboven ving dat niet af: een getal van 1 cent is ook een
+  // geldig getal.
+  const bestelSkus = Array.from(new Set(items.map((it: any) => it.sku).filter(Boolean)));
+  const { data: prijsRijen } = await supabase
+    .from("products")
+    .select("id, sku, price_cents, is_active")
+    .eq("shop_id", SHOP_ID)
+    .in("sku", bestelSkus);
+  const prijsUitDb = new Map((prijsRijen || []).map((r: any) => [r.sku, r]));
+
+  for (const it of items) {
+    const rij = prijsUitDb.get(it.sku);
+    if (!rij || rij.is_active === false) {
+      return NextResponse.json({ error: `Product niet beschikbaar: ${it.name}` }, { status: 400 });
+    }
+  }
+
   // Bulk discount per item-qty applied (shared logic met checkout)
   let subtotal = 0;
   const adjustedItems = items.map((it: any) => {
+    const basis = prijsUitDb.get(it.sku).price_cents as number;
     const pct = unitDiscountPct(it.qty);
-    const unitAdj = Math.round(it.price_cents * (1 - pct / 100));
+    const unitAdj = Math.round(basis * (1 - pct / 100));
     subtotal += unitAdj * it.qty;
-    return { ...it, applied_price_cents: unitAdj, discount_pct: pct };
+    return { ...it, price_cents: basis, applied_price_cents: unitAdj, discount_pct: pct };
   });
 
   // Kortingscode: staat per shop in shops.settings.discount_codes en wordt
@@ -110,10 +133,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: error?.message || "Order kon niet worden aangemaakt" }, { status: 500 });
   }
 
-  // Resolve product_id by sku (cart items van ProductCard hebben slug-as-id)
-  const skus = Array.from(new Set(adjustedItems.map((it: any) => it.sku).filter(Boolean)));
-  const { data: skuRows } = await supabase.from("products").select("id, sku").eq("shop_id", SHOP_ID).in("sku", skus);
-  const skuToId = new Map((skuRows || []).map((r: any) => [r.sku, r.id]));
+  // product_id komt uit dezelfde lookup als de prijs hierboven.
+  const skuToId = new Map(Array.from(prijsUitDb.entries()).map(([sku, r]: [string, any]) => [sku, r.id]));
 
   await supabase.from("order_items").insert(adjustedItems.map((it: any) => ({
     order_id: order.id,
