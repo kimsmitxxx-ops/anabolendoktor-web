@@ -14,6 +14,23 @@ import type { Metadata } from "next";
 
 export const revalidate = 300;
 
+/**
+ * Een titel die binnen 60 tekens blijft, inclusief het achtervoegsel dat de
+ * root-layout erachter plakt. Boven de 60 kapt Google af, en dan verdwijnt
+ * juist het stuk dat je er zelf aan hebt toegevoegd.
+ *
+ * Daarom drie varianten van lang naar kort: met prijs, zonder prijs, en als
+ * het dan nog niet past alleen de naam. De naam zelf korten we niet in; een
+ * halve productnaam is erger dan een afgekapte titel.
+ */
+function titelDiePast(naam: string, prijs: string): string {
+  const ruimte = 60 - 17;
+  for (const kandidaat of [`${naam} kopen voor ${prijs}`, `${naam} kopen`, naam]) {
+    if (kandidaat.length <= ruimte) return kandidaat;
+  }
+  return naam;
+}
+
 export async function generateMetadata({ params }: { params: { categorie: string; slug: string } }): Promise<Metadata> {
   const p = await getProduct(params.slug) as any;
   if (!p) return { title: "Niet gevonden" };
@@ -22,7 +39,7 @@ export async function generateMetadata({ params }: { params: { categorie: string
   // Google de duplicate-content niet straft. Anders default self-canonical.
   const canonical = p.canonical_url || `/product/${params.categorie}/${params.slug}`;
   return {
-    title: p.meta_title || `${p.name} kopen voor ${formatEUR(p.price_cents)}`,
+    title: p.meta_title || titelDiePast(p.name, formatEUR(p.price_cents)),
     description: p.meta_description || p.subtitle || p.description || `${p.name} bij anabolendoktor, met onderbouwing en zonder overdreven claims.`,
     alternates: { canonical },
     robots: noindex
