@@ -6,6 +6,18 @@ import type { Metadata } from "next";
 import { MedicalDisclaimer } from "@/components/medical-disclaimer";
 import { highlightGlossary } from "@/lib/glossary-highlight";
 import { KortAntwoord } from "@/components/kort-antwoord";
+import { PakkettenBlok } from "@/components/pakketten-blok";
+
+/**
+ * Artikelen waar het pakketaanbod logisch op volgt: wie hier leest, weegt een
+ * kuur af of zoekt een alternatief. Op een artikel over bloedwaarden of PCT
+ * hoort het niet, daar komt iemand met een andere vraag binnen.
+ */
+const PAKKETTEN_ONDER = [
+  "legale-alternatieven-anabolen",
+  "natural-vs-enhanced-realistische-doelen",
+  "anabolen-kopen-strafbaar-nl",
+];
 
 export const revalidate = 600;
 
@@ -203,6 +215,10 @@ export default async function KennisbankDetail({ params }: { params: { slug: str
           </div>
         </aside>
       )}
+
+      {/* Alleen onder de artikelen waar het aanbod logisch op volgt. Een blok
+          onder elk artikel is een banner, en banners worden weggekeken. */}
+      {PAKKETTEN_ONDER.includes(params.slug) && <PakkettenBlok />}
 
       {/* YMYL: medical disclaimer onderaan iedere blog */}
       <MedicalDisclaimer />

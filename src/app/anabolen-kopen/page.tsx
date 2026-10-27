@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PakkettenBlok } from "@/components/pakketten-blok";
 import Link from "next/link";
 import { AlertTriangle, Scale, FlaskConical, CalendarClock, Receipt, Stethoscope } from "lucide-react";
 import { FaqAccordion } from "@/components/faq-accordion";
@@ -28,7 +29,7 @@ const TOC = [
   { id: "toch", label: "Als u het toch doet" },
   { id: "meten", label: "Wat u laat meten, en wanneer" },
   { id: "arts", label: "Wanneer u een arts nodig heeft" },
-  { id: "wij", label: "Waarom wij zelf niets verkopen" },
+  { id: "wij", label: "Waarom wij geen anabolen verkopen" },
 ];
 
 const MISGAAT = [
@@ -382,13 +383,14 @@ export default function AnabolenKopenPage() {
         <li>Een warme, pijnlijke zwelling op een injectieplaats, met of zonder koorts</li>
       </ul>
 
-      <h2 id="wij" className="mt-14 font-display text-2xl">Waarom wij zelf niets verkopen</h2>
+      <h2 id="wij" className="mt-14 font-display text-2xl">Waarom wij geen anabolen verkopen</h2>
       <p className="mt-4 max-w-3xl leading-relaxed text-text-muted">
         Een partij die middelen verkoopt en tegelijk adviseert over de risico&apos;s, heeft
         een belang bij de uitkomst van dat advies. Daarom doen wij maar een van de twee. Wij
-        leveren niets, schrijven niets voor en hebben geen omzet die afhangt van uw besluit om
-        te gebruiken. Wat wij doen is bloedwaarden laten meten bij reguliere prikposten, de
-        uitslag met u doornemen en eerlijk zeggen wat wij zien, ook als dat ongelegen komt.
+        verkopen geen anabolen en schrijven niets voor, dus onze omzet hangt niet af van uw
+        besluit om te gebruiken. Wat wij wel doen: bloedwaarden laten meten bij reguliere
+        prikposten, de uitslag met u doornemen, en pakketten leveren met supplementen, een
+        schema en een consult voor wie hetzelfde doel langs de legale weg wil halen.
       </p>
       <p className="mt-4 max-w-3xl leading-relaxed text-text-muted">
         Wij weigeren niemand omdat hij gebruikt en wij houden geen moreel betoog. Wie
@@ -408,6 +410,10 @@ export default function AnabolenKopenPage() {
           Waar u op moet letten
         </Link>
       </div>
+
+      {/* Deze pagina haalt meer vertoningen dan de rest van de site bij elkaar
+          en linkte nergens naar het aanbod. */}
+      <PakkettenBlok />
 
       <h2 className="mt-14 font-display text-2xl">Veelgestelde vragen</h2>
       {/* Uitklapbaar, zodat de lijst te overzien blijft. De antwoorden staan
