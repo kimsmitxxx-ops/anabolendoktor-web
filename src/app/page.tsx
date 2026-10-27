@@ -35,7 +35,7 @@ const HOMEPAGE_FAQ = [
   {
     question: "Bieden jullie consulten aan?",
     answer:
-      "Ja. Een 60-minuten consult bespreekt uw doelen, bloedwerk-uitslagen (waarden meebrengen), trainingsplan en herstel. Voor mensen die AAS gebruiken of overwegen: harm-reduction advies zonder oordeel. Voor natural trainers: een structureel plan voor de komende 6-12 maanden. Prijs: €120 per consult, via video-call.",
+      "Ja. In vijfenveertig tot zestig minuten nemen wij uw bloedwerk, uw doelen, uw training en uw herstel door, via video-call. Gebruikt u al, of twijfelt u nog: dat gesprek voeren wij zonder erbovenop te zitten. Traint u natural, dan maken wij een plan voor de komende zes tot twaalf maanden. Een consult kost 50 euro, en daarna krijgt u tien procent korting op de pakketten. Wie eerst wil praten voordat hij iets koopt, betaalt het advies zo niet twee keer.",
   },
   {
     question: "Wat is jullie standpunt over PCT-preparaten (Clomid, Nolvadex)?",
@@ -50,7 +50,7 @@ const HOMEPAGE_FAQ = [
   {
     question: "Hoe zit het met privacy bij consulten?",
     answer:
-      "Consultgegevens vallen onder medische geheimhouding (BIG-register). Wij houden geen dossier bij dan wat noodzakelijk is en delen niets met derden. Betaling via IBAN of factuur, geen creditcard-tracking.",
+      "Wij zijn geen BIG-geregistreerde artsenpraktijk en doen ook niet alsof. Wat u ons vertelt behandelen wij wel als vertrouwelijk: wij leggen niet meer vast dan nodig en geven niets door aan derden. Betaling gaat via IBAN of factuur, dus er loopt geen creditcardspoor mee.",
   },
   {
     question: "Wanneer moet ik écht naar een arts?",

@@ -15,7 +15,7 @@ export const revalidate = 3600;
 const INCLUDES = [
   "Vooraf: intake-formulier met doelen, medische historie, huidige protocol",
   "Bloedwerk-interpretatie (upload uitslagen vooraf)",
-  "60 minuten video-call (Signal / Zoom / Google Meet)",
+  "45 tot 60 minuten video-call (Signal / Zoom / Google Meet)",
   "Schriftelijke samenvatting binnen 48u met vervolgstappen",
   "1 opvolgvraag via e-mail binnen 30 dagen",
 ];
@@ -35,10 +35,10 @@ export default function ConsultPage() {
             <Stethoscope size={12} /> Consult
           </div>
           <h1 className="mt-4 font-display text-4xl md:text-5xl leading-tight max-w-2xl">
-            Een uur, één gesprek, één keer echt kritisch kijken naar wat u doet.
+            Eén gesprek waarin iemand kritisch meekijkt naar wat u doet.
           </h1>
           <p className="mt-5 max-w-2xl text-primary-foreground/80 text-lg leading-relaxed">
-            60 minuten video-call. Vooraf stuurt u uw bloedwerk op. Tijdens de call nemen wij uw
+            Vijfenveertig tot zestig minuten video-call. Vooraf stuurt u uw bloedwerk op. Tijdens de call nemen wij uw
             huidige situatie, uw doelen en de wetenschappelijke basis daaronder door. Na afloop
             ontvangt u een schriftelijke samenvatting met vervolgstappen.
           </p>
