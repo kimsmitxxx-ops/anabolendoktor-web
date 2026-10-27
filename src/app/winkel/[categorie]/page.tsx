@@ -7,6 +7,7 @@ import { CollapsibleIntro } from "@/components/shop/collapsible-intro";
 import { KNOWN_BRANDS, sortBrands } from "@/lib/brands";
 import type { Metadata } from "next";
 import { BookOpen, Truck, ShieldCheck, FlaskConical, Sparkles } from "lucide-react";
+import { MERCHANT_RETURN_POLICY } from "@/lib/return-policy";
 
 // Gecached met een venster van een uur. Dat uur is alleen het vangnet: bij
 // elke wijziging in shop-dash komt er een purge binnen op /api/revalidate en
@@ -89,6 +90,7 @@ export default async function CategoryPage({
           image: p.image_url || undefined,
           offers: {
             "@type": "Offer",
+            hasMerchantReturnPolicy: MERCHANT_RETURN_POLICY,
             price: (p.price_cents / 100).toFixed(2),
             priceCurrency: "EUR",
             availability: p.availability === "OutOfStock" ? "https://schema.org/OutOfStock" : "https://schema.org/InStock",
