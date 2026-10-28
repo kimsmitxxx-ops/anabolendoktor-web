@@ -155,7 +155,7 @@ export async function POST(req: NextRequest) {
       new Intl.NumberFormat("nl-NL", { style: "currency", currency: "EUR" }).format(c / 100);
     await fetch(`${dash}/api/orders/${order.id}/email`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", "x-shop-dash-key": process.env.SHOP_DASH_API_KEY || "" },
       signal: AbortSignal.timeout(8000),
       body: JSON.stringify({
         shopId: SHOP_ID,
