@@ -7,10 +7,7 @@ import { createClient } from "@supabase/supabase-js";
 
 const SB_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://rexqfwibxawqnvrzbdoo.supabase.co";
 const SB_SERVICE =
-  process.env.SUPABASE_SERVICE_ROLE_KEY ||
-  process.env.SUPA_SECRET ||
-  process.env.SUPABASE_SECRET ||
-  "";
+  process.env.SUPABASE_SHOP_KEY || "";
 
 const ANABOLENPRO_SHOP_ID = "96b47e49-34fd-4d6c-99d3-d49d912be046";
 
