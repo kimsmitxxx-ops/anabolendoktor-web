@@ -76,7 +76,10 @@ export async function POST(req: NextRequest) {
     }
 
     // Update order status (optioneel) - markeer dat klant heeft betaald
-    await sb.from("orders").update({ status: "payment_proof_received" }).eq("id", orderId);
+    // "payment_proof_received" bestaat niet in orders_status_check en liet
+    // deze update altijd stil mislukken; "processing" is wel geldig en
+    // groepeert in het dashboard terecht bij "Betaald, nog verzenden".
+    await sb.from("orders").update({ status: "processing" }).eq("id", orderId);
 
     return NextResponse.json({ ok: true });
   } catch (e: any) {
