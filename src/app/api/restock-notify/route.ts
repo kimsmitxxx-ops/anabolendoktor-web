@@ -42,7 +42,8 @@ export async function POST(req: NextRequest) {
   try {
     write = createServiceClient();
   } catch (e: any) {
-    return NextResponse.json({ error: `Server-config fout: ${e.message}` }, { status: 500 });
+    console.error("voorraadmelding: serverconfiguratie onvolledig", e);
+    return NextResponse.json({ error: "Aanmelden lukte niet. Probeer het later opnieuw." }, { status: 500 });
   }
 
   const { error } = await write
@@ -58,8 +59,11 @@ export async function POST(req: NextRequest) {
       { onConflict: "product_id,email", ignoreDuplicates: false },
     );
 
+  // Alleen een eigen tekst naar buiten: de melding van de database noemt
+  // tabelnamen, constraints en PostgREST-codes, en dat verraadt waar we zitten.
   if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    console.error("voorraadmelding mislukt", error);
+    return NextResponse.json({ error: "Aanmelden lukte niet. Probeer het later opnieuw." }, { status: 500 });
   }
 
   return NextResponse.json({ ok: true });

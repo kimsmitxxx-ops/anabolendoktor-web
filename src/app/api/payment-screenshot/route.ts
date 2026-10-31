@@ -49,8 +49,11 @@ export async function POST(req: NextRequest) {
       contentType: file.type,
       upsert: false,
     });
+    // Alleen een eigen tekst naar buiten: de melding van de opslaglaag noemt
+    // bucketnamen en zichzelf, en dat verraadt waar we zitten.
     if (upErr) {
-      return NextResponse.json({ error: `Upload error: ${upErr.message}` }, { status: 500 });
+      console.error("betaalbewijs uploaden mislukt", upErr);
+      return NextResponse.json({ error: "Uploaden lukte niet. Probeer het opnieuw." }, { status: 500 });
     }
 
     // Privé bucket - genereer signed URL voor admin (valid 30 dagen)
@@ -68,7 +71,8 @@ export async function POST(req: NextRequest) {
       status: "pending",
     });
     if (insErr) {
-      return NextResponse.json({ error: `DB error: ${insErr.message}` }, { status: 500 });
+      console.error("betaalbewijs vastleggen mislukt", insErr);
+      return NextResponse.json({ error: "Uploaden lukte niet. Probeer het opnieuw." }, { status: 500 });
     }
 
     // Update order status (optioneel) - markeer dat klant heeft betaald
@@ -76,6 +80,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ ok: true });
   } catch (e: any) {
-    return NextResponse.json({ error: e.message || "Onbekende fout" }, { status: 500 });
+    console.error("betaalbewijs: onverwachte fout", e);
+    return NextResponse.json({ error: "Uploaden lukte niet. Probeer het opnieuw." }, { status: 500 });
   }
 }

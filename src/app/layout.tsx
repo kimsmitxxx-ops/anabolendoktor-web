@@ -70,7 +70,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="nl" data-shop="anabolendoktor" className={`${manrope.variable} ${fraunces.variable}`}>
       <head>
         {/* Geen preconnect naar de Supabase-host: afbeeldingen lopen via de
-            /img-rewrite over ons eigen domein, dus de browser praat er nooit
+            /img-route over ons eigen domein, dus de browser praat er nooit
             rechtstreeks mee. De hint leverde niets op en zette wel de naam van
             het gedeelde project in de broncode van elke pagina. */}
         <link rel="dns-prefetch" href="https://images.unsplash.com" />

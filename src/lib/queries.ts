@@ -283,5 +283,4 @@ export async function getPaymentLinkConfig() {
   }
 }
 
-export const formatEUR = (cents: number) =>
-  new Intl.NumberFormat("nl-NL", { style: "currency", currency: "EUR" }).format(cents / 100);
+export { formatEUR } from "./format";

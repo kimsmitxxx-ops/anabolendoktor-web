@@ -1,25 +1,23 @@
 /** @type {import('next').NextConfig} */
-const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://rexqfwibxawqnvrzbdoo.supabase.co";
-
 module.exports = {
+  // Zodat een controle-build naast een draaiende dev-server kan: NEXT_DIST_DIR=.next-check
+  distDir: process.env.NEXT_DIST_DIR || ".next",
   // Defensive: don't break build on lint/type errors during deploy
   eslint: { ignoreDuringBuilds: true },
   typescript: { ignoreBuildErrors: true },
   images: {
     formats: ["image/avif", "image/webp"],
-    remotePatterns: [
-      { protocol: "https", hostname: "rexqfwibxawqnvrzbdoo.supabase.co" },
-      { protocol: "https", hostname: "images.unsplash.com" },
-    ],
+    // De Supabase-hostname staat hier bewust NIET meer bij. Zolang hij hier
+    // stond, werkte een <Image src="https://<project>.supabase.co/..."> gewoon,
+    // en zette Next die URL als ?url=-parameter in de broncode van de pagina.
+    // Nu faalt zo'n beeld zichtbaar in plaats van stil te lekken; de echte
+    // bron loopt via /media, /img en /bestand (zie src/lib/media.ts).
+    remotePatterns: [{ protocol: "https", hostname: "images.unsplash.com" }],
   },
-  async rewrites() {
-    return [
-      // /media/<pad> wees naar de map van anabolenpro in de product-media bucket.
-      { source: "/media/:path*", destination: `${SUPABASE_URL}/storage/v1/object/public/product-media/anabolendoktor/:path*` },
-      // Clean /img/<path> URLs → Supabase Storage blog-images bucket (categorie/stof/blog heros)
-      { source: "/img/:path*", destination: `${SUPABASE_URL}/storage/v1/object/public/blog-images/:path*` },
-    ];
-  },
+  // Geen rewrites meer naar Supabase. /media, /img en /bestand zijn eigen route
+  // handlers geworden (src/app/media, /img, /bestand), omdat een rewrite de
+  // response-headers van Supabase overneemt - inclusief zijn eigen sb-headers
+  // en een Cache-Control die niet te overschrijven is.
   async redirects() {
     return [
       // Blogs die van shop-dash 'buildInternalLinks' onderzoek/-slug krijgen: op deze

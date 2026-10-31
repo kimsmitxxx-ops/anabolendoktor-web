@@ -7,8 +7,12 @@
  */
 import { createClient } from "@supabase/supabase-js";
 
-const SB_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://rexqfwibxawqnvrzbdoo.supabase.co";
-const SB_ANON =
+import { schoonFetch } from "./media";
+
+// Geexporteerd omdat de beeldproxy (lib/media-proxy.ts) dezelfde basis-URL moet
+// gebruiken; twee plekken met een eigen fallback kunnen uit elkaar lopen.
+export const SB_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://rexqfwibxawqnvrzbdoo.supabase.co";
+export const SB_ANON =
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJleHFmd2lieGF3cW52cnpiZG9vIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY3ODM1NzIsImV4cCI6MjA5MjM1OTU3Mn0.XQGZNdGcnZlALl7truWiPC5_uMYeMhWwIneTMNO8AhI";
 
@@ -20,7 +24,11 @@ export const supabase = createClient(SB_URL, SB_ANON, {
   auth: { persistSession: false, autoRefreshToken: false },
   // Zie anabolenpro: Next cachet fetches in de Vercel Data Cache en die overleeft
   // een deploy, dus force-dynamic alleen levert alsnog oude data uit Supabase.
-  global: { fetch: (url, init) => fetch(url, { ...init, cache: "no-store" }) },
+  //
+  // schoonFetch haalt bovendien de storage-URL's uit het antwoord, zodat geen
+  // enkele pagina de projectnaam van Supabase in de broncode kan zetten. Zie
+  // lib/media.ts voor waarom dat hier zit en niet per component.
+  global: { fetch: (url, init) => schoonFetch(url, { ...init, cache: "no-store" }) },
 });
 
 /**
@@ -35,7 +43,10 @@ export function createServiceClient() {
   if (!key) {
     throw new Error("SUPABASE_SHOP_KEY ontbreekt (per-shop Supabase-sleutel, rol shop_server)");
   }
-  return createClient(SB_URL, key, { auth: { persistSession: false, autoRefreshToken: false } });
+  return createClient(SB_URL, key, {
+    auth: { persistSession: false, autoRefreshToken: false },
+    global: { fetch: (url, init) => schoonFetch(url, init) },
+  });
 }
 
 export type Product = {

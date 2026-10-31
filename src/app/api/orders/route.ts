@@ -39,7 +39,8 @@ export async function POST(req: NextRequest) {
   try {
     supabase = createServiceClient();
   } catch (e: any) {
-    return NextResponse.json({ error: `Server-config fout: ${e.message}` }, { status: 500 });
+    console.error("order: serverconfiguratie onvolledig", e);
+    return NextResponse.json({ error: "Bestellen lukte even niet. Probeer het opnieuw." }, { status: 500 });
   }
 
   let customerId: string | null = null;
@@ -129,8 +130,11 @@ export async function POST(req: NextRequest) {
     reference: `AD-${Date.now().toString(36).toUpperCase()}`,
   }).select().single();
 
+  // Alleen een eigen tekst naar buiten: de melding van de database noemt
+  // tabelnamen, constraints en PostgREST-codes, en dat verraadt waar we zitten.
   if (error || !order) {
-    return NextResponse.json({ error: error?.message || "Order kon niet worden aangemaakt" }, { status: 500 });
+    console.error("order aanmaken mislukt", error);
+    return NextResponse.json({ error: "Order kon niet worden aangemaakt" }, { status: 500 });
   }
 
   // product_id komt uit dezelfde lookup als de prijs hierboven.
