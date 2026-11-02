@@ -7,6 +7,7 @@ import {
   formatEUR,
 } from "@/lib/queries";
 import { PaymentScreenshotForm } from "@/components/shop/payment-screenshot-form";
+import { PaytailReturnTrack } from "@/components/shop/paytail-return-track";
 import { CheckCircle2, Building2, AlertTriangle, ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
 
@@ -20,7 +21,13 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-export default async function BedanktPage({ params }: { params: { orderId: string } }) {
+export default async function BedanktPage({
+  params,
+  searchParams,
+}: {
+  params: { orderId: string };
+  searchParams: { paytail?: string };
+}) {
   const [order, payment, betaallink] = await Promise.all([
     getOrderForConfirmation(params.orderId),
     getShopPaymentInstructions(),
@@ -33,6 +40,10 @@ export default async function BedanktPage({ params }: { params: { orderId: strin
   // dat met de betaling meegaat. Hier stond een uit de UUID afgeleid
   // ORDER-nummer, terwijl de betaalpagina de reference uit de database krijgt.
   const ref = order.reference || `ORDER-${order.id.slice(0, 8).toUpperCase()}`;
+  // ?paytail=1 op de return-URL is het enige signaal dat deze klant écht van
+  // Paytail terugkomt (geslaagde betaling) i.p.v. de pagina direct na
+  // bestellen of later terugzoekt - zie PaytailReturnTrack hieronder.
+  const viaPaytail = searchParams.paytail === "1";
 
   // De betaalpagina opnieuw opbouwen, zodat de klant die de betaling afbrak of
   // deze pagina later terugzoekt, alsnog bij zijn betaalgegevens komt.
@@ -45,13 +56,14 @@ export default async function BedanktPage({ params }: { params: { orderId: strin
       email: order.email || "",
       postcode: order.shipping_postal || "",
       country: order.shipping_country || "NL",
-      return: `https://${betaallink.domain}/checkout/bedankt/${order.id}`,
+      return: `https://${betaallink.domain}/checkout/bedankt/${order.id}?paytail=1`,
     });
     betaalUrl = `${betaallink.paytail_base_url.replace(/[/]$/, "")}?${params_.toString()}`;
   }
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-12">
+      {viaPaytail && <PaytailReturnTrack orderReference={ref} />}
       <div className="rounded-2xl border border-success/40 bg-success-soft/30 p-6 text-center">
         <CheckCircle2 size={36} className="mx-auto text-success" />
         <h1 className="mt-3 font-display text-3xl text-primary">Bedankt voor uw bestelling!</h1>
