@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createServiceClient } from "@/lib/supabase";
+import { haalBetaalgegevens } from "@/lib/paytail";
 import { unitDiscountPct } from "@/lib/bulk-discount";
 
 export const dynamic = "force-dynamic";
@@ -149,6 +150,32 @@ export async function POST(req: NextRequest) {
     price_cents: it.applied_price_cents,
   })));
 
+  // Paytail wijst per bestelling een rekening toe, en dat is niet altijd
+  // dezelfde. Die halen we hier al op en leggen we vast bij de bestelling, nog
+  // voor de bevestigingsmail vertrekt: zo staat de juiste rekening meteen in
+  // die mail en heeft ook de klant die zijn betaalpagina nooit opent de
+  // gegevens binnen. Het ophalen zelf gebeurt centraal in shop-dash.
+  type PaytailShopRij = {
+    paytail_enabled: boolean | null;
+    paytail_eigen_blok: boolean | null;
+    paytail_base_url: string | null;
+    domain: string | null;
+  };
+  let paytailShop: PaytailShopRij | null = null;
+  try {
+    const { data } = await supabase
+      .from("shops")
+      .select("paytail_enabled, paytail_eigen_blok, paytail_base_url, domain")
+      .eq("id", SHOP_ID)
+      .single();
+    paytailShop = (data as PaytailShopRij | null) ?? null;
+    if (paytailShop?.paytail_enabled && paytailShop.paytail_base_url && paytailShop.paytail_eigen_blok !== false) {
+      await haalBetaalgegevens(order.id, SHOP_ID);
+    }
+  } catch (e) {
+    console.error("Paytail-gegevens bij de bestelling vastleggen mislukte (niet fataal):", e);
+  }
+
   // Bevestigingsmail, server-side via shop-dash. Ontbrak hier volledig terwijl
   // SMTP en het order_confirmed-sjabloon klaarstonden: dezelfde omissie die bij
   // anabolenpro pas opviel toen een klant erover klaagde. Niet-fataal met
@@ -172,30 +199,10 @@ export async function POST(req: NextRequest) {
     console.error("order_confirmed mail (non-fataal):", e);
   }
 
-  // Betaallink, hetzelfde systeem als de andere shops: de basis-URL staat per
-  // shop in de database, zodat een ander profiel geen codewijziging vraagt.
-  // Staat paytail_enabled uit of ontbreekt de URL, dan valt de checkout terug
-  // op de bedankt-pagina met de betaalgegevens per overboeking.
-  let paytailUrl: string | null = null;
-  try {
-    const { data: sp } = await supabase
-      .from("shops")
-      .select("paytail_enabled, paytail_base_url, domain")
-      .eq("id", SHOP_ID)
-      .single();
-    if (sp?.paytail_enabled && sp?.paytail_base_url) {
-      const params = new URLSearchParams({
-        order_id: order.reference,
-        amount: (total / 100).toFixed(2),
-        name,
-        email,
-        postcode: postal || "",
-        country: country || "NL",
-        return: `https://${sp.domain || "anabolendoktor.com"}/checkout/bedankt/${order.id}`,
-      });
-      paytailUrl = `${sp.paytail_base_url.replace(/\/$/, "")}?${params.toString()}`;
-    }
-  } catch {}
+  // De checkout hoeft alleen te weten of er via Paytail betaald wordt; de
+  // bankgegevens staan al bij de bestelling en de betaalpagina toont ze.
+  const paytailUrl =
+    paytailShop?.paytail_enabled && paytailShop.paytail_base_url ? paytailShop.paytail_base_url : null;
 
   return NextResponse.json({
     ok: true,

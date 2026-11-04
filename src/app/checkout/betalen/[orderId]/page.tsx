@@ -1,0 +1,257 @@
+import Link from "next/link";
+import { headers } from "next/headers";
+import { notFound, redirect } from "next/navigation";
+import type { Metadata } from "next";
+import { Smartphone, Copy, AlertTriangle, Clock, Building2, Package } from "lucide-react";
+import { getOrderForPayment, getOrderItemsForPayment, getPaytailConfig, formatEUR } from "@/lib/queries";
+import { haalBetaalgegevens } from "@/lib/paytail";
+import { Betaalgegevens } from "@/components/shop/betaalgegevens";
+import { PaytailStep2Button } from "@/components/shop/paytail-step2-button";
+
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
+export const metadata: Metadata = {
+  title: "Betalen - zo maak je het bedrag over",
+  description:
+    "Uitleg bij de overboeking: wat u in de app van uw bank invult en waarom alleen het bestelnummer in de omschrijving mag.",
+  robots: { index: false, follow: false },
+};
+
+/**
+ * De betaalpagina, op ons eigen domein.
+ *
+ * Eerder ging de klant vanaf de checkout rechtstreeks naar Paytail: een vreemd
+ * domein, een buitenlandse IBAN op naam van een bedrijf dat hij niet kent, en
+ * geen woord uitleg. Dat kost bestellingen. Nu halen we de bankgegevens
+ * server-side bij Paytail op (zie lib/paytail.ts) en tonen we ze hier, bij de
+ * bestelling waar ze bij horen, in onze eigen vormgeving. Ook "Ik heb betaald"
+ * gaat via onze eigen route. De klant verlaat de site dus niet meer.
+ *
+ * Een iframe was de eerste gedachte, maar dat kan niet: Paytail stuurt op elke
+ * stap X-Frame-Options: DENY mee.
+ *
+ * Twee terugvallen, allebei dezelfde: een knop die de klant alsnog naar het
+ * betaalscherm van Paytail stuurt (rechtstreeks hun stap 2, hun bevestigscherm
+ * slaan we over). De eerste springt aan als het ophalen of ontleden mislukt,
+ * de tweede als shops.paytail_eigen_blok op false staat. De uitleg en het
+ * besteloverzicht blijven in alle gevallen staan.
+ */
+export default async function BetalenPage({ params }: { params: { orderId: string } }) {
+  const [order, paytail] = await Promise.all([getOrderForPayment(params.orderId), getPaytailConfig()]);
+
+  if (!order) notFound();
+
+  // Staat Paytail uit (of ontbreekt de URL), dan hoort de klant op de
+  // bedankt-pagina met de bankgegevens van de winkel zelf.
+  if (!paytail?.paytail_enabled || !paytail.paytail_base_url) {
+    redirect(`/checkout/bedankt/${order.id}`);
+  }
+
+  const ref = order.reference || `ORDER-${order.id.slice(0, 8).toUpperCase()}`;
+  // Het domein uit de shop-instellingen, met de host van dit verzoek als
+  // terugval: Paytail wil een volledige return-URL en die mag niet per
+  // ongeluk naar een andere winkel wijzen.
+  const domein = paytail.domain || headers().get("host") || "";
+  const returnUrl = `https://${domein}/checkout/bedankt/${order.id}?paytail=1`;
+
+  const regels = await getOrderItemsForPayment(order.id);
+
+  const gegevens =
+    paytail.paytail_eigen_blok === false
+      ? null
+      : // shop-dash haalt de rekening op en legt hem meteen vast bij de
+        // bestelling; die hoort bij deze ene bestelling en geldt 24 uur.
+        await haalBetaalgegevens(order.id, order.shop_id);
+
+  return (
+    <div className="mx-auto max-w-2xl px-4 py-12">
+      <div className="text-center">
+        <p className="text-xs uppercase tracking-[0.18em] text-accent font-semibold">Laatste stap</p>
+        <h1 className="mt-2 font-display text-3xl text-primary sm:text-4xl">Het bedrag overmaken</h1>
+        <p className="mt-3 text-text-muted">
+          Bestelling <strong className="text-text tabular">{ref}</strong> staat voor u klaar.
+        </p>
+      </div>
+
+      <section className="mt-8 rounded-xl border border-border bg-surface p-6">
+        <h2 className="font-display text-lg text-text inline-flex items-center gap-2">
+          <Package size={18} className="text-accent" /> Uw bestelling
+        </h2>
+        {regels.length > 0 && (
+          <ul className="mt-4 space-y-2 text-sm">
+            {regels.map((r, i) => (
+              <li key={`${r.product_name}-${i}`} className="flex items-baseline justify-between gap-4">
+                <span className="text-text">
+                  {r.product_name}
+                  {r.quantity > 1 && <span className="text-text-muted"> &times; {r.quantity}</span>}
+                </span>
+                <span className="shrink-0 tabular text-text-muted">{formatEUR(r.total_cents)}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+        <dl className="mt-4 space-y-1.5 border-t border-border pt-4 text-sm">
+          <div className="flex justify-between">
+            <dt className="text-text-muted">Subtotaal</dt>
+            <dd className="tabular text-text">{formatEUR(order.subtotal_cents)}</dd>
+          </div>
+          <div className="flex justify-between">
+            <dt className="text-text-muted">Verzending</dt>
+            <dd className="tabular text-text">
+              {order.shipping_cents > 0 ? formatEUR(order.shipping_cents) : "Gratis"}
+            </dd>
+          </div>
+          <div className="flex justify-between border-t border-border pt-2">
+            <dt className="font-semibold text-text">Totaal</dt>
+            <dd className="font-display text-xl tabular text-text">{formatEUR(order.total_cents)}</dd>
+          </div>
+        </dl>
+        <div className="mt-4 border-t border-border pt-4 text-xs text-text-muted">
+          <p>
+            Bezorgen naar {order.customer_name}, {order.shipping_street}, {order.shipping_postal}{" "}
+            {order.shipping_city}
+            {order.shipping_country && order.shipping_country !== "NL" ? ` (${order.shipping_country})` : ""}
+          </p>
+          {order.customer_email && <p className="mt-1">Bevestiging gaat naar {order.customer_email}</p>}
+        </div>
+      </section>
+
+      <p className="mt-8 text-text">
+        U betaalt met een gewone bankoverschrijving, dus niet met iDEAL. Met de app van uw bank bent u er in een
+        minuut doorheen.
+      </p>
+
+      <section className="mt-6 rounded-xl border border-border bg-surface p-6">
+        <h2 className="font-display text-xl text-text inline-flex items-center gap-2">
+          <Smartphone size={18} className="text-accent" /> Zo gaat het
+        </h2>
+        <ol className="mt-4 space-y-4 text-sm text-text-muted">
+          <li className="flex gap-3">
+            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">
+              1
+            </span>
+            <span>
+              {gegevens
+                ? "Pak uw telefoon en open de app van uw bank."
+                : "Klik onderaan door naar de betaalgegevens. Daar staan het rekeningnummer (IBAN), de naam van de ontvanger, het bedrag en de omschrijving, elk met een kopieerknop."}
+            </span>
+          </li>
+          <li className="flex gap-3">
+            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">
+              2
+            </span>
+            <span>
+              {gegevens
+                ? "Kies overboeken of geld overmaken."
+                : "Open de app van uw bank en kies een nieuwe overboeking."}
+            </span>
+          </li>
+          <li className="flex gap-3">
+            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">
+              3
+            </span>
+            <span>
+              Vul de naam, de IBAN en het bedrag van{" "}
+              <strong className="text-text tabular">{formatEUR(order.total_cents)}</strong> in.{" "}
+              {gegevens
+                ? "Tik op Kopieer, dan hoeft u niets over te typen."
+                : "Kopieren en plakken is het snelst, dan maakt u geen typefout."}
+            </span>
+          </li>
+          <li className="flex gap-3">
+            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">
+              4
+            </span>
+            <span>
+              Vul bij de omschrijving alleen dit in: <strong className="font-mono text-text">{ref}</strong>. Niets
+              anders erbij.
+            </span>
+          </li>
+          <li className="flex gap-3">
+            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">
+              5
+            </span>
+            <span>
+              Verstuur de overboeking. Klik daarna hier op de knop &quot;Ik heb betaald&quot;, dan weten wij dat uw
+              geld onderweg is en gaan we aan de slag.
+            </span>
+          </li>
+        </ol>
+      </section>
+
+      <section className="mt-6 rounded-xl border-2 border-accent/40 bg-accent-soft/20 p-6">
+        <div className="flex items-start gap-2.5">
+          <AlertTriangle size={18} className="shrink-0 text-accent mt-0.5" />
+          <div>
+            <h2 className="font-display text-lg text-text">Alleen het bestelnummer in de omschrijving</h2>
+            <p className="mt-1 text-sm text-text-muted">
+              Typ er geen productnaam of onze naam bij, en ook geen eigen tekst. Ook niet als die alleen voor uzelf
+              zichtbaar is. De bank weigert de betaling dan en uw geld komt terug. Dat kost u een paar dagen.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {gegevens ? (
+        <Betaalgegevens orderId={order.id} totaalCenten={order.total_cents} gegevens={gegevens} />
+      ) : (
+        /* Terugval: wij tonen de bankgegevens niet zelf, dus haalt de klant ze
+           op bij Paytail. Dit formulier post rechtstreeks naar hun stap 2 en
+           slaat hun bevestigscherm over. */
+        <form action={paytail.paytail_base_url} method="POST" className="mt-8 text-center">
+          <input type="hidden" name="step" value="2" />
+          <input type="hidden" name="return" value={returnUrl} />
+          <input type="hidden" name="payers_name" value={order.customer_name || ""} />
+          <input type="hidden" name="user_postcode" value={order.shipping_postal || ""} />
+          <input type="hidden" name="user_country" value={order.shipping_country || "NL"} />
+          <input type="hidden" name="order_number" value={ref} />
+          <input type="hidden" name="amount" value={(order.total_cents / 100).toFixed(2)} />
+          <PaytailStep2Button
+            label={paytail.paytail_btn_label || "Naar de betaalgegevens"}
+            color={paytail.paytail_btn_color || "#1a1a2e"}
+            textColor={paytail.paytail_btn_text_color || "#f5f0e5"}
+            orderReference={ref}
+          />
+          <p className="mt-3 text-xs text-text-subtle">
+            U gaat naar het beveiligde betaalscherm van onze betaalpartner. Terug naar deze uitleg kan altijd met de
+            terugknop van uw browser.
+          </p>
+        </form>
+      )}
+
+      <section className="mt-8 rounded-xl border border-border bg-paper-soft p-6">
+        <h2 className="font-display text-lg text-text">Goed om te weten</h2>
+        <ul className="mt-3 space-y-3 text-sm text-text-muted">
+          <li className="flex gap-2.5">
+            <Building2 size={16} className="shrink-0 text-text-subtle mt-0.5" />
+            <span>
+              De rekening staat op naam van het kantoor dat onze betalingen regelt, niet op onze eigen naam. Dat
+              hoort zo. Onze naam komt dus niet op uw bankafschrift.
+            </span>
+          </li>
+          <li className="flex gap-2.5">
+            <Clock size={16} className="shrink-0 text-text-subtle mt-0.5" />
+            <span>
+              Het geld is meestal dezelfde dag bij ons, soms pas de volgende werkdag. Zodra het binnen is gaat uw
+              pakket weg en krijgt u bericht.
+            </span>
+          </li>
+          <li className="flex gap-2.5">
+            <Copy size={16} className="shrink-0 text-text-subtle mt-0.5" />
+            <span>
+              Deze rekening hoort bij deze bestelling en geldt 24 uur. Wilt u later betalen, open deze pagina dan
+              opnieuw voor nieuwe gegevens. Gebruik nooit een rekening uit een oudere bestelling of mail: dan kunnen we
+              uw betaling niet terugvinden.
+            </span>
+          </li>
+        </ul>
+      </section>
+
+      <div className="mt-10 text-center text-sm text-text-muted">
+        Loopt er iets niet? <Link href="/contact" className="text-accent hover:underline">Laat het ons weten</Link> en
+        vermeld uw bestelnummer {ref}.
+      </div>
+    </div>
+  );
+}

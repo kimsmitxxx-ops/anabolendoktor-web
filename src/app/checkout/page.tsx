@@ -100,8 +100,12 @@ export default function CheckoutPage() {
       // en de mogelijkheid een betaalbewijs te uploaden.
       // Bewuste sprong naar de betaalomgeving; niet als verlaten mand tellen.
       suppressAbandon();
-      if (j.paytail_url) track("payment_redirect", { order_reference: j.order_id });
-      window.location.href = j.paytail_url || `/checkout/bedankt/${j.order_id}`;
+      // Bij Paytail niet meer rechtstreeks naar hun domein, maar naar onze
+      // eigen betaalpagina met de bankgegevens erop. payment_redirect vuurt
+      // daar, op het moment dat iemand echt naar Paytail vertrekt.
+      window.location.href = j.paytail_url
+        ? `/checkout/betalen/${j.order_id}`
+        : `/checkout/bedankt/${j.order_id}`;
     } catch {
       setErr("Verbindingsfout - probeer opnieuw");
     } finally {
