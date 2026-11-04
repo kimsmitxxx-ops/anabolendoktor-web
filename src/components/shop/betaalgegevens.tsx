@@ -10,13 +10,11 @@ import type { PaytailBetaalgegevens } from "@/lib/paytail";
  * server-side bij Paytail vandaan (zie lib/paytail.ts); hier staat alleen de
  * weergave, het kopieren en de knop "Ik heb betaald".
  *
- * De tekst is bewust kort en eenvoudig. Dit is het punt waar iemand met zijn
- * telefoon in de hand in een bankapp zit te typen; alles wat hier uitleg nodig
- * heeft, kost een bestelling.
- *
- * De extra gegevens (land, BIC, bank, adres) staan in een eigen zichtbare
- * sectie en niet weggeklapt: veel banken vragen bij een buitenlandse rekening
- * om het land, en wie dat niet kan vinden maakt niet over.
+ * De stappen en de gegevens staan expres door elkaar: eerst stonden ze apart,
+ * en dan moest je op een telefoon langs een half scherm uitleg scrollen voor
+ * je de IBAN zag. Nu is elke stap meteen het veld dat je nodig hebt, met de
+ * kopieerknop ernaast. Wit vlak met een dikke accentrand, zodat dit het enige
+ * blok op de pagina is dat zo opvalt.
  */
 
 /** Alles in één blok tekst, voor wie liever in één keer kopieert en plakt. */
@@ -48,17 +46,7 @@ async function naarKlembord(tekst: string) {
   }
 }
 
-function KopieerKnop({
-  tekst,
-  label = "Kopieer",
-  ariaLabel,
-  donker = true,
-}: {
-  tekst: string;
-  label?: string;
-  ariaLabel?: string;
-  donker?: boolean;
-}) {
+function KopieerKnop({ tekst, label = "Kopieer", ariaLabel }: { tekst: string; label?: string; ariaLabel?: string }) {
   const [gekopieerd, setGekopieerd] = useState(false);
   return (
     <button
@@ -69,54 +57,70 @@ function KopieerKnop({
         setGekopieerd(true);
         setTimeout(() => setGekopieerd(false), 1800);
       }}
-      className={[
-        "inline-flex shrink-0 items-center gap-1.5 rounded-lg px-3 py-2 text-xs transition hover:opacity-80",
-        donker ? "bg-primary-soft text-primary-foreground" : "border border-border bg-surface text-text",
-      ].join(" ")}
+      className="inline-flex shrink-0 items-center gap-1.5 rounded-lg border border-border bg-paper-soft px-3 py-2 text-xs text-text transition hover:bg-surface"
     >
-      {gekopieerd ? <Check size={14} /> : <Copy size={14} />}
+      {gekopieerd ? <Check size={14} className="text-success" /> : <Copy size={14} />}
       {gekopieerd ? "Gekopieerd" : label}
     </button>
   );
 }
 
-function Regel({
+function Nummer({ n }: { n: number }) {
+  return (
+    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">
+      {n}
+    </span>
+  );
+}
+
+/** Een stap die tegelijk een in te vullen veld is. */
+function Stap({
+  n,
   label,
   waarde,
   kopieer,
-  groot,
   mono,
-  donker = true,
+  groot,
+  extra,
 }: {
+  n: number;
   label: string;
   waarde: string;
   kopieer: string;
-  groot?: boolean;
   mono?: boolean;
-  donker?: boolean;
+  groot?: boolean;
+  extra?: string;
 }) {
   return (
-    <div
-      className={[
-        "flex items-center justify-between gap-3 border-b py-3 last:border-b-0",
-        donker ? "border-primary-muted/40" : "border-border",
-      ].join(" ")}
-    >
-      <div className="min-w-0">
-        <p className={donker ? "text-xs text-primary-foreground/60" : "text-xs text-text-muted"}>{label}</p>
-        <p
-          className={[
-            "mt-0.5 break-words",
-            donker ? "text-primary-foreground" : "text-text",
-            groot ? "font-display text-2xl tabular" : "text-base",
-            mono ? "font-mono" : "",
-          ].join(" ")}
-        >
-          {waarde}
-        </p>
+    <li className="flex gap-3 border-b border-border py-3 last:border-b-0">
+      <Nummer n={n} />
+      <div className="flex min-w-0 flex-1 items-center justify-between gap-3">
+        <div className="min-w-0">
+          <p className="text-xs text-text-muted">{label}</p>
+          <p
+            className={[
+              "mt-0.5 break-words text-text",
+              groot ? "font-display text-2xl tabular" : "text-base",
+              mono ? "font-mono" : "",
+            ].join(" ")}
+          >
+            {waarde}
+          </p>
+          {extra && <p className="mt-1 text-xs text-text-muted">{extra}</p>}
+        </div>
+        <KopieerKnop tekst={kopieer} ariaLabel={`Kopieer ${label}`} />
       </div>
-      <KopieerKnop tekst={kopieer} ariaLabel={`Kopieer ${label}`} donker={donker} />
-    </div>
+    </li>
+  );
+}
+
+/** Een stap zonder veld, alleen tekst. */
+function StapTekst({ n, children }: { n: number; children: React.ReactNode }) {
+  return (
+    <li className="flex gap-3 border-b border-border py-3 last:border-b-0">
+      <Nummer n={n} />
+      <p className="flex-1 text-sm text-text-muted">{children}</p>
+    </li>
   );
 }
 
@@ -178,67 +182,30 @@ export function Betaalgegevens({
 
   return (
     <>
-      <section className="mt-8 rounded-xl border border-primary-muted bg-primary p-6 text-primary-foreground">
-        <p className="text-xs uppercase tracking-[0.18em] text-accent-soft font-semibold">Maak dit bedrag over</p>
-
-        {/* Alles in één keer, want in de meeste bankapps plak je liever één
-            blok dan vier losse velden. De losse regels staan eronder voor wie
-            veld voor veld overneemt. */}
-        <div className="mt-4 rounded-lg border border-primary-muted bg-primary-soft/40 p-4">
-          <div className="flex items-start justify-between gap-3">
-            <pre className="min-w-0 whitespace-pre-wrap break-words font-mono text-sm leading-relaxed text-primary-foreground">
-              {betaalregels(gegevens)}
-            </pre>
-            <KopieerKnop tekst={betaalregels(gegevens)} label="Kopieer alles" />
-          </div>
+      <section className="mt-6 rounded-xl border-2 border-accent bg-surface p-5 sm:p-6">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <p className="text-xs uppercase tracking-[0.18em] text-accent font-semibold">Zo maakt u het over</p>
+          <KopieerKnop tekst={betaalregels(gegevens)} label="Kopieer alles" />
         </div>
 
-        <div className="mt-4">
-          <Regel label="Naam" waarde={gegevens.naam_ontvanger} kopieer={gegevens.naam_ontvanger} />
-          <Regel label="IBAN" waarde={gegevens.iban} kopieer={gegevens.iban} mono />
-          <Regel
-            label="Omschrijving (alleen dit)"
+        <ol className="mt-3">
+          <StapTekst n={1}>Open de app van uw bank en kies overboeken.</StapTekst>
+          <Stap n={2} label="IBAN" waarde={gegevens.iban} kopieer={gegevens.iban} mono />
+          <Stap n={3} label="Naam ontvanger" waarde={gegevens.naam_ontvanger} kopieer={gegevens.naam_ontvanger} />
+          <Stap n={4} label="Bedrag" waarde={formatEUR(totaalCenten)} kopieer={gegevens.bedrag} groot />
+          <Stap
+            n={5}
+            label="Omschrijving"
             waarde={gegevens.omschrijving}
             kopieer={gegevens.omschrijving}
             mono
+            extra="Zet hier alleen dit nummer. Typ er niets bij, anders weigert de bank de betaling."
           />
-          <Regel label="Bedrag" waarde={formatEUR(totaalCenten)} kopieer={gegevens.bedrag} groot />
-        </div>
+          <StapTekst n={6}>Verstuur de overboeking en klik hieronder op &quot;Ik heb betaald&quot;.</StapTekst>
+        </ol>
       </section>
 
-      {heeftExtra && (
-        <section className="mt-6 rounded-xl border border-border bg-surface p-6">
-          <h2 className="font-display text-lg text-text inline-flex items-center gap-2">
-            <HelpCircle size={18} className="text-accent" /> Vraagt uw bank om meer gegevens?
-          </h2>
-          <p className="mt-2 text-sm text-text-muted">
-            U maakt over naar een rekening in het buitenland. Sommige banken vragen dan ook naar welk land het geld
-            gaat, of naar het adres van de ontvanger. Dat staat hieronder. Vraagt uw bank er niet om, dan hebt u dit
-            niet nodig.
-          </p>
-          <div className="mt-4">
-            {gegevens.land && <Regel label="Land" waarde={gegevens.land} kopieer={gegevens.land} donker={false} />}
-            {gegevens.bic && (
-              <Regel label="BIC (SWIFT)" waarde={gegevens.bic} kopieer={gegevens.bic} mono donker={false} />
-            )}
-            {gegevens.bank && <Regel label="Bank" waarde={gegevens.bank} kopieer={gegevens.bank} donker={false} />}
-            {gegevens.adres && (
-              <Regel label="Adres van de ontvanger" waarde={gegevens.adres} kopieer={gegevens.adres} donker={false} />
-            )}
-            {gegevens.registratienummer && (
-              <Regel
-                label="Registratienummer"
-                waarde={gegevens.registratienummer}
-                kopieer={gegevens.registratienummer}
-                mono
-                donker={false}
-              />
-            )}
-          </div>
-        </section>
-      )}
-
-      <div className="mt-8 text-center">
+      <div className="mt-6 text-center">
         <button
           type="button"
           onClick={betaald}
@@ -253,6 +220,38 @@ export function Betaalgegevens({
         </p>
         {fout && <p className="mt-2 text-sm text-danger">{fout}</p>}
       </div>
+
+      {heeftExtra && (
+        <section className="mt-8 rounded-xl border border-border bg-surface p-6">
+          <h2 className="font-display text-lg text-text inline-flex items-center gap-2">
+            <HelpCircle size={18} className="text-accent" /> Vraagt uw bank om meer gegevens?
+          </h2>
+          <p className="mt-2 text-sm text-text-muted">
+            U maakt over naar een rekening in het buitenland. Sommige banken vragen dan ook naar het land, de bank of
+            het adres van de ontvanger. Alles wat we daarover hebben staat hieronder. Vraagt uw bank er niet om, dan
+            hebt u dit niet nodig.
+          </p>
+          <div className="mt-4">
+            {gegevens.land && <Veld label="Land" waarde={gegevens.land} />}
+            {gegevens.bic && <Veld label="BIC (SWIFT)" waarde={gegevens.bic} mono />}
+            {gegevens.bank && <Veld label="Naam van de bank" waarde={gegevens.bank} />}
+            {gegevens.adres && <Veld label="Adres van de ontvanger" waarde={gegevens.adres} />}
+            {gegevens.registratienummer && <Veld label="Registratienummer" waarde={gegevens.registratienummer} mono />}
+          </div>
+        </section>
+      )}
     </>
+  );
+}
+
+function Veld({ label, waarde, mono }: { label: string; waarde: string; mono?: boolean }) {
+  return (
+    <div className="flex items-center justify-between gap-3 border-b border-border py-3 last:border-b-0">
+      <div className="min-w-0">
+        <p className="text-xs text-text-muted">{label}</p>
+        <p className={`mt-0.5 break-words text-text ${mono ? "font-mono text-sm" : "text-base"}`}>{waarde}</p>
+      </div>
+      <KopieerKnop tekst={waarde} ariaLabel={`Kopieer ${label}`} />
+    </div>
   );
 }
