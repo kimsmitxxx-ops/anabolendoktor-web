@@ -79,16 +79,12 @@ function Stap({
   label,
   waarde,
   kopieer,
-  mono,
-  groot,
   extra,
 }: {
   n: number;
   label: string;
   waarde: string;
   kopieer: string;
-  mono?: boolean;
-  groot?: boolean;
   extra?: string;
 }) {
   return (
@@ -97,15 +93,11 @@ function Stap({
       <div className="flex min-w-0 flex-1 items-center justify-between gap-3">
         <div className="min-w-0">
           <p className="text-xs text-text-muted">{label}</p>
-          <p
-            className={[
-              "mt-0.5 break-words text-text",
-              groot ? "font-display text-2xl tabular" : "text-base",
-              mono ? "font-mono" : "",
-            ].join(" ")}
-          >
-            {waarde}
-          </p>
+          {/* Naam, IBAN, bedrag en omschrijving zijn alle vier even
+              belangrijk, dus alle vier hetzelfde lettertype en formaat. Eerder
+              sprong het bedrag eruit en werd de omschrijving over het hoofd
+              gezien, en juist die moet kloppen. */}
+          <p className="mt-0.5 break-words font-mono text-lg leading-snug text-text">{waarde}</p>
           {extra && <p className="mt-1 text-xs text-text-muted">{extra}</p>}
         </div>
         <KopieerKnop tekst={kopieer} ariaLabel={`Kopieer ${label}`} />
@@ -190,15 +182,14 @@ export function Betaalgegevens({
 
         <ol className="mt-3">
           <StapTekst n={1}>Open de app van uw bank en kies overboeken.</StapTekst>
-          <Stap n={2} label="IBAN" waarde={gegevens.iban} kopieer={gegevens.iban} mono />
+          <Stap n={2} label="IBAN" waarde={gegevens.iban} kopieer={gegevens.iban} />
           <Stap n={3} label="Naam ontvanger" waarde={gegevens.naam_ontvanger} kopieer={gegevens.naam_ontvanger} />
-          <Stap n={4} label="Bedrag" waarde={formatEUR(totaalCenten)} kopieer={gegevens.bedrag} groot />
+          <Stap n={4} label="Bedrag" waarde={formatEUR(totaalCenten)} kopieer={gegevens.bedrag} />
           <Stap
             n={5}
             label="Omschrijving"
             waarde={gegevens.omschrijving}
             kopieer={gegevens.omschrijving}
-            mono
             extra="Zet hier alleen dit nummer. Typ er niets bij, anders weigert de bank de betaling."
           />
           <StapTekst n={6}>Verstuur de overboeking en klik hieronder op &quot;Ik heb betaald&quot;.</StapTekst>
@@ -235,13 +226,26 @@ export function Betaalgegevens({
             {gegevens.land && <Veld label="Land" waarde={gegevens.land} />}
             {gegevens.bic && <Veld label="BIC (SWIFT)" waarde={gegevens.bic} mono />}
             {gegevens.bank && <Veld label="Naam van de bank" waarde={gegevens.bank} />}
-            {gegevens.adres && <Veld label="Adres van de ontvanger" waarde={gegevens.adres} />}
+            {gegevens.adres && <Veld label="Adres van de ontvanger" waarde={volledigAdres(gegevens)} />}
             {gegevens.registratienummer && <Veld label="Registratienummer" waarde={gegevens.registratienummer} mono />}
           </div>
         </section>
       )}
     </>
   );
+}
+
+/**
+ * Het adres met het land erachter, zodat je het in één keer kunt plakken.
+ * Paytail geeft die twee los terug en sommige banken willen een compleet
+ * adres; het land er apart bij zoeken is dan net het duwtje om af te haken.
+ */
+function volledigAdres(g: PaytailBetaalgegevens): string {
+  const adres = (g.adres || "").trim().replace(/,s*$/, "");
+  const land = (g.land || "").trim();
+  if (!land) return adres;
+  if (adres.toLowerCase().includes(land.toLowerCase())) return adres;
+  return adres + ", " + land;
 }
 
 function Veld({ label, waarde, mono }: { label: string; waarde: string; mono?: boolean }) {
