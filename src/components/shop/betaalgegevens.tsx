@@ -182,7 +182,7 @@ export function Betaalgegevens({
 
         <ol className="mt-3">
           <StapTekst n={1}>Open de app van uw bank en kies overboeken.</StapTekst>
-          <Stap n={2} label="IBAN" waarde={gegevens.iban} kopieer={gegevens.iban} />
+          <Stap n={2} label="IBAN (het rekeningnummer)" waarde={gegevens.iban} kopieer={gegevens.iban} />
           <Stap n={3} label="Naam ontvanger" waarde={gegevens.naam_ontvanger} kopieer={gegevens.naam_ontvanger} />
           <Stap n={4} label="Bedrag" waarde={formatEUR(totaalCenten)} kopieer={gegevens.bedrag} />
           <Stap
@@ -218,16 +218,18 @@ export function Betaalgegevens({
             <HelpCircle size={18} className="text-accent" /> Vraagt uw bank om meer gegevens?
           </h2>
           <p className="mt-2 text-sm text-text-muted">
-            U maakt over naar een rekening in het buitenland. Sommige banken vragen dan ook naar het land, de bank of
-            het adres van de ontvanger. Alles wat we daarover hebben staat hieronder. Vraagt uw bank er niet om, dan
-            hebt u dit niet nodig.
+            U maakt over naar een rekening in het buitenland. Sommige banken vragen daar meer bij: het land, het
+            adres van de bank of de BIC-code. Alles wat we daarover hebben staat hieronder. Vraagt uw bank er niet om,
+            dan hebt u dit niet nodig.
           </p>
           <div className="mt-4">
             {gegevens.land && <Veld label="Land" waarde={gegevens.land} />}
-            {gegevens.bic && <Veld label="BIC (SWIFT)" waarde={gegevens.bic} mono />}
+            {gegevens.adres && <Veld label="Adres van de bank" waarde={volledigAdres(gegevens)} />}
             {gegevens.bank && <Veld label="Naam van de bank" waarde={gegevens.bank} />}
-            {gegevens.adres && <Veld label="Adres van de ontvanger" waarde={volledigAdres(gegevens)} />}
-            {gegevens.registratienummer && <Veld label="Registratienummer" waarde={gegevens.registratienummer} mono />}
+            {gegevens.bic && <Veld label="BIC of SWIFT (code van de bank)" waarde={gegevens.bic} />}
+            {gegevens.registratienummer && (
+              <Veld label="Registratienummer van de ontvanger" waarde={gegevens.registratienummer} />
+            )}
           </div>
         </section>
       )}
@@ -239,6 +241,11 @@ export function Betaalgegevens({
  * Het adres met het land erachter, zodat je het in één keer kunt plakken.
  * Paytail geeft die twee los terug en sommige banken willen een compleet
  * adres; het land er apart bij zoeken is dan net het duwtje om af te haken.
+ *
+ * Let op bij het label: dit is het adres van de BANK, niet van de ontvanger.
+ * Paytail noemt het "geregistreerd adres" en zet het tussen de bankgegevens,
+ * en J. Jasinskio 16C in Vilnius is het geregistreerde adres van TESLAPAY UAB.
+ * De ontvanger zelf is een ander bedrijf in een ander land.
  */
 function volledigAdres(g: PaytailBetaalgegevens): string {
   const adres = (g.adres || "").trim().replace(/,s*$/, "");
@@ -248,12 +255,14 @@ function volledigAdres(g: PaytailBetaalgegevens): string {
   return adres + ", " + land;
 }
 
-function Veld({ label, waarde, mono }: { label: string; waarde: string; mono?: boolean }) {
+function Veld({ label, waarde }: { label: string; waarde: string }) {
   return (
     <div className="flex items-center justify-between gap-3 border-b border-border py-3 last:border-b-0">
       <div className="min-w-0">
         <p className="text-xs text-text-muted">{label}</p>
-        <p className={`mt-0.5 break-words text-text ${mono ? "font-mono text-sm" : "text-base"}`}>{waarde}</p>
+        {/* Zelfde formaat als in het betaalblok hierboven: ook deze velden
+            typt iemand over in zijn bankapp. */}
+        <p className="mt-0.5 break-words font-mono text-lg leading-snug text-text">{waarde}</p>
       </div>
       <KopieerKnop tekst={waarde} ariaLabel={`Kopieer ${label}`} />
     </div>
