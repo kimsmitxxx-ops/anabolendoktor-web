@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getOrderForPayment, getPaytailConfig, getPaytailDetails, markeerGegevensGemaild } from "@/lib/queries";
+import { getOrderForPayment, getPaytailConfig, getPaytailDetails, markeerGegevensMail } from "@/lib/queries";
 
 export const dynamic = "force-dynamic";
 
@@ -27,6 +27,11 @@ export async function POST(req: NextRequest) {
   if (!order || !order.customer_email) return NextResponse.json({ error: "Bestelling niet gevonden" }, { status: 404 });
   if (!details?.iban) return NextResponse.json({ ok: true, gemaild: false, reden: "geen gegevens" });
   if (details.gegevens_gemaild_op) return NextResponse.json({ ok: true, gemaild: false, reden: "al gemaild" });
+  // Twee mislukte pogingen is genoeg. Daarna blijft het bij de gegevens op de
+  // pagina zelf en kan de klantenservice de mail met één klik alsnog sturen.
+  if (Number(details.gegevens_mail_pogingen || 0) >= 2) {
+    return NextResponse.json({ ok: true, gemaild: false, reden: "eerdere pogingen mislukt" });
+  }
 
   const ref = order.reference || `ORDER-${order.id.slice(0, 8).toUpperCase()}`;
   const domein = paytail?.domain || req.headers.get("host") || "";
@@ -55,13 +60,15 @@ export async function POST(req: NextRequest) {
     });
     if (!res.ok) {
       console.error("betaalgegevens mailen mislukte:", res.status, await res.text().catch(() => ""));
+      await markeerGegevensMail(order.id, false);
       return NextResponse.json({ ok: false, gemaild: false }, { status: 502 });
     }
   } catch (e) {
     console.error("betaalgegevens mailen gooide", e);
+    await markeerGegevensMail(order.id, false);
     return NextResponse.json({ ok: false, gemaild: false }, { status: 502 });
   }
 
-  await markeerGegevensGemaild(order.id);
+  await markeerGegevensMail(order.id, true);
   return NextResponse.json({ ok: true, gemaild: true });
 }

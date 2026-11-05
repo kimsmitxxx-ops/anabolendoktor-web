@@ -410,14 +410,24 @@ export async function getPaytailDetails(orderId: string): Promise<Record<string,
   return rij?.paytail_details || null;
 }
 
-/** Noteert dat de bankgegevens naar de klant zijn gemaild, zodat dat niet twee keer gebeurt. */
-export async function markeerGegevensGemaild(orderId: string): Promise<void> {
+/**
+ * Houdt bij of de bankgegevens naar de klant zijn gemaild.
+ *
+ * Bij succes komt de datum erin en gaat er nooit meer een mail uit. Bij een
+ * mislukking tellen we de poging, want zonder die teller probeerde elke
+ * paginalading het opnieuw: een onbezorgbaar adres of een haperende relay gaf
+ * zo een rij mislukte mails op dezelfde bestelling.
+ */
+export async function markeerGegevensMail(orderId: string, gelukt: boolean): Promise<void> {
   try {
     const sb = createServiceClient();
     const huidig = (await getPaytailDetails(orderId)) || {};
+    const bij = gelukt
+      ? { gegevens_gemaild_op: new Date().toISOString() }
+      : { gegevens_mail_pogingen: Number(huidig.gegevens_mail_pogingen || 0) + 1 };
     const { error } = await sb
       .from("orders")
-      .update({ paytail_details: { ...huidig, gegevens_gemaild_op: new Date().toISOString() } })
+      .update({ paytail_details: { ...huidig, ...bij } })
       .eq("id", orderId)
       .eq("shop_id", SHOP_ID);
     if (error) console.error("betaalpagina: mailmarkering opslaan mislukte", error);
