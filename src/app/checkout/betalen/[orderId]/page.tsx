@@ -12,7 +12,7 @@ export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
 export const metadata: Metadata = {
-  title: "Betalen - zo maakt u het bedrag over",
+  title: "Betalen - zo maak je het bedrag over",
   description:
     "Uitleg bij de overboeking: wat u in de app van uw bank invult en waarom alleen het bestelnummer in de omschrijving mag.",
   robots: { index: false, follow: false },
@@ -160,8 +160,10 @@ export default async function BetalenPage({ params }: { params: { orderId: strin
           <li className="flex gap-2.5">
             <Building2 size={16} className="shrink-0 text-text-subtle mt-0.5" />
             <span>
-              De rekening staat op naam van het kantoor dat onze betalingen regelt, niet op onze eigen naam. Dat
-              hoort zo. Onze naam komt dus niet op uw bankafschrift.
+              De rekening staat in een EU-land en op naam van het kantoor dat onze betalingen regelt, niet op onze
+              eigen naam. Dat is bewust: Nederlandse banken accepteren onze betalingen niet, dus loopt het via een
+              Europese rekening. Voor u verandert er niets, want een euro-overboeking binnen de EU kost hetzelfde en
+              duurt even lang als eentje binnen Nederland. Onze naam komt niet op uw bankafschrift.
             </span>
           </li>
           <li className="flex gap-2.5">
