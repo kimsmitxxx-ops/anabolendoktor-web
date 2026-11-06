@@ -196,6 +196,8 @@ export function Betaalgegevens({
         </ol>
       </section>
 
+      <BankappUitleg gegevens={gegevens} totaalCenten={totaalCenten} />
+
       <div className="mt-6 text-center">
         <button
           type="button"
@@ -253,6 +255,95 @@ function volledigAdres(g: PaytailBetaalgegevens): string {
   if (!land) return adres;
   if (adres.toLowerCase().includes(land.toLowerCase())) return adres;
   return adres + ", " + land;
+}
+
+/**
+ * Waar de overboekknop zit in de apps die hier het meest langskomen.
+ *
+ * Alleen de naam van de knop, geen schermpad: dat wijzigt bij elke update van
+ * zo'n app en een verkeerde aanwijzing is erger dan geen aanwijzing. De drie
+ * bovenste zijn nagekeken op de eigen uitleg van de bank (ING: Betalen, dan
+ * Overschrijven; Rabobank en ABN AMRO: Overboeken).
+ */
+const BANKEN_KNOPPEN: Array<{ bank: string; knop: string }> = [
+  { bank: "ING", knop: "Betalen, dan Overschrijven" },
+  { bank: "Rabobank", knop: "Overboeken" },
+  { bank: "ABN AMRO", knop: "de gele knop Overboeken" },
+  { bank: "SNS", knop: "Overboeken" },
+  { bank: "bunq", knop: "Overboeken" },
+  { bank: "Revolut", knop: "Overboeken of Transfer" },
+];
+
+/** Eén regel in het nagebootste bankscherm. */
+function SchermRegel({ label, waarde, nadruk }: { label: string; waarde: string; nadruk?: boolean }) {
+  return (
+    <div className="border-b border-border px-3 py-2 last:border-b-0">
+      <p className="text-[10px] uppercase tracking-wide text-text-subtle">{label}</p>
+      <p className={`mt-0.5 break-words font-mono text-sm ${nadruk ? "text-accent-ink" : "text-text"}`}>{waarde}</p>
+    </div>
+  );
+}
+
+/**
+ * Een nagebootst scherm van een bankapp met de echte gegevens van deze
+ * bestelling erin.
+ *
+ * Reden: veel mensen verwachten iDEAL en hebben nog nooit zelf een
+ * overboeking ingevuld. Ze herkennen het scherm wel zodra ze het zien, dus
+ * laten we het zien in plaats van het te beschrijven. Geen schermafbeelding
+ * van een echte bank: die is van hen, hij veroudert, en hij klopt nooit voor
+ * iedereen.
+ */
+function BankappUitleg({ gegevens, totaalCenten }: { gegevens: PaytailBetaalgegevens; totaalCenten: number }) {
+  return (
+    <details className="mt-6 rounded-xl border border-border bg-surface p-5 sm:p-6">
+      <summary className="cursor-pointer font-display text-base text-text">
+        Nog nooit zo betaald? Zo ziet het eruit in uw bankapp
+      </summary>
+
+      <p className="mt-3 text-sm text-text-muted">
+        Het is een gewone overboeking, hetzelfde als een rekening betalen of geld naar iemand sturen. U hebt er geen
+        iDEAL voor nodig en u hoeft nergens in te loggen behalve in uw eigen bankapp.
+      </p>
+
+      <div className="mt-5 flex flex-col gap-5 sm:flex-row sm:items-start">
+        {/* Het nagebootste scherm, met de gegevens van deze bestelling. */}
+        <div className="mx-auto w-full max-w-[230px] shrink-0 rounded-[1.6rem] border-4 border-primary bg-paper-soft p-2 shadow-sm">
+          <div className="mx-auto mb-2 h-1 w-10 rounded-full bg-primary-muted" />
+          <div className="rounded-xl border border-border bg-surface">
+            <p className="border-b border-border px-3 py-2 text-xs font-semibold text-text">Nieuwe overboeking</p>
+            <SchermRegel label="Naar rekening (IBAN)" waarde={gegevens.iban} nadruk />
+            <SchermRegel label="Naam" waarde={gegevens.naam_ontvanger} />
+            <SchermRegel label="Bedrag" waarde={formatEUR(totaalCenten)} />
+            <SchermRegel label="Omschrijving" waarde={gegevens.omschrijving} nadruk />
+          </div>
+          <div className="mt-2 rounded-lg bg-accent px-3 py-2 text-center text-xs font-semibold text-accent-foreground">
+            Versturen
+          </div>
+        </div>
+
+        <div className="min-w-0 flex-1">
+          <p className="text-sm font-semibold text-text">Waar vindt u dat scherm?</p>
+          <ul className="mt-2 space-y-1.5 text-sm text-text-muted">
+            {BANKEN_KNOPPEN.map((b) => (
+              <li key={b.bank} className="flex gap-2">
+                <span className="w-24 shrink-0 font-semibold text-text">{b.bank}</span>
+                <span>{b.knop}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-3 text-sm text-text-muted">
+            Andere bank? Zoek naar Overboeken of Geld overmaken. Elke bank in Nederland en België heeft het, meestal
+            op het eerste scherm.
+          </p>
+          <p className="mt-3 text-xs text-text-subtle">
+            De twee velden die moeten kloppen zijn het rekeningnummer en de omschrijving. De rest vult uw bank zelf
+            aan.
+          </p>
+        </div>
+      </div>
+    </details>
+  );
 }
 
 function Veld({ label, waarde }: { label: string; waarde: string }) {
