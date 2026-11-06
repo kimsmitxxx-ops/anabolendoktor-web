@@ -62,7 +62,7 @@ export async function POST(req: NextRequest) {
   const bestelSkus = Array.from(new Set(items.map((it: any) => it.sku).filter(Boolean)));
   const { data: prijsRijen } = await supabase
     .from("products")
-    .select("id, sku, price_cents, is_active")
+    .select("id, sku, name, price_cents, is_active")
     .eq("shop_id", SHOP_ID)
     .in("sku", bestelSkus);
   const prijsUitDb = new Map((prijsRijen || []).map((r: any) => [r.sku, r]));
@@ -141,14 +141,22 @@ export async function POST(req: NextRequest) {
   // product_id komt uit dezelfde lookup als de prijs hierboven.
   const skuToId = new Map(Array.from(prijsUitDb.entries()).map(([sku, r]: [string, any]) => [sku, r.id]));
 
-  await supabase.from("order_items").insert(adjustedItems.map((it: any) => ({
+  // Kolomnamen van de echte, gedeelde order_items-tabel (product_name/
+  // quantity/unit_price_cents/total_cents) - sku/name/qty/price_cents bestaan
+  // hier niet. Deze insert faalde daardoor altijd stil (geen .select(), geen
+  // foutafhandeling): elke bestelling stond wel in `orders`, maar zonder een
+  // enkele regel in `order_items`, dus zag de admin alleen een totaalbedrag.
+  const { error: itemsError } = await supabase.from("order_items").insert(adjustedItems.map((it: any) => ({
     order_id: order.id,
     product_id: skuToId.get(it.sku) || null,
-    sku: it.sku,
-    name: it.name,
-    qty: it.qty,
-    price_cents: it.applied_price_cents,
+    product_name: prijsUitDb.get(it.sku)?.name || it.name,
+    quantity: it.qty,
+    unit_price_cents: it.applied_price_cents,
+    total_cents: it.applied_price_cents * it.qty,
   })));
+  if (itemsError) {
+    console.error("bestelling: order_items opslaan mislukte", itemsError);
+  }
 
   // Paytail wijst per bestelling een rekening toe, en dat is niet altijd
   // dezelfde. Die halen we hier al op en leggen we vast bij de bestelling, nog
