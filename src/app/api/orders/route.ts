@@ -84,25 +84,39 @@ export async function POST(req: NextRequest) {
     return { ...it, price_cents: basis, applied_price_cents: unitAdj, discount_pct: pct };
   });
 
-  // Kortingscode: staat per shop in shops.settings.discount_codes en wordt
-  // ALLEEN hier gevalideerd. De klant krijgt de code CONSULT10 van de
-  // consulent na een betaald consult; wat de browser meestuurt is dus een
-  // claim, geen waarheid.
+  // Kortingscode: staat sinds 6 november 2026 in de coupons-tabel (shop-dash
+  // migratie 093) en wordt in het dashboard beheerd, niet meer als los stukje
+  // JSON in shops.settings. De klant krijgt de code CONSULT10 van de consulent
+  // na een betaald consult; wat de browser meestuurt is dus een claim, geen
+  // waarheid, en alleen de database bepaalt wat hij oplevert.
+  //
+  // Verzilveren zet in dezelfde statement de gebruiksteller omhoog, met de
+  // limiet in de WHERE: twee gelijktijdige checkouts kunnen een code met
+  // max_uses = 1 niet samen opmaken.
   let discountCents = 0;
+  let couponCode: string | null = null;
   let discountLabel: string | null = null;
   if (typeof discount_code === "string" && discount_code.trim()) {
-    const { data: sh } = await supabase.from("shops").select("settings").eq("id", SHOP_ID).single();
-    const codes: any[] = sh?.settings?.discount_codes || [];
-    const c = codes.find(
-      (x) => x && x.active !== false && String(x.code).trim().toLowerCase() === discount_code.trim().toLowerCase(),
-    );
-    if (!c) {
-      return NextResponse.json({ error: "Ongeldige of verlopen kortingscode" }, { status: 400 });
+    const { data: couponRijen, error: couponError } = await supabase.rpc("coupon_verzilver", {
+      p_shop_id: SHOP_ID,
+      p_code: discount_code.trim().toUpperCase(),
+      p_subtotal_cents: subtotal,
+    });
+    const c = Array.isArray(couponRijen) ? couponRijen[0] : couponRijen;
+    if (couponError) {
+      // Niet de bestelling laten klappen op een kortingscode: zonder korting
+      // verder is beter dan een klant die niet kan afrekenen.
+      console.error("bestelling: kortingscode verzilveren mislukte", couponError);
+    } else if (c?.ok) {
+      discountCents = Math.min(Number(c.discount_cents) || 0, subtotal);
+      couponCode = c.code;
+      discountLabel = `${c.code} (${c.kind === "percent" ? `-${c.value}%` : `-EUR ${(c.value / 100).toFixed(2)}`})`;
+    } else {
+      return NextResponse.json(
+        { error: c?.melding || "Ongeldige of verlopen kortingscode" },
+        { status: 400 },
+      );
     }
-    discountCents = c.type === "percent"
-      ? Math.round((subtotal * c.value) / 100)
-      : Math.min(c.value, subtotal);
-    discountLabel = `${String(c.code).toUpperCase()} (${c.type === "percent" ? `-${c.value}%` : `-EUR ${(c.value / 100).toFixed(2)}`})`;
   }
 
   // Shipping = EUR 10 per zending; consulten en bloedonderzoek worden niet
@@ -122,6 +136,7 @@ export async function POST(req: NextRequest) {
     customer_phone: phone || null,
     shipping_street: fullStreet, shipping_postal: postal, shipping_city: city, shipping_country: country,
     subtotal_cents: subtotal, shipping_cents: shipping, total_cents: total,
+    coupon_code: couponCode, discount_cents: discountCents,
     notes: discountLabel ? `Kortingscode ${discountLabel}: -EUR ${(discountCents / 100).toFixed(2)}` : null,
     // awaiting_payment: de enige wachtstatus die de check-constraint van de
     // orders-tabel toestaat; pending_payment werd geweigerd en brak de checkout.
