@@ -56,7 +56,7 @@ export function LabRequestForm() {
         <CheckCircle2 size={22} className="text-success" />
         <h3 className="mt-2 font-display text-xl">Aanvraag binnen - top!</h3>
         <p className="mt-2 text-sm text-primary/75">
-          We nemen binnen 1 werkdag contact op met instructies hoe je je flacon naar Vlaardingen
+          We nemen binnen 48 uur contact op met instructies hoe je je flacon naar Vlaardingen
           stuurt en wat er daarna gebeurt. Check uw inbox (en spam).
         </p>
       </div>

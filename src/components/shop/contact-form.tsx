@@ -15,7 +15,7 @@ export function ContactForm({
   defaultSubject = "Vraag over een bestelling",
   defaultMessage = "",
   heading = "Stuur een bericht",
-  intro = "U hoort binnen een werkdag van ons. Gaat het om een lopende bestelling, zet dan uw ordernummer erbij.",
+  intro = "U hoort binnen 48 uur van ons. Gaat het om een lopende bestelling, zet dan uw ordernummer erbij.",
 }: {
   defaultSubject?: string;
   defaultMessage?: string;
@@ -78,7 +78,7 @@ export function ContactForm({
           <CheckCircle2 size={18} className="text-success" />
           <p className="mt-2 font-medium">Bedankt, uw bericht staat in onze inbox.</p>
           <p className="mt-1 text-primary-foreground/75">
-            Wij reageren binnen 1 werkdag op {form.email || "het opgegeven e-mailadres"}. Heeft u
+            Wij reageren binnen 48 uur op {form.email || "het opgegeven e-mailadres"}. Heeft u
             haast, gebruik dan de live chat rechtsonder.
           </p>
         </div>
