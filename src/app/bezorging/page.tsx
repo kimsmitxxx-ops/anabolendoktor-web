@@ -112,7 +112,7 @@ export default function BezorgingPage() {
             <p className="mt-3 text-sm text-text-muted leading-relaxed">
               Staat uw vraag er niet bij? Stel hem via het{" "}
               <Link href="/contact" className="text-accent hover:underline">contactformulier</Link>,
-              wij antwoorden binnen een werkdag.
+              wij antwoorden binnen 48 uur.
             </p>
           </div>
           <FaqAccordion items={faq} />

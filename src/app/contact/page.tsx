@@ -7,7 +7,7 @@ export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Stel uw vraag via het contactformulier of de chat. Wij antwoorden op werkdagen binnen een werkdag; medische spoed hoort bij uw huisarts.",
+  description: "Stel uw vraag via het contactformulier of de chat. Wij streven naar antwoord binnen 48 uur; medische spoed hoort bij uw huisarts.",
   alternates: { canonical: "/contact" },
 };
 
@@ -17,7 +17,7 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Contact"
         title="Snelle antwoorden van ons team"
-        intro="Vragen over een consult, een bloedonderzoek of een bestelling: wij reageren binnen een werkdag. Voor medische spoed belt u uw huisarts of de huisartsenpost."
+        intro="Vragen over een consult, een bloedonderzoek of een bestelling: wij streven naar antwoord binnen 48 uur. Voor medische spoed belt u uw huisarts of de huisartsenpost."
       />
 
       <section className="mx-auto max-w-7xl px-4 py-14 grid gap-10 lg:grid-cols-[1fr_1.2fr]">
@@ -39,14 +39,14 @@ export default function ContactPage() {
             <Mail size={20} className="text-accent" />
             <h3 className="mt-3 font-display text-lg text-primary-foreground">Stuur ons een bericht</h3>
             <p className="mt-2 text-sm text-primary-foreground/75">
-              Gebruik het formulier hieronder. Gaat het over een afspraak of bestelling, vermeld dan uw ordernummer. Deel geen medische gegevens die u liever niet per e-mail verstuurt; bloedwaarden bespreken wij tijdens het consult zelf. Antwoord binnen een werkdag.
+              Gebruik het formulier hieronder. Gaat het over een afspraak of bestelling, vermeld dan uw ordernummer. Deel geen medische gegevens die u liever niet per e-mail verstuurt; bloedwaarden bespreken wij tijdens het consult zelf. Antwoord binnen 48 uur.
             </p>
           </div>
           <div className="rounded-md border border-primary-muted bg-primary p-6 text-primary-foreground">
             <Clock size={20} className="text-accent" />
             <h3 className="mt-3 font-display text-lg text-primary-foreground">Bereikbaarheid</h3>
             <p className="mt-2 text-sm text-primary-foreground/75">
-              Op werkdagen beantwoorden wij berichten binnen een werkdag. In het weekend
+              Wij streven naar antwoord binnen 48 uur. In het weekend
               lezen wij mee, maar plannen wij geen consulten in. Bij medische spoed belt u
               uw huisarts of de huisartsenpost, niet ons.
             </p>

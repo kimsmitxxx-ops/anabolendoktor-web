@@ -123,7 +123,7 @@ export default function RetourPage() {
               <Link href="/contact" className="text-sm text-accent hover:underline">
                 Via het contactformulier, met uw ordernummer erbij
               </Link>
-              <p className="mt-2 text-xs text-text-subtle">U hoort binnen een werkdag van ons.</p>
+              <p className="mt-2 text-xs text-text-subtle">U hoort binnen 48 uur van ons.</p>
             </div>
           </div>
           <FaqAccordion items={faq} />

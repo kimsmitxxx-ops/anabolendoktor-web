@@ -149,7 +149,7 @@ export function KeuzehulpClient() {
         <h2 className="font-display text-2xl text-text">Leg dit voor aan een consulent</h2>
         <p className="mt-2 text-sm leading-relaxed text-text-muted">
           Uw antwoorden staan al in het bericht. Vul uw naam en e-mailadres aan en schrijf eronder
-          wat er verder speelt. U ontvangt binnen een werkdag een voorstel voor een tijdstip.
+          wat er verder speelt. U ontvangt binnen 48 uur een voorstel voor een tijdstip.
         </p>
         <div className="mt-6">
           <ContactForm
