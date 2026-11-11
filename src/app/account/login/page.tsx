@@ -12,7 +12,9 @@ import { Mail, ArrowRight, KeyRound } from "lucide-react";
  */
 export default function LoginPage() {
   const [stap, setStap] = useState<"email" | "code">("email");
+  const [metWachtwoord, setMetWachtwoord] = useState(false);
   const [email, setEmail] = useState("");
+  const [wachtwoord, setWachtwoord] = useState("");
   const [code, setCode] = useState("");
   const [busy, setBusy] = useState(false);
   const [fout, setFout] = useState<string | null>(null);
@@ -53,6 +55,29 @@ export default function LoginPage() {
       if (!r.ok) {
         const j = await r.json().catch(() => ({}));
         setFout(j.error || "Deze code klopt niet.");
+        setBusy(false);
+        return;
+      }
+      window.location.href = "/account";
+    } catch {
+      setFout("Er ging iets mis. Probeer het opnieuw.");
+      setBusy(false);
+    }
+  };
+
+  const stuurWachtwoord = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setBusy(true);
+    setFout(null);
+    try {
+      const r = await fetch("/api/account/sessie", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email.trim(), wachtwoord }),
+      });
+      if (!r.ok) {
+        const j = await r.json().catch(() => ({}));
+        setFout(j.error || "Inloggen lukte niet.");
         setBusy(false);
         return;
       }
@@ -106,9 +131,11 @@ export default function LoginPage() {
     <div className="mx-auto mt-20 max-w-md px-6">
       <h1 className="font-display text-3xl">Inloggen</h1>
       <p className="mt-2 text-sm text-text-muted">
-        Geen wachtwoord. Vult u uw e-mailadres in, dan sturen wij een inlogcode.
+        {metWachtwoord
+          ? "Vult u uw e-mailadres in en het wachtwoord dat u bij het afrekenen koos."
+          : "Vult u uw e-mailadres in, dan sturen wij u een inlogcode."}
       </p>
-      <form onSubmit={vraagCode} className="mt-6 space-y-3">
+      <form onSubmit={metWachtwoord ? stuurWachtwoord : vraagCode} className="mt-6 space-y-3">
         <div className="relative">
           <Mail className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-text-subtle" />
           <input
@@ -120,13 +147,27 @@ export default function LoginPage() {
             className="w-full rounded-lg border border-paper-border bg-paper-soft px-4 py-3 pl-10 text-sm outline-none focus:border-accent"
           />
         </div>
+        {metWachtwoord && (
+          <div className="relative">
+            <KeyRound className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-text-subtle" />
+            <input
+              type="password"
+              autoComplete="current-password"
+              required
+              value={wachtwoord}
+              onChange={(e) => setWachtwoord(e.target.value)}
+              placeholder="Uw wachtwoord"
+              className="w-full rounded-lg border border-paper-border bg-paper-soft px-4 py-3 pl-10 text-sm outline-none focus:border-accent"
+            />
+          </div>
+        )}
         {fout && <p className="text-sm text-danger">{fout}</p>}
         <button
           type="submit"
           disabled={busy}
           className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-accent px-4 py-3 text-sm font-semibold text-accent-foreground hover:bg-accent-soft disabled:opacity-50"
         >
-          {busy ? "Versturen…" : "Stuur inlogcode"} <ArrowRight className="h-4 w-4" />
+          {busy ? (metWachtwoord ? "Controleren…" : "Versturen…") : metWachtwoord ? "Inloggen" : "Stuur inlogcode"}{" "} <ArrowRight className="h-4 w-4" />
         </button>
       </form>
       <p className="mt-6 text-center text-xs text-text-subtle">Nog geen account? Die wordt automatisch aangemaakt.</p>
