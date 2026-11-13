@@ -21,7 +21,7 @@ export async function GET(req: NextRequest) {
 
   const { data, error } = await supabase
     .from("products")
-    .select("name, slug, subtitle, image_url, price_cents, categories(slug, name)")
+    .select("name, slug, subtitle, image_url, price_cents, categories!products_category_id_fkey(slug, name)")
     .eq("shop_id", SHOP_ID)
     .eq("is_active", true)
     .or(`name.ilike.%${q}%,subtitle.ilike.%${q}%,search_text.ilike.%${q}%`)
