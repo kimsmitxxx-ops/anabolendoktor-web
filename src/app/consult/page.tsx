@@ -2,12 +2,13 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { Stethoscope, ClipboardCheck, Clock, ArrowRight } from "lucide-react";
 import { ContactForm } from "@/components/shop/contact-form";
+import { alternatesNL } from "@/lib/geo-nl";
 
 export const metadata: Metadata = {
   title: "Consult aanvragen - bloedwerk-interpretatie, harm-reduction, trainingsplan",
   description:
     "Consult via video-call: bloedwaarden, herstel, natural opbouw of de vraag of beginnen verstandig is. €50 per consult, en daarna 10% korting op de pakketten.",
-  alternates: { canonical: "/consult" },
+  alternates: alternatesNL("/consult"),
 };
 
 export const revalidate = 3600;

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PageHero } from "@/components/shop/page-hero";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { Mail, PackageCheck, Clock, ShieldCheck } from "lucide-react";
+import { alternatesNL } from "@/lib/geo-nl";
 
 export const revalidate = 86400;
 
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
   title: "Levering - per e-mail voor diensten, per post voor supplementen",
   description:
     "Consulten en bloedonderzoek ontvangt u per e-mail; er wordt niets verzonden. Supplementen gaan neutraal verpakt op de post zodra uw betaling binnen is, en zijn normaal binnen 1 tot 3 werkdagen bij u.",
-  alternates: { canonical: "/bezorging" },
+  alternates: alternatesNL("/bezorging"),
 };
 
 const soorten = [

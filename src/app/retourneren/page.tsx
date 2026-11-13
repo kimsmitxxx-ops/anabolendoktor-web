@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/shop/page-hero";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { ShieldCheck, PackageOpen, CalendarClock, Mail, Info } from "lucide-react";
+import { alternatesNL } from "@/lib/geo-nl";
 
 export const revalidate = 86400;
 
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
   title: "Retour, annuleren en terugbetaling",
   description:
     "14 dagen bedenktijd op ongeopende supplementen, kosteloos annuleren van een consult tot 24 uur vooraf, en opnieuw verzenden als een pakket niet aankomt.",
-  alternates: { canonical: "/retourneren" },
+  alternates: alternatesNL("/retourneren"),
 };
 
 const cards = [

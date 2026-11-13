@@ -2,6 +2,7 @@ import Link from "next/link";
 import { listBlogPosts } from "@/lib/queries";
 import { KennisbankTabs } from "@/components/shop/kennisbank-tabs";
 import type { Metadata } from "next";
+import { alternatesNL } from "@/lib/geo-nl";
 
 export const revalidate = 600;
 
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
   title: "Kennisbank - artikelen over bloedwaarden, herstel en supplementen",
   description:
     "Onderbouwde artikelen over bloedwerk-monitoring bij AAS-gebruik, legale supplementen die aantoonbaar werken, PCT-mogelijkheden en gezondheidsrisico's. Met bronvermelding.",
-  alternates: { canonical: "/kennisbank" },
+  alternates: alternatesNL("/kennisbank"),
 };
 
 // Gecached met een venster van een uur. Dat uur is alleen het vangnet: bij

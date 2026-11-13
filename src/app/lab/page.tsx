@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FlaskConical, FileText, Clock, ShieldCheck, ClipboardList, Microscope } from "lucide-react";
+import { alternatesNL } from "@/lib/geo-nl";
 
 /**
  * Deze pagina bevatte de batchtest-tekst van anabolenpro: COA's per batch,
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
   title: "Hoe het bloedonderzoek werkt",
   description:
     "Van aanvraagformulier tot schriftelijke interpretatie: hoe bloedonderzoek bij Anabolendoktor verloopt, welke waarden wij lezen en wat u van de uitslag mag verwachten.",
-  alternates: { canonical: "/lab" },
+  alternates: alternatesNL("/lab"),
 };
 
 const STAPPEN = [

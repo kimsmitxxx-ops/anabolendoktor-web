@@ -5,6 +5,7 @@ import { CatalogFilters } from "@/components/shop/catalog-filters";
 import { KNOWN_BRANDS, sortBrands } from "@/lib/brands";
 import type { Metadata } from "next";
 import { BookOpen, Truck, ShieldCheck, FlaskConical, Sparkles } from "lucide-react";
+import { alternatesNL } from "@/lib/geo-nl";
 
 // Gecached met een venster van een uur. Dat uur is alleen het vangnet: bij
 // elke wijziging in shop-dash komt er een purge binnen op /api/revalidate en
@@ -15,7 +16,7 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: "Winkel - consulten, bloedonderzoek en supplementen",
   description: "Het volledige aanbod van anabolendoktor: consulten, bloedonderzoek via reguliere prikposten en een korte lijst supplementen met onderbouwing.",
-  alternates: { canonical: "/winkel" },
+  alternates: alternatesNL("/winkel"),
 };
 
 export default async function WinkelIndexPage({

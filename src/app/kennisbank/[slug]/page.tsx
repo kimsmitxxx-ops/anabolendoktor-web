@@ -7,6 +7,7 @@ import { MedicalDisclaimer } from "@/components/medical-disclaimer";
 import { highlightGlossary } from "@/lib/glossary-highlight";
 import { KortAntwoord } from "@/components/kort-antwoord";
 import { PakkettenBlok } from "@/components/pakketten-blok";
+import { alternatesNL } from "@/lib/geo-nl";
 
 /**
  * Artikelen waar het pakketaanbod logisch op volgt: wie hier leest, weegt een
@@ -32,7 +33,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   return {
     title: p.meta_title || p.title,
     description: p.meta_description || p.excerpt || undefined,
-    alternates: { canonical: `/kennisbank/${p.slug}` },
+    alternates: alternatesNL(`/kennisbank/${p.slug}`),
     openGraph: {
       title: p.title,
       description: p.excerpt || undefined,

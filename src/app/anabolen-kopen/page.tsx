@@ -3,6 +3,7 @@ import { PakkettenBlok } from "@/components/pakketten-blok";
 import Link from "next/link";
 import { AlertTriangle, Scale, FlaskConical, CalendarClock, Receipt, Stethoscope } from "lucide-react";
 import { FaqAccordion } from "@/components/faq-accordion";
+import { alternatesNL } from "@/lib/geo-nl";
 
 /**
  * Hoofdpagina voor de zoekvraag "anabolen kopen".
@@ -94,7 +95,7 @@ export const metadata: Metadata = {
   title: "Anabolen kopen: wat u moet weten voordat u begint",
   description:
     "Wij verkopen geen anabolen en waarschuwen juist. Wat de wet zegt, wat er in de praktijk in die flesjes zit, wat een laboratoriumanalyse wel en niet aantoont, en wat u laat meten als u het toch doet.",
-  alternates: { canonical: "/anabolen-kopen" },
+  alternates: alternatesNL("/anabolen-kopen"),
 };
 
 export default function AnabolenKopenPage() {

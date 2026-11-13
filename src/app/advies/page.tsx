@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { ADVIES } from "@/lib/advies-content";
+import { alternatesNL } from "@/lib/geo-nl";
 
 // Gecached met een venster van een uur. Dat uur is alleen het vangnet: bij
 // elke wijziging in shop-dash komt er een purge binnen op /api/revalidate en
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
   title: "Advies over anabolen, stoppen en bloedwaarden",
   description:
     "Objectieve voorlichting over anabolen: stoppen, gevaren, bloedwaarden na een kuur, vruchtbaarheid en een eerste kuur overwegen. Van een partij die niets verkoopt.",
-  alternates: { canonical: "/advies" },
+  alternates: alternatesNL("/advies"),
 };
 
 export default function AdviesIndex() {

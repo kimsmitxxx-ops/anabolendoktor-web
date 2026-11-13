@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AlertTriangle, HeartPulse, Droplets, Brain, ShieldAlert } from "lucide-react";
+import { alternatesNL } from "@/lib/geo-nl";
 
 /**
  * Deze pagina moet bestaan: buildInternalLinks in shop-dash zet in elke nieuwe
@@ -51,7 +52,7 @@ export const metadata: Metadata = {
   title: "Risico's en bijwerkingen van anabolen",
   description:
     "Wat anabole steroiden doen met lever, hart, bloedwaarden en hormoonhuishouding. Feitelijke voorlichting zonder verkoopbelang, met de signalen waarbij u een arts moet raadplegen.",
-  alternates: { canonical: "/risicos-en-bijwerkingen" },
+  alternates: alternatesNL("/risicos-en-bijwerkingen"),
 };
 
 const ORGAAN = [

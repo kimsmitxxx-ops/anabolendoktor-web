@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/shop/page-hero";
 import { MessageCircle, Mail, Clock, MapPin } from "lucide-react";
 import { ContactForm } from "@/components/shop/contact-form";
+import { alternatesNL } from "@/lib/geo-nl";
 
 export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: "Contact",
   description: "Stel uw vraag via het contactformulier of de chat. Wij streven naar antwoord binnen 48 uur; medische spoed hoort bij uw huisarts.",
-  alternates: { canonical: "/contact" },
+  alternates: alternatesNL("/contact"),
 };
 
 export default function ContactPage() {

@@ -9,6 +9,9 @@ import { Betaalgegevens } from "@/components/shop/betaalgegevens";
 import { PaytailStep2Button } from "@/components/shop/paytail-step2-button";
 
 export const dynamic = "force-dynamic";
+// Hoort bij force-dynamic: de gedeelde Supabase-client cachet sinds de
+// TTFB-ronde standaard, en hier moet elke lees juist vers zijn.
+export const fetchCache = "force-no-store";
 export const revalidate = 0;
 
 export const metadata: Metadata = {

@@ -12,12 +12,13 @@ import {
   MapPin,
   BadgeCheck,
 } from "lucide-react";
+import { alternatesNL } from "@/lib/geo-nl";
 
 export const metadata: Metadata = {
   title: "Over ons - consultatie zonder verkoopbelang",
   description:
     "Anabolendoktor biedt consulten, bloedwerk-interpretatie en een kleine selectie legale supplementen. Wij verkopen geen anabolen en hebben daarom geen belang bij het bagatelliseren van risico's.",
-  alternates: { canonical: "/over-ons" },
+  alternates: alternatesNL("/over-ons"),
 };
 
 export const revalidate = 600;

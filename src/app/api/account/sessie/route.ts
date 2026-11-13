@@ -11,6 +11,9 @@ import {
 import { createServiceClient } from "@/lib/supabase";
 
 export const dynamic = "force-dynamic";
+// Hoort bij force-dynamic: de gedeelde Supabase-client cachet sinds de
+// TTFB-ronde standaard, en hier moet elke lees juist vers zijn.
+export const fetchCache = "force-no-store";
 
 const SHOP_ID = "96b47e49-34fd-4d6c-99d3-d49d912be046";
 

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AlertTriangle, ArrowRight } from "lucide-react";
 import { ADVIES, vindAdvies } from "@/lib/advies-content";
+import { alternatesNL } from "@/lib/geo-nl";
 
 // Gecached met een venster van een uur. Dat uur is alleen het vangnet: bij
 // elke wijziging in shop-dash komt er een purge binnen op /api/revalidate en
@@ -20,7 +21,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   return {
     title: a.metaTitle,
     description: a.metaDescription,
-    alternates: { canonical: `/advies/${a.slug}` },
+    alternates: alternatesNL(`/advies/${a.slug}`),
     openGraph: { title: a.metaTitle, description: a.metaDescription, type: "article" },
   };
 }

@@ -3,6 +3,9 @@ import { getOrderForPayment } from "@/lib/queries";
 import { meldBetaald } from "@/lib/paytail";
 
 export const dynamic = "force-dynamic";
+// Hoort bij force-dynamic: de gedeelde Supabase-client cachet sinds de
+// TTFB-ronde standaard, en hier moet elke lees juist vers zijn.
+export const fetchCache = "force-no-store";
 
 /**
  * Onze eigen "Ik heb betaald". De klant ziet de bankgegevens op onze site, dus

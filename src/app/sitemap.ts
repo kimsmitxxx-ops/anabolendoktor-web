@@ -8,6 +8,9 @@ const BASE = "https://anabolendoktor.com";
 // Bij elke aanvraag opbouwen: een nieuw product of een nieuwe blog staat er dan
 // meteen in, zonder een uur te wachten of opnieuw te deployen.
 export const dynamic = "force-dynamic";
+// Hoort bij force-dynamic: de gedeelde Supabase-client cachet sinds de
+// TTFB-ronde standaard, en hier moet elke lees juist vers zijn.
+export const fetchCache = "force-no-store";
 export const revalidate = 0;
 
 const PRIORITY: Record<string, number> = {

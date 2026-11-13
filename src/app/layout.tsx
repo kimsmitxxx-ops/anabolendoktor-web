@@ -10,6 +10,7 @@ import { AnalyticsTracker } from "@/components/analytics-tracker";
 import { CartAbandonTracker } from "@/components/cart-abandon-tracker";
 import { GA4 } from "@/components/ga4";
 import { ConsentNotice } from "@/components/consent-notice";
+import { hreflangVoor, OG_LOCALE, organisatieJsonLd } from "@/lib/geo-nl";
 
 const GA4_ID = process.env.NEXT_PUBLIC_GA4_ID || "G-54K5B0PBQ5"; // anabolendoktor
 
@@ -45,6 +46,8 @@ const WhatsAppFab = dynamic(
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://anabolendoktor.com"),
+    // Taal en land expliciet, zie lib/geo-nl.ts.
+    alternates: { languages: hreflangVoor("/") },
   // 71 tekens werd afgekapt in de zoekresultaten. Consult en bloedwerk zijn
   // waar de site op gevonden wordt, dus die blijven vooraan staan.
   title: { default: "Anabolendoktor - consult en bloedwerk-interpretatie", template: "%s · Anabolendoktor" },
@@ -61,6 +64,7 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-icon-doktor.png", type: "image/png" }],
   },
   openGraph: {
+      locale: OG_LOCALE,
     images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
   },
 };
@@ -69,6 +73,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="nl" data-shop="anabolendoktor" className={`${manrope.variable} ${fraunces.variable}`}>
       <head>
+        {/* Organization met areaServed NL en BE, inLanguage nl-NL en EUR.
+            Staat in de layout en dus op elke pagina: het gaat over de site
+            als geheel, niet over een losse pagina. */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organisatieJsonLd(null, String("https://anabolendoktor.com"))) }}
+        />
         {/* Geen preconnect naar de Supabase-host: afbeeldingen lopen via de
             /img-route over ons eigen domein, dus de browser praat er nooit
             rechtstreeks mee. De hint leverde niets op en zette wel de naam van

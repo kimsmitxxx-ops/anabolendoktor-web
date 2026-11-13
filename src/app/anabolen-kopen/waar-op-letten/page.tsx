@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ShieldAlert } from "lucide-react";
 import { FaqAccordion } from "@/components/faq-accordion";
+import { alternatesNL } from "@/lib/geo-nl";
 
 /**
  * Tweede pagina van het cluster rond "anabolen kopen". Mikt op de concrete
@@ -115,7 +116,7 @@ export const metadata: Metadata = {
   title: "Anabolen kopen: waar u op moet letten",
   description:
     "Controlelijst van een partij die niets verkoopt: wat een laboratoriumanalyse waard is, waarom nep niet te zien is, welke beloftes onmogelijk zijn en wat u in plaats daarvan kunt laten meten.",
-  alternates: { canonical: "/anabolen-kopen/waar-op-letten" },
+  alternates: alternatesNL("/anabolen-kopen/waar-op-letten"),
 };
 
 export default function WaarOpLettenPage() {

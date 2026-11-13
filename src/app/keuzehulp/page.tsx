@@ -3,12 +3,13 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/shop/page-hero";
 import { KeuzehulpClient } from "@/components/keuzehulp-client";
+import { alternatesNL } from "@/lib/geo-nl";
 
 export const metadata: Metadata = {
   title: "Keuzehulp - zes vragen, dan weet u welke stap logisch is",
   description:
     "Beantwoord zes vragen over uw doel, ervaring, leeftijd en gezondheid. U krijgt een concept-advies met de volgorde van stappen, dat u daarna met een consulent bespreekt.",
-  alternates: { canonical: "/keuzehulp" },
+  alternates: alternatesNL("/keuzehulp"),
 };
 
 const FAQ = [

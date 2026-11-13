@@ -8,6 +8,7 @@ import { KNOWN_BRANDS, sortBrands } from "@/lib/brands";
 import type { Metadata } from "next";
 import { BookOpen, Truck, ShieldCheck, FlaskConical, Sparkles } from "lucide-react";
 import { MERCHANT_RETURN_POLICY } from "@/lib/return-policy";
+import { alternatesNL } from "@/lib/geo-nl";
 
 // Gecached met een venster van een uur. Dat uur is alleen het vangnet: bij
 // elke wijziging in shop-dash komt er een purge binnen op /api/revalidate en
@@ -21,7 +22,7 @@ export async function generateMetadata({ params }: { params: { categorie: string
   return {
     title: cat.meta_title || `${cat.name} kopen`,
     description: cat.meta_description || cat.description || `${cat.name} bij anabolendoktor, met per item een eerlijke inschatting van het effect.`,
-    alternates: { canonical: `/winkel/${cat.slug}` },
+    alternates: alternatesNL(`/winkel/${cat.slug}`),
     openGraph: { title: cat.name, description: cat.description || undefined, type: "website" },
   };
 }
