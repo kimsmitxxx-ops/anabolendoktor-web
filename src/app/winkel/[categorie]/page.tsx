@@ -16,7 +16,8 @@ import { alternatesNL } from "@/lib/geo-nl";
 // bewust nog steeds op force-dynamic.
 export const revalidate = 3600;
 
-export async function generateMetadata({ params }: { params: { categorie: string } }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<{ categorie: string }> }): Promise<Metadata> {
+  const params = await props.params;
   const cat = await getCategory(params.categorie);
   if (!cat) return { title: "Niet gevonden" };
   return {
@@ -27,13 +28,14 @@ export async function generateMetadata({ params }: { params: { categorie: string
   };
 }
 
-export default async function CategoryPage({
-  params,
-  searchParams,
-}: {
-  params: { categorie: string };
-  searchParams: { stock?: string; merk?: string; stof?: string; locatie?: string; q?: string };
-}) {
+export default async function CategoryPage(
+  props: {
+    params: Promise<{ categorie: string }>;
+    searchParams: Promise<{ stock?: string; merk?: string; stof?: string; locatie?: string; q?: string }>;
+  }
+) {
+  const searchParams = await props.searchParams;
+  const params = await props.params;
   const [cat, allProducts, allCategories] = await Promise.all([
     getCategory(params.categorie),
     listProducts({ categorySlug: params.categorie }),

@@ -32,7 +32,8 @@ function titelDiePast(naam: string, prijs: string): string {
   return naam;
 }
 
-export async function generateMetadata({ params }: { params: { categorie: string; slug: string } }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<{ categorie: string; slug: string }> }): Promise<Metadata> {
+  const params = await props.params;
   const p = await getProduct(params.slug) as any;
   if (!p) return { title: "Niet gevonden" };
   const noindex = p.noindex === true;
@@ -58,7 +59,8 @@ export async function generateMetadata({ params }: { params: { categorie: string
   };
 }
 
-export default async function ProductDetailPage({ params }: { params: { categorie: string; slug: string } }) {
+export default async function ProductDetailPage(props: { params: Promise<{ categorie: string; slug: string }> }) {
+  const params = await props.params;
   const p = await getProduct(params.slug) as any;
   if (!p) notFound();
 

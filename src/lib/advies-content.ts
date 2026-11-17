@@ -63,6 +63,7 @@ export const ADVIES: Advies[] = [
         h: "Wat wij hierin wel en niet doen",
         p: [
           "Wij leveren geen medicatie en schrijven niets voor. Wat wij doen is uw waarden lezen, uitleggen wat er staat en met u een meetschema afspreken zodat u niet in het ongewisse zit. Blijkt uit de metingen dat het herstel uitblijft, dan is dat precies de onderbouwing waarmee u bij uw huisarts terechtkunt.",
+          "Overweegt u later opnieuw te beginnen, kijk dan eerst bij [anabolen kopen in Nederland](/anabolen-kopen). Daar staat welke route legaal bestaat, wat er gebeurt bij invoer en wat u aan een flesje van een onbekende aanbieder niet kunt controleren.",
         ],
       },
     ],
@@ -111,6 +112,13 @@ export const ADVIES: Advies[] = [
           "Dat is ook precies waarom mensen opnieuw beginnen. Niet omdat ze meer spiermassa willen, maar omdat ze zich beter voelden.",
         ],
       },
+      {
+        h: "Wat u niet weet over wat u gebruikt",
+        p: [
+          "Bij alle risico's hierboven telt nog iets mee waar zelden over wordt gesproken: wat er werkelijk in het flesje zit. Een ander gehalte of een andere stof dan op het label verandert zowel de bijwerkingen als de hersteltijd, en aan het product zelf is dat niet te zien.",
+          "Wat daar in de praktijk misgaat, en hoe u een labrapport en een batchcode naloopt, staat bij [wat er misgaat bij het kopen van anabolen](/anabolen-kopen).",
+        ],
+      },
     ],
     lijstTitel: "Wat hiervan zichtbaar wordt in bloedonderzoek",
     lijst: [
@@ -149,6 +157,7 @@ export const ADVIES: Advies[] = [
         h: "Waarom losse getallen misleiden",
         p: [
           "Een testosteronwaarde binnen de referentie zegt weinig als LH tegelijk onderdrukt is. Een licht verhoogd ALAT betekent iets anders bij iemand die drie dagen eerder zwaar heeft getraind dan bij iemand die dat niet deed. De samenhang tussen waarden is waar de informatie zit, en dat is precies wat een uitslagformulier niet geeft.",
+          "Soms past een uitslag niet bij wat iemand dacht te gebruiken, en verklaart de herkomst van het middel het beeld. Een ander gehalte of een andere stof geeft iets anders in bloed; dat is een van de redenen dat wij bij [het kopen van anabolen](/anabolen-kopen) uitleggen wat u aan een product wel en niet kunt vaststellen.",
         ],
       },
     ],
@@ -187,6 +196,7 @@ export const ADVIES: Advies[] = [
         h: "Wat u kunt doen",
         p: [
           "Heeft u een kinderwens en gebruikt u nu, dan is het gesprek met een arts belangrijker dan welk protocol van internet ook. Wij kunnen uw hormonale waarden lezen en met u bespreken wat die betekenen, en u helpen de juiste vraag te stellen bij uw huisarts of een uroloog.",
+          "Koopt u buiten een arts om, dan weet u bovendien niet zeker welke stof u binnenkrijgt, en dat maakt dit beeld lastiger te lezen dan nodig. Wat daarover te zeggen valt, staat op onze pagina over [anabolen kopen in Nederland](/anabolen-kopen).",
         ],
       },
     ],
@@ -235,6 +245,7 @@ export const ADVIES: Advies[] = [
         p: [
           "Begin bij uw huisarts en wees eerlijk over wat u heeft gebruikt en hoe lang. Dat voelt ongemakkelijk, maar zonder die informatie wordt u onderzocht op de verkeerde dingen en duurt alles langer. Bij kinderwens is doorverwijzing naar een uroloog of androloog de logische stap; die kan hCG en de overige middelen voorschrijven en de behandeling monitoren.",
           "Wat wij hierin doen is uw waarden lezen en uitleggen, en met u op papier zetten wat er speelt. Met een overzicht van uw metingen over tijd komt u met een concrete vraag binnen in plaats van een vaag verhaal, en dat scheelt in de praktijk maanden.",
+          "Een laatste punt: hCG, clomifeen en FSH zijn receptplichtig, net als de middelen zelf. Wie ze buiten een arts om bestelt, loopt dezelfde risico's die wij beschrijven bij [anabolen kopen in Nederland](/anabolen-kopen), en juist bij een kinderwens is dit de verkeerde plek om te gokken op wat er in een flesje zit.",
         ],
       },
     ],
@@ -268,6 +279,7 @@ export const ADVIES: Advies[] = [
         p: [
           "Heeft u een kinderwens op termijn? Zijn er hart- en vaatziekten in uw familie? Heeft u een geschiedenis van depressie? Wat is uw uitgangspositie, gemeten en niet geschat? En misschien de belangrijkste: onder welke voorwaarde zou u stoppen, en heeft u dat vooraf vastgelegd?",
           "Wie deze vragen pas beantwoordt nadat er iets misgaat, beantwoordt ze onder de slechtst denkbare omstandigheden.",
+          "En een vraag die er praktisch bij hoort: waar zou u het vandaan halen. In Nederland is er geen legale winkel voor spieropbouw, en bij een onbekende aanbieder weet u niet wat u koopt. Wat daar precies speelt, staat bij [anabolen kopen in Nederland](/anabolen-kopen).",
         ],
       },
       {

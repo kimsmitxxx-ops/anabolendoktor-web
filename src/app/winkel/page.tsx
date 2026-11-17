@@ -19,11 +19,12 @@ export const metadata: Metadata = {
   alternates: alternatesNL("/winkel"),
 };
 
-export default async function WinkelIndexPage({
-  searchParams,
-}: {
-  searchParams: { stock?: string; merk?: string; stof?: string; locatie?: string; q?: string };
-}) {
+export default async function WinkelIndexPage(
+  props: {
+    searchParams: Promise<{ stock?: string; merk?: string; stof?: string; locatie?: string; q?: string }>;
+  }
+) {
+  const searchParams = await props.searchParams;
   const [categories, allProducts] = await Promise.all([
     listCategories(),
     listProducts({ limit: 200 }),

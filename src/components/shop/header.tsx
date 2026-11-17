@@ -29,14 +29,19 @@ const NAV = [
     { href: "/winkel/consult", label: "Consulten" },
     { href: "/winkel/bloedwerk", label: "Bloedonderzoek" },
   ] },
+  // /anabolen-kopen hing alleen onder Kennisbank en stond nergens in het
+  // hoofdmenu, terwijl die pagina ruim 80 procent van alle vertoningen van de
+  // site trekt. Nu een eigen hoofdmenu-item met de controlelijst eronder.
+  { href: "/anabolen-kopen", label: "Anabolen kopen", sub: [
+    { href: "/anabolen-kopen", label: "Anabolen kopen" },
+    { href: "/anabolen-kopen/waar-op-letten", label: "Waar u op moet letten" },
+  ] },
   { href: "/keuzehulp", label: "Keuzehulp" },
   { href: "/advies", label: "Advies" },
   // Voorlichting hangt onder Kennisbank, niet onder Advies: Advies gaat over
   // trajecten die wij leveren, Kennisbank over lezen zonder verkoopbelang.
   { href: "/kennisbank", label: "Kennisbank", sub: [
     { href: "/kennisbank", label: "Alle artikelen" },
-    { href: "/anabolen-kopen", label: "Anabolen kopen" },
-    { href: "/anabolen-kopen/waar-op-letten", label: "Waar u op moet letten" },
     { href: "/risicos-en-bijwerkingen", label: "Risico's en bijwerkingen" },
   ] },
   { href: "/contact", label: "Contact" },

@@ -18,11 +18,12 @@ export const metadata: Metadata = {
 // is deze pagina meteen weer vers. Winkelwagen, checkout en account staan
 // bewust nog steeds op force-dynamic.
 
-export default async function KennisbankPage({
-  searchParams,
-}: {
-  searchParams: { cat?: string };
-}) {
+export default async function KennisbankPage(
+  props: {
+    searchParams: Promise<{ cat?: string }>;
+  }
+) {
+  const searchParams = await props.searchParams;
   const articles = await listBlogPosts(50);
   const initialTab = (["kennis", "onderzoek", "nieuws"] as const).find((t) => t === searchParams.cat) || "alle";
 

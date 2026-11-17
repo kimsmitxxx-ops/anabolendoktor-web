@@ -102,7 +102,9 @@ export default async function OverOnsPage() {
           <dl className="mt-4 grid grid-cols-2 gap-y-6 gap-x-4">
             {[
               ["0", "Anabolen in ons assortiment"],
-              ["1", "Werkdag reactietijd"],
+              // Stond op "1 werkdag"; de hele site belooft 48 uur en een
+              // snellere belofte mag hier niet terugkomen.
+              ["48", "Uur reactietijd"],
               ["20+", "Bloedwaarden in het uitgebreide pakket"],
               ["45", "Minuten per intakeconsult"],
             ].map(([n, l]) => (
@@ -123,10 +125,17 @@ export default async function OverOnsPage() {
             <h2 className="mt-2 font-display text-3xl md:text-4xl text-primary">
               Wie er achter onze content staat
             </h2>
+            {/* Hier stond dat de blogs geschreven zijn door "enhanced atleten
+                met competitie-ervaring" die publiceren "vanuit eigen
+                praktijk-data". Vijf van de zes artikelen staan op naam van de
+                redactie en er is geen praktijkdata om uit te publiceren, dus
+                die claim is weg. */}
             <p className="mt-3 max-w-3xl text-primary/70 leading-relaxed">
-              Geen anonieme tekstschrijvers - onze blogs zijn geschreven door enhanced atleten met
-              competitie-ervaring en een medisch consultant. Iedere schrijver heeft eigen
-              specialisaties en publiceert vanuit eigen praktijk-data.
+              Geen anonieme tekstschrijvers: iedere schrijver staat met naam onder zijn werk en u
+              kunt hieronder nalezen wie wat doet. Wij zijn geen BIG-geregistreerde
+              artsenpraktijk, stellen geen diagnoses en schrijven niets voor. Een deel van de
+              artikelen staat op naam van de redactie; waar dat zo is, zegt de naam niets anders
+              dan dat wij het samen hebben geschreven en nagekeken.
             </p>
             <div className="mt-10 grid gap-6 sm:grid-cols-2">
               {authors.map((a) => (
@@ -243,8 +252,9 @@ export default async function OverOnsPage() {
               een arts hoort. Wij moedigen gebruik niet aan en veroordelen niemand die het doet.
             </p>
             <p className="mt-3 text-sm text-text-muted leading-relaxed">
-              Onze teksten worden geschreven door consulenten met een achtergrond in
-              bewegingswetenschap en endocrinologie, met bronvermelding erbij. Bij twijfel of
+              Onze teksten worden door onze eigen redactie geschreven en nagekeken, met
+              bronvermelding erbij. Opleidingen en achtergronden die wij niet kunnen laten zien,
+              zetten wij er ook niet bij. Bij twijfel of
               klachten raadpleegt u een arts. Weet u niet waar te beginnen, doe dan de <Link href="/keuzehulp" className="text-accent hover:underline">keuzehulp</Link>.
             </p>
             <Link

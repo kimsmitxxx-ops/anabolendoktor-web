@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
 import { Manrope, Fraunces } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/components/shop/cart-store";
@@ -11,14 +10,9 @@ import { CartAbandonTracker } from "@/components/cart-abandon-tracker";
 import { GA4 } from "@/components/ga4";
 import { ConsentNotice } from "@/components/consent-notice";
 import { hreflangVoor, OG_LOCALE, organisatieJsonLd } from "@/lib/geo-nl";
+import { CartDrawer, WhatsAppFab } from "@/components/uitgesteld";
 
 const GA4_ID = process.env.NEXT_PUBLIC_GA4_ID || "G-54K5B0PBQ5"; // anabolendoktor
-
-// CartDrawer is alleen zichtbaar als gebruiker op cart-icoon klikt -> defer hydratie
-const CartDrawer = dynamic(
-  () => import("@/components/shop/cart-drawer").then((m) => m.CartDrawer),
-  { ssr: false },
-);
 
 // Self-hosted fonts via next/font: elimineert render-blocking Google Fonts request
 const manrope = Manrope({
@@ -37,12 +31,6 @@ const fraunces = Fraunces({
   display: "swap",
   variable: "--font-fraunces",
 });
-
-// Defer chat-widget - niet kritiek voor FCP/LCP; pas hydrateren na main content
-const WhatsAppFab = dynamic(
-  () => import("@/components/whatsapp-fab").then((m) => m.WhatsAppFab),
-  { ssr: false },
-);
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://anabolendoktor.com"),

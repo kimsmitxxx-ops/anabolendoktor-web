@@ -15,7 +15,8 @@ export function generateStaticParams() {
   return ADVIES.map((a) => ({ slug: a.slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
+export async function generateMetadata(props: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const params = await props.params;
   const a = vindAdvies(params.slug);
   if (!a) return { title: "Niet gevonden" };
   return {
@@ -26,7 +27,37 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   };
 }
 
-export default function AdviesPagina({ params }: { params: { slug: string } }) {
+/**
+ * Alineatekst met contextuele links erin.
+ *
+ * De adviesteksten staan als platte strings in lib/advies-content.ts. Een
+ * markering [ankerwoord](/pad) is het minste wat nodig is om in de body van
+ * een artikel een link te kunnen leggen zonder HTML in de data te zetten; zo
+ * blijft het renderen zonder dangerouslySetInnerHTML en blijven alle links
+ * next/link-navigaties. Alleen interne paden worden herkend, een pad dat niet
+ * met een schuine streep begint blijft dus gewoon letterlijke tekst.
+ */
+function MetLinks({ tekst }: { tekst: string }) {
+  // split met twee capture-groepen levert afwisselend tekst, ankerwoord, pad
+  const stukken = tekst.split(/\[([^\]]+)\]\((\/[^)\s]*)\)/g);
+  if (stukken.length === 1) return <>{tekst}</>;
+
+  const uit: React.ReactNode[] = [];
+  for (let i = 0; i < stukken.length; i += 3) {
+    if (stukken[i]) uit.push(stukken[i]);
+    if (i + 2 < stukken.length) {
+      uit.push(
+        <Link key={i} href={stukken[i + 2]} className="text-accent hover:underline">
+          {stukken[i + 1]}
+        </Link>,
+      );
+    }
+  }
+  return <>{uit}</>;
+}
+
+export default async function AdviesPagina(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const a = vindAdvies(params.slug);
   if (!a) notFound();
 
@@ -58,7 +89,9 @@ export default function AdviesPagina({ params }: { params: { slug: string } }) {
           <section key={b.h}>
             <h2 className="font-display text-2xl">{b.h}</h2>
             {b.p.map((tekst, i) => (
-              <p key={i} className="mt-3 leading-relaxed text-text-muted">{tekst}</p>
+              <p key={i} className="mt-3 leading-relaxed text-text-muted">
+                <MetLinks tekst={tekst} />
+              </p>
             ))}
           </section>
         ))}
