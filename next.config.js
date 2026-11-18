@@ -4,7 +4,9 @@ module.exports = {
   distDir: process.env.NEXT_DIST_DIR || ".next",
   // Defensive: don't break build on lint/type errors during deploy
   eslint: { ignoreDuringBuilds: true },
-  typescript: { ignoreBuildErrors: true },
+  // Geen ignoreBuildErrors meer: de typefouten kwamen allemaal uit
+  // ongebruikte shadcn-componenten die nooit geinstalleerde pakketten
+  // importeerden. Die zijn eruit, dus een typefout hier is vanaf nu een echte.
   images: {
     formats: ["image/avif", "image/webp"],
     // De Supabase-hostname staat hier bewust NIET meer bij. Zolang hij hier
