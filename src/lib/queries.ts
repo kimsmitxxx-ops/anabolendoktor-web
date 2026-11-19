@@ -2,7 +2,7 @@ import { supabase, createServiceClient, type Product, type Category, type BlogPo
 
 // Hardcoded shop_id voor anabolendoktor, als terugval voor een scoped JWT.
 // RLS-policies in shop-dash migration 021 staan anon SELECT toe op deze shop.
-const SHOP_ID = "96b47e49-34fd-4d6c-99d3-d49d912be046";
+export const SHOP_ID = "96b47e49-34fd-4d6c-99d3-d49d912be046";
 
 // Populariteits-volgorde van stoffen (eerst = bovenaan). UT-merk overrules dit.
 const STOF_POPULARITY = [
