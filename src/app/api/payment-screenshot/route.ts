@@ -12,14 +12,26 @@ const ACCEPTED = ["image/jpeg", "image/png", "image/webp"];
 const BUCKET = "payment-screenshots";
 
 function getServiceClient() {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL || "";
+  // Met dezelfde vaste terugval als de rest van de code in deze repo:
+  // NEXT_PUBLIC_SUPABASE_URL staat niet in de Vercel-omgeving van de shops.
+  // Zonder dit gooide deze functie, en die throw stond buiten de try-catch:
+  // elke upload kreeg een leeg 500-antwoord, ook de validatiepaden.
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL || "https://rexqfwibxawqnvrzbdoo.supabase.co";
   const key = process.env.SUPABASE_SHOP_KEY || "";
   if (!url || !key) throw new Error("Supabase env vars ontbreken (URL of service key)");
   return createClient(url, key);
 }
 
 export async function POST(req: NextRequest) {
-  const sb = getServiceClient();
+  let sb;
+  try {
+    sb = getServiceClient();
+  } catch (e) {
+    // Een ontbrekende sleutel is onze fout, niet die van de bezoeker, maar
+    // hij moet wel een antwoord krijgen dat zijn upload niet lukte.
+    console.error("betaalbewijs: server-config onvolledig", e);
+    return NextResponse.json({ error: "Uploaden lukte niet. Probeer het later opnieuw." }, { status: 500 });
+  }
   try {
     const form = await req.formData();
     const file = form.get("file") as File | null;
@@ -32,12 +44,19 @@ export async function POST(req: NextRequest) {
     if (file.size > MAX_BYTES) return NextResponse.json({ error: "Bestand te groot (max 5MB)" }, { status: 400 });
 
     // Verifieer dat order bestaat + bij deze shop hoort
-    const { data: order } = await sb
+    const { data: order, error: orderFout } = await sb
       .from("orders")
-      .select("id, email")
+      // customer_email, niet email: die kolom bestaat niet op orders. PostgREST
+      // gaf daardoor een fout in plaats van een rij, en omdat alleen `data`
+      // werd gelezen kreeg elke klant "Order niet gevonden" te zien.
+      .select("id, customer_email")
       .eq("id", orderId)
       .eq("shop_id", SHOP_ID)
       .maybeSingle();
+    if (orderFout) {
+      console.error("betaalbewijs: bestelling opzoeken mislukte", orderFout);
+      return NextResponse.json({ error: "Uploaden lukte niet. Probeer het later opnieuw." }, { status: 500 });
+    }
     if (!order) return NextResponse.json({ error: "Order niet gevonden" }, { status: 404 });
 
     // Optionele extra check: email matcht (niet kritiek want we vertrouwen orderId)
