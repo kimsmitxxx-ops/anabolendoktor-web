@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { Afbeelding } from "@/components/afbeelding";
 
 interface MediaItem {
   url: string;
@@ -26,12 +27,12 @@ export function ProductGallery({ gallery, productName }: { gallery: MediaItem[];
                 i === active ? "border-accent" : "border-paper-border hover:border-accent"
               }`}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Afbeelding
                 src={m.url}
                 alt={m.alt || productName}
-                loading="lazy"
-                decoding="async"
+                width={800}
+                height={800}
+                sizes="(max-width: 768px) 100vw, 480px"
                 className="h-full w-full object-cover"
               />
             </button>
@@ -39,11 +40,13 @@ export function ProductGallery({ gallery, productName }: { gallery: MediaItem[];
         </div>
       )}
       <div className="flex-1 max-w-[75%]">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          loading="eager" fetchPriority="high" decoding="async"
+        <Afbeelding
           src={current.url}
           alt={current.alt || productName}
+          width={800}
+          height={800}
+          sizes="(max-width: 768px) 100vw, 480px"
+          boven
           className="aspect-square w-full rounded-2xl border border-paper-border object-cover"
         />
       </div>

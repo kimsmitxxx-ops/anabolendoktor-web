@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet";
 import { Search, ArrowRight, X, Loader2 } from "lucide-react";
+import { Afbeelding } from "@/components/afbeelding";
 
 export interface MobileSearchSheetProps {
   open: boolean;
@@ -132,8 +133,15 @@ export function MobileSearchSheet({ open, onOpenChange }: MobileSearchSheetProps
                     className="flex items-center gap-3 py-3 hover:bg-muted/40 rounded px-2"
                   >
                     {p.afbeelding ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img loading="lazy" decoding="async" src={p.afbeelding} alt={p.naam} className="h-10 w-10 rounded object-cover" />
+                      <Afbeelding
+                        src={p.afbeelding}
+                        alt={p.naam}
+                        width={40}
+                        height={40}
+                        sizes="40px"
+                        maxBreedte={40}
+                        className="h-10 w-10 rounded object-cover"
+                      />
                     ) : (
                       <span className="flex h-10 w-10 items-center justify-center rounded bg-muted text-xs text-text-subtle">
                         {p.naam.slice(0, 1)}
