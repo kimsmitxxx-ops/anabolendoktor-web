@@ -8,6 +8,31 @@ module.exports = {
   // ongebruikte shadcn-componenten die nooit geinstalleerde pakketten
   // importeerden. Die zijn eruit, dus een typefout hier is vanaf nu een echte.
   images: {
+    /**
+     * De beeldoptimalisatie van Vercel staat uit op deze site.
+     *
+     * WAAROM
+     * Gemeten op 25 nov 2026: /_next/image gaf voor de artikelbeelden drie van
+     * de acht keer een 200 en vijf van de acht keer een 400
+     * (INVALID_IMAGE_OPTIMIZE_REQUEST), terwijl de bron ernaast stabiel 200 gaf
+     * in 0,72 seconde. Dezelfde URL kon binnen een minuut eerst lukken en dan
+     * falen, dus het is geen verkeerde configuratie maar de optimizer die het
+     * ophalen van onze bron niet volhoudt.
+     *
+     * Dat is logisch: /img en /media zijn eigen route handlers met
+     * force-dynamic die het bestand server-side uit Supabase halen. De
+     * optimizer moet daar dus een functie-aanroep van driekwart seconde voor
+     * doen, en op een site met weinig verkeer is die vaker koud dan warm.
+     * anabolenpro heeft hetzelfde patroon maar genoeg verkeer om warm te
+     * blijven; daar lukt het wel.
+     *
+     * Met unoptimized zendt next/image gewoon het origineel uit: geen
+     * optimizer, geen 400, en hetzelfde formaat als voorheen. De echte
+     * bytewinst loopt op deze sites via <Afbeelding> en de maatvarianten uit
+     * de opslag (zie src/lib/afbeelding-maten.ts), en die hebben de optimizer
+     * niet nodig.
+     */
+    unoptimized: true,
     formats: ["image/avif", "image/webp"],
     // De Supabase-hostname staat hier bewust NIET meer bij. Zolang hij hier
     // stond, werkte een <Image src="https://<project>.supabase.co/..."> gewoon,
