@@ -66,25 +66,93 @@ export async function POST(req: NextRequest) {
   // betaling per overboeking komt dat bedrag ook zo op de factuur. De
   // typecontrole hierboven ving dat niet af: een getal van 1 cent is ook een
   // geldig getal.
-  const bestelSkus = Array.from(new Set(items.map((it: any) => it.sku).filter(Boolean)));
-  const { data: prijsRijen } = await supabase
-    .from("products")
-    .select("id, sku, name, price_cents, is_active")
-    .eq("shop_id", SHOP_ID)
-    .in("sku", bestelSkus);
-  const prijsUitDb = new Map((prijsRijen || []).map((r: any) => [r.sku, r]));
+  //
+  // Opzoeken op id, want dat is de primaire sleutel en ook wat de mand
+  // meestuurt; sku als terugval voor een mand die nog van voor deze wijziging
+  // in localStorage staat.
+  // Twee losse `in`-queries en geen `.or()` met een zelfgebouwde filterstring:
+  // een sku met een komma of een aanhalingsteken erin zou die string breken,
+  // en dan komen er stil de verkeerde rijen terug.
+  const bestelIds = Array.from(
+    new Set(
+      items
+        .map((it: any) => it.id)
+        // Alleen wat een uuid kán zijn: een mand-regel met een zelfverzonnen
+        // id maakt er anders een databasefout van, en die zou hieronder de
+        // hele bestelling op 503 zetten in plaats van netjes op 400.
+        .filter((v: any) => typeof v === "string" && /^[0-9a-f-]{36}$/i.test(v)),
+    ),
+  );
+  const bestelSkus = Array.from(
+    new Set(items.map((it: any) => it.sku).filter((v: any) => typeof v === "string" && v)),
+  );
+  // **De slug is wat de mand in `id` meestuurt**, en een productkaart zet hem
+  // ook in `sku`. De kolom products.id is een uuid en products.sku is het
+  // echte artikelnummer (slug creatine-monohydraat heeft sku AD-SUP-CREA),
+  // dus zonder deze derde ingang vindt de route een regel niet die via een
+  // kaart in de mand terechtkwam en krijgt de klant onterecht te horen dat
+  // het product niet meer beschikbaar is.
+  const sleutels = Array.from(
+    new Set(items.flatMap((it: any) => [it.id, it.sku]).filter((v: any) => typeof v === "string" && v)),
+  );
+  const rijPerId = new Map<string, any>();
+  const rijPerSku = new Map<string, any>();
+  const rijPerSlug = new Map<string, any>();
+  try {
+    const kolommen = "id, slug, sku, name, price_cents, is_active";
+    const [opId, opSku, opSlug] = await Promise.all([
+      bestelIds.length
+        ? supabase.from("products").select(kolommen).eq("shop_id", SHOP_ID).in("id", bestelIds)
+        : Promise.resolve({ data: [], error: null }),
+      bestelSkus.length
+        ? supabase.from("products").select(kolommen).eq("shop_id", SHOP_ID).in("sku", bestelSkus)
+        : Promise.resolve({ data: [], error: null }),
+      sleutels.length
+        ? supabase.from("products").select(kolommen).eq("shop_id", SHOP_ID).in("slug", sleutels)
+        : Promise.resolve({ data: [], error: null }),
+    ]);
+    if (opId.error) throw opId.error;
+    if (opSku.error) throw opSku.error;
+    if (opSlug.error) throw opSlug.error;
+    for (const r of [...(opId.data || []), ...(opSku.data || []), ...(opSlug.data || [])] as any[]) {
+      // Een rij zonder prijs is hier net zo onbruikbaar als geen rij: zonder
+      // deze controle rekende de route verderop met null en kwam er een NaN
+      // op de factuur.
+      if (typeof r.price_cents !== "number") continue;
+      rijPerId.set(r.id, r);
+      if (r.sku) rijPerSku.set(r.sku, r);
+      if (r.slug) rijPerSlug.set(r.slug, r);
+    }
+  } catch (e) {
+    // Niet doorgaan met de prijs uit de browser: dat is precies het gat dat
+    // hier gedicht wordt. Liever een bestelling die niet lukt.
+    console.error("bestelling: prijzen ophalen mislukte", e);
+    return NextResponse.json({ error: "Bestellen lukte even niet. Probeer het opnieuw of mail ons." }, { status: 503 });
+  }
+
+  // Eén plek die de rij bij een mand-regel zoekt, zodat de prijs, de naam en
+  // het product_id verderop allemaal dezelfde rij gebruiken.
+  const rijVoor = (it: any) =>
+    rijPerSlug.get(it.id) ?? rijPerSlug.get(it.sku) ?? rijPerSku.get(it.sku) ?? rijPerId.get(it.id);
 
   for (const it of items) {
-    const rij = prijsUitDb.get(it.sku);
+    const rij = rijVoor(it);
     if (!rij || rij.is_active === false) {
-      return NextResponse.json({ error: `Product niet beschikbaar: ${it.name}` }, { status: 400 });
+      return NextResponse.json(
+        // U-vorm, zoals de rest van deze site: de melding gaat over "uw
+        // mandje". De aansporing blijft de gebiedende wijs die hier overal
+        // staat ("Probeer het opnieuw"), want "probeert u het opnieuw" wringt
+        // naast de andere meldingen.
+        { error: `Dit product is niet meer beschikbaar: ${it.name || it.sku || it.id}. Verwijder het uit uw mandje en probeer het opnieuw.` },
+        { status: 400 },
+      );
     }
   }
 
   // Bulk discount per item-qty applied (shared logic met checkout)
   let subtotal = 0;
   const adjustedItems = items.map((it: any) => {
-    const basis = prijsUitDb.get(it.sku).price_cents as number;
+    const basis = rijVoor(it).price_cents as number;
     const pct = unitDiscountPct(it.qty);
     const unitAdj = Math.round(basis * (1 - pct / 100));
     subtotal += unitAdj * it.qty;
@@ -161,8 +229,6 @@ export async function POST(req: NextRequest) {
   }
 
   // product_id komt uit dezelfde lookup als de prijs hierboven.
-  const skuToId = new Map(Array.from(prijsUitDb.entries()).map(([sku, r]: [string, any]) => [sku, r.id]));
-
   // Kolomnamen van de echte, gedeelde order_items-tabel (product_name/
   // quantity/unit_price_cents/total_cents) - sku/name/qty/price_cents bestaan
   // hier niet. Deze insert faalde daardoor altijd stil (geen .select(), geen
@@ -170,8 +236,8 @@ export async function POST(req: NextRequest) {
   // enkele regel in `order_items`, dus zag de admin alleen een totaalbedrag.
   const { error: itemsError } = await supabase.from("order_items").insert(adjustedItems.map((it: any) => ({
     order_id: order.id,
-    product_id: skuToId.get(it.sku) || null,
-    product_name: prijsUitDb.get(it.sku)?.name || it.name,
+    product_id: rijVoor(it)?.id || null,
+    product_name: rijVoor(it)?.name || it.name,
     quantity: it.qty,
     unit_price_cents: it.applied_price_cents,
     total_cents: it.applied_price_cents * it.qty,
