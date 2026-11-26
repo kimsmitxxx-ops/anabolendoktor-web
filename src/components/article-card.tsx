@@ -1,6 +1,6 @@
-import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Tag } from "./tag";
+import { Afbeelding } from "@/components/afbeelding";
 
 export type ArticleCardVariant = "sm" | "md" | "featured";
 
@@ -28,7 +28,15 @@ function Meta({ author, publishedAt, updatedAt }: Pick<ArticleCardProps, "author
   return (
     <div className="flex items-center gap-2 text-xs text-text-muted">
       {author.avatar && (
-        <Image src={author.avatar} alt="" width={24} height={24} className="h-6 w-6 rounded-full object-cover" />
+        <Afbeelding
+          src={author.avatar}
+          alt=""
+          width={24}
+          height={24}
+          sizes="24px"
+          maxBreedte={24}
+          className="h-6 w-6 rounded-full object-cover"
+        />
       )}
       <span className="font-medium text-text">{author.name}</span>
       {author.credentials && <span className="text-text-subtle">· {author.credentials}</span>}
@@ -61,7 +69,15 @@ export function ArticleCard({
           className,
         )}
       >
-        <Image src={image} alt={title} width={112} height={80} className="h-20 w-28 rounded object-cover shrink-0" />
+        <Afbeelding
+          src={image}
+          alt={title}
+          width={112}
+          height={80}
+          sizes="112px"
+          maxBreedte={112}
+          className="h-20 w-28 rounded object-cover shrink-0"
+        />
         <div className="flex-1 min-w-0">
           <Tag>{kindTag}</Tag>
           <h3 className="mt-1.5 font-display text-base text-text leading-snug line-clamp-2">{title}</h3>
@@ -81,7 +97,19 @@ export function ArticleCard({
           className,
         )}
       >
-        <Image src={image} alt={title} fill sizes="(max-width: 1024px) 100vw, 66vw" className="object-cover" />
+        {/* Was <Image fill>. Die zet zelf position:absolute met inset 0 en 100
+            procent breed en hoog; dat staat hier nu in de klassen, zodat het vak
+            precies hetzelfde blijft. De ouder is relative met aspect-[16/9], dus
+            width en height bepalen alleen de verhouding die de browser
+            reserveert. */}
+        <Afbeelding
+          src={image}
+          alt={title}
+          width={1200}
+          height={675}
+          sizes="(max-width: 1024px) 100vw, 66vw"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-text/85 via-text/40 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-6 text-surface">
           <span className="inline-block rounded-sm border border-surface/60 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-widest">
@@ -102,12 +130,15 @@ export function ArticleCard({
       )}
     >
       <div className="relative aspect-[16/9] bg-primary-soft">
-        <Image
+        {/* Was <Image fill>, zie de toelichting bij de featured-variant
+            hierboven: de klassen doen nu wat fill zelf deed. */}
+        <Afbeelding
           src={image}
           alt={title}
-          fill
+          width={1200}
+          height={675}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-cover opacity-95"
+          className="absolute inset-0 h-full w-full object-cover opacity-95"
         />
       </div>
       <div className="p-5 space-y-3">
@@ -116,7 +147,15 @@ export function ArticleCard({
         {excerpt && <p className="text-sm text-primary-foreground/70 line-clamp-3">{excerpt}</p>}
         <div className="flex items-center gap-2 text-xs text-primary-foreground/60">
           {author.avatar && (
-            <Image src={author.avatar} alt="" width={24} height={24} className="h-6 w-6 rounded-full object-cover" />
+            <Afbeelding
+          src={author.avatar}
+          alt=""
+          width={24}
+          height={24}
+          sizes="24px"
+          maxBreedte={24}
+          className="h-6 w-6 rounded-full object-cover"
+        />
           )}
           <span className="font-medium text-primary-foreground/90">{author.name}</span>
           {author.credentials && <span>· {author.credentials}</span>}
