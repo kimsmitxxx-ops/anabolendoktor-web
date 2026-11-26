@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { PriceTag } from "./price-tag";
 import { Stars } from "./stars";
@@ -8,6 +7,7 @@ import { Tag } from "./tag";
 import { ShoppingCart, Plus, Check } from "lucide-react";
 import type { MouseEvent } from "react";
 import { useCart } from "@/lib/cart-context";
+import { Afbeelding } from "@/components/afbeelding";
 
 export type ProductCardSize = "sm" | "md" | "lg";
 
@@ -93,12 +93,19 @@ export function ProductCard({
       <div className="relative aspect-square bg-muted overflow-hidden shrink-0">
         {/* sizes volgt het raster, anders haalt next/image het grootste
             formaat op en laadt een kaartje van 334px een bestand van 1000px. */}
-        <Image
+        {/* Was <Image fill>. Dat zet zelf position:absolute met inset 0 en
+            honderd procent breed en hoog; dat staat nu in de klassen, zodat het
+            vak identiek blijft. De ouder is relative met aspect-square, dus
+            width en height bepalen hier alleen de verhouding die de browser
+            vooraf reserveert. */}
+        <Afbeelding
           src={image}
           alt={name}
-          fill
+          width={400}
+          height={400}
           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-          className="object-cover transition-transform group-hover:scale-[1.02]"
+          maxBreedte={400}
+          className="absolute inset-0 h-full w-full object-cover transition-transform group-hover:scale-[1.02]"
         />
         {category && (
           <span className="absolute top-3 left-3 inline-flex items-center rounded-sm bg-primary/90 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-primary-foreground backdrop-blur-sm">
